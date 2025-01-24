@@ -31,6 +31,18 @@
          ]
       }
   ],
-  "fe-packages": [],
-  "be-packages": []
+  "fe-packages": [
+    {
+      "type": "npm",
+      "name": "openimis-fe-tasks_management_js",
+      "version": "v1.1.1"
+    }
+  ],
+  "be-packages": [
+    {
+      "type": "pip",
+      "name": "openimis-be-tasks_management_py",
+      "version": "v1.2.0"
+    }
+  ]
 }

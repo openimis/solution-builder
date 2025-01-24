@@ -35,7 +35,7 @@
     {
       "type": "github",
       "name": "openimis-fe-admin_js",
-      "version": "v1.7.0"
+      "version": "develop"
     },
     {
       "type": "npm",

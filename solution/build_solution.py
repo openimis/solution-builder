@@ -28,6 +28,11 @@ def merge_menus(modules):
     return combined_menus
 
 
+def _convert_to_pascal_case(name):
+    """Convert snake_case to PascalCase."""
+    return ''.join(word.capitalize() for word in name.split('_'))
+
+
 def _process_package(pkg, package_type):
     """
     Process a single package based on its type and return the transformed package.
@@ -39,61 +44,48 @@ def _process_package(pkg, package_type):
     if not isinstance(pkg, dict) or "type" not in pkg:
         return None
 
-    print(pkg)  # This will help you debug the content of the package.
-
-    # Function to clean the name by removing prefixes or suffixes
     def clean_name(name, package_type):
         if package_type == "fe":
-            # For frontend packages, remove the 'openimis-fe-' prefix
             if name.startswith("openimis-fe-"):
-                return name[len("openimis-fe-"):]  # Remove 'openimis-fe-' prefix
+                return name[len("openimis-fe-"):]
         elif package_type == "be":
-            # For backend packages, remove the '_py' suffix
-            if name.endswith("_py"):
-                return name[:-3]  # Remove '_py' suffix
+            # For other backend packages, remove 'openimis-be-' prefix and '_py' suffix
+            if name.startswith("openimis-be-") and name.endswith("_py"):
+                return name[len("openimis-be-"):-3]  # Remove 'openimis-be-' and '_py'
         return name
 
-    # Process frontend packages
     if package_type == "fe":
         if pkg["type"] == "npm":
-            # For npm frontend packages, clean the name and use the version constraint
-            cleaned_name = clean_name(pkg["name"], "fe")
+            cleaned_name = clean_name(pkg["name"], "fe").replace("_js", "")
+            pascal_name = _convert_to_pascal_case(cleaned_name)
             return {
-                "name": pkg["name"],
-                "npm": f"@openimis/fe-{cleaned_name}@>=v{pkg['version'].lstrip('v')}"  # Add 'fe-' prefix after cleaning
+                "name": f"{pascal_name}Module",
+                "npm": f"@openimis/fe-{cleaned_name}@>=v{pkg['version'].lstrip('v')}"
             }
         elif pkg["type"] == "github":
-            # For GitHub-based npm packages, clean the name and dynamically create the npm URL with branch/version support
-            cleaned_name = clean_name(pkg["name"], "fe")
-            branch_or_version = pkg.get('branch', 'develop')  # Default to 'develop' branch
-            if 'version' in pkg:
-                branch_or_version = pkg['version']  # Use the version if it's specified
+            cleaned_name = clean_name(pkg["name"], "fe").replace("_js", "")
+            pascal_name = _convert_to_pascal_case(cleaned_name)
+            branch_or_version = pkg.get('version', 'develop')
             return {
-                "name": pkg["name"],
-                "npm": f"@openimis/fe-{cleaned_name}@https://github.com/openimis/{cleaned_name}_js#{branch_or_version}"  # GitHub URL with version/branch
+                "name": f"{pascal_name}Module",
+                "npm": f"@openimis/fe-{cleaned_name}@https://github.com/openimis/openimis-fe-{cleaned_name}_js#{branch_or_version}"
             }
 
-    # Process backend packages
     elif package_type == "be":
         if pkg["type"] == "pip":
-            # For pip backend packages, clean the name and use the version constraint
             cleaned_name = clean_name(pkg["name"], "be")
             return {
-                "name": pkg["name"],
-                "pip": f"{cleaned_name}==v{pkg['version'].lstrip('v')}"  # Remove 'v' from version and clean the name
+                "name": cleaned_name,
+                "pip": f"{pkg['name'][:-3]}=={pkg['version']}"
             }
         elif pkg["type"] == "github":
-            # For GitHub-based pip packages, clean the name and dynamically create the pip URL with branch/version support
             cleaned_name = clean_name(pkg["name"], "be")
-            branch_or_version = pkg.get('branch', 'develop')  # Default to 'develop' branch
-            if 'version' in pkg:
-                branch_or_version = pkg['version']  # Use the version if it's specified
+            branch_or_version = pkg.get('version', 'develop')
             return {
-                "name": pkg["name"],
-                "pip": f"git+https://github.com/openimis/{cleaned_name}_py.git@{branch_or_version}#egg={cleaned_name}"  # GitHub URL with version/branch
+                "name": cleaned_name,
+                "pip": f"git+https://github.com/openimis/openimis-be-{cleaned_name}_py.git@{branch_or_version}#egg=openimis-be-{cleaned_name}"
             }
 
-    # Return None if package type is unsupported
     return None
 
 
@@ -107,23 +99,21 @@ def process_packages(modules):
         if not module_data:
             continue
 
-        # Process frontend packages
         for pkg in module_data.get("fe-packages", []):
             processed_pkg = _process_package(pkg, "fe")
             if processed_pkg:
                 fe_packages.append(processed_pkg)
 
-        # Process backend packages
         for pkg in module_data.get("be-packages", []):
             processed_pkg = _process_package(pkg, "be")
             if processed_pkg:
                 be_packages.append(processed_pkg)
 
-    # Remove duplicates and sort
     fe_packages = sorted({frozenset(pkg.items()): pkg for pkg in fe_packages}.values(), key=lambda x: x["name"])
     be_packages = sorted({frozenset(pkg.items()): pkg for pkg in be_packages}.values(), key=lambda x: x["name"])
 
     return fe_packages, be_packages
+
 
 def main():
     solution_file = 'solution.json'
@@ -146,16 +136,13 @@ def main():
 
     print(f"Generated solution written to {output_file}")
 
-    # Process packages
     fe_packages, be_packages = process_packages(modules)
 
-    # Write frontend packages
     fe_output_file = 'fe-openimis.json'
     with open(fe_output_file, 'w') as file:
         json.dump({"packages": fe_packages}, file, indent=2)
     print(f"Generated frontend packages written to {fe_output_file}")
 
-    # Write backend packages
     be_output_file = 'be-openimis.json'
     with open(be_output_file, 'w') as file:
         json.dump({"packages": be_packages}, file, indent=2)
