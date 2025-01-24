@@ -1,4 +1,4 @@
-# Solution Builder Script
+# Menu Builder Script
 
 This script processes a `solution.json` file and combines the `menus` key from multiple module JSON files to build a complete menu structure (TO-DO: generation of openimis.json and merging roles to apply them in migration). 
 The resulting menu is sorted by `position` at both the menu and submenu levels. The script outputs a new file named `generated-menu.json` containing the combined and sorted menu structure.
