@@ -1,0 +1,39 @@
+{
+  "menus": [
+    {
+         "position":5,
+         "id": "ConfigMainMenu",
+         "name":"Configurations",
+         "icon":"task-icon",
+         "description":"Configurations",
+         "submenus":[
+            {
+               "position":4,
+               "id": "admin.products"
+            },
+            {
+               "position":2,
+               "id":"admin.roleManagement"
+            },
+            {
+               "position":1,
+               "id":"admin.users"
+            },
+            {
+               "position":3,
+               "id": "admin.locations"
+            }
+         ]
+      }
+  ],
+  "fe-packages": [
+    "openimis-fe_js",
+    "openimis-fe-core_js",
+    "openimis-fe-menu_js"
+  ],
+  "be-packages": [
+    "openimis-be_py",
+    "openimis-be-core_py",
+    "openimis-be-menu_py"
+  ]
+}

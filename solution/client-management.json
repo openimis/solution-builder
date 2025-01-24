@@ -1,0 +1,36 @@
+{
+  "menus": [
+    {
+         "position":10,
+         "id": "TasksMainMenu",
+         "name":"TasksMainMenu",
+         "icon":"task-icon",
+         "description":"Task panel",
+         "submenus":[
+            {
+               "position":2,
+               "id": "task.tasks"
+            },
+            {
+               "position":1,
+               "id":"task.allTasks"
+            }
+         ]
+      },
+      {
+         "position":11,
+         "id": "ToolsMainMenu",
+         "name":"ToolsMainMenu",
+         "icon":"tools-icon",
+         "description":"Tools panel",
+         "submenus":[
+            {
+               "position":2,
+               "id": "tools.reports"
+            }
+         ]
+      }
+  ],
+  "fe-packages": [],
+  "be-packages": []
+}
