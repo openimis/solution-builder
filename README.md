@@ -100,4 +100,9 @@ This file can be pasted as a part of `fe-core` configuration. It can be changed 
 - Missing or malformed files will result in warnings but will not stop the script.
 - Customize the `solution.json` file to include or exclude specific modules based on your requirements.
 
-Feel free to extend or modify the script to fit your needs!
+## Useful links (openIMIS wiki page on Confluence)
+- [Menu Builder Script explanation](https://openimis.atlassian.net/wiki/spaces/OP/pages/4220616709/Solution+Builder+Script)
+- [Conception of deployment Recipe Strategy](https://openimis.atlassian.net/wiki/spaces/OP/pages/4139188234/Solution+Building+Deployment+Recipe+Strategy)
+- [More detailed instruction of menu configuration](https://openimis.atlassian.net/wiki/spaces/OP/pages/4209606659/Solution+Building+configuration+of+Main+Menu+and+Submenus)
+- [List of possible configurations of submenus items](https://openimis.atlassian.net/wiki/spaces/OP/pages/4209737755/List+of+submenu+entries+available+in+system)
+- [Detailed description of technical approach to achieve having menu configurable](https://openimis.atlassian.net/wiki/spaces/OP/pages/4209803280/Technical+Approach+to+have+Menu+Configuration+flexible).
