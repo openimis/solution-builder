@@ -27,13 +27,37 @@
       }
   ],
   "fe-packages": [
-    "openimis-fe_js",
-    "openimis-fe-core_js",
-    "openimis-fe-menu_js"
+    {
+      "type": "npm",
+      "name": "openimis-fe-core_js",
+      "version": "v1.7.1"
+    },
+    {
+      "type": "github",
+      "name": "openimis-fe-admin_js",
+      "version": "v1.7.0"
+    },
+    {
+      "type": "npm",
+      "name": "openimis-fe-menu_js",
+      "version": "v1.7.0"
+    }
   ],
   "be-packages": [
-    "openimis-be_py",
-    "openimis-be-core_py",
-    "openimis-be-menu_py"
+    {
+      "type": "pip",
+      "name": "openimis-be-policy_py",
+      "version": "v1.8.0"
+    },
+    {
+      "type": "github",
+      "name": "openimis-be-core_py",
+      "version": "develop"
+    },
+    {
+      "type": "pip",
+      "name": "openimis-be-menu_py",
+      "version": "v1.8.0"
+    }
   ]
 }
