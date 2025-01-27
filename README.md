@@ -1,4 +1,4 @@
-# Solution Builder Script
+# Menu Builder Script
 
 This script processes a `solution.json` file and combines the `menus` key from multiple module JSON files to build a complete menu structure (TO-DO: generation of openimis.json and merging roles to apply them in migration). 
 The resulting menu is sorted by `position` at both the menu and submenu levels. The script outputs a new file named `generated-menu.json` containing the combined and sorted menu structure.
@@ -106,3 +106,106 @@ This file can be pasted as a part of `fe-core` configuration. It can be changed 
 - [More detailed instruction of menu configuration](https://openimis.atlassian.net/wiki/spaces/OP/pages/4209606659/Solution+Building+configuration+of+Main+Menu+and+Submenus)
 - [List of possible configurations of submenus items](https://openimis.atlassian.net/wiki/spaces/OP/pages/4209737755/List+of+submenu+entries+available+in+system)
 - [Detailed description of technical approach to achieve having menu configurable](https://openimis.atlassian.net/wiki/spaces/OP/pages/4209803280/Technical+Approach+to+have+Menu+Configuration+flexible).
+
+
+# Packaging Building
+
+This section explains how the script processes `solution.json` to generate two package configuration files:
+
+1. **`be-openimis.json`**: Contains backend (`be-packages`) packages.  
+2. **`fe-openimis.json`**: Contains frontend (`fe-packages`) packages.  
+
+Each package is transformed to meet specific naming conventions and structure requirements based on its `type`.
+
+---
+
+## Backend Package Rules (`be-openimis.json`)
+
+- **General Format:**  
+  Backend packages are listed under the `pip` key. Depending on the `type`, they are transformed as follows:
+
+  - **Type: `pip`**  
+    ```json
+    {
+      "name": "menu",
+      "pip": "openimis-be-menu==v1.8.0"
+    }
+    ```
+
+  - **Type: `github`**  
+    ```json
+    {
+      "name": "core",
+      "pip": "git+https://github.com/openimis/openimis-be-core_py.git@develop#egg=openimis-be-core"
+    }
+    ```
+
+- **Naming Rules:**  
+  - For `pip` packages, the full `openimis-be-<module_name>` pattern is retained.  
+  - For `github` packages, the `openimis-be-` prefix and `_py` suffix are removed, leaving only `<module_name>` in `name`.  
+
+---
+
+## Frontend Package Rules (`fe-openimis.json`)
+
+- **General Format:**  
+  Frontend packages are listed under the `npm` key. Depending on the `type`, they are transformed as follows:
+
+  - **Type: `npm`**  
+    ```json
+    {
+      "name": "CoreModule",
+      "npm": "@openimis/fe-core@>=v1.7.1"
+    }
+    ```
+
+  - **Type: `github`**  
+    ```json
+    {
+      "name": "GrievanceSocialProtectionModule",
+      "npm": "@openimis/fe-grievance_social_protection@https://github.com/openimis/openimis-fe-grievance_social_protection_js#develop"
+    }
+    ```
+
+- **Naming Rules:**  
+  - The `name` key is converted to PascalCase with the `Module` suffix (e.g., `GrievanceSocialProtectionModule`).  
+  - For `npm` packages, `_js` suffixes are removed.  
+  - For `github` packages, URLs follow the pattern `openimis/openimis-<module_name>_js`.  
+
+---
+
+## Generated Files
+
+### `be-openimis.json`
+```json
+{
+  "packages": [
+    {
+      "name": "menu",
+      "pip": "openimis-be-menu==v1.8.0"
+    },
+    {
+      "name": "core",
+      "pip": "git+https://github.com/openimis/openimis-be-core_py.git@develop#egg=openimis-be-core"
+    }
+  ]
+}
+```
+
+### `fe-openimis.json`
+```json
+{
+  "packages": [
+    {
+      "name": "CoreModule",
+      "npm": "@openimis/fe-core@>=v1.7.1"
+    },
+    {
+      "name": "GrievanceSocialProtectionModule",
+      "npm": "@openimis/fe-grievance_social_protection@https://github.com/openimis/openimis-fe-grievance_social_protection_js#develop"
+    }
+  ]
+}
+```
+
+---

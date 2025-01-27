@@ -2,18 +2,30 @@
   "menus": [
     {
          "position":6,
-         "id": "GrievanceMainMenu",
-         "name":"Grievance",
-         "icon":"grievance-icon",
-         "description":"Grievance panel",
+         "id": "UserManagementMainMenu",
+         "name":"User Management",
+         "icon":"admin-icon",
+         "description":"Administration Panel",
          "submenus":[
             {
+               "position":2,
+               "id":"admin.roleManagement"
+            },
+            {
                "position":1,
-               "id":"grievance.add"
+               "id":"admin.users"
+            },
+            {
+               "position":11,
+               "id":"admin.taskExecutionerGroups"
             },
             {
                "position":2,
-               "id":"grievance.grievances"
+               "id": "profile.myProfile"
+            },
+            {
+               "position":1,
+               "id":"profile.changePassword"
             }
          ]
       }
