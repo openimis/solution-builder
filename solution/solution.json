@@ -1,0 +1,14 @@
+{
+  "modules": [
+    "client-management.json",
+    "user-management.json",
+    "grievance.json",
+    "yyyy.json",
+    "social-protection.json",
+    "core.json",
+    "xxxx.json"
+  ],
+  "roles":[
+    "role-eo.json"
+  ]
+}

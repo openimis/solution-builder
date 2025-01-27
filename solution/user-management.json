@@ -1,0 +1,35 @@
+{
+  "menus": [
+    {
+         "position":6,
+         "id": "UserManagementMainMenu",
+         "name":"User Management",
+         "icon":"admin-icon",
+         "description":"Administration Panel",
+         "submenus":[
+            {
+               "position":2,
+               "id":"admin.roleManagement"
+            },
+            {
+               "position":1,
+               "id":"admin.users"
+            },
+            {
+               "position":11,
+               "id":"admin.taskExecutionerGroups"
+            },
+            {
+               "position":2,
+               "id": "profile.myProfile"
+            },
+            {
+               "position":1,
+               "id":"profile.changePassword"
+            }
+         ]
+      }
+  ],
+  "fe-packages": [],
+  "be-packages": []
+}

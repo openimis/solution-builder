@@ -1,0 +1,35 @@
+{
+  "menus": [
+    {
+         "position":6,
+         "id": "GrievanceMainMenu",
+         "name":"Grievance",
+         "icon":"grievance-icon",
+         "description":"Grievance panel",
+         "submenus":[
+            {
+               "position":1,
+               "id":"grievance.add"
+            },
+            {
+               "position":2,
+               "id":"grievance.grievances"
+            }
+         ]
+      }
+  ],
+  "fe-packages": [
+    {
+      "type": "github",
+      "name": "openimis-fe-grievance_social_protection_js",
+      "version": "develop"
+    }
+  ],
+  "be-packages": [
+    {
+      "type": "github",
+      "name": "openimis-be-grievance_social_protection_py",
+      "version": "main"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "menus": [
+    {
+         "position":5,
+         "id": "ConfigMainMenu",
+         "name":"Configurations",
+         "icon":"task-icon",
+         "description":"Configurations",
+         "submenus":[
+            {
+               "position":4,
+               "id": "admin.products"
+            },
+            {
+               "position":2,
+               "id":"admin.roleManagement"
+            },
+            {
+               "position":1,
+               "id":"admin.users"
+            },
+            {
+               "position":3,
+               "id": "admin.locations"
+            }
+         ]
+      }
+  ],
+  "fe-packages": [
+    {
+      "type": "npm",
+      "name": "openimis-fe-core_js",
+      "version": "v1.7.1"
+    },
+    {
+      "type": "github",
+      "name": "openimis-fe-admin_js",
+      "version": "develop"
+    },
+    {
+      "type": "npm",
+      "name": "openimis-fe-menu_js",
+      "version": "v1.7.0"
+    }
+  ],
+  "be-packages": [
+    {
+      "type": "pip",
+      "name": "openimis-be-policy_py",
+      "version": "v1.8.0"
+    },
+    {
+      "type": "github",
+      "name": "openimis-be-core_py",
+      "version": "develop"
+    },
+    {
+      "type": "pip",
+      "name": "openimis-be-menu_py",
+      "version": "v1.8.0"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "menus": [
+    {
+         "position":10,
+         "id": "TasksMainMenu",
+         "name":"TasksMainMenu",
+         "icon":"task-icon",
+         "description":"Task panel",
+         "submenus":[
+            {
+               "position":2,
+               "id": "task.tasks"
+            },
+            {
+               "position":1,
+               "id":"task.allTasks"
+            }
+         ]
+      },
+      {
+         "position":11,
+         "id": "ToolsMainMenu",
+         "name":"ToolsMainMenu",
+         "icon":"tools-icon",
+         "description":"Tools panel",
+         "submenus":[
+            {
+               "position":2,
+               "id": "tools.reports"
+            }
+         ]
+      }
+  ],
+  "fe-packages": [
+    {
+      "type": "npm",
+      "name": "openimis-fe-tasks_management_js",
+      "version": "v1.1.1"
+    }
+  ],
+  "be-packages": [
+    {
+      "type": "pip",
+      "name": "openimis-be-tasks_management_py",
+      "version": "v1.2.0"
+    }
+  ]
+}
