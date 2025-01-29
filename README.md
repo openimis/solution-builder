@@ -288,13 +288,21 @@ Each module file should contain a `roles` section like this:
   "roles": [
     {
       "roleName": "Admin",
-      "roleId": 1,
-      "permissions": ["127001", "127002", "127003"]
+      "code": "admin",
+      "permissions": [
+        { "code": "127001", "name": "gql_mutation_create_tickets_perms" },
+        { "code": "127002", "name": "gql_mutation_update_tickets_perms" },
+        { "code": "127003", "name": "gql_mutation_delete_tickets_perms" }
+      ]
     },
     {
       "roleName": "SocialProtectionManager",
-      "roleId": 12,
-      "permissions": ["159001", "159002", "159003"]
+      "code": "social_protection_manager",
+      "permissions": [
+        { "code": "159001", "name": "gql_individual_search_perms" },
+        { "code": "159002", "name": "gql_individual_create_perms" },
+        { "code": "159003", "name": "gql_individual_update_perms" }
+      ]
     }
   ]
 }
@@ -302,7 +310,7 @@ Each module file should contain a `roles` section like this:
 
 ## Role Merging Logic
 - If multiple modules define the same `roleName`, their permissions are merged (no duplicates).
-- Roles retain the same `roleId` from their original definitions.
+- Roles retain the same `code` from their original definitions.
 - The final output consolidates all role definitions into a single `generated-roles.json` file.
 
 ### Example:
@@ -313,8 +321,11 @@ Each module file should contain a `roles` section like this:
   "roles": [
     {
       "roleName": "Admin",
-      "roleId": 1,
-      "permissions": ["127001", "127002"]
+      "code": "admin",
+      "permissions": [
+        { "code": "127001", "name": "gql_mutation_create_tickets_perms" },
+        { "code": "127002", "name": "gql_mutation_update_tickets_perms" }
+      ]
     }
   ]
 }
@@ -326,8 +337,11 @@ Each module file should contain a `roles` section like this:
   "roles": [
     {
       "roleName": "Admin",
-      "roleId": 1,
-      "permissions": ["127003", "127004"]
+      "code": "admin",
+      "permissions": [
+        { "code": "127003", "name": "gql_mutation_delete_tickets_perms" },
+        { "code": "127004", "name": "gql_query_comments_perms" }
+      ]
     }
   ]
 }
@@ -339,8 +353,13 @@ Each module file should contain a `roles` section like this:
   "roles": [
     {
       "roleName": "Admin",
-      "roleId": 1,
-      "permissions": ["127001", "127002", "127003", "127004"]
+      "code": "admin",
+      "permissions": [
+        { "code": "127001", "name": "gql_mutation_create_tickets_perms" },
+        { "code": "127002", "name": "gql_mutation_update_tickets_perms" },
+        { "code": "127003", "name": "gql_mutation_delete_tickets_perms" },
+        { "code": "127004", "name": "gql_query_comments_perms" }
+      ]
     }
   ]
 }
@@ -349,12 +368,12 @@ Each module file should contain a `roles` section like this:
 ## Processing Steps
 1. **Load Modules**  
    - Extract roles from each module’s JSON file.  
-   - Each module contains a list of roles with `roleName`, `roleId`, and associated `permissions`.
+   - Each module contains a list of roles with `roleName`, `code`, and associated `permissions`.
 
 2. **Merge Roles**  
    - If the same `roleName` appears in multiple modules, their permissions are combined.  
    - Duplicates within the permission lists are removed.  
-   - The `roleId` remains the same as defined in the original modules.
+   - The `code` remains the same as defined in the original modules.
 
 3. **Generate Output**  
    - The final list of merged roles is structured into a single JSON object.  
@@ -368,5 +387,5 @@ This file consolidates all roles across modules, ensuring a structured and non-d
 Each role in the final output contains:
 
 - `roleName`: The name of the role.
-- `roleId`: The unique identifier for the role.
+- `code`: The unique code identifier for the role.
 - `permissions`: A merged list of permissions from all modules, with duplicates removed.
