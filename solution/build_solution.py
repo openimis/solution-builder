@@ -116,30 +116,28 @@ def process_packages(modules):
 
 
 def merge_roles(modules):
-    """Merge roles from multiple modules while ensuring unique permissions."""
+    """Merge roles from multiple modules while ensuring unique permissions based on role code."""
     merged_roles = {}
     for module_file in modules:
         module_data = load_json(module_file)
         if not module_data or "roles" not in module_data:
             continue
         for role in module_data["roles"]:
-            role_name = role["roleName"]
-            role_id = role["roleId"]
-            permissions = set(role.get("permissions", []))
-
-            if role_name in merged_roles:
-                merged_roles[role_name]["permissions"].update(permissions)
+            role_code = role["code"]
+            permissions = role.get("permissions", [])
+            if role_code in merged_roles:
+                merged_roles[role_code]["permissions"].extend(permissions)
             else:
-                merged_roles[role_name] = {
-                    "roleName": role_name,
-                    "roleId": role_id,
+                merged_roles[role_code] = {
+                    "roleName": role["roleName"],
+                    "code": role_code,
                     "permissions": permissions
                 }
     return [
         {
             "roleName": role_data["roleName"],
-            "roleId": role_data["roleId"],
-            "permissions": sorted(role_data["permissions"])
+            "code": role_data["code"],
+            "permissions": sorted(role_data["permissions"], key=lambda x: x["code"])
         }
         for role_data in merged_roles.values()
     ]

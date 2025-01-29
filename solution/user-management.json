@@ -35,10 +35,18 @@
   "roles": [
     {
       "roleName": "Admin",
-      "roleId": 1,
+      "code": "admin",
       "permissions": [
-        "121701", "121702", "121703", "121704",
-        "122001", "122002", "122003", "122006", "122005", "122004"
+        { "code": "121701", "name": "gql_query_users_perms" },
+        { "code": "121702", "name": "gql_mutation_create_users_perms" },
+        { "code": "121703", "name": "gql_mutation_update_users_perms" },
+        { "code": "121704", "name": "gql_mutation_delete_users_perms" },
+        { "code": "122001", "name": "gql_query_roles_perms" },
+        { "code": "122002", "name": "gql_mutation_create_roles_perms" },
+        { "code": "122003", "name": "gql_mutation_update_roles_perms" },
+        { "code": "122006", "name": "gql_mutation_replace_roles_perms" },
+        { "code": "122005", "name": "gql_mutation_duplicate_roles_perms" },
+        { "code": "122004", "name": "gql_mutation_delete_roles_perms" }
       ]
     }
   ]
