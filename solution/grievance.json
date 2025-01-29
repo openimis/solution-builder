@@ -31,5 +31,31 @@
       "name": "openimis-be-grievance_social_protection_py",
       "version": "main"
     }
+  ],
+  "roles": [
+    {
+      "roleName": "Admin",
+      "roleId": 1,
+      "permissions": [
+        "127001", "127002", "127003", "127005",
+        "127006", "127000", "127004"
+      ]
+    },
+    {
+      "roleName": "SocialProtectionManager",
+      "roleId": 12,
+      "permissions": [
+        "127001", "127002", "127003", "127005",
+        "127006", "127000", "127004"
+      ]
+    },
+    {
+      "roleName": "GrievanceManager",
+      "roleId": 14,
+      "permissions": [
+        "127001", "127002", "127003", "127005",
+        "127006", "127000", "127004"
+      ]
+    }
   ]
 }

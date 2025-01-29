@@ -115,6 +115,36 @@ def process_packages(modules):
     return fe_packages, be_packages
 
 
+def merge_roles(modules):
+    """Merge roles from multiple modules while ensuring unique permissions."""
+    merged_roles = {}
+    for module_file in modules:
+        module_data = load_json(module_file)
+        if not module_data or "roles" not in module_data:
+            continue
+        for role in module_data["roles"]:
+            role_name = role["roleName"]
+            role_id = role["roleId"]
+            permissions = set(role.get("permissions", []))
+
+            if role_name in merged_roles:
+                merged_roles[role_name]["permissions"].update(permissions)
+            else:
+                merged_roles[role_name] = {
+                    "roleName": role_name,
+                    "roleId": role_id,
+                    "permissions": permissions
+                }
+    return [
+        {
+            "roleName": role_data["roleName"],
+            "roleId": role_data["roleId"],
+            "permissions": sorted(role_data["permissions"])
+        }
+        for role_data in merged_roles.values()
+    ]
+
+
 def main():
     solution_file = 'solution.json'
     solution_data = load_json(solution_file)
@@ -147,6 +177,12 @@ def main():
     with open(be_output_file, 'w') as file:
         json.dump({"packages": be_packages}, file, indent=2)
     print(f"Generated backend packages written to {be_output_file}")
+
+    roles = merge_roles(modules)
+    roles_output_file = 'generated-roles.json'
+    with open(roles_output_file, 'w') as file:
+        json.dump({"roles": roles}, file, indent=2)
+    print(f"Generated roles written to {roles_output_file}")
 
 
 if __name__ == "__main__":
