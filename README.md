@@ -72,11 +72,11 @@ This file can be pasted as a part of `fe-core` configuration. It can be changed 
      ```
 
 3. **Run the Script:**
-   - Save the script as `menu_builder.py` in the same directory as `solution.json` and the module files.
+   - Save the script as `build_solution.py` in the same directory as `solution.json` and the module files.
    - Open a terminal or command prompt and navigate to the directory.
    - Run the script using the command:
      ```bash
-     python menu_builder.py
+     python3 build_solution.py
      ```
 
 4. **View the Output:**
@@ -92,7 +92,7 @@ This file can be pasted as a part of `fe-core` configuration. It can be changed 
 |-- grievance.json
 |-- social-protection.json
 |-- core.json
-|-- menu_builder.py
+|-- build_solution.py
 ```
 
 ## Notes
