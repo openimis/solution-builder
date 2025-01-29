@@ -269,3 +269,104 @@ Each package is transformed to meet specific naming conventions and structure re
 ```
 
 ---
+# Processing Roles in `build_solution.py`
+
+## Overview  
+The `build_solution.py` script processes multiple JSON module files to generate a consolidated roles file:  
+**`generated-roles.json`** – Contains merged roles with unique permissions.  
+
+## How Roles Are Processed  
+1. **Extract roles** from each module's JSON file.  
+2. **Merge duplicate role names**, ensuring unique permissions are combined.  
+3. **Sort permissions** within each role for better readability.  
+4. **Save results** to `generated-roles.json`.  
+
+## Input JSON Structure (Example Module File)  
+Each module file should contain a `roles` section like this:
+```json
+{
+  "roles": [
+    {
+      "roleName": "Admin",
+      "roleId": 1,
+      "permissions": ["127001", "127002", "127003"]
+    },
+    {
+      "roleName": "SocialProtectionManager",
+      "roleId": 12,
+      "permissions": ["159001", "159002", "159003"]
+    }
+  ]
+}
+```
+
+## Role Merging Logic
+- If multiple modules define the same `roleName`, their permissions are merged (no duplicates).
+- Roles retain the same `roleId` from their original definitions.
+- The final output consolidates all role definitions into a single `generated-roles.json` file.
+
+### Example:
+
+#### Input from Module 1:
+```json
+{
+  "roles": [
+    {
+      "roleName": "Admin",
+      "roleId": 1,
+      "permissions": ["127001", "127002"]
+    }
+  ]
+}
+```
+
+#### Input from Module 2:
+```json
+{
+  "roles": [
+    {
+      "roleName": "Admin",
+      "roleId": 1,
+      "permissions": ["127003", "127004"]
+    }
+  ]
+}
+```
+
+#### Final Output (generated-roles.json):
+```json
+{
+  "roles": [
+    {
+      "roleName": "Admin",
+      "roleId": 1,
+      "permissions": ["127001", "127002", "127003", "127004"]
+    }
+  ]
+}
+```
+
+## Processing Steps
+1. **Load Modules**  
+   - Extract roles from each module’s JSON file.  
+   - Each module contains a list of roles with `roleName`, `roleId`, and associated `permissions`.
+
+2. **Merge Roles**  
+   - If the same `roleName` appears in multiple modules, their permissions are combined.  
+   - Duplicates within the permission lists are removed.  
+   - The `roleId` remains the same as defined in the original modules.
+
+3. **Generate Output**  
+   - The final list of merged roles is structured into a single JSON object.  
+   - The processed roles are saved in `generated-roles.json`.
+
+## Output File
+The processed roles are saved in:
+- `generated-roles.json`
+This file consolidates all roles across modules, ensuring a structured and non-duplicated set of permissions.
+
+Each role in the final output contains:
+
+- `roleName`: The name of the role.
+- `roleId`: The unique identifier for the role.
+- `permissions`: A merged list of permissions from all modules, with duplicates removed.
