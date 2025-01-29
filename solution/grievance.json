@@ -35,26 +35,41 @@
   "roles": [
     {
       "roleName": "Admin",
-      "roleId": 1,
+      "code": "admin",
       "permissions": [
-        "127001", "127002", "127003", "127005",
-        "127006", "127000", "127004"
+        { "code": "127000", "name": "gql_query_tickets_perms" },
+        { "code": "127001", "name": "gql_mutation_create_tickets_perms" },
+        { "code": "127002", "name": "gql_mutation_update_tickets_perms" },
+        { "code": "127003", "name": "gql_mutation_delete_tickets_perms" },
+        { "code": "127004", "name": "gql_query_comments_perms" },
+        { "code": "127005", "name": "gql_mutation_create_comment_perms" },
+        { "code": "127006", "name": "gql_mutation_resolve_grievance_perms" }
       ]
     },
     {
-      "roleName": "SocialProtectionManager",
-      "roleId": 12,
+      "roleName": "Social Protection Manager",
+      "code": "social_protection_manager",
       "permissions": [
-        "127001", "127002", "127003", "127005",
-        "127006", "127000", "127004"
+        { "code": "127000", "name": "gql_query_tickets_perms" },
+        { "code": "127001", "name": "gql_mutation_create_tickets_perms" },
+        { "code": "127002", "name": "gql_mutation_update_tickets_perms" },
+        { "code": "127003", "name": "gql_mutation_delete_tickets_perms" },
+        { "code": "127004", "name": "gql_query_comments_perms" },
+        { "code": "127005", "name": "gql_mutation_create_comment_perms" },
+        { "code": "127006", "name": "gql_mutation_resolve_grievance_perms" }
       ]
     },
     {
-      "roleName": "GrievanceManager",
-      "roleId": 14,
+      "roleName": "Grievance Manager",
+      "code": "grievance_manager",
       "permissions": [
-        "127001", "127002", "127003", "127005",
-        "127006", "127000", "127004"
+        { "code": "127000", "name": "gql_query_tickets_perms" },
+        { "code": "127001", "name": "gql_mutation_create_tickets_perms" },
+        { "code": "127002", "name": "gql_mutation_update_tickets_perms" },
+        { "code": "127003", "name": "gql_mutation_delete_tickets_perms" },
+        { "code": "127004", "name": "gql_query_comments_perms" },
+        { "code": "127005", "name": "gql_mutation_create_comment_perms" },
+        { "code": "127006", "name": "gql_mutation_resolve_grievance_perms" }
       ]
     }
   ]
