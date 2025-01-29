@@ -100,6 +100,66 @@ This file can be pasted as a part of `fe-core` configuration. It can be changed 
 - Missing or malformed files will result in warnings but will not stop the script.
 - Customize the `solution.json` file to include or exclude specific modules based on your requirements.
 
+## Table of Configurations
+
+Here’s the complete table with all the submenu configurations extracted, including their `Name of Submenu`, `ID of Submenu`, `Filter`, and `Route`.
+
+| **Name of Submenu**                  | **ID of Submenu**                | **Filter**                                                          | **Route**                           |
+|--------------------------------------|----------------------------------|----------------------------------------------------------------------|-------------------------------------|
+| Tasks Management View                | `task.tasks`                    | `(rights) => rights.includes(RIGHT_TASKS_MANAGEMENT_SEARCH_ALL)`    | `/tasks`                            |
+| Tasks Management All View            | `task.allTasks`                 | `(rights) => rights.includes(RIGHT_TASKS_MANAGEMENT_SEARCH_ALL)`    | `/AllTasks`                         |
+| Registers                            | `tools.registers`               | `(rights) => enablers(rights, RIGHT_REGISTERS)`                     | `/tools/registers`                  |
+| Extracts                             | `tools.extracts`                | `(rights) => enablers(rights, RIGHT_EXTRACTS)`                      | `/tools/extracts`                   |
+| Reports                              | `tools.reports`                 | `(rights) => enablers(rights, RIGHT_REPORTS)`                       | `/tools/reports`                    |
+| Social Protection Benefit Plans      | `socialProtection.benefitPlans` | `(rights) => rights.includes(RIGHT_BENEFIT_PLAN_SEARCH)`            | `/benefitPlans`                     |
+| My Profile                           | `profile.myProfile`             | None                                                                | `/profile/myProfile`                |
+| Change Password                      | `profile.changePassword`        | None                                                                | `/profile/changePassword`           |
+| Policies                             | `insuree.policies`              | `(rights) => rights.includes(RIGHT_POLICY)`                         | `/policy/policies`         |
+| Payment Point                        | `legalAndFinance.paymentPoint`  | `(rights) => rights.includes(RIGHT_PAYMENT_POINT_SEARCH)`           | `/paymentPoints`          |
+| Payrolls                             | `legalAndFinance.payrolls`      | `(rights) => rights.includes(RIGHT_PAYROLL_SEARCH)`                 | `/payrolls`                |
+| Payrolls Pending                     | `legalAndFinance.payrollsPending` | `(rights) => rights.includes(RIGHT_PAYROLL_SEARCH)`              | `/payrollsPending`        |
+| Payrolls Approved                    | `legalAndFinance.payrollsApproved` | `(rights) => rights.includes(RIGHT_PAYROLL_SEARCH)`            | `/payrollsApproved`       |
+| Payrolls Reconciled                  | `legalAndFinance.payrollsReconciled` | `(rights) => rights.includes(RIGHT_PAYROLL_SEARCH)`          | `/payrollsReconciled`     |
+| Payments                             | `insuree.payment`               | `(rights) => rights.includes(RIGHT_PAYMENT)`                        | `/payment/payments`                |
+| Payment Cycles                       | `legalAndFinance.paymentCycles` | `(rights) => rights.includes(RIGHT_PAYMENT_CYCLE_SEARCH)`           | `/paymentCycles`          |
+| Payers                               | `admin.payers`                  | `(rights) => rights.includes(RIGHT_PAYERS)`                         | `/payer/payers`                     |
+| Individual Reports                   | `openSearch.individualReports`  | None                                                                | `/individualReports`                |
+| Group Reports                        | `openSearch.groupReports`       | None                                                                | `/groupReports`                     |
+| Beneficiary Reports                  | `openSearch.beneficiaryReports` | None                                                                | `/beneficiaryReports`               |
+| Invoice Reports                      | `openSearch.invoiceReports`     | None                                                                | `/invoiceReports`                   |
+| Payment Reports                      | `openSearch.paymentReports`     | None                                                                | `/paymentReports`                   |
+| Grievance Reports                    | `openSearch.grievanceReports`   | None                                                                | `/grievanceReports`                 |
+| Data Updates Reports                 | `openSearch.dataUpdatesReports` | None                                                                | `/dataUpdatesReports`               |
+| Open Search Config                   | `openSearch.openSearchConfig`   | None                                                                | `/dashboardConfiguration`           |
+| Invoices                             | `legalAndFinance.invoices`      | `(rights) => rights.filter((r) => r >= RIGHT_INVOICE_SEARCH && r <= RIGHT_INVOICE_AMEND).length > 0` | `/invoices`                         |
+| Bills                                | `legalAndFinance.bills`         | `(rights) => rights.filter((r) => r >= RIGHT_BILL_SEARCH && r <= RIGHT_BILL_AMEND).length > 0`        | `/bills`                            |
+| Add Family or Group                  | `insuree.addFamilyOrGroup`      | `(rights) => rights.includes(RIGHT_FAMILY_ADD)`                     | `/insuree/family`          |
+| Families or Groups                   | `insuree.familiesOrGroups`      | `(rights) => rights.includes(RIGHT_FAMILY)`                         | `/insuree/families`        |
+| Insurees                             | `insuree.insurees`              | `(rights) => rights.includes(RIGHT_INSUREE)`                        | `/insuree/insurees`        |
+| Individuals                          | `individual.individuals`        | `(rights) => rights.includes(RIGHT_INDIVIDUAL_SEARCH)`              | `/individuals`             |
+| Groups                               | `individual.groups`              | `(rights) => rights.includes(RIGHT_GROUP_SEARCH)`                    | `/groups`                  |
+| API Imports                          | `individual.api_imports`         | `(rights) => rights.includes(RIGHT_INDIVIDUAL_SEARCH)`               | `/imports`             |
+| Grievances                           | `grievance.grievances`           | `(rights) => rights.includes(RIGHT_TICKET_SEARCH)`                   | `/ticket/tickets`          |
+| Add Grievance                        | `grievance.add`                  | `(rights) => rights.includes(RIGHT_TICKET_ADD)`                      | `/ticket/newTicket`      |
+| Role Management                      | `admin.roleManagement`           | `(rights) => rights.includes(RIGHT_ROLE_SEARCH)`                     | `/roles`                 |
+| Contribution Plans                   | `admin.contributionPlans`        | `(rights) => rights.includes(RIGHT_CONTRIBUTION_PLAN_SEARCH)`        | `/contributionPlans`   |
+| Contribution Plan Bundles            | `admin.contributionPlanBundles`  | `(rights) => rights.includes(RIGHT_CONTRIBUTION_PLAN_BUNDLE_SEARCH)` | `/contributionPlanBundles` |
+| Payment Plans                        | `legalAndFinance.paymentPlans`   | `(rights) => rights.includes(RIGHT_PAYMENT_PLAN_SEARCH)`            | `/paymentPlans`        |
+| Contribution                         | `insuree.contribution`           | `(rights) => rights.includes(RIGHT_CONTRIBUTION)`                    | `/contribution/contributions` |
+| Health Facility Claims               | `claim.healthFacilityClaims`     | `(rights) => rights.some((r) => r >= RIGHT_CLAIMREVIEW && r <= RIGHT_PROCESS)` | `/claim/healthFacilities`           |
+| Reviews                              | `claim.reviews`                  | `(rights) => rights.some((r) => r >= RIGHT_CLAIMREVIEW && r <= RIGHT_PROCESS)` | `/claim/reviews`                    |
+| Claim Batch (Batch Run)              | `claim.claimBatch`               | `(rights) => !!rights.filter(r => r >= RIGHT_PROCESS && r <= RIGHT_PREVIEW).length` | `/claim_batch`             |
+| Products                             | `admin.products`                 | `(rights) => rights.includes(RIGHT_PRODUCTS)`                        | `/admin/products`                   |
+| Health Facilities                    | `admin.healthFacilities`         | `(rights) => rights.includes(RIGHT_HEALTHFACILITIES)`                | `/location/healthFacilities`       |
+| Medical Services Prices List         | `admin.services`                 | `(rights) => rights.includes(RIGHT_PRICELISTMS)`                     | `/medical/pricelists/services`     |
+| Medical Items Prices List            | `admin.items`                    | `(rights) => rights.includes(RIGHT_PRICELISTMI)`                     | `/medical/pricelists/items`        |
+| Medical Services                     | `admin.medicalServices`          | `(rights) => rights.includes(RIGHT_MEDICALSERVICES)`                 | `/medical/pricelists/services`     |
+| Medical Items                        | `admin.medicalItems`             | `(rights) => rights.includes(RIGHT_MEDICALITEMS)`                    | `/medical/pricelists/items`        |
+| Users                                | `admin.users`                    | `(rights) => rights.includes(RIGHT_USERS)`                           | `/admin/users`                      |
+| Locations                            | `admin.locations`                | `(rights) => rights.includes(RIGHT_LOCATIONS)`                       | `/location/locations`              |
+| Contracts                            | `legalAndFinance.contracts`      | `(rights) => rights.includes(RIGHT_POLICYHOLDERCONTRACT_SEARCH)`     | `/contracts`             |
+
+
 ## Useful links (openIMIS wiki page on Confluence)
 - [Menu Builder Script explanation](https://openimis.atlassian.net/wiki/spaces/OP/pages/4220616709/Solution+Builder+Script)
 - [Conception of deployment Recipe Strategy](https://openimis.atlassian.net/wiki/spaces/OP/pages/4139188234/Solution+Building+Deployment+Recipe+Strategy)
