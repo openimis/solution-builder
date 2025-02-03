@@ -28,14 +28,14 @@
   ],
   "fe-packages": [
     {
-      "type": "github",
+      "type": "npm",
       "name": "openimis-fe-payroll_js",
       "version": "develop"
     }
   ],
   "be-packages": [
     {
-      "type": "github",
+      "type": "npm",
       "name": "openimis-be-payroll_py",
       "version": "develop"
     }

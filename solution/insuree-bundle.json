@@ -1,0 +1,6 @@
+{
+  "modules": [
+    "insuree.json",
+    "policy.json"
+  ]
+}

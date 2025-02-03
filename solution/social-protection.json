@@ -16,19 +16,19 @@
   ],
   "fe-packages": [
     {
-      "type": "github",
+      "type": "npm",
       "name": "openimis-fe-social_protection_js",
       "version": "develop"
     }
   ],
   "be-packages": [
     {
-      "type": "github",
+      "type": "pip",
       "name": "openimis-be-social_protection_py",
       "version": "develop"
     },
     {
-      "type": "github",
+      "type": "pip",
       "name": "openimis-be-calcrule_social_protection_py",
       "version": "develop"
     }

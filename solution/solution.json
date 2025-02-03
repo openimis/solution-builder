@@ -3,7 +3,8 @@
     "social-protection-bundle.json",
     "opensearch-report-bundle.json",
     "core-bundle.json",
-    "xxxx-bundle.json"
+    "xxxx-bundle.json",
+    "formal-sector-bundle.json"
   ],
   "roles":[
     "role-eo.json"
