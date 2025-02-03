@@ -64,8 +64,8 @@ def merge_menus(modules):
     return sorted(menu_dict.values(), key=lambda menu: menu.get("position", float("inf")))
 
 
-def merge_roles(modules):
-    """Merge roles from multiple modules, ensuring unique role permissions."""
+def merge_roles(modules, permission_map):
+    """Merge roles from multiple modules, only including roles with valid permissions."""
     merged_roles = {}
 
     for module_file in modules:
@@ -75,22 +75,31 @@ def merge_roles(modules):
 
         for role in module_data["roles"]:
             role_code = role["code"]
-            permissions = set(role.get("permissions", []))
+            permissions = role.get("permissions", [])
+
+            mapped_permissions = [
+                {"name": permission, "code": permission_map.get(permission, permission)}
+                for permission in permissions
+                if permission in permission_map
+            ]
+
+            if not mapped_permissions:
+                continue
 
             if role_code in merged_roles:
-                merged_roles[role_code]["permissions"].update(permissions)
+                merged_roles[role_code]["permissions"].extend(mapped_permissions)
             else:
                 merged_roles[role_code] = {
                     "roleName": role["roleName"],
                     "code": role_code,
-                    "permissions": permissions
+                    "permissions": mapped_permissions
                 }
 
     return [
         {
             "roleName": role_data["roleName"],
             "code": role_data["code"],
-            "permissions": sorted(role_data["permissions"])
+            "permissions": sorted(role_data["permissions"], key=lambda x: x["name"])  # Sort by permission name
         }
         for role_data in merged_roles.values()
     ]
@@ -127,10 +136,13 @@ def main():
         json.dump({"menus": menus}, file, indent=2)
     print("Generated menus written to generated-menu.json")
 
-    roles = merge_roles(resolved_modules)
-    with open('generated-roles.json', 'w') as file:
+    permissions_map_file = 'permissions_map.json'
+    permissions_map = load_json(permissions_map_file)
+    roles = merge_roles(resolved_modules, permissions_map)
+    roles_output_file = 'generated-roles.json'
+    with open(roles_output_file, 'w') as file:
         json.dump({"roles": roles}, file, indent=2)
-    print("Generated roles written to generated-roles.json")
+    print(f"Generated roles written to {roles_output_file}")
 
     fe_packages, be_packages = process_packages(resolved_modules)
     with open('fe-openimis.json', 'w') as file:
