@@ -1,0 +1,53 @@
+{
+  "menus": [
+      {
+         "position":3,
+         "id": "PaymentManagement",
+         "name":"Payment Management",
+         "icon":"task-icon",
+         "description":"PayrollNameMenu",
+         "submenus":[
+            {
+               "position":5,
+               "id": "legalAndFinance.paymentCycles"
+            }
+         ]
+      }
+  ],
+  "fe-packages": [
+    {
+      "type": "github",
+      "name": "openimis-fe-payment_cycle_js",
+      "version": "develop"
+    }
+  ],
+  "be-packages": [
+    {
+      "type": "github",
+      "name": "openimis-be-payment_cycle_py",
+      "version": "develop"
+    }
+  ],
+  "roles": [
+    {
+      "roleName": "Admin",
+      "code": "admin",
+      "permissions": [
+        "payment_cycle.query_payment_cycle",
+        "payment_cycle.create_payment_cycle",
+        "payment_cycle.update_payment_cycle",
+        "payment_cycle.delete_payment_cycle"
+      ]
+    },
+    {
+      "roleName": "Social Protection Manager",
+      "code": "social_protection_manager",
+      "permissions": [
+        "payment_cycle.query_payment_cycle",
+        "payment_cycle.create_payment_cycle",
+        "payment_cycle.update_payment_cycle",
+        "payment_cycle.delete_payment_cycle"
+      ]
+    }
+  ]
+}

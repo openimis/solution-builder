@@ -40,7 +40,7 @@ This file can be pasted as a part of `fe-core` configuration. It can be changed 
          "user-management.json",
          "grievance.json",
          "social-protection.json",
-         "core.json"
+         "core-bundle.json"
        ]
      }
      ```

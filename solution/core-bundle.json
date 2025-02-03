@@ -8,20 +8,12 @@
          "description":"Configurations",
          "submenus":[
             {
-               "position":4,
-               "id": "admin.products"
-            },
-            {
                "position":2,
                "id":"admin.roleManagement"
             },
             {
                "position":1,
                "id":"admin.users"
-            },
-            {
-               "position":3,
-               "id": "admin.locations"
             }
          ]
       }

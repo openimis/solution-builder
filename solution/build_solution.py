@@ -11,86 +11,93 @@ def load_json(file_path):
         return json.load(file)
 
 
+def resolve_modules(solution_modules):
+    """Recursively resolve all modules, including dependencies."""
+    all_modules = set(solution_modules)
+    queue = list(solution_modules)
+
+    while queue:
+        bundle_file = queue.pop(0)
+        bundle_data = load_json(bundle_file)
+        if not bundle_data:
+            continue
+
+        for module in bundle_data.get("modules", []):
+            if module not in all_modules:
+                all_modules.add(module)
+                queue.append(module)
+
+        for dependency in bundle_data.get("dependency", []):
+            if dependency not in all_modules:
+                all_modules.add(dependency)
+                queue.append(dependency)
+
+    return list(all_modules)
+
+
 def merge_menus(modules):
-    """Merge and sort menus from multiple JSON files."""
-    combined_menus = []
+    """Merge and sort menus from multiple JSON files, ensuring submenus are merged correctly."""
+    menu_dict = {}
 
     for module_file in modules:
         module_data = load_json(module_file)
-        if module_data and 'menus' in module_data:
-            combined_menus.extend(module_data['menus'])
+        if module_data and "menus" in module_data:
+            for menu in module_data["menus"]:
+                menu_id = menu["id"]
 
-    combined_menus.sort(key=lambda menu: menu['position'])
-    for menu in combined_menus:
-        if 'submenus' in menu:
-            menu['submenus'].sort(key=lambda submenu: submenu['position'])
+                if menu_id not in menu_dict:
+                    menu_dict[menu_id] = {
+                        "position": menu["position"],
+                        "id": menu["id"],
+                        "name": menu["name"],
+                        "icon": menu["icon"],
+                        "description": menu["description"],
+                        "submenus": []
+                    }
 
-    return combined_menus
+                if "submenus" in menu:
+                    menu_dict[menu_id]["submenus"].extend(menu["submenus"])
+
+    for menu in menu_dict.values():
+        menu["submenus"] = sorted(menu["submenus"], key=lambda submenu: submenu.get("position", float("inf")))
+
+    return sorted(menu_dict.values(), key=lambda menu: menu.get("position", float("inf")))
 
 
-def _convert_to_pascal_case(name):
-    """Convert snake_case to PascalCase."""
-    return ''.join(word.capitalize() for word in name.split('_'))
+def merge_roles(modules):
+    """Merge roles from multiple modules, ensuring unique role permissions."""
+    merged_roles = {}
 
+    for module_file in modules:
+        module_data = load_json(module_file)
+        if not module_data or "roles" not in module_data:
+            continue
 
-def _process_package(pkg, package_type):
-    """
-    Process a single package based on its type and return the transformed package.
+        for role in module_data["roles"]:
+            role_code = role["code"]
+            permissions = set(role.get("permissions", []))
 
-    :param pkg: Dictionary containing package data.
-    :param package_type: Type of package ('fe' or 'be').
-    :return: Transformed package dictionary or None if type is unsupported.
-    """
-    if not isinstance(pkg, dict) or "type" not in pkg:
-        return None
+            if role_code in merged_roles:
+                merged_roles[role_code]["permissions"].update(permissions)
+            else:
+                merged_roles[role_code] = {
+                    "roleName": role["roleName"],
+                    "code": role_code,
+                    "permissions": permissions
+                }
 
-    def clean_name(name, package_type):
-        if package_type == "fe":
-            if name.startswith("openimis-fe-"):
-                return name[len("openimis-fe-"):]
-        elif package_type == "be":
-            # For other backend packages, remove 'openimis-be-' prefix and '_py' suffix
-            if name.startswith("openimis-be-") and name.endswith("_py"):
-                return name[len("openimis-be-"):-3]  # Remove 'openimis-be-' and '_py'
-        return name
-
-    if package_type == "fe":
-        if pkg["type"] == "npm":
-            cleaned_name = clean_name(pkg["name"], "fe").replace("_js", "")
-            pascal_name = _convert_to_pascal_case(cleaned_name)
-            return {
-                "name": f"{pascal_name}Module",
-                "npm": f"@openimis/fe-{cleaned_name}@>=v{pkg['version'].lstrip('v')}"
-            }
-        elif pkg["type"] == "github":
-            cleaned_name = clean_name(pkg["name"], "fe").replace("_js", "")
-            pascal_name = _convert_to_pascal_case(cleaned_name)
-            branch_or_version = pkg.get('version', 'develop')
-            return {
-                "name": f"{pascal_name}Module",
-                "npm": f"@openimis/fe-{cleaned_name}@https://github.com/openimis/openimis-fe-{cleaned_name}_js#{branch_or_version}"
-            }
-
-    elif package_type == "be":
-        if pkg["type"] == "pip":
-            cleaned_name = clean_name(pkg["name"], "be")
-            return {
-                "name": cleaned_name,
-                "pip": f"{pkg['name'][:-3]}=={pkg['version']}"
-            }
-        elif pkg["type"] == "github":
-            cleaned_name = clean_name(pkg["name"], "be")
-            branch_or_version = pkg.get('version', 'develop')
-            return {
-                "name": cleaned_name,
-                "pip": f"git+https://github.com/openimis/openimis-be-{cleaned_name}_py.git@{branch_or_version}#egg=openimis-be-{cleaned_name}"
-            }
-
-    return None
+    return [
+        {
+            "roleName": role_data["roleName"],
+            "code": role_data["code"],
+            "permissions": sorted(role_data["permissions"])
+        }
+        for role_data in merged_roles.values()
+    ]
 
 
 def process_packages(modules):
-    """Process fe-packages and be-packages from module files."""
+    """Process frontend and backend packages from module files."""
     fe_packages = []
     be_packages = []
 
@@ -99,66 +106,10 @@ def process_packages(modules):
         if not module_data:
             continue
 
-        for pkg in module_data.get("fe-packages", []):
-            processed_pkg = _process_package(pkg, "fe")
-            if processed_pkg:
-                fe_packages.append(processed_pkg)
+        fe_packages.extend(module_data.get("fe-packages", []))
+        be_packages.extend(module_data.get("be-packages", []))
 
-        for pkg in module_data.get("be-packages", []):
-            processed_pkg = _process_package(pkg, "be")
-            if processed_pkg:
-                be_packages.append(processed_pkg)
-
-    fe_packages = sorted({frozenset(pkg.items()): pkg for pkg in fe_packages}.values(), key=lambda x: x["name"])
-    be_packages = sorted({frozenset(pkg.items()): pkg for pkg in be_packages}.values(), key=lambda x: x["name"])
-
-    return fe_packages, be_packages
-
-
-def merge_roles(modules, permission_map):
-    """Merge roles from multiple modules, only including roles with valid permissions."""
-    # permission_map is already a flattened dictionary, where key = permission name and value = code
-    merged_roles = {}
-
-    for module_file in modules:
-        module_data = load_json(module_file)  # Assuming a function that loads JSON data from the file
-        if not module_data or "roles" not in module_data:
-            continue
-
-        for role in module_data["roles"]:
-            role_code = role["code"]
-            permissions = role.get("permissions", [])
-
-            # Map each permission name to its code and format it as {"name": <permission_name>, "code": <permission_code>}
-            mapped_permissions = [
-                {"name": permission, "code": permission_map.get(permission, permission)}
-                for permission in permissions
-                if permission in permission_map  # Only keep valid permissions
-            ]
-
-            # If there are no valid permissions for this role, skip this role
-            if not mapped_permissions:
-                continue
-
-            # Merge roles by appending permissions to the existing role or creating a new one
-            if role_code in merged_roles:
-                merged_roles[role_code]["permissions"].extend(mapped_permissions)
-            else:
-                merged_roles[role_code] = {
-                    "roleName": role["roleName"],
-                    "code": role_code,
-                    "permissions": mapped_permissions
-                }
-
-    # Final result: ensure unique permissions and return sorted roles
-    return [
-        {
-            "roleName": role_data["roleName"],
-            "code": role_data["code"],
-            "permissions": sorted(role_data["permissions"], key=lambda x: x["name"])  # Sort by permission name
-        }
-        for role_data in merged_roles.values()
-    ]
+    return sorted(fe_packages, key=lambda x: x.get("name", "")), sorted(be_packages, key=lambda x: x.get("name", ""))
 
 
 def main():
@@ -166,41 +117,29 @@ def main():
     solution_data = load_json(solution_file)
 
     if not solution_data:
-        print("solution.json file is missing or invalid.")
+        print("Error: solution.json file is missing or invalid.")
         return
 
-    modules = solution_data.get('modules', [])
-    menus = merge_menus(modules)
+    resolved_modules = resolve_modules(solution_data.get('modules', []))
 
-    output_data = {
-        'menus': menus
-    }
+    menus = merge_menus(resolved_modules)
+    with open('generated-menu.json', 'w') as file:
+        json.dump({"menus": menus}, file, indent=2)
+    print("Generated menus written to generated-menu.json")
 
-    output_file = 'generated-menu.json'
-    with open(output_file, 'w') as file:
-        json.dump(output_data, file, indent=2)
-
-    print(f"Generated solution written to {output_file}")
-
-    fe_packages, be_packages = process_packages(modules)
-
-    fe_output_file = 'fe-openimis.json'
-    with open(fe_output_file, 'w') as file:
-        json.dump({"packages": fe_packages}, file, indent=2)
-    print(f"Generated frontend packages written to {fe_output_file}")
-
-    be_output_file = 'be-openimis.json'
-    with open(be_output_file, 'w') as file:
-        json.dump({"packages": be_packages}, file, indent=2)
-    print(f"Generated backend packages written to {be_output_file}")
-
-    permissions_map_file = 'permissions_map.json'
-    permissions_map = load_json(permissions_map_file)
-    roles = merge_roles(modules, permissions_map)
-    roles_output_file = 'generated-roles.json'
-    with open(roles_output_file, 'w') as file:
+    roles = merge_roles(resolved_modules)
+    with open('generated-roles.json', 'w') as file:
         json.dump({"roles": roles}, file, indent=2)
-    print(f"Generated roles written to {roles_output_file}")
+    print("Generated roles written to generated-roles.json")
+
+    fe_packages, be_packages = process_packages(resolved_modules)
+    with open('fe-openimis.json', 'w') as file:
+        json.dump({"packages": fe_packages}, file, indent=2)
+    print("Generated frontend packages written to fe-openimis.json")
+
+    with open('be-openimis.json', 'w') as file:
+        json.dump({"packages": be_packages}, file, indent=2)
+    print("Generated backend packages written to be-openimis.json")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,77 @@
+{
+  "menus": [
+    {
+         "position":4,
+         "id": "OpenSearchReportsMenu",
+         "name":"Dashboard",
+         "icon":"dashboard-icon",
+         "description":"Main dashboard",
+         "submenus":[
+            {
+               "position":1,
+               "id": "openSearch.individualReports"
+            },
+            {
+               "position":2,
+               "id": "openSearch.groupReports"
+            },
+            {
+               "position":3,
+               "id": "openSearch.beneficiaryReports"
+            },
+            {
+               "position":5,
+               "id": "openSearch.grievanceReports"
+            },
+             {
+               "position":4,
+               "id": "openSearch.dataUpdatesReports"
+            },
+             {
+               "position":6,
+               "id": "openSearch.openSearchConfig"
+            }
+         ]
+      }
+  ],
+  "fe-packages": [
+    {
+      "type": "github",
+      "name": "openimis-fe-opensearch_reports_js",
+      "version": "develop"
+    }
+  ],
+  "be-packages": [
+    {
+      "type": "github",
+      "name": "openimis-be-opensearch_reports_py",
+      "version": "develop"
+    }
+  ],
+  "roles": [
+    {
+      "roleName": "Admin",
+      "code": "admin",
+      "permissions": [
+        "opensearch_reports.opensearch_reports",
+        "opensearch_reports.update_opensearch_report"
+      ]
+    },
+    {
+      "roleName": "Social Protection Manager",
+      "code": "social_protection_manager",
+      "permissions": [
+        "opensearch_reports.opensearch_reports",
+        "opensearch_reports.update_opensearch_report"
+      ]
+    },
+    {
+      "roleName": "Reporting Manager",
+      "code": "reporting_manager",
+      "permissions": [
+        "opensearch_reports.opensearch_reports",
+        "opensearch_reports.update_opensearch_report"
+      ]
+    }
+  ]
+}

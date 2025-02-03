@@ -1,0 +1,13 @@
+{
+  "modules": [
+    "individual.json",
+    "api-import.json",
+    "social-protection.json",
+    "payroll.json",
+    "payment-cycle.json",
+    "deduplication.json"
+  ],
+  "dependency": [
+    "grievance-bundle.json"
+  ]
+}

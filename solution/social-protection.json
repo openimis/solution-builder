@@ -1,38 +1,5 @@
 {
   "menus": [
-    {
-         "position":4,
-         "id": "OpenSearchReportsMenu",
-         "name":"Dashboard",
-         "icon":"dashboard-icon",
-         "description":"Main dashboard",
-         "submenus":[
-            {
-               "position":1,
-               "id": "openSearch.individualReports"
-            },
-            {
-               "position":2,
-               "id": "openSearch.groupReports"
-            },
-            {
-               "position":3,
-               "id": "openSearch.beneficiaryReports"
-            },
-            {
-               "position":5,
-               "id": "openSearch.grievanceReports"
-            },
-             {
-               "position":4,
-               "id": "openSearch.dataUpdatesReports"
-            },
-             {
-               "position":6,
-               "id": "openSearch.openSearchConfig"
-            }
-         ]
-      },
       {
          "position":1,
          "id": "SocialRegistryMainMenu",
@@ -43,60 +10,6 @@
             {
                "position":2,
                "id":"socialProtection.benefitPlans"
-            },
-            {
-               "position":1,
-               "id":"individual.api_imports"
-            },
-            {
-               "position":4,
-               "id":"individual.groups"
-            },
-            {
-               "position":3,
-               "id":"individual.individuals"
-            }
-         ]
-      },
-      {
-         "position":2,
-         "id": "PayrollsMenu",
-         "name":"Payrolls",
-         "icon":"task-icon",
-         "description":"PayrollNameMenu",
-         "submenus":[
-            {
-               "position":4,
-               "id": "legalAndFinance.payrollsReconciled"
-            },
-            {
-               "position":3,
-               "id": "legalAndFinance.payrollsApproved"
-            },
-            {
-               "position":2,
-               "id": "legalAndFinance.payrollsPending"
-            },
-            {
-               "position":1,
-               "id": "legalAndFinance.payrolls"
-            }
-         ]
-      },
-      {
-         "position":3,
-         "id": "PaymentManagement",
-         "name":"Payment Management",
-         "icon":"task-icon",
-         "description":"PayrollNameMenu",
-         "submenus":[
-            {
-               "position":5,
-               "id": "legalAndFinance.paymentCycles"
-            },
-            {
-               "position":6,
-               "id": "legalAndFinance.paymentPlans"
             }
          ]
       }
@@ -104,31 +17,11 @@
   "fe-packages": [
     {
       "type": "github",
-      "name": "openimis-fe-individual_js",
-      "version": "develop"
-    },
-    {
-      "type": "github",
       "name": "openimis-fe-social_protection_js",
-      "version": "develop"
-    },
-    {
-      "type": "github",
-      "name": "openimis-fe-deduplication_js",
-      "version": "develop"
-    },
-    {
-      "type": "github",
-      "name": "openimis-fe-payroll_js",
       "version": "develop"
     }
   ],
   "be-packages": [
-    {
-      "type": "github",
-      "name": "openimis-be-individual_py",
-      "version": "develop"
-    },
     {
       "type": "github",
       "name": "openimis-be-social_protection_py",
@@ -136,22 +29,7 @@
     },
     {
       "type": "github",
-      "name": "openimis-be-api_etl_py",
-      "version": "develop"
-    },
-    {
-      "type": "github",
-      "name": "openimis-be-deduplication_py",
-      "version": "develop"
-    },
-    {
-      "type": "github",
       "name": "openimis-be-calcrule_social_protection_py",
-      "version": "develop"
-    },
-    {
-      "type": "github",
-      "name": "openimis-be-payroll_py",
       "version": "develop"
     }
   ],
@@ -160,19 +38,6 @@
       "roleName": "Admin",
       "code": "admin",
       "permissions": [
-        "individual.read_individual",
-        "individual.create_individual",
-        "individual.update_individual",
-        "individual.delete_individual",
-        "individual.individual_undo",
-        "individual.read_group",
-        "individual.create_group",
-        "individual.update_group",
-        "individual.delete_group",
-        "api_etl.read_api_etl",
-        "api_etl.execute_api_etl",
-        "deduplication.deduplication_review",
-        "deduplication.deduplication_payment_review",
         "social_protection.read_benefit_plan",
         "social_protection.create_benefit_plan",
         "social_protection.update_benefit_plan",
@@ -185,30 +50,13 @@
         "social_protection.read_schema",
         "social_protection.create_schema",
         "social_protection.update_schema",
-        "social_protection.delete_schema",
-        "payment_cycle.query_payment_cycle",
-        "payment_cycle.create_payment_cycle",
-        "payment_cycle.update_payment_cycle",
-        "payment_cycle.delete_payment_cycle"
+        "social_protection.delete_schema"
       ]
     },
     {
       "roleName": "Social Protection Manager",
       "code": "social_protection_manager",
       "permissions": [
-        "individual.read_individual",
-        "individual.create_individual",
-        "individual.update_individual",
-        "individual.delete_individual",
-        "individual.individual_undo",
-        "individual.read_group",
-        "individual.create_group",
-        "individual.update_group",
-        "individual.delete_group",
-        "api_etl.read_api_etl",
-        "api_etl.execute_api_etl",
-        "deduplication.deduplication_review",
-        "deduplication.deduplication_payment_review",
         "social_protection.read_benefit_plan",
         "social_protection.create_benefit_plan",
         "social_protection.update_benefit_plan",
@@ -221,11 +69,7 @@
         "social_protection.read_schema",
         "social_protection.create_schema",
         "social_protection.update_schema",
-        "social_protection.delete_schema",
-        "payment_cycle.query_payment_cycle",
-        "payment_cycle.create_payment_cycle",
-        "payment_cycle.update_payment_cycle",
-        "payment_cycle.delete_payment_cycle"
+        "social_protection.delete_schema"
       ]
     }
   ]
