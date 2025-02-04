@@ -1,0 +1,6 @@
+{
+  "modules": [
+    "calculation.json",
+    "calculation-social-protection.json"
+  ]
+}

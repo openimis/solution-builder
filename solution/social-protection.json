@@ -26,11 +26,6 @@
       "type": "pip",
       "name": "openimis-be-social_protection_py",
       "version": "develop"
-    },
-    {
-      "type": "pip",
-      "name": "openimis-be-calcrule_social_protection_py",
-      "version": "develop"
     }
   ],
   "roles": [

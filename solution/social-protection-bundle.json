@@ -8,6 +8,7 @@
     "deduplication.json"
   ],
   "dependency": [
-    "grievance-bundle.json"
+    "grievance-bundle.json",
+    "calculation-social-protection-bundle.json"
   ]
 }

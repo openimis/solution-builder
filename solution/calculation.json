@@ -1,0 +1,35 @@
+{
+  "menus": [],
+  "roles": [
+    {
+      "roleName": "Admin",
+      "code": "admin",
+      "permissions": [
+        "calculation.read_calculation_rule",
+        "calculation.update_calculation_rule"
+      ]
+    },
+    {
+      "roleName": "Social Protection Manager",
+      "code": "social_protection_manager",
+      "permissions": [
+        "calculation.read_calculation_rule",
+        "calculation.update_calculation_rule"
+      ]
+    }
+  ],
+  "fe-packages": [
+    {
+      "type": "npm",
+      "name": "openimis-fe-calculation_js",
+      "version": "1.2"
+    }
+  ],
+  "be-packages": [
+    {
+      "type": "pip",
+      "name": "openimis-be-calculation_py",
+      "version": "v1.2.0"
+    }
+  ]
+}
