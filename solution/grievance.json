@@ -31,5 +31,46 @@
       "name": "openimis-be-grievance_social_protection_py",
       "version": "main"
     }
+  ],
+  "roles": [
+    {
+      "roleName": "Admin",
+      "code": "admin",
+      "permissions": [
+        "grievance.read_grievance",
+        "grievance.create_grievance",
+        "grievance.update_grievance" ,
+        "grievance.delete_grievance",
+        "grievance.read_comment",
+        "grievance.create_comment",
+        "grievance.resolve_grievance"
+      ]
+    },
+    {
+      "roleName": "Social Protection Manager",
+      "code": "social_protection_manager",
+      "permissions": [
+        "grievance.read_grievance",
+        "grievance.create_grievance",
+        "grievance.update_grievance" ,
+        "grievance.delete_grievance",
+        "grievance.read_comment",
+        "grievance.create_comment",
+        "grievance.resolve_grievance"
+      ]
+    },
+    {
+      "roleName": "Grievance Manager",
+      "code": "grievance_manager",
+      "permissions": [
+        "grievance.read_grievance",
+        "grievance.create_grievance",
+        "grievance.update_grievance" ,
+        "grievance.delete_grievance",
+        "grievance.read_comment",
+        "grievance.create_comment",
+        "grievance.resolve_grievance"
+      ]
+    }
   ]
 }

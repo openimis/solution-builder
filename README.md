@@ -72,11 +72,11 @@ This file can be pasted as a part of `fe-core` configuration. It can be changed 
      ```
 
 3. **Run the Script:**
-   - Save the script as `menu_builder.py` in the same directory as `solution.json` and the module files.
+   - Save the script as `build_solution.py` in the same directory as `solution.json` and the module files.
    - Open a terminal or command prompt and navigate to the directory.
    - Run the script using the command:
      ```bash
-     python menu_builder.py
+     python3 build_solution.py
      ```
 
 4. **View the Output:**
@@ -92,7 +92,7 @@ This file can be pasted as a part of `fe-core` configuration. It can be changed 
 |-- grievance.json
 |-- social-protection.json
 |-- core.json
-|-- menu_builder.py
+|-- build_solution.py
 ```
 
 ## Notes
@@ -269,3 +269,123 @@ Each package is transformed to meet specific naming conventions and structure re
 ```
 
 ---
+# Processing Roles in `build_solution.py`
+
+## Overview  
+The `build_solution.py` script processes multiple JSON module files to generate a consolidated roles file:  
+**`generated-roles.json`** – Contains merged roles with unique permissions.  
+
+## How Roles Are Processed  
+1. **Extract roles** from each module's JSON file.  
+2. **Merge duplicate role names**, ensuring unique permissions are combined.  
+3. **Sort permissions** within each role for better readability.  
+4. **Save results** to `generated-roles.json`.  
+
+## Input JSON Structure (Example Module File)  
+Each module file should contain a `roles` section like this:
+```json
+{
+  "roles": [
+    {
+      "roleName": "Admin",
+      "code": "admin",
+      "permissions": [
+        { "code": "127001", "name": "gql_mutation_create_tickets_perms" },
+        { "code": "127002", "name": "gql_mutation_update_tickets_perms" },
+        { "code": "127003", "name": "gql_mutation_delete_tickets_perms" }
+      ]
+    },
+    {
+      "roleName": "SocialProtectionManager",
+      "code": "social_protection_manager",
+      "permissions": [
+        { "code": "159001", "name": "gql_individual_search_perms" },
+        { "code": "159002", "name": "gql_individual_create_perms" },
+        { "code": "159003", "name": "gql_individual_update_perms" }
+      ]
+    }
+  ]
+}
+```
+
+## Role Merging Logic
+- If multiple modules define the same `roleName`, their permissions are merged (no duplicates).
+- Roles retain the same `code` from their original definitions.
+- The final output consolidates all role definitions into a single `generated-roles.json` file.
+
+### Example:
+
+#### Input from Module 1:
+```json
+{
+  "roles": [
+    {
+      "roleName": "Admin",
+      "code": "admin",
+      "permissions": [
+        { "code": "127001", "name": "gql_mutation_create_tickets_perms" },
+        { "code": "127002", "name": "gql_mutation_update_tickets_perms" }
+      ]
+    }
+  ]
+}
+```
+
+#### Input from Module 2:
+```json
+{
+  "roles": [
+    {
+      "roleName": "Admin",
+      "code": "admin",
+      "permissions": [
+        { "code": "127003", "name": "gql_mutation_delete_tickets_perms" },
+        { "code": "127004", "name": "gql_query_comments_perms" }
+      ]
+    }
+  ]
+}
+```
+
+#### Final Output (generated-roles.json):
+```json
+{
+  "roles": [
+    {
+      "roleName": "Admin",
+      "code": "admin",
+      "permissions": [
+        { "code": "127001", "name": "gql_mutation_create_tickets_perms" },
+        { "code": "127002", "name": "gql_mutation_update_tickets_perms" },
+        { "code": "127003", "name": "gql_mutation_delete_tickets_perms" },
+        { "code": "127004", "name": "gql_query_comments_perms" }
+      ]
+    }
+  ]
+}
+```
+
+## Processing Steps
+1. **Load Modules**  
+   - Extract roles from each module’s JSON file.  
+   - Each module contains a list of roles with `roleName`, `code`, and associated `permissions`.
+
+2. **Merge Roles**  
+   - If the same `roleName` appears in multiple modules, their permissions are combined.  
+   - Duplicates within the permission lists are removed.  
+   - The `code` remains the same as defined in the original modules.
+
+3. **Generate Output**  
+   - The final list of merged roles is structured into a single JSON object.  
+   - The processed roles are saved in `generated-roles.json`.
+
+## Output File
+The processed roles are saved in:
+- `generated-roles.json`
+This file consolidates all roles across modules, ensuring a structured and non-duplicated set of permissions.
+
+Each role in the final output contains:
+
+- `roleName`: The name of the role.
+- `code`: The unique code identifier for the role.
+- `permissions`: A merged list of permissions from all modules, with duplicates removed.

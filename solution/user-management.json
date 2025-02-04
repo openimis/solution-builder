@@ -31,5 +31,23 @@
       }
   ],
   "fe-packages": [],
-  "be-packages": []
+  "be-packages": [],
+  "roles": [
+    {
+      "roleName": "Admin",
+      "code": "admin",
+      "permissions": [
+        "core.read_users",
+        "core.create_users",
+        "core.update_users",
+        "core.delete_users",
+        "core.read_roles",
+        "core.create_roles",
+        "core.update_roles",
+        "core.replace_roles",
+        "core.duplicate_roles",
+        "core.delete_roles"
+      ]
+    }
+  ]
 }

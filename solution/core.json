@@ -59,5 +59,21 @@
       "name": "openimis-be-menu_py",
       "version": "v1.8.0"
     }
+  ],
+  "roles": [
+    {
+      "roleName": "Admin",
+      "code": "admin",
+      "permissions": [
+        "core.read_enrolment_officers",
+        "core.create_enrolment_officers",
+        "core.update_enrolment_officers",
+        "core.delete_enrolment_officers",
+        "core.read_claim_administrator",
+        "core.create_claim_administrator",
+        "core.update_claim_administrator",
+        "core.delete_claim_administrator"
+      ]
+    }
   ]
 }
