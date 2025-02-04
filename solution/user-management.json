@@ -37,16 +37,16 @@
       "roleName": "Admin",
       "code": "admin",
       "permissions": [
-        { "code": "121701", "name": "gql_query_users_perms" },
-        { "code": "121702", "name": "gql_mutation_create_users_perms" },
-        { "code": "121703", "name": "gql_mutation_update_users_perms" },
-        { "code": "121704", "name": "gql_mutation_delete_users_perms" },
-        { "code": "122001", "name": "gql_query_roles_perms" },
-        { "code": "122002", "name": "gql_mutation_create_roles_perms" },
-        { "code": "122003", "name": "gql_mutation_update_roles_perms" },
-        { "code": "122006", "name": "gql_mutation_replace_roles_perms" },
-        { "code": "122005", "name": "gql_mutation_duplicate_roles_perms" },
-        { "code": "122004", "name": "gql_mutation_delete_roles_perms" }
+        "core.read_users",
+        "core.create_users",
+        "core.update_users",
+        "core.delete_users",
+        "core.read_roles",
+        "core.create_roles",
+        "core.update_roles",
+        "core.replace_roles",
+        "core.duplicate_roles",
+        "core.delete_roles"
       ]
     }
   ]

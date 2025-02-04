@@ -65,21 +65,14 @@
       "roleName": "Admin",
       "code": "admin",
       "permissions": [
-        {"code": "101201", "name": "gql_query_policies_perms"},
-        {"code": "101202", "name": "gql_mutation_create_policies_perms"},
-        {"code": "101205", "name": "gql_mutation_renew_policies_perms"},
-        {"code": "101203", "name": "gql_mutation_edit_policies_perms"},
-        {"code": "101203", "name": "gql_mutation_suspend_policies_perms"},
-        {"code": "101204", "name": "gql_mutation_delete_policies_perms"},
-        {"code": "121501", "name": "gql_query_enrolment_officers_perms"},
-        {"code": "121502", "name": "gql_mutation_create_enrolment_officers_perms"},
-        {"code": "121503", "name": "gql_mutation_update_enrolment_officers_perms"},
-        {"code": "121504", "name": "gql_mutation_delete_enrolment_officers_perms"},
-        {"code": "121601", "name": "gql_query_claim_administrator_perms"},
-        {"code": "121602", "name": "gql_mutation_create_claim_administrator_perms"},
-        {"code": "121603", "name": "gql_mutation_update_claim_administrator_perms"},
-        {"code": "121604", "name": "gql_mutation_delete_claim_administrator_perms"},
-        {"code": "900101", "name": "gql_query_enable_viewing_masked_data_perms"}
+        "core.read_enrolment_officers",
+        "core.create_enrolment_officers",
+        "core.update_enrolment_officers",
+        "core.delete_enrolment_officers",
+        "core.read_claim_administrator",
+        "core.create_claim_administrator",
+        "core.update_claim_administrator",
+        "core.delete_claim_administrator"
       ]
     }
   ]

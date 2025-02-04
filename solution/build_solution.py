@@ -115,29 +115,47 @@ def process_packages(modules):
     return fe_packages, be_packages
 
 
-def merge_roles(modules):
-    """Merge roles from multiple modules while ensuring unique permissions based on role code."""
+def merge_roles(modules, permission_map):
+    """Merge roles from multiple modules, only including roles with valid permissions."""
+    # permission_map is already a flattened dictionary, where key = permission name and value = code
     merged_roles = {}
+
     for module_file in modules:
-        module_data = load_json(module_file)
+        module_data = load_json(module_file)  # Assuming a function that loads JSON data from the file
         if not module_data or "roles" not in module_data:
             continue
+
         for role in module_data["roles"]:
             role_code = role["code"]
             permissions = role.get("permissions", [])
+
+            # Map each permission name to its code and format it as {"name": <permission_name>, "code": <permission_code>}
+            mapped_permissions = [
+                {"name": permission, "code": permission_map.get(permission, permission)}
+                for permission in permissions
+                if permission in permission_map  # Only keep valid permissions
+            ]
+
+            # If there are no valid permissions for this role, skip this role
+            if not mapped_permissions:
+                continue
+
+            # Merge roles by appending permissions to the existing role or creating a new one
             if role_code in merged_roles:
-                merged_roles[role_code]["permissions"].extend(permissions)
+                merged_roles[role_code]["permissions"].extend(mapped_permissions)
             else:
                 merged_roles[role_code] = {
                     "roleName": role["roleName"],
                     "code": role_code,
-                    "permissions": permissions
+                    "permissions": mapped_permissions
                 }
+
+    # Final result: ensure unique permissions and return sorted roles
     return [
         {
             "roleName": role_data["roleName"],
             "code": role_data["code"],
-            "permissions": sorted(role_data["permissions"], key=lambda x: x["code"])
+            "permissions": sorted(role_data["permissions"], key=lambda x: x["name"])  # Sort by permission name
         }
         for role_data in merged_roles.values()
     ]
@@ -176,7 +194,9 @@ def main():
         json.dump({"packages": be_packages}, file, indent=2)
     print(f"Generated backend packages written to {be_output_file}")
 
-    roles = merge_roles(modules)
+    permissions_map_file = 'permissions_map.json'
+    permissions_map = load_json(permissions_map_file)
+    roles = merge_roles(modules, permissions_map)
     roles_output_file = 'generated-roles.json'
     with open(roles_output_file, 'w') as file:
         json.dump({"roles": roles}, file, indent=2)
