@@ -6,10 +6,10 @@ This script processes a `solution.json` file and combines the `menus` key from m
 
 ### 1. Input File:
 - The script reads `solution.json` from the current working directory.
-- The `solution.json` file should have a `modules` key containing a list of module file names (e.g., `client-management.json`, `user-management.json`, etc.).
-- Additionally, it may contain a `roles` key, specifying role files that need to be processed.
+- The `solution.json` file should have a modules key containing a list of module bundle file names 
+(e.g., `social-protection-bundle.json`, `formal-sector-bundle.json`, etc.).
 
-### 2. Module Files:
+### 2. Module and Module Bundle Files:
 - Each module file listed under the `modules` key should be present in the same directory as `solution.json`.
 - Each module file should contain a `menus` key, which defines its menu structure.
 - Some modules may also contain a `dependency` key, listing other module bundles that must be processed even if they are not explicitly included in `solution.json`.
