@@ -1,6 +1,8 @@
 import json
 import os
 import yaml
+import uuid
+from datetime import datetime
 
 
 def load_json(file_path):
@@ -173,6 +175,69 @@ def save_services_yaml(services):
     print("Generated services written to compose.yml")
 
 
+def generate_role_fixtures():
+    """Generate role and role-right fixtures using natural keys (RoleName instead of RoleID)."""
+    generated_roles_file = "generated-roles.json"
+    system_roles_file = "roles-data.json"
+
+    generated_roles = load_json(generated_roles_file)
+    system_roles_data = load_json(system_roles_file)
+
+    if not generated_roles or not system_roles_data:
+        print("Missing required files. Skipping role fixture generation.")
+        return
+
+    system_roles = {role["RoleName"]: role for role in system_roles_data.get("tblRole", [])}
+
+    role_fixtures = []
+    role_right_fixtures = []
+    validity_from = datetime.utcnow().isoformat() + "Z"
+
+    for role_entry in generated_roles.get("roles", []):
+        role_name = role_entry["roleName"]
+
+        if role_name not in system_roles:
+            new_role = {
+                "model": "core.role",
+                "fields": {
+                    "RoleUUID": str(uuid.uuid4()),
+                    "RoleName": role_name,
+                    "AltLanguage": None,
+                    "IsSystem": 0,
+                    "IsBlocked": False,
+                    "AuditUserID": None,
+                    "ValidityFrom": validity_from,
+                    "ValidityTo": None,
+                    "LegacyID": None
+                }
+            }
+            role_fixtures.append(new_role)
+
+        for permission in role_entry["permissions"]:
+            role_right_fixtures.append({
+                "model": "core.roleright",
+                "fields": {
+                    "ValidityFrom": validity_from,
+                    "ValidityTo": None,
+                    "LegacyID": None,
+                    "RightID": permission["code"],
+                    "AuditUserID": None,
+                    "role": [role_name]
+                }
+            })
+
+    os.makedirs("fixtures/core", exist_ok=True)
+
+    if role_fixtures:
+        with open("fixtures/core/roles.json", "w") as file:
+            json.dump(role_fixtures, file, indent=2)
+
+    with open("fixtures/core/roles-right.json", "w") as file:
+        json.dump(role_right_fixtures, file, indent=2)
+
+    print("Generated roles and roles-right fixtures successfully.")
+
+
 def main():
     solution_file = 'solution.json'
     solution_data = load_json(solution_file)
@@ -207,6 +272,8 @@ def main():
 
     services = process_services()
     save_services_yaml(services)
+
+    generate_role_fixtures()
 
     print("Processing completed.")
 
