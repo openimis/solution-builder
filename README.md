@@ -508,3 +508,79 @@ This file consolidates all roles across modules, ensuring a structured and non-d
 - `permissions`: A merged list of permissions from all modules, each containing:
   - `name`: The permission name.
   - `code`: The mapped permission code from `permissions_map.json`.
+
+
+# Service Configuration in `build_solution.py` (docker compose)
+
+## Overview
+The script supports **Docker service configuration** through a `service.json` file. This allows defining service dependencies, environment files, and Compose YAML file structures. The script generates **`compose.yml`** as output, ensuring correct Docker service configuration.
+
+## `service.json` Structure
+The `service.json` file should be structured as an array of service definitions, where each entry contains:
+- `path`: The Compose YAML file path.
+- `env_file`: A list of environment files required for the service.
+
+### Example `service.json`
+```json
+[
+    {
+        "path": "compose.base.yml",
+        "env_file": [
+            ".env",
+            ".env.redis",
+            ".env.openSearch"
+        ]
+    },
+    {
+        "path": "compose.${DB_DEFAULT:-postgresql}.yml",
+        "env_file": [
+            ".env.database"
+        ]
+    },
+    {
+        "path": "compose.openSearch.yml",
+        "env_file": []
+    },
+    {
+        "path": "compose.cache.yml",
+        "env_file": [
+            ".env",
+            ".env.redis"
+        ]
+    }
+]
+```
+
+## `compose.yml` Output
+After processing `service.json`, the script generates `compose.yml`, ensuring correct formatting and indentation.
+
+### Example `generated-services.yml`
+```yaml
+include:
+  - path: compose.base.yml
+    env_file:
+      - .env
+      - .env.redis
+      - .env.openSearch
+  - path: compose.${DB_DEFAULT:-postgresql}.yml
+    env_file:
+      - .env.database
+  - path: compose.openSearch.yml
+    env_file: []
+  - path: compose.cache.yml
+    env_file:
+      - .env
+      - .env.redis
+```
+
+## How It Works
+1. **Reads `service.json`** – Extracts service definitions, including `path` and `env_file`.
+2. **Formats the data** – Ensures proper indentation and list formatting for YAML output.
+3. **Generates `compose.yml`** – Writes the structured YAML file for Docker Compose.
+
+## Running the Script
+Ensure `service.json` is present, then execute:
+```sh
+python build_solution.py
+```
+This will generate `generated-services.yml` in the same directory.

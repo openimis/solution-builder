@@ -1,5 +1,6 @@
 import json
 import os
+import yaml
 
 
 def load_json(file_path):
@@ -99,7 +100,7 @@ def merge_roles(modules, permission_map):
         {
             "roleName": role_data["roleName"],
             "code": role_data["code"],
-            "permissions": sorted(role_data["permissions"], key=lambda x: x["name"])  # Sort by permission name
+            "permissions": sorted(role_data["permissions"], key=lambda x: x["name"])
         }
         for role_data in merged_roles.values()
     ]
@@ -119,6 +120,57 @@ def process_packages(modules):
         be_packages.extend(module_data.get("be-packages", []))
 
     return sorted(fe_packages, key=lambda x: x.get("name", "")), sorted(be_packages, key=lambda x: x.get("name", ""))
+
+
+def process_services():
+    """Process service dependencies from service.json and generate YAML output."""
+    service_file = 'service.json'
+    service_data = load_json(service_file)
+
+    if not service_data:
+        print("No service.json found. Skipping service processing.")
+        return None
+
+    services_output = []
+
+    if isinstance(service_data, list):
+        for service in service_data:
+            services_output.append({
+                "path": service.get("path", ""),
+                "env_file": service.get("env_file", [])
+            })
+    else:
+        services_output.append({
+            "path": service_data.get("path", ""),
+            "env_file": service_data.get("env_file", [])
+        })
+
+    return services_output
+
+
+def save_services_yaml(services):
+    """Save services as YAML format in generated-services.yml with correct indentation."""
+    if not services:
+        return
+
+    yaml_output = {"include": services}
+
+    class IndentedDumper(yaml.Dumper):
+        """Custom YAML Dumper to force proper indentation."""
+        def increase_indent(self, flow=False, indentless=False):
+            return super(IndentedDumper, self).increase_indent(flow, False)
+
+    with open("compose.yml", "w") as file:
+        yaml.dump(
+            yaml_output, file,
+            Dumper=IndentedDumper,
+            default_flow_style=False,
+            sort_keys=False,
+            allow_unicode=True,
+            indent=2
+        )
+
+    print("Generated services written to compose.yml")
 
 
 def main():
@@ -152,6 +204,11 @@ def main():
     with open('be-openimis.json', 'w') as file:
         json.dump({"packages": be_packages}, file, indent=2)
     print("Generated backend packages written to be-openimis.json")
+
+    services = process_services()
+    save_services_yaml(services)
+
+    print("Processing completed.")
 
 
 if __name__ == "__main__":
