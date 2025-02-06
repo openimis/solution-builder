@@ -42,7 +42,7 @@
   ],
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
         "payroll.read_payroll",

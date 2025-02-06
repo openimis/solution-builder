@@ -21,7 +21,7 @@ def resolve_modules(solution_modules):
 
     while queue:
         bundle_file = queue.pop(0)
-        bundle_data = load_json(bundle_file)
+        bundle_data = load_json(F"bundles/{bundle_file}")
         if not bundle_data:
             continue
 
@@ -43,7 +43,7 @@ def merge_menus(modules):
     menu_dict = {}
 
     for module_file in modules:
-        module_data = load_json(module_file)
+        module_data = load_json(F"modules/{module_file}")
         if module_data and "menus" in module_data:
             for menu in module_data["menus"]:
                 menu_id = menu["id"]
@@ -72,7 +72,7 @@ def merge_roles(modules, permission_map):
     merged_roles = {}
 
     for module_file in modules:
-        module_data = load_json(module_file)
+        module_data = load_json(F"modules/{module_file}")
         if not module_data or "roles" not in module_data:
             continue
 
@@ -114,7 +114,7 @@ def process_packages(modules):
     be_packages = []
 
     for module_file in modules:
-        module_data = load_json(module_file)
+        module_data = load_json(F"modules/{module_file}")
         if not module_data:
             continue
 
@@ -176,7 +176,7 @@ def save_services_yaml(services):
 
 
 def generate_role_fixtures():
-    """Generate role and role-right fixtures using natural keys (RoleName instead of RoleID)."""
+    """Generate role and role-right fixtures using natural keys, avoiding duplicates."""
     generated_roles_file = "generated-roles.json"
     system_roles_file = "roles-data.json"
 
@@ -187,7 +187,7 @@ def generate_role_fixtures():
         print("Missing required files. Skipping role fixture generation.")
         return
 
-    system_roles = {role["RoleName"]: role for role in system_roles_data.get("tblRole", [])}
+    existing_roles = {role["RoleName"] for role in system_roles_data.get("tblRole", [])}
 
     role_fixtures = []
     role_right_fixtures = []
@@ -196,8 +196,8 @@ def generate_role_fixtures():
     for role_entry in generated_roles.get("roles", []):
         role_name = role_entry["roleName"]
 
-        if role_name not in system_roles:
-            new_role = {
+        if role_name not in existing_roles:
+            role_fixtures.append({
                 "model": "core.role",
                 "fields": {
                     "RoleUUID": str(uuid.uuid4()),
@@ -210,30 +210,29 @@ def generate_role_fixtures():
                     "ValidityTo": None,
                     "LegacyID": None
                 }
-            }
-            role_fixtures.append(new_role)
-
-        for permission in role_entry["permissions"]:
-            role_right_fixtures.append({
-                "model": "core.roleright",
-                "fields": {
-                    "ValidityFrom": validity_from,
-                    "ValidityTo": None,
-                    "LegacyID": None,
-                    "RightID": permission["code"],
-                    "AuditUserID": None,
-                    "role": [role_name]
-                }
             })
+            for permission in role_entry["permissions"]:
+                role_right_fixtures.append({
+                    "model": "core.roleright",
+                    "fields": {
+                        "ValidityFrom": validity_from,
+                        "ValidityTo": None,
+                        "LegacyID": None,
+                        "RightID": permission["code"],
+                        "AuditUserID": None,
+                        "role": [role_name]
+                    }
+                })
 
     os.makedirs("fixtures/core", exist_ok=True)
 
     if role_fixtures:
-        with open("fixtures/core/roles.json", "w") as file:
+        with open("fixtures/core/roles.json", "w", encoding="utf-8") as file:
             json.dump(role_fixtures, file, indent=2)
 
-    with open("fixtures/core/roles-right.json", "w") as file:
-        json.dump(role_right_fixtures, file, indent=2)
+    if role_right_fixtures:
+        with open("fixtures/core/roles-right.json", "w", encoding="utf-8") as file:
+            json.dump(role_right_fixtures, file, indent=2)
 
     print("Generated roles and roles-right fixtures successfully.")
 

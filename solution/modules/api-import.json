@@ -24,7 +24,7 @@
   ],
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
         "api_etl.read_api_etl",

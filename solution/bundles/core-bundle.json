@@ -54,7 +54,7 @@
   ],
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
         "core.read_enrolment_officers",
@@ -67,5 +67,11 @@
         "core.delete_claim_administrator"
       ]
     }
+  ],
+  "init-data": [
+    "roles.json",
+    "roles-right.json",
+    "language.json",
+    "roles-default.json"
   ]
 }

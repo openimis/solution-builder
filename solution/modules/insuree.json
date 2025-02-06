@@ -38,7 +38,7 @@
   ],
    "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
         "insuree.read_insurees",
@@ -56,5 +56,15 @@
         "insuree.delete_insurees"
       ]
     }
-   ]
+   ],
+  "init-data": [
+    "gender.json",
+    "education.json",
+    "profession.json",
+    "relations.json",
+    "identification-types.json",
+    "family-type.json",
+    "relations.json",
+    "confirmation-type.json"
+  ]
 }

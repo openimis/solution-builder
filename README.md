@@ -395,7 +395,7 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
         "individual.read_individual",
@@ -421,7 +421,7 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
         "grievance.create_grievance",
@@ -437,7 +437,7 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
         "grievance.delete_grievance",
@@ -453,7 +453,7 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
         {
