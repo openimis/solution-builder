@@ -197,30 +197,31 @@ def generate_role_fixtures():
         role_name = role_entry["roleName"]
 
         if role_name not in existing_roles:
+            role_uuid = str(uuid.uuid4())
             role_fixtures.append({
                 "model": "core.role",
                 "fields": {
-                    "RoleUUID": str(uuid.uuid4()),
-                    "RoleName": role_name,
-                    "AltLanguage": None,
-                    "IsSystem": 0,
-                    "IsBlocked": False,
-                    "AuditUserID": None,
-                    "ValidityFrom": validity_from,
-                    "ValidityTo": None,
-                    "LegacyID": None
+                    "uuid": role_uuid,
+                    "name": role_name,
+                    "alt_language": None,
+                    "is_system": 0,
+                    "is_blocked": False,
+                    "audit_user_id": None,
+                    "validity_from": validity_from,
+                    "validity_to": None,
+                    "legacy_id": None
                 }
             })
             for permission in role_entry["permissions"]:
                 role_right_fixtures.append({
                     "model": "core.roleright",
                     "fields": {
-                        "ValidityFrom": validity_from,
-                        "ValidityTo": None,
-                        "LegacyID": None,
-                        "RightID": permission["code"],
-                        "AuditUserID": None,
-                        "role": [role_name]
+                        "validity_from": validity_from,
+                        "validity_to": None,
+                        "legacy_id": None,
+                        "right_id": permission["code"],
+                        "audit_user_id": None,
+                        "role": [role_uuid]
                     }
                 })
 
