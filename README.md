@@ -584,3 +584,44 @@ Ensure `service.json` is present, then execute:
 python build_solution.py
 ```
 This will generate `generated-services.yml` in the same directory.
+
+# Role and RoleRight Fixture Processing
+
+## Overview
+This document provides guidelines on processing `Role` and `RoleRight` fixtures for data initialization, ensuring foreign key relationships are properly resolved when using Django fixtures.
+
+## Standard Fixture Loading
+To load a standard fixture (e.g., `role.json`) containing predefined Role data, use:
+```sh
+python manage.py loaddata role.json
+```
+This command loads role data into the database.
+
+## Handling Foreign Key References in Fixtures
+Since `RoleRight` references `Role` via a foreign key, but fixtures may store relationships using a natural key (e.g., `uuid`, `name`), we use a custom command to resolve and replace these references with actual database IDs.
+
+## Custom Command: `load_fixture_foreign_key`
+This command allows loading fixtures while resolving foreign key references using a specified field.
+
+### Usage:
+```sh
+python manage.py load_fixture_foreign_key <fixture_file> <field_name>
+```
+- `<fixture_file>`: Path to the fixture file (e.g., `fixtures/core/roles-right.json`)
+- `<field_name>`: The field to use as the natural key for resolving foreign keys (e.g., `uuid`, `name`)
+
+### Example:
+```sh
+python manage.py load_fixture_foreign_key fixtures/core/roles-right.json uuid
+```
+This command:
+1. Reads the fixture file.
+2. Looks up foreign key references in the related model (e.g., `Role`).
+3. Replaces the natural key field (e.g., `uuid`) with the actual primary key (`id`).
+4. Loads the modified fixture into the database.
+
+## Notes:
+- Ensure that the related objects exist in the database before loading fixtures that reference them.
+- The command supports multiple fields as natural keys (e.g., `uuid`, `name`, etc.), as specified by the user.
+
+By following these guidelines, you can seamlessly load `Role` and `RoleRight` data while maintaining database integrity.
