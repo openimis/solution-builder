@@ -221,7 +221,7 @@ def generate_role_fixtures():
                         "legacy_id": None,
                         "right_id": permission["code"],
                         "audit_user_id": None,
-                        "role": [role_uuid]
+                        "role": [role_name]
                     }
                 })
 
