@@ -624,4 +624,13 @@ This command:
 - Ensure that the related objects exist in the database before loading fixtures that reference them.
 - The command supports multiple fields as natural keys (e.g., `uuid`, `name`, etc.), as specified by the user.
 
-By following these guidelines, you can seamlessly load `Role` and `RoleRight` data while maintaining database integrity.
+## Loading Other Fixtures
+For other fixtures, the standard Django `loaddata` command can be used:
+```sh
+python manage.py loaddata <fixture_file>
+```
+For example:
+```sh
+python manage.py loaddata fixtures/core/users.json
+```
+This ensures the fixture data is loaded directly into the database.
