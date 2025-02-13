@@ -2,7 +2,7 @@
   "menus": [],
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
         "calculation.read_calculation_rule",

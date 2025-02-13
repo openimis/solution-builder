@@ -395,7 +395,7 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
         "individual.read_individual",
@@ -421,7 +421,7 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
         "grievance.create_grievance",
@@ -437,7 +437,7 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
         "grievance.delete_grievance",
@@ -453,7 +453,7 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
         {
@@ -508,3 +508,129 @@ This file consolidates all roles across modules, ensuring a structured and non-d
 - `permissions`: A merged list of permissions from all modules, each containing:
   - `name`: The permission name.
   - `code`: The mapped permission code from `permissions_map.json`.
+
+
+# Service Configuration in `build_solution.py` (docker compose)
+
+## Overview
+The script supports **Docker service configuration** through a `service.json` file. This allows defining service dependencies, environment files, and Compose YAML file structures. The script generates **`compose.yml`** as output, ensuring correct Docker service configuration.
+
+## `service.json` Structure
+The `service.json` file should be structured as an array of service definitions, where each entry contains:
+- `path`: The Compose YAML file path.
+- `env_file`: A list of environment files required for the service.
+
+### Example `service.json`
+```json
+[
+    {
+        "path": "compose.base.yml",
+        "env_file": [
+            ".env",
+            ".env.redis",
+            ".env.openSearch"
+        ]
+    },
+    {
+        "path": "compose.${DB_DEFAULT:-postgresql}.yml",
+        "env_file": [
+            ".env.database"
+        ]
+    },
+    {
+        "path": "compose.openSearch.yml",
+        "env_file": []
+    },
+    {
+        "path": "compose.cache.yml",
+        "env_file": [
+            ".env",
+            ".env.redis"
+        ]
+    }
+]
+```
+
+## `compose.yml` Output
+After processing `service.json`, the script generates `compose.yml`, ensuring correct formatting and indentation.
+
+### Example `generated-services.yml`
+```yaml
+include:
+  - path: compose.base.yml
+    env_file:
+      - .env
+      - .env.redis
+      - .env.openSearch
+  - path: compose.${DB_DEFAULT:-postgresql}.yml
+    env_file:
+      - .env.database
+  - path: compose.openSearch.yml
+    env_file: []
+  - path: compose.cache.yml
+    env_file:
+      - .env
+      - .env.redis
+```
+
+## How It Works
+1. **Reads `service.json`** – Extracts service definitions, including `path` and `env_file`.
+2. **Formats the data** – Ensures proper indentation and list formatting for YAML output.
+3. **Generates `compose.yml`** – Writes the structured YAML file for Docker Compose.
+
+## Running the Script
+Ensure `service.json` is present, then execute:
+```sh
+python build_solution.py
+```
+This will generate `generated-services.yml` in the same directory.
+
+# Role and RoleRight Fixture Processing
+
+## Overview
+This document provides guidelines on processing `Role` and `RoleRight` fixtures for data initialization, ensuring foreign key relationships are properly resolved when using Django fixtures.
+
+## Standard Fixture Loading
+To load a standard fixture (e.g., `role.json`) containing predefined Role data, use:
+```sh
+python manage.py loaddata role.json
+```
+This command loads role data into the database.
+
+## Handling Foreign Key References in Fixtures
+Since `RoleRight` references `Role` via a foreign key, but fixtures may store relationships using a natural key (e.g., `uuid`, `name`), we use a custom command to resolve and replace these references with actual database IDs.
+
+## Custom Command: `load_fixture_foreign_key`
+This command allows loading fixtures while resolving foreign key references using a specified field.
+
+### Usage:
+```sh
+python manage.py load_fixture_foreign_key <fixture_file> <field_name>
+```
+- `<fixture_file>`: Path to the fixture file (e.g., `fixtures/core/roles-right.json`)
+- `<field_name>`: The field to use as the natural key for resolving foreign keys (e.g., `uuid`, `name`)
+
+### Example:
+```sh
+python manage.py load_fixture_foreign_key fixtures/core/roles-right.json uuid
+```
+This command:
+1. Reads the fixture file.
+2. Looks up foreign key references in the related model (e.g., `Role`).
+3. Replaces the natural key field (e.g., `uuid`) with the actual primary key (`id`).
+4. Loads the modified fixture into the database.
+
+## Notes:
+- Ensure that the related objects exist in the database before loading fixtures that reference them.
+- The command supports multiple fields as natural keys (e.g., `uuid`, `name`, etc.), as specified by the user.
+
+# Loading Other Fixtures
+For other fixtures, the standard Django `loaddata` command can be used:
+```sh
+python manage.py loaddata <fixture_file>
+```
+For example:
+```sh
+python manage.py loaddata fixtures/core/users.json
+```
+This ensures the fixture data is loaded directly into the database.

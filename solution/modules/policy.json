@@ -30,7 +30,7 @@
   ],
    "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
         "policy.policy.read_policies",
