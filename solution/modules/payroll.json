@@ -1,0 +1,75 @@
+{
+  "menus": [
+      {
+         "position":2,
+         "id": "PayrollsMenu",
+         "name":"Payrolls",
+         "icon":"task-icon",
+         "description":"PayrollNameMenu",
+         "submenus":[
+            {
+               "position":4,
+               "id": "legalAndFinance.payrollsReconciled"
+            },
+            {
+               "position":3,
+               "id": "legalAndFinance.payrollsApproved"
+            },
+            {
+               "position":2,
+               "id": "legalAndFinance.payrollsPending"
+            },
+            {
+               "position":1,
+               "id": "legalAndFinance.payrolls"
+            }
+         ]
+      }
+  ],
+  "fe-packages": [
+    {
+      "type": "npm",
+      "name": "openimis-fe-payroll_js",
+      "version": "develop"
+    }
+  ],
+  "be-packages": [
+    {
+      "type": "npm",
+      "name": "openimis-be-payroll_py",
+      "version": "develop"
+    }
+  ],
+  "roles": [
+    {
+      "roleName": "IMIS Administrator",
+      "code": "admin",
+      "permissions": [
+        "payroll.read_payroll",
+        "payroll.create_payroll",
+        "payroll.delete_payroll",
+        "payroll.read_reconciliation",
+        "payroll.create_reconciliation",
+        "payment_point.read_payment_point",
+        "payment_point.create_payment_point",
+        "payment_point.update_payment_point",
+        "payment_point.delete_payment_point"
+      ]
+    },
+    {
+      "roleName": "Social Protection Manager",
+      "code": "social_protection_manager",
+      "permissions": [
+        "payroll.read_payroll",
+        "payroll.create_payroll",
+        "payroll.delete_payroll",
+        "payroll.read_reconciliation",
+        "payroll.create_reconciliation",
+        "payment_point.read_payment_point",
+        "payment_point.create_payment_point",
+        "payment_point.update_payment_point",
+        "payment_point.delete_payment_point"
+      ]
+    }
+  ]
+}

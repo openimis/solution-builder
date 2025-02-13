@@ -1,0 +1,35 @@
+{
+  "menus": [],
+  "fe-packages": [
+    {
+      "type": "github",
+      "name": "openimis-fe-deduplication_js",
+      "version": "develop"
+    }
+  ],
+  "be-packages": [
+    {
+      "type": "github",
+      "name": "openimis-be-deduplication_py",
+      "version": "develop"
+    }
+  ],
+  "roles": [
+    {
+      "roleName": "IMIS Administrator",
+      "code": "admin",
+      "permissions": [
+        "deduplication.deduplication_review",
+        "deduplication.deduplication_payment_review"
+      ]
+    },
+    {
+      "roleName": "Social Protection Manager",
+      "code": "social_protection_manager",
+      "permissions": [
+        "deduplication.deduplication_review",
+        "deduplication.deduplication_payment_review"
+      ]
+    }
+  ]
+}

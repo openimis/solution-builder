@@ -1,0 +1,11 @@
+{
+  "modules": [
+    "policyholder.json",
+    "contribution-plan.json",
+    "contract.json"
+  ],
+  "dependency": [
+    "insuree-bundle.json",
+    "calculation-formal-sector-bundle.json"
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "menus": [
+    {
+         "position":2,
+         "id": "InsureeMainMenu",
+         "name":"InsureeMainMenu",
+         "icon":"insuree-icon",
+         "description":"Insuree panel",
+         "submenus":[
+            {
+               "position":6,
+               "id":"insuree.policyholder"
+            }
+         ]
+      }
+  ],
+  "fe-packages": [
+    {
+      "type": "npm",
+      "name": "openimis-fe-policyholder_js",
+      "version": "v1.1.1"
+    }
+  ],
+  "be-packages": [
+    {
+      "type": "pip",
+      "name": "openimis-be-policyholder_py",
+      "version": "v1.2.0"
+    }
+  ],
+   "roles": [
+    {
+      "roleName": "IMIS Administrator",
+      "code": "admin",
+      "permissions": [
+        "policyholder.read_policyholder",
+        "policyholder.read_policyholder_admins",
+        "policyholder.read_policyholderinsuree",
+        "policyholder.read_policyholderinsuree_admins",
+        "policyholder.read_policyholderuser",
+        "policyholder.read_policyholderuser_admins",
+        "policyholder.read_policyholdercontributionplanbundle",
+        "policyholder.read_policyholdercontributionplanbundle_admins",
+        "policyholder.create_policyholder",
+        "policyholder.update_policyholder",
+        "policyholder.delete_policyholder",
+        "policyholder.create_policyholderinsuree",
+        "policyholder.update_policyholderinsuree",
+        "policyholder.delete_policyholderinsuree",
+        "policyholder.replace_policyholderinsuree",
+        "policyholder.create_policyholderuser",
+        "policyholder.update_policyholderuser",
+        "policyholder.delete_policyholderuser",
+        "policyholder.replace_policyholderuser",
+        "policyholder.create_policyholdercontributionplan",
+        "policyholder.update_policyholdercontributionplan",
+        "policyholder.delete_policyholdercontributionplan",
+        "policyholder.replace_policyholdercontributionplan",
+        "policyholder.read_policyholder_portal",
+        "policyholder.read_policyholderinsuree_portal",
+        "policyholder.read_policyholdercontributionplanbundle_portal",
+        "policyholder.read_policyholderuser_portal",
+        "policyholder.read_payment_portal",
+        "policyholder.read_insuree_policy_portal",
+        "policyholder.create_policyholderinsuree_portal",
+        "policyholder.update_policyholderinsuree_portal",
+        "policyholder.delete_policyholderinsuree_portal",
+        "policyholder.replace_policyholderinsuree_portal",
+        "policyholder.create_policyholderuser_portal",
+        "policyholder.update_policyholderuser_portal",
+        "policyholder.delete_policyholderuser_portal",
+        "policyholder.replace_policyholderuser_portal"
+      ]
+    }
+   ]
+}

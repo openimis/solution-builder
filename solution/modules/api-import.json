@@ -1,0 +1,43 @@
+{
+  "menus": [
+      {
+         "position":1,
+         "id": "SocialRegistryMainMenu",
+         "name":"Social Registry",
+         "icon":"task-icon",
+         "description":"Social Registry",
+         "submenus":[
+            {
+               "position":1,
+               "id":"individual.api_imports"
+            }
+         ]
+      }
+  ],
+  "fe-packages": [],
+  "be-packages": [
+    {
+      "type": "github",
+      "name": "openimis-be-api_etl_py",
+      "version": "develop"
+    }
+  ],
+  "roles": [
+    {
+      "roleName": "IMIS Administrator",
+      "code": "admin",
+      "permissions": [
+        "api_etl.read_api_etl",
+        "api_etl.execute_api_etl"
+      ]
+    },
+    {
+      "roleName": "Social Protection Manager",
+      "code": "social_protection_manager",
+      "permissions": [
+        "api_etl.read_api_etl",
+        "api_etl.execute_api_etl"
+      ]
+    }
+  ]
+}

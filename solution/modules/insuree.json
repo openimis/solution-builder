@@ -1,0 +1,70 @@
+{
+  "menus": [
+    {
+         "position":2,
+         "id": "InsureeMainMenu",
+         "name":"InsureeMainMenu",
+         "icon":"insuree-icon",
+         "description":"Insuree panel",
+         "submenus":[
+            {
+               "position":2,
+               "id": "insuree.familiesOrGroups"
+            },
+            {
+               "position":1,
+               "id":"insuree.addFamilyOrGroup"
+            },
+            {
+               "position":3,
+               "id":"insuree.insurees"
+            }
+         ]
+      }
+  ],
+  "fe-packages": [
+    {
+      "type": "npm",
+      "name": "openimis-fe-insuree_js",
+      "version": "v1.1.1"
+    }
+  ],
+  "be-packages": [
+    {
+      "type": "pip",
+      "name": "openimis-be-insuree_py",
+      "version": "v1.2.0"
+    }
+  ],
+   "roles": [
+    {
+      "roleName": "IMIS Administrator",
+      "code": "admin",
+      "permissions": [
+        "insuree.read_insurees",
+        "insuree.read_insuree",
+        "insuree.read_insuree_photo",
+        "insuree.insuree_officers",
+        "insuree.read_insuree_family_members",
+        "family.read_families",
+        "insuree.insuree_policy",
+        "family.create_families",
+        "family.update_families",
+        "family.delete_families",
+        "insuree.create_insurees",
+        "insuree.update_insurees",
+        "insuree.delete_insurees"
+      ]
+    }
+   ],
+  "init-data": [
+    "gender.json",
+    "education.json",
+    "profession.json",
+    "relations.json",
+    "identification-types.json",
+    "family-type.json",
+    "relations.json",
+    "confirmation-type.json"
+  ]
+}

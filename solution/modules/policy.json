@@ -1,0 +1,49 @@
+{
+  "menus": [
+    {
+         "position":2,
+         "id": "InsureeMainMenu",
+         "name":"InsureeMainMenu",
+         "icon":"insuree-icon",
+         "description":"Insuree panel",
+         "submenus":[
+            {
+               "position":3,
+               "id":"insuree.policies"
+            }
+         ]
+      }
+  ],
+  "fe-packages": [
+    {
+      "type": "npm",
+      "name": "openimis-fe-policy_js",
+      "version": "v1.1.1"
+    }
+  ],
+  "be-packages": [
+    {
+      "type": "pip",
+      "name": "openimis-be-policy_py",
+      "version": "v1.2.0"
+    }
+  ],
+   "roles": [
+    {
+      "roleName": "IMIS Administrator",
+      "code": "admin",
+      "permissions": [
+        "policy.policy.read_policies",
+        "policy.read_policy_officers",
+        "policy.read_policies_by_insuree",
+        "policy.read_policies_by_family",
+        "policy.read_eligibilities",
+        "policy.create_policies",
+        "policy.renew_policies",
+        "policy.edit_policies",
+        "policy.suspend_policies",
+        "policy.delete_policies"
+      ]
+    }
+   ]
+}

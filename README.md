@@ -1,28 +1,110 @@
 # Menu Builder Script
 
-This script processes a `solution.json` file and combines the `menus` key from multiple module JSON files to build a complete menu structure (TO-DO: generation of openimis.json and merging roles to apply them in migration). 
-The resulting menu is sorted by `position` at both the menu and submenu levels. The script outputs a new file named `generated-menu.json` containing the combined and sorted menu structure.
-This file can be pasted as a part of `fe-core` configuration. It can be changed either on database level or in django administration panel as superuser.
+This script processes a `solution.json` file and combines the `menus` key from multiple module JSON files to build a complete menu structure. The resulting menu is sorted by `position` at both the menu and submenu levels. The script outputs a new file named `generated-solution.json` containing the combined and sorted menu structure.
 
 ## How It Works
 
-1. **Input File:**
-   - The script reads `solution.json` from the current working directory.
-   - The `solution.json` file should have a `modules` key containing a list of module file names (e.g., `client-management.json`, `user-management.json`, etc.).
+### 1. Input File:
+- The script reads `solution.json` from the current working directory.
+- The `solution.json` file should have a modules key containing a list of module bundle file names 
+(e.g., `social-protection-bundle.json`, `formal-sector-bundle.json`, etc.).
 
-2. **Module Files:**
-   - Each module file listed under the `modules` key should be present in the same directory as `solution.json`.
-   - Each module file should contain a `menus` key, which defines its menu structure.
+### 2. Module and Module Bundle Files:
+- Each module file listed under the `modules` key should be present in the same directory as `solution.json`.
+- Each module file should contain a `menus` key, which defines its menu structure.
+- Some modules may also contain a `dependency` key, listing other module bundles that must be processed even if they are not explicitly included in `solution.json`.
 
-3. **Combining Menus:**
-   - The script reads all the module files, extracts their `menus`, and combines them.
-   - Both menus and their submenus are sorted by the `position` field.
+### 3. Combining Menus:
+- The script reads all the module files, extracts their `menus`, and combines them.
+- If multiple entries share the same `id`, their `submenus` are merged instead of duplicating menu items.
+- Both menus and their `submenus` are sorted by the `position` field.
 
-4. **Missing Files:**
-   - If any module file is missing, the script will print a warning but will continue processing the rest.
+### 4. Handling Dependencies:
+- If a module has a `dependency` key, the script ensures that the referenced module files are also processed, even if they are not explicitly listed in `solution.json`.
+- Dependencies are resolved recursively to ensure all required modules are included.
 
-5. **Output File:**
-   - The script generates a `generated-solution.json` file in the same directory as the input files. This file contains the combined and sorted menu structure.
+### 5. Handling Bundles:
+- Bundles are collections of multiple related modules grouped together in a single file.
+- If a bundle file is listed in `solution.json`, the script will process all its included modules.
+- Bundles may also have dependencies on other bundles, which are resolved recursively.
+
+### 6. Missing Files:
+- If any module, bundle, or dependency file is missing, the script will print a warning but will continue processing the available files.
+
+## Example
+
+### Example `solution.json` with Bundles
+```json
+{
+  "modules": [
+    "social-protection-bundle.json",
+    "opensearch-report-bundle.json",
+    "core-bundle.json"
+  ],
+  "roles": [
+    "role-eo.json"
+  ]
+}
+```
+
+### Example `social-protection-bundle.json` (Bundle with Dependencies)
+```json
+{
+  "modules": [
+    "individual.json",
+    "api-import.json",
+    "social-protection.json",
+    "payroll.json",
+    "payment-cycle.json",
+    "deduplication.json"
+  ],
+  "dependency": [
+    "grievance-bundle.json"
+  ]
+}
+```
+
+### Example `opensearch-report-bundle.json` (Bundle Without Dependencies)
+```json
+{
+  "modules": [
+    "opensearch-report.json"
+  ]
+}
+```
+
+### Example `generated-solution.json` (Final Merged Output)
+```json
+{
+  "menus": [
+    {
+      "position": 1,
+      "id": "SocialRegistryMainMenu",
+      "name": "Social Registry",
+      "icon": "task-icon",
+      "description": "Social Registry",
+      "submenus": [
+        {
+          "position": 1,
+          "id": "individual.api_imports"
+        },
+        {
+          "position": 3,
+          "id": "individual.individuals"
+        },
+        {
+          "position": 4,
+          "id": "individual.groups"
+        },
+        {
+          "position": 2,
+          "id": "socialProtection.benefitPlans"
+        }
+      ]
+    }
+  ]
+}
+```
 
 ## How to Use
 
@@ -32,21 +114,43 @@ This file can be pasted as a part of `fe-core` configuration. It can be changed 
 ### Steps
 1. **Prepare `solution.json`:**
    - Create a file named `solution.json` in the directory where you will run the script.
-   - Add a `modules` key listing all the module files you want to include. Example:
+   - Add a `modules` key listing all the module bundles you want to include. Example:
      ```json
      {
        "modules": [
-         "client-management.json",
-         "user-management.json",
-         "grievance.json",
-         "social-protection.json",
-         "core.json"
+         "social-protection-bundle.json",
+         "opensearch-report-bundle.json",
+         "core-bundle.json",
+         "xxxx-bundle.json",
+         "formal-sector-bundle.json"
        ]
      }
      ```
+2. **Prepare `<module>-bundle.json`:**
+   - Create a file named `<module>-bundle.json` in the directory where you will run the script.
+   - Add a `modules` key listing all the modules you want to include in bundle. Example:
+     ```json
+     {
+       "modules": [
+         "individual.json",
+         "api-import.json",
+         "social-protection.json",
+         "payroll.json",
+         "payment-cycle.json",
+         "deduplication.json"
+       ],
+       "dependency": [
+         "grievance-bundle.json",
+         "calculation-social-protection-bundle.json"
+       ]
+     }
+     ```
+   - `dependency` key: it means that this bundle is related to other bundle and the additional package must be installed 
+   and considered in the final output. For example if `grievance-bundle.json` is not added in `solution.json` - this 
+   bundle package will be added in the final output even though is not presented in `solution.json` file.
 
-2. **Prepare Module Files:**
-   - Place all the module files listed in `solution.json` in the same directory. Each file should have a structure similar to the example below:
+3. **Prepare Module Files:**
+   - Place all the module files listed in `<module>-bundle.json` files in the same directory. Each file should have a structure similar to the example below:
      ```json
      {
        "menus": [
@@ -71,7 +175,7 @@ This file can be pasted as a part of `fe-core` configuration. It can be changed 
      }
      ```
 
-3. **Run the Script:**
+4. **Run the Script:**
    - Save the script as `build_solution.py` in the same directory as `solution.json` and the module files.
    - Open a terminal or command prompt and navigate to the directory.
    - Run the script using the command:
@@ -79,18 +183,21 @@ This file can be pasted as a part of `fe-core` configuration. It can be changed 
      python3 build_solution.py
      ```
 
-4. **View the Output:**
-   - After the script completes, a new file named `generated-solution.json` will be created in the same directory.
+5. **View the Output:**
+   - After the script completes, a new files named `generated-menu.json`, `generated-roles.json`, `fe-openimis.json` and `be-openimis.json` will be created in the same directory.
    - This file contains the combined and sorted menu structure.
 
 ## Example Directory Structure
 ```
 /solution
 |-- solution.json
-|-- client-management.json
-|-- user-management.json
-|-- grievance.json
 |-- social-protection.json
+|-- payroll.json
+|-- payment-cycle.json
+|-- individual.json
+|-- grievance.json
+|-- grievance-bundle.json
+|-- social-protection-bundle.json
 |-- core.json
 |-- build_solution.py
 ```
@@ -278,8 +385,9 @@ The `build_solution.py` script processes multiple JSON module files to generate 
 ## How Roles Are Processed  
 1. **Extract roles** from each module's JSON file.  
 2. **Merge duplicate role names**, ensuring unique permissions are combined.  
-3. **Sort permissions** within each role for better readability.  
-4. **Save results** to `generated-roles.json`.  
+3. **Map permissions using `permissions_map.json`** to include both `code` and `name` fields.  
+4. **Sort permissions** within each role for better readability.  
+5. **Save results** to `generated-roles.json`.  
 
 ## Input JSON Structure (Example Module File)  
 Each module file should contain a `roles` section like this:
@@ -287,21 +395,13 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
-        { "code": "127001", "name": "gql_mutation_create_tickets_perms" },
-        { "code": "127002", "name": "gql_mutation_update_tickets_perms" },
-        { "code": "127003", "name": "gql_mutation_delete_tickets_perms" }
-      ]
-    },
-    {
-      "roleName": "SocialProtectionManager",
-      "code": "social_protection_manager",
-      "permissions": [
-        { "code": "159001", "name": "gql_individual_search_perms" },
-        { "code": "159002", "name": "gql_individual_create_perms" },
-        { "code": "159003", "name": "gql_individual_update_perms" }
+        "individual.read_individual",
+        "individual.create_individual",
+        "individual.update_individual",
+        "individual.delete_individual"
       ]
     }
   ]
@@ -312,6 +412,7 @@ Each module file should contain a `roles` section like this:
 - If multiple modules define the same `roleName`, their permissions are merged (no duplicates).
 - Roles retain the same `code` from their original definitions.
 - The final output consolidates all role definitions into a single `generated-roles.json` file.
+- **Permissions are mapped** to include `code` and `name` using `permissions_map.json`.
 
 ### Example:
 
@@ -320,11 +421,11 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
-        { "code": "127001", "name": "gql_mutation_create_tickets_perms" },
-        { "code": "127002", "name": "gql_mutation_update_tickets_perms" }
+        "grievance.create_grievance",
+        "grievance.update_grievance"
       ]
     }
   ]
@@ -336,11 +437,11 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
-        { "code": "127003", "name": "gql_mutation_delete_tickets_perms" },
-        { "code": "127004", "name": "gql_query_comments_perms" }
+        "grievance.delete_grievance",
+        "grievance.read_grievance"
       ]
     }
   ]
@@ -352,13 +453,25 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
-        { "code": "127001", "name": "gql_mutation_create_tickets_perms" },
-        { "code": "127002", "name": "gql_mutation_update_tickets_perms" },
-        { "code": "127003", "name": "gql_mutation_delete_tickets_perms" },
-        { "code": "127004", "name": "gql_query_comments_perms" }
+        {
+          "name": "grievance.create_grievance",
+          "code": "127001"
+        },
+        {
+          "name": "grievance.update_grievance",
+          "code": "127002"
+        },
+        {
+          "name": "grievance.delete_grievance",
+          "code": "127003"
+        },
+        {
+          "name": "grievance.read_grievance",
+          "code": "127000"
+        }
       ]
     }
   ]
@@ -375,17 +488,149 @@ Each module file should contain a `roles` section like this:
    - Duplicates within the permission lists are removed.  
    - The `code` remains the same as defined in the original modules.
 
-3. **Generate Output**  
+3. **Map Permissions**  
+   - Each permission string is replaced with a dictionary containing:  
+     - `"name"`: The original permission string.  
+     - `"code"`: The mapped value from `permissions_map.json`.
+   - If no mapping exists, the permission remains unchanged.
+
+4. **Generate Output**  
    - The final list of merged roles is structured into a single JSON object.  
    - The processed roles are saved in `generated-roles.json`.
 
 ## Output File
 The processed roles are saved in:
 - `generated-roles.json`
-This file consolidates all roles across modules, ensuring a structured and non-duplicated set of permissions.
 
-Each role in the final output contains:
-
+This file consolidates all roles across modules, ensuring a structured and non-duplicated set of permissions. Each role in the final output contains:
 - `roleName`: The name of the role.
 - `code`: The unique code identifier for the role.
-- `permissions`: A merged list of permissions from all modules, with duplicates removed.
+- `permissions`: A merged list of permissions from all modules, each containing:
+  - `name`: The permission name.
+  - `code`: The mapped permission code from `permissions_map.json`.
+
+
+# Service Configuration in `build_solution.py` (docker compose)
+
+## Overview
+The script supports **Docker service configuration** through a `service.json` file. This allows defining service dependencies, environment files, and Compose YAML file structures. The script generates **`compose.yml`** as output, ensuring correct Docker service configuration.
+
+## `service.json` Structure
+The `service.json` file should be structured as an array of service definitions, where each entry contains:
+- `path`: The Compose YAML file path.
+- `env_file`: A list of environment files required for the service.
+
+### Example `service.json`
+```json
+[
+    {
+        "path": "compose.base.yml",
+        "env_file": [
+            ".env",
+            ".env.redis",
+            ".env.openSearch"
+        ]
+    },
+    {
+        "path": "compose.${DB_DEFAULT:-postgresql}.yml",
+        "env_file": [
+            ".env.database"
+        ]
+    },
+    {
+        "path": "compose.openSearch.yml",
+        "env_file": []
+    },
+    {
+        "path": "compose.cache.yml",
+        "env_file": [
+            ".env",
+            ".env.redis"
+        ]
+    }
+]
+```
+
+## `compose.yml` Output
+After processing `service.json`, the script generates `compose.yml`, ensuring correct formatting and indentation.
+
+### Example `generated-services.yml`
+```yaml
+include:
+  - path: compose.base.yml
+    env_file:
+      - .env
+      - .env.redis
+      - .env.openSearch
+  - path: compose.${DB_DEFAULT:-postgresql}.yml
+    env_file:
+      - .env.database
+  - path: compose.openSearch.yml
+    env_file: []
+  - path: compose.cache.yml
+    env_file:
+      - .env
+      - .env.redis
+```
+
+## How It Works
+1. **Reads `service.json`** – Extracts service definitions, including `path` and `env_file`.
+2. **Formats the data** – Ensures proper indentation and list formatting for YAML output.
+3. **Generates `compose.yml`** – Writes the structured YAML file for Docker Compose.
+
+## Running the Script
+Ensure `service.json` is present, then execute:
+```sh
+python build_solution.py
+```
+This will generate `generated-services.yml` in the same directory.
+
+# Role and RoleRight Fixture Processing
+
+## Overview
+This document provides guidelines on processing `Role` and `RoleRight` fixtures for data initialization, ensuring foreign key relationships are properly resolved when using Django fixtures.
+
+## Standard Fixture Loading
+To load a standard fixture (e.g., `role.json`) containing predefined Role data, use:
+```sh
+python manage.py loaddata role.json
+```
+This command loads role data into the database.
+
+## Handling Foreign Key References in Fixtures
+Since `RoleRight` references `Role` via a foreign key, but fixtures may store relationships using a natural key (e.g., `uuid`, `name`), we use a custom command to resolve and replace these references with actual database IDs.
+
+## Custom Command: `load_fixture_foreign_key`
+This command allows loading fixtures while resolving foreign key references using a specified field.
+
+### Usage:
+```sh
+python manage.py load_fixture_foreign_key <fixture_file> <field_name>
+```
+- `<fixture_file>`: Path to the fixture file (e.g., `fixtures/core/roles-right.json`)
+- `<field_name>`: The field to use as the natural key for resolving foreign keys (e.g., `uuid`, `name`)
+
+### Example:
+```sh
+python manage.py load_fixture_foreign_key fixtures/core/roles-right.json uuid
+```
+This command:
+1. Reads the fixture file.
+2. Looks up foreign key references in the related model (e.g., `Role`).
+3. Replaces the natural key field (e.g., `uuid`) with the actual primary key (`id`).
+4. Loads the modified fixture into the database.
+
+## Notes:
+- Ensure that the related objects exist in the database before loading fixtures that reference them.
+- The command supports multiple fields as natural keys (e.g., `uuid`, `name`, etc.), as specified by the user.
+
+# Loading Other Fixtures
+For other fixtures, the standard Django `loaddata` command can be used:
+```sh
+python manage.py loaddata <fixture_file>
+```
+For example:
+```sh
+python manage.py loaddata fixtures/core/users.json
+```
+This ensures the fixture data is loaded directly into the database.

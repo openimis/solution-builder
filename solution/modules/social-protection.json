@@ -1,0 +1,71 @@
+{
+  "menus": [
+      {
+         "position":1,
+         "id": "SocialRegistryMainMenu",
+         "name":"Social Registry",
+         "icon":"task-icon",
+         "description":"Social Registry",
+         "submenus":[
+            {
+               "position":2,
+               "id":"socialProtection.benefitPlans"
+            }
+         ]
+      }
+  ],
+  "fe-packages": [
+    {
+      "type": "npm",
+      "name": "openimis-fe-social_protection_js",
+      "version": "develop"
+    }
+  ],
+  "be-packages": [
+    {
+      "type": "pip",
+      "name": "openimis-be-social_protection_py",
+      "version": "develop"
+    }
+  ],
+  "roles": [
+    {
+      "roleName": "IMIS Administrator",
+      "code": "admin",
+      "permissions": [
+        "social_protection.read_benefit_plan",
+        "social_protection.create_benefit_plan",
+        "social_protection.update_benefit_plan",
+        "social_protection.delete_benefit_plan",
+        "social_protection.close_benefit_plan",
+        "social_protection.read_beneficiary",
+        "social_protection.create_beneficiary",
+        "social_protection.update_beneficiary",
+        "social_protection.delete_beneficiary",
+        "social_protection.read_schema",
+        "social_protection.create_schema",
+        "social_protection.update_schema",
+        "social_protection.delete_schema"
+      ]
+    },
+    {
+      "roleName": "Social Protection Manager",
+      "code": "social_protection_manager",
+      "permissions": [
+        "social_protection.read_benefit_plan",
+        "social_protection.create_benefit_plan",
+        "social_protection.update_benefit_plan",
+        "social_protection.delete_benefit_plan",
+        "social_protection.close_benefit_plan",
+        "social_protection.read_beneficiary",
+        "social_protection.create_beneficiary",
+        "social_protection.update_beneficiary",
+        "social_protection.delete_beneficiary",
+        "social_protection.read_schema",
+        "social_protection.create_schema",
+        "social_protection.update_schema",
+        "social_protection.delete_schema"
+      ]
+    }
+  ]
+}

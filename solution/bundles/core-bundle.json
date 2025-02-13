@@ -8,20 +8,12 @@
          "description":"Configurations",
          "submenus":[
             {
-               "position":4,
-               "id": "admin.products"
-            },
-            {
                "position":2,
                "id":"admin.roleManagement"
             },
             {
                "position":1,
                "id":"admin.users"
-            },
-            {
-               "position":3,
-               "id": "admin.locations"
             }
          ]
       }
@@ -62,7 +54,7 @@
   ],
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
         "core.read_enrolment_officers",
@@ -75,5 +67,11 @@
         "core.delete_claim_administrator"
       ]
     }
+  ],
+  "init-data": [
+    "roles.json",
+    "roles-right.json",
+    "language.json",
+    "roles-default.json"
   ]
 }

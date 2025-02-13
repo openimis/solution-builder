@@ -1,0 +1,67 @@
+{
+  "menus": [
+      {
+         "position":1,
+         "id": "SocialRegistryMainMenu",
+         "name":"Social Registry",
+         "icon":"task-icon",
+         "description":"Social Registry",
+         "submenus":[
+            {
+               "position":4,
+               "id":"individual.groups"
+            },
+            {
+               "position":3,
+               "id":"individual.individuals"
+            }
+         ]
+      }
+  ],
+  "fe-packages": [
+    {
+      "type": "github",
+      "name": "openimis-fe-individual_js",
+      "version": "develop"
+    }
+  ],
+  "be-packages": [
+    {
+      "type": "github",
+      "name": "openimis-be-individual_py",
+      "version": "develop"
+    }
+  ],
+  "roles": [
+    {
+      "roleName": "IMIS Administrator",
+      "code": "admin",
+      "permissions": [
+        "individual.read_individual",
+        "individual.create_individual",
+        "individual.update_individual",
+        "individual.delete_individual",
+        "individual.individual_undo",
+        "individual.read_group",
+        "individual.create_group",
+        "individual.update_group",
+        "individual.delete_group"
+      ]
+    },
+    {
+      "roleName": "Social Protection Manager",
+      "code": "social_protection_manager",
+      "permissions": [
+        "individual.read_individual",
+        "individual.create_individual",
+        "individual.update_individual",
+        "individual.delete_individual",
+        "individual.individual_undo",
+        "individual.read_group",
+        "individual.create_group",
+        "individual.update_group",
+        "individual.delete_group"
+      ]
+    }
+  ]
+}
