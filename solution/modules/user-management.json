@@ -34,7 +34,7 @@
   "be-packages": [],
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
         "core.read_users",

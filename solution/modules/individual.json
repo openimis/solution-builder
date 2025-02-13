@@ -34,7 +34,7 @@
   ],
   "roles": [
     {
-      "roleName": "Admin",
+      "roleName": "IMIS Administrator",
       "code": "admin",
       "permissions": [
         "individual.read_individual",
