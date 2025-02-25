@@ -17,9 +17,9 @@
   "fe-packages": [],
   "be-packages": [
     {
-      "type": "github",
-      "name": "openimis-be-api_etl_py",
-      "version": "develop"
+      "name": "api_etl",
+      "package": "openimis-be-api_etl_py",
+      "version": "1.0.0"
     }
   ],
   "roles": [

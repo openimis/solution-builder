@@ -20,16 +20,16 @@
   ],
   "fe-packages": [
     {
-      "type": "npm",
-      "name": "openimis-fe-calculation_js",
+      "name": "calculation",
+      "package": "@openimis/fe-calculation",
       "version": "1.2"
     }
   ],
   "be-packages": [
     {
-      "type": "pip",
-      "name": "openimis-be-calculation_py",
-      "version": "v1.2.0"
+      "name": "calculation",
+      "package": "openimis-be-calculation_py",
+      "version": "1.2.0"
     }
   ]
 }

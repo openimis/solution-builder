@@ -16,16 +16,16 @@
   ],
   "fe-packages": [
     {
-      "type": "npm",
-      "name": "openimis-fe-policyholder_js",
-      "version": "v1.1.1"
+      "name": "policyholder",
+      "package": "@openimis/fe-policyholder",
+      "version": "1.1.1"
     }
   ],
   "be-packages": [
     {
-      "type": "pip",
-      "name": "openimis-be-policyholder_py",
-      "version": "v1.2.0"
+      "name": "policyholder",
+      "package": "openimis-be-policyholder_py",
+      "version": "1.2.0"
     }
   ],
    "roles": [

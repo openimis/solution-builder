@@ -20,36 +20,36 @@
   ],
   "fe-packages": [
     {
-      "type": "npm",
-      "name": "openimis-fe-core_js",
-      "version": "v1.7.1"
+      "name": "core",
+      "package": "@openimis/fe-core",
+      "version": "1.7.1"
     },
     {
-      "type": "github",
-      "name": "openimis-fe-admin_js",
-      "version": "develop"
+      "name": "admin",
+      "package": "@openimis/fe-admin",
+      "version": "1.8.0"
     },
     {
-      "type": "npm",
-      "name": "openimis-fe-menu_js",
-      "version": "v1.7.0"
+      "name": "menu",
+      "package": "@openimis/fe-menu",
+      "version": "1.7.0"
     }
   ],
   "be-packages": [
     {
-      "type": "pip",
-      "name": "openimis-be-policy_py",
-      "version": "v1.8.0"
+      "name": "policy",
+      "package": "openimis-be-policy_py",
+      "version": "1.8.0"
     },
     {
-      "type": "github",
-      "name": "openimis-be-core_py",
-      "version": "develop"
+      "name": "core",
+      "package": "openimis-be-core_py",
+      "version": "1.8.0"
     },
     {
-      "type": "pip",
-      "name": "openimis-be-menu_py",
-      "version": "v1.8.0"
+      "name": "menu",
+      "package": "openimis-be-menu_py",
+      "version": "1.8.0"
     }
   ],
   "roles": [

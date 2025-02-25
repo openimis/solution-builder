@@ -28,16 +28,16 @@
   ],
   "fe-packages": [
     {
-      "type": "npm",
-      "name": "openimis-fe-payroll_js",
-      "version": "develop"
+      "name": "payroll",
+      "package": "@openimis/fe-payroll",
+      "version": "1.2.0"
     }
   ],
   "be-packages": [
     {
-      "type": "npm",
-      "name": "openimis-be-payroll_py",
-      "version": "develop"
+      "name": "payroll",
+      "package": "openimis-be-payroll_py",
+      "version": "1.2.0"
     }
   ],
   "roles": [

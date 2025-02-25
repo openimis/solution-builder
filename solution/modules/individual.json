@@ -20,16 +20,16 @@
   ],
   "fe-packages": [
     {
-      "type": "github",
-      "name": "openimis-fe-individual_js",
-      "version": "develop"
+      "name": "individual",
+      "package": "@openimis/fe-individual",
+      "version": "1.1.0"
     }
   ],
   "be-packages": [
     {
-      "type": "github",
-      "name": "openimis-be-individual_py",
-      "version": "develop"
+      "name": "individual",
+      "package": "openimis-be-individual_py",
+      "version": "1.2.0"
     }
   ],
   "roles": [

@@ -281,6 +281,56 @@ def generate_menu_fixtures():
     print("Generated menu configuration fixture written to fixtures/core/menu-config.json")
 
 
+def format_be_packages(config):
+    be_packages = {'modules':[]}
+    for p in config:
+        be_packages['modules'].append(package_be_export(p))
+    return be_packages
+
+def package_be_export(package):
+        #     {
+        #     "name": "core",
+        #     "pip": "git+https://github.com/openimis/openimis-be-core_py.git@develop#egg=openimis-be-core"
+        # },
+#        {
+        #     "name": "core",
+        #     "pip": "openimis-be-core~=1.8.0"
+        # },
+        return {
+            "name": package['name'],
+            "npm": (
+                f"{package['git']}@{package['version']}#egg={package['package']}" if 'git' in package
+                else package['package'] + '~=' + package['version']
+            )
+        }
+        
+def format_fe_packages(config):
+    fe_packages = {"locales": [
+        {
+            "languages": ["en","en-GB"],
+            "intl": "en-GB",
+            "fileNames": "en"
+        },
+        {
+          "languages": ["fr","fr-FR"],
+          "intl": "fr-FR",
+          "fileNames": "fr"
+        }
+    ], 'modules':[]}
+    
+    for p in config:
+        fe_packages['modules'].append(package_fe_export(p))
+    return fe_packages
+
+def package_fe_export(package):
+        return {
+            "name": package['name']+"Module",
+            "npm": package['package']+ "@" + (
+                package['git'] + '#' + package['version'] if 'git' in package
+                else  '>=' + package['version']
+            )
+        }
+
 def main(solution_file):
     #always loading
     directory_path = os.path.dirname(solution_file)
@@ -302,6 +352,9 @@ def main(solution_file):
     print(f"Generated roles written to {roles_output_file}")
 
     fe_packages, be_packages = process_packages(resolved_modules)
+    
+    fe_packages = format_fe_packages(fe_packages)
+    be_packages = format_be_packages(be_packages)
     with open('fe-openimis.json', 'w') as file:
         json.dump({"packages": fe_packages}, file, indent=2)
     print("Generated frontend packages written to fe-openimis.json")

@@ -16,16 +16,16 @@
   ],
   "fe-packages": [
     {
-      "type": "npm",
-      "name": "openimis-fe-social_protection_js",
-      "version": "develop"
+      "name": "social_protection",
+      "package": "@openimis/fe-social_protection",
+      "version": "1.2.0"
     }
   ],
   "be-packages": [
     {
-      "type": "pip",
-      "name": "openimis-be-social_protection_py",
-      "version": "develop"
+      "name": "social_protection",
+      "package": "openimis-be-social_protection_py",
+      "version": "1.2.0"
     }
   ],
   "roles": [

@@ -24,16 +24,16 @@
   ],
   "fe-packages": [
     {
-      "type": "npm",
-      "name": "openimis-fe-insuree_js",
-      "version": "v1.1.1"
+      "name": "insuree",
+      "package": "@openimis/fe-insuree",
+      "version": "1.1.1"
     }
   ],
   "be-packages": [
     {
-      "type": "pip",
-      "name": "openimis-be-insuree_py",
-      "version": "v1.2.0"
+      "name": "insuree",
+      "package": "openimis-be-insuree_py",
+      "version": "1.2.0"
     }
   ],
    "roles": [
