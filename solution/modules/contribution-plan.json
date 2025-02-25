@@ -1,0 +1,10 @@
+{
+  "menus": [],
+  "be-packages": [
+    {
+      "type": "pip",
+      "name": "openimis-be-contribution_plan_py",
+      "version": "v1.2.0"
+    }
+  ]
+}

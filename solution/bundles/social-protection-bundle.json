@@ -1,11 +1,11 @@
 {
   "modules": [
-    "individual.json",
-    "api-import.json",
-    "social-protection.json",
-    "payroll.json",
-    "payment-cycle.json",
-    "deduplication.json"
+    "../modules/individual.json",
+    "../modules/api-import.json",
+    "../modules/social-protection.json",
+    "../modules/payroll.json",
+    "../modules/payment-cycle.json",
+    "../modules/deduplication.json"
   ],
   "dependency": [
     "grievance-bundle.json",

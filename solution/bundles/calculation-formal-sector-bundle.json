@@ -1,6 +1,6 @@
 {
   "modules": [
-    "calculation.json",
-    "calculation-legacy.json"
+    "../modules/calculation.json",
+    "../modules/calculation-legacy.json"
   ]
 }

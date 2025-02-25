@@ -1,8 +1,8 @@
 {
   "modules": [
-    "policyholder.json",
-    "contribution-plan.json",
-    "contract.json"
+    "../modules/policyholder.json",
+    "../modules/contribution-plan.json",
+    "../modules/contract.json"
   ],
   "dependency": [
     "insuree-bundle.json",

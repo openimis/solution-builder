@@ -1,6 +1,6 @@
 {
   "modules": [
-    "calculation.json",
-    "calculation-social-protection.json"
+    "../modules/calculation.json",
+    "../modules/calculation-social-protection.json"
   ]
 }

@@ -1,0 +1,10 @@
+{
+  "menus": [],
+  "be-packages": [
+    {
+      "type": "pip",
+      "name": "openimis-be-contract_py",
+      "version": "v1.2.0"
+    }
+  ]
+}

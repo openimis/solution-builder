@@ -1,5 +1,5 @@
 {
   "modules": [
-    "opensearch-report.json"
+    "../modules/opensearch-report.json"
   ]
 }
