@@ -238,6 +238,38 @@ def generate_role_fixtures():
     print("Generated roles and roles-right fixtures successfully.")
 
 
+def generate_menu_fixtures():
+    """Generate menu configuration fixture using generated-menu.json output."""
+    menu_file = "generated-menu.json"
+    menu_data = load_json(menu_file)
+
+    if not menu_data or "menus" not in menu_data:
+        print("Error: generated-menu.json is missing or invalid.")
+        return
+
+    menu_config_uuid = str(uuid.uuid4())
+    menu_fixtures = [
+        {
+            "model": "core.moduleconfiguration",
+            "fields": {
+                "id": menu_config_uuid,
+                "module": "fe-core",
+                "version": "1",
+                "config": json.dumps(menu_data, indent=2),
+                "is_disabled_until": None,
+                "is_exposed": True,
+                "layer": "fe"
+            }
+        }
+    ]
+
+    os.makedirs("fixtures/core", exist_ok=True)
+    with open("fixtures/core/menu-config.json", "w", encoding="utf-8") as file:
+        json.dump(menu_fixtures, file, indent=2)
+
+    print("Generated menu configuration fixture written to fixtures/core/menu-config.json")
+
+
 def main():
     solution_file = 'solution.json'
     solution_data = load_json(solution_file)
@@ -274,6 +306,7 @@ def main():
     save_services_yaml(services)
 
     generate_role_fixtures()
+    generate_menu_fixtures()
 
     print("Processing completed.")
 
