@@ -16,16 +16,16 @@
   ],
   "fe-packages": [
     {
-      "type": "npm",
-      "name": "openimis-fe-policy_js",
-      "version": "v1.1.1"
+      "name": "policy",
+      "package": "@openimis/fe-policy",
+      "version": "1.1.1"
     }
   ],
   "be-packages": [
     {
-      "type": "pip",
-      "name": "openimis-be-policy_py",
-      "version": "v1.2.0"
+      "name": "policy",
+      "package": "openimis-be-policy_py",
+      "version": "1.2.0"
     }
   ],
    "roles": [

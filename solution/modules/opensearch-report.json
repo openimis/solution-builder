@@ -36,16 +36,16 @@
   ],
   "fe-packages": [
     {
-      "type": "github",
-      "name": "openimis-fe-opensearch_reports_js",
-      "version": "develop"
+      "name": "opensearch_reports",
+      "package": "@openimis/fe-opensearch_reports",
+      "version": "1.2.0"
     }
   ],
   "be-packages": [
     {
-      "type": "github",
-      "name": "openimis-be-opensearch_reports_py",
-      "version": "develop"
+      "name": "opensearch_reports",
+      "package": "openimis-be-opensearch_reports_py",
+      "version": "1.2.0"
     }
   ],
   "roles": [

@@ -2,9 +2,9 @@
   "menus": [],
   "be-packages": [
     {
-      "type": "pip",
-      "name": "openimis-be-contribution_plan_py",
-      "version": "v1.2.0"
+      "name": "contribution_plan",
+      "package": "openimis-be-contribution_plan_py",
+      "version": "1.2.0"
     }
   ]
 }

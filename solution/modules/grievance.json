@@ -20,15 +20,15 @@
   ],
   "fe-packages": [
     {
-      "type": "github",
-      "name": "openimis-fe-grievance_social_protection_js",
-      "version": "develop"
+      "name": "grievance_social_protection",
+      "package": "@openimis/fe-grievance_social_protection",
+      "version": "1.0.0"
     }
   ],
   "be-packages": [
     {
-      "type": "github",
-      "name": "openimis-be-grievance_social_protection_py",
+      "name": "grievance_social_protection",
+      "package": "openimis-be-grievance_social_protection_py",
       "version": "main"
     }
   ],

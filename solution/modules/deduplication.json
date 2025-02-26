@@ -2,16 +2,16 @@
   "menus": [],
   "fe-packages": [
     {
-      "type": "github",
-      "name": "openimis-fe-deduplication_js",
-      "version": "develop"
+      "name": "deduplication",
+      "package": "@openimis/fe-deduplication",
+      "version": "1.0.1"
     }
   ],
   "be-packages": [
     {
-      "type": "github",
-      "name": "openimis-be-deduplication_py",
-      "version": "develop"
+      "name": "deduplication",
+      "package": "openimis-be-deduplication_py",
+      "version": "1.1.1"
     }
   ],
   "roles": [

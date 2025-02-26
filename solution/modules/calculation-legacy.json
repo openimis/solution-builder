@@ -2,9 +2,9 @@
   "menus": [],
   "be-packages": [
     {
-      "type": "pip",
-      "name": "openimis-be-calcrule_contribution_legacy_py",
-      "version": "v1.2.0"
+      "name": "calcrule_contribution_legacy",
+      "package": "openimis-be-calcrule_contribution_legacy",
+      "version": "1.2.0"
     }
   ]
 }
