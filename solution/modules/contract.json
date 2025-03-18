@@ -1,10 +1,6 @@
 {
   "menus": [],
-  "be-packages": [
-    {
-      "name": "contract",
-      "package": "openimis-be-contract_py",
-      "version": "1.2.0"
-    }
+  "bePackages": [
+"contract"
   ]
 }

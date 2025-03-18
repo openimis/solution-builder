@@ -1,0 +1,23 @@
+{
+  "menus": [
+      {
+         "position":11,
+         "id": "ToolsMainMenu",
+         "name":"ToolsMainMenu",
+         "icon":"tools-icon",
+         "description":"Tools panel",
+         "submenus":[
+            {
+               "position":2,
+               "id": "tools.reports"
+            }
+         ]
+      }
+  ],
+  "fePackages": [
+   "ToolsModule"
+  ],
+  "bePackages": [
+   "report"
+  ]
+}

@@ -1,5 +1,5 @@
-[
-    {
+{"serviceDefinitions":{
+    "base": {
         "path": "compose.base.yml",
         "env_file": [
             ".env",
@@ -7,20 +7,10 @@
             ".env.openSearch"
         ]
     },
-    {
+    "db":{
         "path": "compose.${DB_DEFAULT:-postgresql}.yml",
         "env_file": [
             ".env.database"
         ]
-    },
-    {
-        "path": "compose.openSearch.yml",
-        "env_file": []
-    },
-    {
-        "path": "compose.cache.yml",
-        "env_file": [
-            ".env.cache"
-        ]
     }
-]
+}}

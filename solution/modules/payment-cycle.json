@@ -14,19 +14,11 @@
          ]
       }
   ],
-  "fe-packages": [
-    {
-      "name": "payment_cycle",
-      "package": "@openimis/fe-payment_cycle",
-      "version": "1.1.0"
-    }
+  "fePackages": [
+"payment_cycle"
   ],
-  "be-packages": [
-    {
-      "name": "payment_cycle",
-      "package": "openimis-be-payment_cycle_py",
-      "version": "1.2.0"
-    }
+  "bePackages": [
+"payment_cycle"
   ],
   "roles": [
     {

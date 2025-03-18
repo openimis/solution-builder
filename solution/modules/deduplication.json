@@ -1,18 +1,10 @@
 {
   "menus": [],
-  "fe-packages": [
-    {
-      "name": "deduplication",
-      "package": "@openimis/fe-deduplication",
-      "version": "1.0.1"
-    }
+  "fePackages": [
+"deduplication"
   ],
-  "be-packages": [
-    {
-      "name": "deduplication",
-      "package": "openimis-be-deduplication_py",
-      "version": "1.1.1"
-    }
+  "bePackages": [
+"deduplication"
   ],
   "roles": [
     {

@@ -14,19 +14,11 @@
          ]
       }
   ],
-  "fe-packages": [
-    {
-      "name": "policyholder",
-      "package": "@openimis/fe-policyholder",
-      "version": "1.1.1"
-    }
+  "fePackages": [
+"policyholder"
   ],
-  "be-packages": [
-    {
-      "name": "policyholder",
-      "package": "openimis-be-policyholder_py",
-      "version": "1.2.0"
-    }
+  "bePackages": [
+"policyholder"
   ],
    "roles": [
     {

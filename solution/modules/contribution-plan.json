@@ -1,10 +1,6 @@
 {
   "menus": [],
-  "be-packages": [
-    {
-      "name": "contribution_plan",
-      "package": "openimis-be-contribution_plan_py",
-      "version": "1.2.0"
-    }
+  "bePackages": [
+"contribution_plan"
   ]
 }

@@ -31,18 +31,10 @@
          ]
       }
   ],
-  "fe-packages": [
-    {
-      "name": "tasks_management",
-      "package": "@openimis/fe-tasks_management",
-      "version": "1.1.1"
-    }
+  "fePackages": [
+   "tasks_management"
   ],
-  "be-packages": [
-    {
-      "name": "tasks_management",
-      "package": "openimis-be-tasks_management_py",
-      "version": "1.2.0"
-    }
+  "bePackages": [
+   "tasks_management"
   ]
 }

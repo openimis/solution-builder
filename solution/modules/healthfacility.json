@@ -1,0 +1,16 @@
+{
+  "fePackages": ["location"],
+  "bePackages": [ "location"],
+     "roles": [
+      {
+        "roleName": "IMIS Administrator",
+        "code": "admin",
+        "permissions": [
+          "location.read_health_facilities",
+          "location.create_health_facilities",
+          "location.edit_health_facilities",
+          "location.delete_health_facilities"
+        ]
+      }
+     ]
+  }

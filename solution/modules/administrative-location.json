@@ -1,0 +1,32 @@
+{
+    "fePackages": [
+      {
+        "name": "location",
+        "package": "@openimis/fe-policy",
+        "git": "git+https://github.com/openimis/openimis-fe-location_js.git",
+        "version": "1.5.1"
+      }
+    ],
+    "bePackages": [
+      {
+        "name": "location",
+        "package": "openimis-be-policy_py",
+        "git": "git+https://github.com/openimis/openimis-be-location_py.git",
+        "version": "1.8.2"
+      }
+    ],
+     "roles": [
+      {
+        "roleName": "IMIS Administrator",
+        "code": "admin",
+        "permissions": [
+            "location.read_locations",
+            "location.create_locations",
+            "location.edit_locations",
+            "location.delete_locations",
+            "location.move_location",
+            "location.create_region_locations"
+        ]
+      }
+     ]
+  }

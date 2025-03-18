@@ -1,0 +1,11 @@
+{
+  "modules": {
+    "opensearch":"../modules/opensearch-report.json"
+  },
+  "services":[
+    "opensearch"
+  ],
+  "solutions":[
+        "../services/opensearch.json"
+  ]
+}

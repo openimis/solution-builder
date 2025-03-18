@@ -19,7 +19,7 @@ const editorOptions = {
 
 const otherEditor = new JSONEditor(otherContainer, editorOptions);
 
-otherEditor.set({'menus':[], 'dependency':[], 'roles':[], 'modules':[], 'packages':[]});
+otherEditor.set({'menus':[], 'solutions':[], 'roles':[], 'modules':[], 'packages':[]});
 // Function to handle source selection
 function selectSource(type) {
     sourceType = type;
@@ -67,21 +67,6 @@ async function selectLocalFolder() {
         init();
     } catch (err) {
         console.error('Error selecting folder:', err);
-    }
-}
-
-// Function to fetch and parse JSON files
-async function fetchJSON(handleOrUrl) {
-    if (sourceType === 'github') {
-        const response = await fetch(handleOrUrl, { headers: getHeaders() });
-        if (!response.ok) throw new Error(`Failed to fetch ${handleOrUrl}: ${response.statusText}`);
-        const data = await response.json();
-        return JSON.parse(atob(data.content));
-    } else if (DIRECTORY){
-        const fileHandle = typeof handleOrUrl === 'string' ? (await DIRECTORY.getFileHandle(handleOrUrl)) : handleOrUrl.handle;
-        const file = await fileHandle.getFile();
-        const text = await file.text();
-        return JSON.parse(text);
     }
 }
 
@@ -137,62 +122,17 @@ async function fetchDirectoryContents(directory) {
         return files;
     }
 }
-// Function to get headers with GitHub API key
-function getHeaders() {
-    const headers = {
-        'Accept': 'application/vnd.github.v3+json'
-    };
-    if (sourceType === 'github' && githubAuthType === 'authenticated' && githubApiKey) {
-        headers['Authorization'] = `Bearer ${githubApiKey}`;
-    }
-    return headers;
-}
-
-async function generateSolution(event) {
-    event.preventDefault();
-    const resultDiv = document.getElementById('result');
-    resultDiv.innerHTML = 'Generating solution...';
-
-    try {
-        // Get selected modules (dependencies)
-        const dependencies = Array.from(document.querySelectorAll('#dependencies input[type="checkbox"]:checked'))
-        .map(checkbox => checkbox.value);
-
-        // Get selected modules (checkboxes)
-        const modules = Array.from(document.querySelectorAll('#modules input[type="checkbox"]:checked'))
-            .map(checkbox => checkbox.value);
-        const solution = { dependencies, modules };
-        
-        // Process resolved modules (assuming processSolution exists in your code)
-        const { menus, roles, fePackages, bePackages, services } = await processSolution(solution);
-
-        const output = {
-            'generated-menu.json': { menus },
-            'generated-roles.json': { roles },
-            'fe-openimis.json': { packages: fePackages },
-            'be-openimis.json': { packages: bePackages },
-            'services.yaml': services
-        };
-
-        createZip(output, 'solution.zip');
-        resultDiv.innerHTML = 'Solution generated and downloaded successfully!';
-    } catch (error) {
-        resultDiv.innerHTML = `Error: ${error.message}`;
-        console.error(error);
-    }
-}
-
 // Initialize
 async function init() {
-    await populateSelect('dependencies', 'solution/bundles');
+    await populateSelect('solutions', 'solution/solutions');
     await populateSelect('modules', 'solution/modules');
     document.getElementById('solutionForm').addEventListener('submit', generateSolution);
     const otherContainer = document.getElementById('other');
 }
 // Load JSZip and initialize
-const script = document.createElement('script');
-script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
-script.onload = init;
+// const script = document.createElement('script');
+// script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+// script.onload = init;
 document.head.appendChild(script);
 // Add this code when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {

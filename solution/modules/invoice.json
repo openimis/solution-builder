@@ -1,33 +1,25 @@
 {
   "menus": [
     {
-         "position":2,
-         "id": "InsureeMainMenu",
-         "name":"InsureeMainMenu",
-         "icon":"insuree-icon",
-         "description":"Insuree panel",
-         "submenus":[
-            {
-               "position":2,
-               "id": "insuree.familiesOrGroups"
-            },
-            {
-               "position":1,
-               "id":"insuree.addFamilyOrGroup"
-            },
-            {
-               "position":3,
-               "id":"insuree.insurees"
-            }
-         ]
-      }
+      "position":3,
+      "id": "PaymentManagement",
+      "name":"Payment Management",
+      "icon":"task-icon",
+      "description":"PayrollNameMenu",
+      "submenus":[
+         {
+            "position":51,
+            "id": "legalAndFinance.invoices"
+         },
+         {
+          "position":51,
+          "id": "legalAndFinance.bills"
+       }
+      ]
+   }
   ],
-  "fePackages": [
-"insuree"
-  ],
-  "bePackages": [
-"insuree"
-  ],
+  "fePackages": ["invoice"],
+  "bePackages": ["invoice"],
    "roles": [
     {
       "roleName": "IMIS Administrator",

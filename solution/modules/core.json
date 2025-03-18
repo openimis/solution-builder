@@ -18,39 +18,13 @@
          ]
       }
   ],
-  "fe-packages": [
-    {
-      "name": "core",
-      "package": "@openimis/fe-core",
-      "version": "1.7.1"
-    },
-    {
-      "name": "admin",
-      "package": "@openimis/fe-admin",
-      "version": "1.8.0"
-    },
-    {
-      "name": "menu",
-      "package": "@openimis/fe-menu",
-      "version": "1.7.0"
-    }
+  "fePackages": [
+    "core",
+    "admin",
+    "menu"
   ],
-  "be-packages": [
-    {
-      "name": "policy",
-      "package": "openimis-be-policy_py",
-      "version": "1.8.0"
-    },
-    {
-      "name": "core",
-      "package": "openimis-be-core_py",
-      "version": "1.8.0"
-    },
-    {
-      "name": "menu",
-      "package": "openimis-be-menu_py",
-      "version": "1.8.0"
-    }
+  "bePackages": [
+    "core"
   ],
   "roles": [
     {
@@ -68,10 +42,11 @@
       ]
     }
   ],
-  "init-data": [
-    "roles.json",
-    "roles-right.json",
-    "language.json",
-    "roles-default.json"
-  ]
+  "initData": {
+    "roles":"roles.json",
+    "rolesRight":"roles-right.json",
+    "language":"language.json",
+    "rolesDefault":"roles-default.json"
+  },
+  "services":["base", "cache"]
 }

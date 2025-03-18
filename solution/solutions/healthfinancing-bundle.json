@@ -1,0 +1,8 @@
+{
+  "modules": {
+    "insuree": "../modules/insuree.json",
+    "policy": "../modules/policy.json",
+    "product": "../modules/product.json",
+    "healthFacility": "../modules/health-facility.json"
+  }
+}

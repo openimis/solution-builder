@@ -14,19 +14,11 @@
          ]
       }
   ],
-  "fe-packages": [
-    {
-      "name": "social_protection",
-      "package": "@openimis/fe-social_protection",
-      "version": "1.2.0"
-    }
+  "fePackages": [
+    "social_protection"
   ],
-  "be-packages": [
-    {
-      "name": "social_protection",
-      "package": "openimis-be-social_protection_py",
-      "version": "1.2.0"
-    }
+  "bePackages": [
+    "social_protection"
   ],
   "roles": [
     {

@@ -1,0 +1,21 @@
+{
+  "modules": {
+    "location": "../modules/location.json",
+    "taskManagement": "../modules/task-management.json",
+    "calculation": "../modules/calculation.json",
+    "core": "../modules/core.json",
+    "report": "../modules/report.json",
+    "userManagement": "../modules/user-management.json"
+  },
+  "services":[
+    "base", "db", "cache"
+  ],
+
+  "solutions": [
+    "../sources/be-sources.json",
+    "../sources/fe-source.json",
+    "../services/base.json",
+    "../services/cache.json"
+
+  ]
+}

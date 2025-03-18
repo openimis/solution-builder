@@ -1,10 +1,9 @@
 {
   "menus": [],
-  "be-packages": [
-    {
-      "name": "calcrule_contribution_legacy",
-      "package": "openimis-be-calcrule_contribution_legacy",
-      "version": "1.2.0"
-    }
+  "modules":{
+    "calculation":"../modules/calculation.json"
+  },
+  "bePackages": [
+    "calcrule_contribution_legacy"
   ]
 }

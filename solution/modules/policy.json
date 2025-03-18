@@ -14,19 +14,11 @@
          ]
       }
   ],
-  "fe-packages": [
-    {
-      "name": "policy",
-      "package": "@openimis/fe-policy",
-      "version": "1.1.1"
-    }
+  "fePackages": [
+"policy"
   ],
-  "be-packages": [
-    {
-      "name": "policy",
-      "package": "openimis-be-policy_py",
-      "version": "1.2.0"
-    }
+  "bePackages": [
+"policy"
   ],
    "roles": [
     {

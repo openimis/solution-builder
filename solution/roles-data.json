@@ -1,4 +1,4 @@
-{
+{"initData":{
 "tblRole": [
 	{
 		"ValidityFrom" : "2019-05-10T05:08:23.167Z",
@@ -360,4 +360,4 @@
 		"IsBlocked" : false,
 		"AuditUserID" : 1
 	}
-]}
+]}}

@@ -1,0 +1,39 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+    {
+        "name": "Workbench",
+        "program": "${workspaceFolder}/workbench.js",
+        "request": "launch",
+        "type": "node"
+    },
+        {
+            "name": "Launch dev",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "solution/build_solution.py",
+            "console": "integratedTerminal",
+            "args": [
+                "-f",
+                "solution.json",
+                "-b",
+                "develop"
+              ],
+        },{
+            "name": "Launch GUI",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "solution/gui.py",
+            "console": "integratedTerminal",
+            "args": [
+                "-f",
+                "solution.json",
+                "-b",
+                "develop"
+              ],
+        }
+    ]
+}

@@ -34,19 +34,14 @@
          ]
       }
   ],
-  "fe-packages": [
-    {
-      "name": "opensearch_reports",
-      "package": "@openimis/fe-opensearch_reports",
-      "version": "1.2.0"
-    }
+  "services":[
+    "opensearch"
   ],
-  "be-packages": [
-    {
-      "name": "opensearch_reports",
-      "package": "openimis-be-opensearch_reports_py",
-      "version": "1.2.0"
-    }
+  "fePackages": [
+    "opensearch_reports"
+  ],
+  "bePackages": [
+    "opensearch_reports"
   ],
   "roles": [
     {

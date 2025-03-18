@@ -25,7 +25,7 @@ def merge_solutions(solution_file, permission_map, path=None, modules=None, menu
     directory_path = os.path.dirname(solution_file)
     solution = load_json(solution_file)
     # load direct modules
-    for x in (solution['dependency'] if 'dependency' in solution  else []):
+    for x in (solution['solutions'] if 'solutions' in solution  else []):
         merge_solutions( get_absolute_path(x, directory_path ),permission_map, modules=modules, menu_dict=menu_dict, role_dict=role_dict)
     for x in (solution['modules'] if 'modules' in solution  else []):
         merge_solutions( get_absolute_path(x, directory_path ),permission_map, modules=modules, menu_dict=menu_dict, role_dict=role_dict)
@@ -130,14 +130,14 @@ def process_packages(modules):
         if not module_data:
             continue
 
-        fe_packages.extend(module_data.get("fe-packages", []))
-        be_packages.extend(module_data.get("be-packages", []))
+        fe_packages.extend(module_data.get("fePackages", []))
+        be_packages.extend(module_data.get("bePackages", []))
 
     return sorted(fe_packages, key=lambda x: x.get("name", "")), sorted(be_packages, key=lambda x: x.get("name", ""))
 
 
 def process_services(service_file):
-    """Process service dependencies from service.json and generate YAML output."""
+    """Process service solutions from service.json and generate YAML output."""
 
     service_data = load_json(service_file)
 

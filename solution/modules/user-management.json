@@ -30,8 +30,8 @@
          ]
       }
   ],
-  "fe-packages": [],
-  "be-packages": [],
+  "fePackages": [],
+  "bePackages": [],
   "roles": [
     {
       "roleName": "IMIS Administrator",
