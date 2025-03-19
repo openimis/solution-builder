@@ -1,6 +1,11 @@
-const fs = typeof window === 'undefined' ? require('fs'): null;
-const path  = typeof window === 'undefined' ? require('path'): null; // CommonJS
-const JSZip  = typeof window === 'undefined' ? require('jszip'): null; // CommonJS
+
+if(typeof window === 'undefined'){
+    const fs =  require('fs');
+    const path = require('path'); // CommonJS
+    const JSZip  = require('jszip'); // CommonJS
+}
+
+
 // solution-builder.js
 // Base URL for fetching files from the repository
 
@@ -98,7 +103,7 @@ async function mergeSolutions(
     initData = new Set()) 
 {
     let solution = null
-    if (fs !== null && path !== null &&  typeof solutionFile === 'string' ){
+    if ( typeof window === 'undefined'  &&  typeof solutionFile === 'string' ){
         solutionPath = getAbsolutePath(solutionFile, directoryPath)
         solution =  await fetchJSON(solutionPath);
         directoryPath = path.dirname(solutionPath);
@@ -178,7 +183,7 @@ async function mergeSolutions(
 }
 
 function getAbsolutePath(relativePath, basePath) {
-    if(path != null){
+    if( typeof window === 'undefined'){
         return path.isAbsolute(relativePath) ? relativePath : path.join(basePath, relativePath);
     }
     return relativePath;
@@ -294,7 +299,7 @@ function createZip(data, filename) {
     zip.generateAsync({type:"blob"})
         .then(function(content) {
 
-            if (fs != null){
+            if (typeof window === 'undefined'){
                 fs.writeFileSync(filename, content);
                 
             }else {
