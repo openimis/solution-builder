@@ -1,15 +1,15 @@
 {
   "menus": [],
   "fePackages": [
-"deduplication"
+"DeduplicationModule"
   ],
   "bePackages": [
 "deduplication"
   ],
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "deduplication.deduplication_review",
         "deduplication.deduplication_payment_review"

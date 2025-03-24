@@ -2,8 +2,8 @@
   "menus": [],
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "calculation.read_calculation_rule",
         "calculation.update_calculation_rule"
@@ -19,7 +19,7 @@
     }
   ],
   "fePackages": [
-    "calculation"
+    "CalculationModule"
   ],
   "bePackages": [
     "calculation"

@@ -3,6 +3,9 @@
     "insuree": "../modules/insuree.json",
     "policy": "../modules/policy.json",
     "product": "../modules/product.json",
-    "healthFacility": "../modules/health-facility.json"
+    "healthFacility": "../modules/health-facility.json",
+    "invoiceCustomer":"../modules/invoice-customer.json",
+    "invoiceSupplier":"../modules/invoice-supplier.json"
+
   }
 }

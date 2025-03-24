@@ -1,8 +1,5 @@
 {
   "menus": [],
-  "modules":{
-    "calculation":"../modules/calculation.json"
-  },
   "bePackages": [
     "calcrule_social_protection"
   ]

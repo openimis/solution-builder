@@ -26,12 +26,12 @@
          ]
       }
   ],
-  "fePackages": ["payroll"],
+  "fePackages": ["PayrollModule"],
   "bePackages": ["payroll"],
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "payroll.read_payroll",
         "payroll.create_payroll",

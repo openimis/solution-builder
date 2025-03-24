@@ -1,9 +1,10 @@
 
 if(typeof window === 'undefined'){
-    const fs =  require('fs');
-    const path = require('path'); // CommonJS
-    const JSZip  = require('jszip'); // CommonJS
+    fs =  require('fs');
+    path = require('path'); // CommonJS
+    JSZip = require('jszip'); // CommonJS
 }
+
 
 
 // solution-builder.js
@@ -52,10 +53,53 @@ async function fetchJSON(handleOrUrl, DIRECTORY=null) {
     }
 }
 
+
+
+
+function getBePackageConf(name, definition, branch){
+    if (typeof definition === 'undefined'){
+        console.log(name + " be has no definition")
+        return {}
+    }
+    
+    let pip = ''
+    if (branch == 'released'){
+        pip =  definition.package + "~=" + definition.version;
+    }else{
+        pip = "git+" + definition.git + ".git@" + branch + "#egg="+ definition.package;
+    }
+
+    return {
+        "name": name,
+        "pip" : pip
+    }
+}
+
+function getFePackageConf(name, definition, branch){
+    if (typeof definition === 'undefined'){
+        console.log(name + " fe has no definition")
+        return {}
+    }
+    let npm = ''
+    if (branch == 'released'){
+        npm = definition.package + "@>=" + definition.version;
+    }else{
+        npm = definition.package + "@" +  definition.git + "#" + branch
+    }
+
+
+
+    return {
+        "name": name,
+        "pip" : npm 
+    }
+}
+
 async function processSolutions(    
     solutionFile, 
     directoryPath,
-    permissionMap
+    permissionMap,
+    branch = 'develop'
 )
 {
     const merged = await mergeSolutions(
@@ -63,11 +107,11 @@ async function processSolutions(
         directoryPath,
         permissionMap
     )
-
+    let result = {}
 
     for (let key in merged.moduleRefDict || {}) {
         const depPath = getAbsolutePath(merged.moduleRefDict[key], directoryPath);
-        const result = await mergeSolutions(
+        result = await mergeSolutions(
             depPath,
             directoryPath,
             permissionMap,
@@ -87,7 +131,21 @@ async function processSolutions(
         }
         
     }
-    return merged;
+    let PIPModules = new Set()
+    for (let idx in merged.bePackagesList){
+        bePackage = merged.bePackagesList[idx]
+        PIPModules.add(getBePackageConf(bePackage, merged.bePackagesDefDict[bePackage], branch))
+    }
+    let NPMModules = new Set()
+    for (let idx  in merged.fePackagesList){
+        fePackage = merged.fePackagesList[idx]
+        NPMModules.add(getFePackageConf(fePackage, merged.fePackagesDefDict[fePackage], branch))
+    }
+        
+    return { 
+        "feConf": { "modules" : NPMModules},
+        "beConf":{ "modules" : PIPModules}
+        };
 }
 
 async function mergeSolutions(
@@ -265,22 +323,11 @@ async function generateSolution(event) {
 
         premission_map = fetchJSON("permission_map.json")
         // Process resolved modules (assuming processSolution exists in your code)
-        const {
-            rolesDict,
-            menusDict,
-            moduleRefDict,
-            bePackagesList, bePackagesDefDict,
-            fePackagesList, fePackagesDefDict,
-            servicesList, servicesDefDict,
-            initData
-        } = await processSolutions(solution, premission_map, null);
+        const {feConf, beConf}= await processSolutions(solution, premission_map, null);
 
         const output = {
-            'generated-menu.json': { menusDict },
-            'generated-roles.json': { rolesDict },
-            'fe-openimis.json': { packages: fePackagesList },
-            'be-openimis.json': { packages: bePackagesList },
-            'services.yaml': servicesList
+            'fe-openimis.json': feConf,
+            'be-openimis.json': beConf,
         };
 
         createZip(output, 'solution.zip');
@@ -314,4 +361,4 @@ function createZip(data, filename) {
 
 
 
-module.exports = { mergeSolutions, getAbsolutePath, processSolutions };
+module.exports = { mergeSolutions, getAbsolutePath, createZip, processSolutions };

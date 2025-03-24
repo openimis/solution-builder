@@ -1,10 +1,10 @@
 {
-  "fePackages": ["location"],
+  "fePackages": ["LocationModule"],
   "bePackages": [ "location"],
      "roles": [
       {
-        "roleName": "IMIS Administrator",
-        "code": "admin",
+        "roleName": "LOCAL Administrator",
+        "code": "local_admin",
         "permissions": [
           "location.read_health_facilities",
           "location.create_health_facilities",
@@ -12,5 +12,21 @@
           "location.delete_health_facilities"
         ]
       }
-     ]
+     ],  
+    "menus": [
+      {
+        "position":6,
+        "id": "AdministrationMainMenu",
+        "name":"Administration",
+        "icon":"administration-icon",
+        "description":"Administration",
+        "submenus":[
+
+           {
+              "position":3,
+              "id": "admin.healthFacilities"
+           }
+        ]
+     }
+    ]
   }

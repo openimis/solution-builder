@@ -1,0 +1,54 @@
+{
+  "menus": [
+    {
+      "position":3,
+      "id": "PaymentsMainMenu",
+      "name":"PaymentsMainMenu",
+      "icon":"task-icon",
+      "description":"Payment Management",
+      "submenus":[
+         {
+            "position":51,
+            "id": "legalAndFinance.invoices"
+         }
+      ]
+   }
+  ],
+  "fePackages": ["InvoiceModule"],
+  "bePackages": ["invoice"],
+   "roles": [
+    {
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
+      "permissions": [
+        "invoice.read_invoice",
+        "invoice.create_invoice",
+        "invoice.update_invoice",
+        "invoice.delete_invoice",
+        "invoice.amend_invoice",
+        "invoice.read_invoice_payment",
+        "invoice.create_invoice_payment",
+        "invoice.update_invoice_payment",
+        "invoice.delete_invoice_payment",
+        "invoice.refund_invoice_payment",
+        "invoice.read_invoice_event",
+        "invoice.create_invoice_event",
+        "invoice.update_invoice_event",
+        "invoice.delete_invoice_event",
+        "invoice.create_invoice_event_message",
+        "invoice.delete_my_message_event",
+        "invoice.delete_all_message_event"
+      ]
+    }
+   ],
+  "initData": [
+    "gender.json",
+    "education.json",
+    "profession.json",
+    "relations.json",
+    "identification-types.json",
+    "family-type.json",
+    "relations.json",
+    "confirmation-type.json"
+  ]
+}

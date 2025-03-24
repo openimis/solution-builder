@@ -8,28 +8,29 @@
          "description":"Configurations",
          "submenus":[
             {
-               "position":2,
-               "id":"admin.roleManagement"
+               "position":4,
+               "id": "profile.myProfile"
             },
             {
-               "position":1,
-               "id":"admin.users"
+               "position":5,
+               "id":"profile.changePassword"
             }
          ]
       }
   ],
   "fePackages": [
-    "core",
-    "admin",
-    "menu"
+    "CoreModule",
+    "AdminModule",
+    "ProfileModule",
+    "HomeModule"
   ],
   "bePackages": [
     "core"
   ],
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "core.read_enrolment_officers",
         "core.create_enrolment_officers",

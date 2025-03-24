@@ -1,0 +1,54 @@
+{
+  "menus": [
+    {
+      "position":3,
+      "id": "PaymentsMainMenu",
+      "name":"PaymentsMainMenu",
+      "icon":"task-icon",
+      "description":"Payment Management",
+      "submenus":[
+         {
+          "position":51,
+          "id": "legalAndFinance.bills"
+       }
+      ]
+   }
+  ],
+  "fePackages": ["InvoiceModule"],
+  "bePackages": ["invoice"],
+   "roles": [
+    {
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
+      "permissions": [
+        "bill.read_bill",
+        "bill.create_bill",
+        "bill.update_bill",
+        "bill.delete_bill",
+        "bill.amend_bill",
+        "bill.read_bill_payment",
+        "bill.create_bill_payment",
+        "bill.update_bill_payment",
+        "bill.delete_bill_payment",
+        "bill.refund_bill_payment",
+        "bill.read_bill_event",
+        "bill.create_bill_event",
+        "bill.update_bill_event",
+        "bill.delete_bill_event",
+        "bill.create_bill_event_message",
+        "bill.delete_my_event_message",
+        "bill.delete_all_event_message"
+      ]
+    }
+   ],
+  "initData": [
+    "gender.json",
+    "education.json",
+    "profession.json",
+    "relations.json",
+    "identification-types.json",
+    "family-type.json",
+    "relations.json",
+    "confirmation-type.json"
+  ]
+}

@@ -111,7 +111,7 @@ async function extractFERepoList(data, data_rel) {
 //     console.error('Error writing JSON file:', error);
 // }
 
-const { mergeSolutions, processSolutions } = require('./solutionBuilder.js');
+const { createZip, processSolutions } = require('./solutionBuilder.js');
 
 async function main() {
     try {
@@ -119,11 +119,17 @@ async function main() {
         const permission = fs.readFileSync('./solution/permissions_map.json', 'utf8');
         const permissionMap = JSON.parse(permission);
 
-        const result = await processSolutions(
+        const {feConf, beConf} = await processSolutions(
             solution_path,
             process.cwd(),
             permissionMap,
         );
+
+        const output = {
+            'fe-openimis.json': {'modules' : Array.from(feConf.modules)},
+            'be-openimis.json': {'modules' : Array.from(beConf.modules)},
+        };
+        createZip('output.zip', output)
 
         console.log(JSON.stringify(result));
     } catch (error) {

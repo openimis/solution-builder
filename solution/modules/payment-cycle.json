@@ -2,10 +2,10 @@
   "menus": [
       {
          "position":3,
-         "id": "PaymentManagement",
-         "name":"Payment Management",
+         "id": "PaymentsMainMenu",
+         "name":"PaymentsMainMenu",
          "icon":"task-icon",
-         "description":"PayrollNameMenu",
+         "description":"Payment Management",
          "submenus":[
             {
                "position":5,
@@ -15,15 +15,15 @@
       }
   ],
   "fePackages": [
-"payment_cycle"
+"PaymentCycleModule"
   ],
   "bePackages": [
 "payment_cycle"
   ],
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "payment_cycle.query_payment_cycle",
         "payment_cycle.create_payment_cycle",

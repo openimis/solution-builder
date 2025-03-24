@@ -2,10 +2,10 @@
   "menus": [
       {
          "position":1,
-         "id": "SocialRegistryMainMenu",
-         "name":"Social Registry",
+         "id": "ClientRegistryMainMenu",
+         "name":"Client Registry",
          "icon":"task-icon",
-         "description":"Social Registry",
+         "description":"Client Registry",
          "submenus":[
             {
                "position":1,
@@ -15,13 +15,11 @@
       }
   ],
   "fePackages": [],
-  "bePackages": [
-"api_etl"
-  ],
+  "bePackages": ["api_etl" ],
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "api_etl.read_api_etl",
         "api_etl.execute_api_etl"

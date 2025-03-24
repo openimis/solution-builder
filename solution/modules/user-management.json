@@ -14,18 +14,6 @@
             {
                "position":1,
                "id":"admin.users"
-            },
-            {
-               "position":11,
-               "id":"admin.taskExecutionerGroups"
-            },
-            {
-               "position":2,
-               "id": "profile.myProfile"
-            },
-            {
-               "position":1,
-               "id":"profile.changePassword"
             }
          ]
       }
@@ -34,8 +22,8 @@
   "bePackages": [],
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "core.read_users",
         "core.create_users",

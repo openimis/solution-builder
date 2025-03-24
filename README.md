@@ -118,10 +118,10 @@ initData: {}
   "menus": [
     {
       "position": 1,
-      "id": "SocialRegistryMainMenu",
-      "name": "Social Registry",
+      "id": "ClientRegistryMainMenu",
+      "name": "Client Registry",
       "icon": "task-icon",
-      "description": "Social Registry",
+      "description": "Client Registry",
       "submenus": [
         {
           "position": 1,
@@ -434,8 +434,8 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "individual.read_individual",
         "individual.create_individual",
@@ -460,8 +460,8 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "grievance.create_grievance",
         "grievance.update_grievance"
@@ -476,8 +476,8 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "grievance.delete_grievance",
         "grievance.read_grievance"
@@ -492,8 +492,8 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         {
           "name": "grievance.create_grievance",

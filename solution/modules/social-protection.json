@@ -1,11 +1,11 @@
 {
   "menus": [
       {
-         "position":1,
-         "id": "SocialRegistryMainMenu",
-         "name":"Social Registry",
+         "position":3,
+         "id": "BenefitPlanMainMenu",
+         "name":"BenefitPlans",
          "icon":"task-icon",
-         "description":"Social Registry",
+         "description":"Benefit Plans",
          "submenus":[
             {
                "position":2,
@@ -15,15 +15,15 @@
       }
   ],
   "fePackages": [
-    "social_protection"
+    "SocialProtectionModule"
   ],
   "bePackages": [
     "social_protection"
   ],
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "social_protection.read_benefit_plan",
         "social_protection.create_benefit_plan",

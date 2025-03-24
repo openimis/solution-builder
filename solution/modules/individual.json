@@ -2,10 +2,10 @@
   "menus": [
       {
          "position":1,
-         "id": "SocialRegistryMainMenu",
-         "name":"Social Registry",
+         "id": "ClientRegistryMainMenu",
+         "name":"Client Registry",
          "icon":"task-icon",
-         "description":"Social Registry",
+         "description":"Client Registry",
          "submenus":[
             {
                "position":4,
@@ -19,15 +19,15 @@
       }
   ],
   "fePackages": [
-    "individual"
+    "IndividualModule"
   ],
   "bePackages": [
     "individual"
   ],
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "individual.read_individual",
         "individual.create_individual",

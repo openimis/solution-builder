@@ -1,11 +1,11 @@
 {
   "menus": [
     {
-         "position":2,
-         "id": "InsureeMainMenu",
-         "name":"InsureeMainMenu",
-         "icon":"insuree-icon",
-         "description":"Insuree panel",
+         "position":1,
+         "id": "ClientRegistryMainMenu",
+         "name": "Client Registry",
+         "icon": "task-icon",
+         "description": "Client Registry",
          "submenus":[
             {
                "position":6,
@@ -15,15 +15,15 @@
       }
   ],
   "fePackages": [
-"policyholder"
+"PolicyHolderModule"
   ],
   "bePackages": [
 "policyholder"
   ],
    "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "policyholder.read_policyholder",
         "policyholder.read_policyholder_admins",

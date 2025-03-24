@@ -19,15 +19,15 @@
       }
   ],
   "fePackages": [
-"grievance_social_protection"
+"GrievanceSocialProtectionModule"
   ],
   "bePackages": [
 "grievance_social_protection"
   ],
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "grievance.read_grievance",
         "grievance.create_grievance",

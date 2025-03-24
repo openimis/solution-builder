@@ -1,37 +1,36 @@
 {
   "menus": [
     {
-         "position":2,
-         "id": "InsureeMainMenu",
-         "name":"InsureeMainMenu",
-         "icon":"insuree-icon",
-         "description":"Insuree panel",
+      "id": "ClientRegistryMainMenu",
+      "name": "Client Registry",
+      "icon": "task-icon",
+      "description": "Client Registry",
          "submenus":[
             {
-               "position":2,
+               "position":12,
                "id": "insuree.familiesOrGroups"
             },
             {
-               "position":1,
+               "position":11,
                "id":"insuree.addFamilyOrGroup"
             },
             {
-               "position":3,
+               "position":13,
                "id":"insuree.insurees"
             }
          ]
       }
   ],
   "fePackages": [
-"insuree"
+"InsureeModule"
   ],
   "bePackages": [
 "insuree"
   ],
    "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "insuree.read_insurees",
         "insuree.read_insuree",

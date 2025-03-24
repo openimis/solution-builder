@@ -5,7 +5,7 @@
          "id": "PaymentsMainMenu",
          "name":"PaymentsMainMenu",
          "icon":"task-icon",
-         "description":"PaymentNameMenu",
+         "description":"Payment Management",
          "submenus":[
             {
                "position":20,
@@ -14,12 +14,12 @@
          ]
       }
   ],
-  "fePackages": ["payroll"],
+  "fePackages": ["PayrollModule"],
   "bePackages": ["payroll"],
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "payment_point.read_payment_point",
         "payment_point.create_payment_point",
