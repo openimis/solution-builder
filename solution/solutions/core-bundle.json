@@ -7,15 +7,11 @@
     "report": "../modules/report.json",
     "userManagement": "../modules/user-management.json"
   },
-  "services":[
-    "base", "db", "cache"
-  ],
-
   "solutions": [
     "../sources/be-sources.json",
     "../sources/fe-source.json",
     "../services/base.json",
-    "../services/cache.json"
-
+    "../services/cache.json",
+    "../services/opensearch.json"
   ]
 }

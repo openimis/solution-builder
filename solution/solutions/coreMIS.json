@@ -1,11 +1,12 @@
 {
   "modules": {
-    "grievance": "../modules/grievance.json"
+    "grievance": "../modules/grievance.json",
+    "openserach": "../modules/opensearch-report.json"
   },
   "solutions": [
-    "./opensearch-report-bundle.json",
     "./social-protection-bundle.json",
     "./good-distribution-bundle.json",
     "./core-bundle.json"
-  ]
+  ],
+  "services":["db"]
 }

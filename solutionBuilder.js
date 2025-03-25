@@ -3,6 +3,7 @@ if(typeof window === 'undefined'){
     fs =  require('fs');
     path = require('path'); // CommonJS
     JSZip = require('jszip'); // CommonJS
+    yaml = require('js-yaml'); // 
 }
 
 
@@ -75,6 +76,32 @@ function getBePackageConf(name, definition, branch){
     }
 }
 
+function getServiceConf(name, definition, services = {}){
+    if (typeof definition === 'undefined'){
+        console.log(name + " service has no definition")
+        return {}
+    }
+    if( !(services.hasOwnProperty(name))){
+        services[name] = {};
+        }
+    if(definition.hasOwnProperty('path')){
+        services[name]['path'] = definition['path']
+    }
+    if(definition.hasOwnProperty('env_file')){
+        if(!services[name].hasOwnProperty('env_file')){
+            services[name]['env_file'] = []
+        }
+        for(let env_file in definition['env_file']){
+            if(!services[name]['env_file'].includes(definition['env_file'][env_file])){
+                services[name]['env_file'].push(definition['env_file'][env_file])
+            }
+        }
+    }
+
+    return services
+}
+
+
 function getFePackageConf(name, definition, branch){
     if (typeof definition === 'undefined'){
         console.log(name + " fe has no definition")
@@ -125,7 +152,10 @@ async function processSolutions(
         Array.prototype.push.apply(merged.fePackagesList,result.fePackagesList);
         Object.assign(merged.fePackagesDefDict, result.fePackagesDefDict);
         Array.prototype.push.apply(merged.servicesList,result.servicesList);
-        Object.assign(merged.servicesDefDict, result.servicesDefDict);
+        for (let idx  in result.servicesDefDict){
+            service = merged.servicesList[idx]
+            merged.servicesDefDict =  getServiceConf(service, result.servicesDefDict[service], services)
+        }
         for (attr in merged.initData){
             merged.initData[attr].assign(...result.initData[attr]);
         }
@@ -141,11 +171,34 @@ async function processSolutions(
         fePackage = merged.fePackagesList[idx]
         NPMModules.add(getFePackageConf(fePackage, merged.fePackagesDefDict[fePackage], branch))
     }
-        
-    return { 
-        "feConf": { "modules" : NPMModules},
-        "beConf":{ "modules" : PIPModules}
-        };
+    let services = {}
+    for (let idx  in merged.servicesList){
+        service = merged.servicesList[idx]
+        services =  getServiceConf(service, merged.servicesDefDict[service], services)
+    }
+
+    output = {}
+
+    if(NPMModules.size>0){
+        output['fe-openimis.json'] ={"modules": [...PIPModules]};
+    }
+    if(PIPModules.size>0){
+        output['be-openimis.json'] ={"modules": [...PIPModules]};
+    }
+    if(Object.keys(merged.menusDict).length>0){
+        output['menus.json'] = merged.menusDict;
+    }
+    if(Object.keys(merged.rolesDict).length>0){
+        output['roles.json'] = merged.rolesDict;
+    }
+    if(Object.keys(merged.initData).length>0){
+        output['init-data.json'] = [...merged.initData];
+    }
+    if(Object.keys(services).length>0){
+        output['compose.yml'] = services;
+    }
+    
+    return output
 }
 
 async function mergeSolutions(
@@ -221,7 +274,8 @@ async function mergeSolutions(
     servicesList = [...(solution.services || []), ...servicesList]
 
     for (let key in solution.serviceDefinitions || {}) {
-        servicesDefDict[key] = solution.serviceDefinitions[key];
+        servicesDefDict =  getServiceConf(key, solution.serviceDefinitions[key], servicesDefDict)
+
     }
 
     // Merge roles
@@ -323,12 +377,8 @@ async function generateSolution(event) {
 
         premission_map = fetchJSON("permission_map.json")
         // Process resolved modules (assuming processSolution exists in your code)
-        const {feConf, beConf}= await processSolutions(solution, premission_map, null);
+        const output = await processSolutions(solution, premission_map, null);
 
-        const output = {
-            'fe-openimis.json': feConf,
-            'be-openimis.json': beConf,
-        };
 
         createZip(output, 'solution.zip');
         resultDiv.innerHTML = 'Solution generated and downloaded successfully!';
@@ -338,25 +388,38 @@ async function generateSolution(event) {
     }
 }
 // Function to create a zip file
-function createZip(data, filename) {
+async function createZip(data, filename) {
     const zip = new JSZip();
     Object.entries(data).forEach(([name, content]) => {
-        zip.file(name, JSON.stringify(content, null, 2));
+        // Check if the filename ends with .yml or .yaml (case-insensitive)
+        if (name.toLowerCase().endsWith('.yml') || name.toLowerCase().endsWith('.yaml')) {
+            // Stringify as YAML
+            zip.file(name, yaml.dump(content));
+        } else {
+            // Stringify as JSON with formatting
+            zip.file(name, JSON.stringify(content, null, 2));
+        }
     });
-    zip.generateAsync({type:"blob"})
-        .then(function(content) {
+    try {
+        const content = await zip.generateAsync({ type: "blob" });
 
-            if (typeof window === 'undefined'){
-                fs.writeFileSync(filename, content);
-                
-            }else {
-                const link = document.createElement("a");
-                link.href = URL.createObjectURL(content);
-                link.download = filename;
-                link.click();
-            }
-            console.log(`ZIP file "${zipFilename}" created successfully!`);
-        });
+        if (typeof window === 'undefined') {
+            // Node.js: Convert Blob to Buffer and write to disk
+            const buffer = Buffer.from(await content.arrayBuffer());
+            fs.writeFileSync(filename, buffer);
+            console.log(`ZIP file "${filename}" created successfully on disk!`);
+        } else {
+            // Browser: Trigger download
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(content);
+            link.download = filename;
+            link.click();
+            console.log(`ZIP file "${filename}" triggered for download!`);
+        }
+    } catch (error) {
+        console.error("Error creating ZIP file:", error);
+    }
+
 }   
 
 

@@ -119,19 +119,14 @@ async function main() {
         const permission = fs.readFileSync('./solution/permissions_map.json', 'utf8');
         const permissionMap = JSON.parse(permission);
 
-        const {feConf, beConf} = await processSolutions(
+        const output = await processSolutions(
             solution_path,
             process.cwd(),
             permissionMap,
         );
 
-        const output = {
-            'fe-openimis.json': {'modules' : Array.from(feConf.modules)},
-            'be-openimis.json': {'modules' : Array.from(beConf.modules)},
-        };
-        createZip('output.zip', output)
-
-        console.log(JSON.stringify(result));
+;
+        await createZip(output,'output.zip')
     } catch (error) {
         console.error('Error:', error);
     }
