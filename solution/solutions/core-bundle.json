@@ -4,7 +4,6 @@
     "taskManagement": "../modules/task-management.json",
     "calculation": "../modules/calculation.json",
     "core": "../modules/core.json",
-    "report": "../modules/report.json",
     "userManagement": "../modules/user-management.json"
   },
   "solutions": [
