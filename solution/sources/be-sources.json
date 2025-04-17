@@ -155,7 +155,7 @@
     "version": "1.6.1"
   },
   "im_export": {
-    "package": "openimis-be-im_export",
+    "package": "openimis-be-im_ ",
     "git": "https://github.com/openimis/openimis-be-im_export_py",
     "version": "1.3.0"
   },

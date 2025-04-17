@@ -34,6 +34,35 @@ function selectSource(type) {
     init();
 }
 
+async function generateSolution(event) {
+    event.preventDefault();
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = 'Generating solution...';
+
+    try {
+        // Get selected modules (solutions)
+        const solutions = Array.from(document.querySelectorAll('#solutions input[type="checkbox"]:checked'))
+        .map(checkbox => checkbox.value);
+
+        // Get selected modules (checkboxes)
+        const modules = Array.from(document.querySelectorAll('#modules input[type="checkbox"]:checked'))
+            .map(checkbox => checkbox.value);
+        const solution = { solutions, modules };
+            
+
+        premission_map = await fetchJSON('solution/permissions_map.json', DIRECTORY)
+        // Process resolved modules (assuming processSolution exists in your code)
+        const output = await processSolutions(solution, DIRECTORY, premission_map );
+
+
+        createZip(output, 'solution.zip');
+        resultDiv.innerHTML = 'Solution generated and downloaded successfully!';
+    } catch (error) {
+        resultDiv.innerHTML = `Error: ${error.message}`;
+        console.error(error);
+    }
+}
+
 // Function to update GitHub authentication visibility
 function updateGithubAuthVisibility() {
     const authType = document.querySelector('input[name="githubAuth"]:checked').value;

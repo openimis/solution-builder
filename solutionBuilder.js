@@ -25,7 +25,9 @@ function isHttpUrl(str) {
     return typeof str == 'string' && (str.startsWith('http://') || str.startsWith('https://'));
 }
 
-async function fetchJSON(handleOrUrl, DIRECTORY=null) {
+
+
+async function fetchJSON(handleOrUrl,DIRECTORY=null, rootPath = '') {
     // Case 1: GitHub fetch (browser or Node with fetch polyfill)
     if (isHttpUrl(handleOrUrl)) {
         const response = await fetch(handleOrUrl, { headers: getHeaders() });
@@ -34,10 +36,25 @@ async function fetchJSON(handleOrUrl, DIRECTORY=null) {
         return JSON.parse(atob(data.content));
     } 
     // Case 2: Browser File System Access API (directory handle)
-    else if (typeof DIRECTORY !== 'undefined' && DIRECTORY) {
-        const fileHandle = typeof handleOrUrl === 'string' 
-            ? (await DIRECTORY.getFileHandle(handleOrUrl)) 
-            : handleOrUrl.handle;
+    else if (typeof DIRECTORY !== 'undefined' && typeof DIRECTORY !== 'string' && DIRECTORY) {
+
+        if (typeof handleOrUrl == 'string') {
+            // Split the path into parts (e.g., "subfolder/file.txt" -> ["subfolder", "file.txt"])
+            const pathParts = handleOrUrl.split('/').filter(part => part.length > 0);
+            let currentDir = DIRECTORY;
+
+            // Navigate directories if there are multiple parts
+            for (let i = 0; i < pathParts.length - 1; i++) {
+                currentDir = await currentDir.getDirectoryHandle(pathParts[i], { create: false });
+            }
+
+            // Get the file handle from the final directory
+            const fileName = pathParts[pathParts.length - 1];
+            fileHandle = await currentDir.getFileHandle(fileName);
+        } else {
+            // Assume handleOrUrl is an object with a handle property (file or directory handle)
+            fileHandle = handleOrUrl;
+        }
         const file = await fileHandle.getFile();
         const text = await file.text();
         return JSON.parse(text);
@@ -122,6 +139,23 @@ function getFePackageConf(name, definition, branch){
     }
 }
 
+
+function makeCoreModuleConfiguration(menus){
+    return [
+        {
+          "model": "core.moduleconfiguration",
+          "fields": {
+            "id": "ebdbdbe5-c9be-4e66-8c49-edd1e5284c7c",
+            "module": "fe-core",
+            "version": "1",
+            "config": "{\n  \"menus\": "+JSON.stringify(menus).replace(/"/g, '\\"')+"}",
+            "is_exposed": true,
+            "layer": "fe"
+          }
+        }
+      ]
+}
+
 async function processSolutions(    
     solutionFile, 
     directoryPath,
@@ -129,15 +163,16 @@ async function processSolutions(
     branch = 'develop'
 )
 {
+    solutionFilePath = getAbsolutePath(typeof solutionFile == 'string'?solutionFile:'', '', false)
     const merged = await mergeSolutions(
-        solutionFile, 
+        solutionFile,
         directoryPath,
         permissionMap
     )
     let result = {}
 
     for (let key in merged.moduleRefDict || {}) {
-        const depPath = getAbsolutePath(merged.moduleRefDict[key], directoryPath);
+        const depPath = getAbsolutePath(merged.moduleRefDict[key], solutionFilePath);
         result = await mergeSolutions(
             depPath,
             directoryPath,
@@ -162,14 +197,17 @@ async function processSolutions(
         
     }
     let PIPModules = new Set()
+    merged.bePackagesList = merged.bePackagesList.filter((item, index) => merged.bePackagesList.indexOf(item) === index)
     for (let idx in merged.bePackagesList){
         bePackage = merged.bePackagesList[idx]
         PIPModules.add(getBePackageConf(bePackage, merged.bePackagesDefDict[bePackage], branch))
     }
     let NPMModules = new Set()
+    merged.fePackagesList = merged.fePackagesList.filter((item, index) => merged.fePackagesList.indexOf(item) === index)
     for (let idx  in merged.fePackagesList){
         fePackage = merged.fePackagesList[idx]
-        NPMModules.add(getFePackageConf(fePackage, merged.fePackagesDefDict[fePackage], branch))
+        fePackageConfig = 
+        NPMModules.add()
     }
     let services = {}
     for (let idx  in merged.servicesList){
@@ -178,19 +216,20 @@ async function processSolutions(
     }
 
     output = {}
-
-    if(NPMModules.size>0){
-        output['fe-openimis.json'] ={"modules": [...PIPModules]};
+    
+    if(NPMModules.menussize>0){
+        output['fe-openimis.json'] ={"modules": [...NPMModules]};
     }
     if(PIPModules.size>0){
         output['be-openimis.json'] ={"modules": [...PIPModules]};
     }
     if(Object.keys(merged.menusDict).length>0){
-        output['menus.json'] = merged.menusDict;
+        output['fixtures/ModuleConfiguration-core.json'] =makeCoreModuleConfiguration(merged.menusDict);
     }
     if(Object.keys(merged.rolesDict).length>0){
-        output['roles.json'] = merged.rolesDict;
+        output['fixtures/Roles.json'] = merged.rolesDict;
     }
+    //FIXME add the other fixtures like gender, professions etc idially based on solution.json
     if(Object.keys(merged.initData).length>0){
         output['init-data.json'] = [...merged.initData];
     }
@@ -202,7 +241,7 @@ async function processSolutions(
 }
 
 async function mergeSolutions(
-    solutionFile, 
+    solutionFile,
     directoryPath,
     permissionMap,
     rolesDict = {},
@@ -213,19 +252,20 @@ async function mergeSolutions(
     servicesList = new Set(), servicesDefDict = {},
     initData = new Set()) 
 {
+    let solutionFilePath = ''
     let solution = null
     if ( typeof window === 'undefined'  &&  typeof solutionFile === 'string' ){
         solutionPath = getAbsolutePath(solutionFile, directoryPath)
         solution =  await fetchJSON(solutionPath);
-        directoryPath = path.dirname(solutionPath);
-    } else if (typeof FileSystemFileHandle !== 'undefined' && solutionFile instanceof FileSystemFileHandle){
+        solutionFilePath = path.dirname(solutionPath);
+    }  else if (typeof FileSystemFileHandle !== 'undefined' && solutionFile == '[object FileSystemFileHandle]'){
         solution =  await fetchJSON(solutionFile, directoryPath);
-        directoryPath = getAbsolutePath(solutionFile, directoryPath);
-    }else {
+        solutionPath = solutionFile
+        solutionFilePath = 'solution/solutions';
+    } else if  (typeof solutionFile === 'object'){
         solution = solutionFile;
+        solutionFilePath = typeof directoryPath === 'string'?directoryPath:''
     }
-    
-
     if (solution.toString() == '[object Promise]') {
         console.warn(`Failed to load solution file: ${solutionFile}`);
         return { modules, menuDict, roleDict };
@@ -234,7 +274,7 @@ async function mergeSolutions(
     // Process solutions
     const solutions = solution.solutions || [];
     for (const dep of solutions) {
-        const depPath = getAbsolutePath(dep, directoryPath);
+        const depPath = getAbsolutePath(dep, solutionFilePath);
         const result = await mergeSolutions(
             depPath,
             directoryPath,
@@ -260,7 +300,7 @@ async function mergeSolutions(
     }
     // Process modules
     for (let key in solution.modules || {} ) {
-        const modulePath = getAbsolutePath(solution.modules[key], directoryPath);
+        const modulePath = getAbsolutePath(solution.modules[key], solutionFilePath);
         moduleRefDict[key] = modulePath;
     }
     fePackagesList = [...(solution.fePackages || []), ...fePackagesList]
@@ -294,11 +334,41 @@ async function mergeSolutions(
     };
 }
 
-function getAbsolutePath(relativePath, basePath) {
+function getAbsolutePath(relativePath, basePath, withFile=true) {
     if( typeof window === 'undefined'){
-        return path.isAbsolute(relativePath) ? relativePath : path.join(basePath, relativePath);
+        filePath = path.isAbsolute(relativePath) ? relativePath : path.join(basePath, relativePath)
+        if(withFile){
+            return filePath;
+        }else{
+            return path.dirname(filePath)
+        }
+        
+    }else{
+        const pathParts = relativePath.split('/').filter(part => part.length > 0);
+        let dirParts = basePath.split('/').filter(part => part.length > 0);
+        for (let i = 0; i < pathParts.length; i++) {
+            const part = pathParts[i];
+            if (part === '..') {
+                // Move up to root if we're not already there
+                if (dirParts.length !== 0) {
+                    // In this simplified model, we reset to root; no parent handle available
+                    dirParts.pop();
+                } else {
+                    throw new Error("Cannot go above root directory");
+                }
+            } else if (part !== '.') { // Ignore '.'
+                // If it's the last part, treat it as a file; otherwise, a directory
+                    dirParts.push(part)
+            }
+        }
+        if(withFile){
+            return dirParts.join('/');
+        }else{
+            return dirParts.slice(0, -1).join("/");
+        }
+
     }
-    return relativePath;
+    
 }
 
 function mergeRolesData(roles, permissionMap, roleDict) {
@@ -359,34 +429,6 @@ function getHeaders() {
     return headers;
 }
 
-async function generateSolution(event) {
-    event.preventDefault();
-    const resultDiv = document.getElementById('result');
-    resultDiv.innerHTML = 'Generating solution...';
-
-    try {
-        // Get selected modules (solutions)
-        const solutions = Array.from(document.querySelectorAll('#solutions input[type="checkbox"]:checked'))
-        .map(checkbox => checkbox.value);
-
-        // Get selected modules (checkboxes)
-        const modules = Array.from(document.querySelectorAll('#modules input[type="checkbox"]:checked'))
-            .map(checkbox => checkbox.value);
-        const solution = { solutions, modules };
-            
-
-        premission_map = fetchJSON("permission_map.json")
-        // Process resolved modules (assuming processSolution exists in your code)
-        const output = await processSolutions(solution, premission_map, null);
-
-
-        createZip(output, 'solution.zip');
-        resultDiv.innerHTML = 'Solution generated and downloaded successfully!';
-    } catch (error) {
-        resultDiv.innerHTML = `Error: ${error.message}`;
-        console.error(error);
-    }
-}
 // Function to create a zip file
 async function createZip(data, filename) {
     const zip = new JSZip();

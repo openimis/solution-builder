@@ -1,6 +1,6 @@
 {
     "fePackages": ["LocationModule"],
-    "bePackages": [ "location"],
+    "bePackages": [ "location", "medical", "medical_pricelist"],
     "roles": [
       {
         "roleName": "LOCAL Administrator",
