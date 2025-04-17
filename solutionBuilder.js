@@ -206,7 +206,7 @@ async function processSolutions(
     merged.fePackagesList = merged.fePackagesList.filter((item, index) => merged.fePackagesList.indexOf(item) === index)
     for (let idx  in merged.fePackagesList){
         fePackage = merged.fePackagesList[idx]
-        NPMModules.add(fePackage)
+        NPMModules.add(getFePackageConf(fePackage, merged.fePackagesDefDict[fePackage], branch))
     }
     let services = {}
     for (let idx  in merged.servicesList){
@@ -215,9 +215,15 @@ async function processSolutions(
     }
 
     output = {}
-    
+    // TODO manage the language in a better way 
     if(NPMModules.size>0){
-        output['fe-openimis.json'] ={"modules": [...NPMModules]};
+        output['fe-openimis.json'] ={
+            "modules": [...NPMModules], 
+            "locales": [
+                { "languages": ["en", "en-GB"], "intl": "en-GB", "fileNames": "en" },
+                { "languages": ["fr", "fr-FR"], "intl": "fr-FR", "fileNames": "fr" }
+              ]
+        };
     }
     if(PIPModules.size>0){
         output['be-openimis.json'] ={"modules": [...PIPModules]};
