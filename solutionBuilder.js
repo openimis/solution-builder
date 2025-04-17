@@ -135,7 +135,7 @@ function getFePackageConf(name, definition, branch){
 
     return {
         "name": name,
-        "pip" : npm 
+        "npm" : npm 
     }
 }
 
