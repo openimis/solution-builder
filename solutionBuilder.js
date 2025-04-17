@@ -148,7 +148,7 @@ function makeCoreModuleConfiguration(menus){
             "id": "ebdbdbe5-c9be-4e66-8c49-edd1e5284c7c",
             "module": "fe-core",
             "version": "1",
-            "config": "{\n  \"menus\": "+JSON.stringify(menus).replace(/"/g, '\\"')+"}",
+            "config": "{\n  \"menus\": "+JSON.stringify(menus).replace(/"/g, '\"')+"}",
             "is_exposed": true,
             "layer": "fe"
           }
@@ -206,8 +206,7 @@ async function processSolutions(
     merged.fePackagesList = merged.fePackagesList.filter((item, index) => merged.fePackagesList.indexOf(item) === index)
     for (let idx  in merged.fePackagesList){
         fePackage = merged.fePackagesList[idx]
-        fePackageConfig = 
-        NPMModules.add()
+        NPMModules.add(fePackage)
     }
     let services = {}
     for (let idx  in merged.servicesList){
@@ -217,21 +216,20 @@ async function processSolutions(
 
     output = {}
     
-    if(NPMModules.menussize>0){
+    if(NPMModules.size>0){
         output['fe-openimis.json'] ={"modules": [...NPMModules]};
     }
     if(PIPModules.size>0){
         output['be-openimis.json'] ={"modules": [...PIPModules]};
     }
     if(Object.keys(merged.menusDict).length>0){
-        output['fixtures/ModuleConfiguration-core.json'] =makeCoreModuleConfiguration(merged.menusDict);
+        output['fixtures/module-configuration-core.json'] =makeCoreModuleConfiguration(merged.menusDict);
     }
     if(Object.keys(merged.rolesDict).length>0){
-        output['fixtures/Roles.json'] = merged.rolesDict;
+        output['fixtures/roles.json'] = merged.rolesDict;
     }
-    //FIXME add the other fixtures like gender, professions etc idially based on solution.json
     if(Object.keys(merged.initData).length>0){
-        output['init-data.json'] = [...merged.initData];
+        output['fixtures/other-init-data.json'] = [...merged.initData];
     }
     if(Object.keys(services).length>0){
         output['compose.yml'] = services;

@@ -4,6 +4,7 @@
     "api-import": "../modules/api-import.json",
     "social-protection": "../modules/social-protection.json",
     "deduplication": "../modules/deduplication.json",
-    "calculation-social-protection":"../modules/calculation-social-protection.json"
+    "calculation-social-protection":"../modules/calculation-social-protection.json",
+    "workflow":"../modules/workflow.json"
 }
 }  
