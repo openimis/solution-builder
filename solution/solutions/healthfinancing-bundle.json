@@ -3,7 +3,7 @@
     "insuree": "../modules/insuree.json",
     "policy": "../modules/policy.json",
     "product": "../modules/product.json",
-    "healthFacility": "../modules/health-facility.json",
+    "healthFacility": "../modules/healthfacility.json",
     "invoiceCustomer":"../modules/invoice-customer.json",
     "invoiceSupplier":"../modules/invoice-supplier.json",
     "report": "../modules/report.json"

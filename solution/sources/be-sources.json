@@ -1,218 +1,260 @@
 {"bePackageDefinitions": {
-  "core": {
-    "package": "openimis-be-core",
-    "git": "https://github.com/openimis/openimis-be-core_py",
-    "version": "1.8.0"
-  },
-  "individual": {
-    "package": "openimis-be-individual",
-    "git": "https://github.com/openimis/openimis-be-individual_py",
-    "version": "1.2.0"
-  },
-  "workflow": {
-    "package": "openimis-be-workflow",
-    "git": "https://github.com/openimis/openimis-be-workflow_py",
-    "version": "1.0.1"
-  },
-  "tasks_management": {
-    "package": "openimis-be-tasks_management",
-    "git": "https://github.com/openimis/openimis-be-tasks_management_py",
-    "version": "1.2.0"
-  },
-  "report": {
-    "package": "openimis-be-report",
-    "git": "https://github.com/openimis/openimis-be-report_py",
-    "version": "1.6.2"
-  },
-  "location": {
-    "package": "openimis-be-location",
-    "git": "https://github.com/openimis/openimis-be-location_py",
-    "version": "1.8.0"
-  },
-  "medical": {
-    "package": "openimis-be-medical",
-    "git": "https://github.com/openimis/openimis-be-medical_py",
-    "version": "1.8.0"
-  },
-  "medical_pricelist": {
-    "package": "openimis-be-medical_pricelist",
-    "git": "https://github.com/openimis/openimis-be-medical_pricelist_py",
-    "version": "1.7.0"
-  },
-  "product": {
-    "package": "openimis-be-product",
-    "git": "https://github.com/openimis/openimis-be-product_py",
-    "version": "1.7.0"
-  },
-  "insuree": {
-    "package": "openimis-be-insuree",
-    "git": "https://github.com/openimis/openimis-be-insuree_py",
-    "version": "1.8.0"
-  },
-  "policy": {
-    "package": "openimis-be-policy",
-    "git": "https://github.com/openimis/openimis-be-policy_py",
-    "version": "1.8.0"
-  },
-  "contribution": {
-    "package": "openimis-be-contribution",
-    "git": "https://github.com/openimis/openimis-be-contribution_py",
-    "version": "1.8.0"
-  },
-  "payer": {
-    "package": "openimis-be-payer",
-    "git": "https://github.com/openimis/openimis-be-payer_py",
-    "version": "1.6.1"
-  },
-  "payment": {
-    "package": "openimis-be-payment",
-    "git": "https://github.com/openimis/openimis-be-payment_py",
-    "version": "1.8.0"
-  },
-  "claim": {
-    "package": "openimis-be-claim",
-    "git": "https://github.com/openimis/openimis-be-claim_py",
-    "version": "1.8.0"
-  },
-  "claim_batch": {
-    "package": "openimis-be-claim_batch",
-    "git": "https://github.com/openimis/openimis-be-claim_batch_py",
-    "version": "1.8.0"
-  },
-  "tools": {
-    "package": "openimis-be-tools",
-    "git": "https://github.com/openimis/openimis-be-tools_py",
-    "version": "1.8.0"
-  },
-  "api_fhir_r4": {
-    "package": "openimis-be-api_fhir_r4",
-    "git": "https://github.com/openimis/openimis-be-api_fhir_r4_py",
-    "version": "1.8.0"
-  },
-  "calculation": {
-    "package": "openimis-be-calculation",
-    "git": "https://github.com/openimis/openimis-be-calculation_py",
-    "version": "1.8.0"
-  },
-  "contribution_plan": {
-    "package": "openimis-be-contribution_plan",
-    "git": "https://github.com/openimis/openimis-be-contribution_plan_py",
-    "version": "1.8.0"
-  },
-  "policyholder": {
-    "package": "openimis-be-policyholder",
-    "git": "https://github.com/openimis/openimis-be-policyholder_py",
-    "version": "1.8.0"
-  },
-  "contract": {
-    "package": "openimis-be-contract",
-    "git": "https://github.com/openimis/openimis-be-contract_py",
-    "version": "1.8.0"
-  },
-  "invoice": {
-    "package": "openimis-be-invoice",
-    "git": "https://github.com/openimis/openimis-be-invoice_py",
-    "version": "1.8.0"
-  },
-  "calcrule_contribution_legacy": {
-    "package": "openimis-be-calcrule_contribution_legacy",
-    "git": "https://github.com/openimis/openimis-be-calcrule_contribution_legacy_py",
-    "version": "1.7.0"
-  },
-  "calcrule_third_party_payment": {
-    "package": "openimis-be-calcrule_third_party_payment",
-    "git": "https://github.com/openimis/openimis-be-calcrule_third_party_payment_py",
-    "version": "1.8.0"
-  },
-  "calcrule_capitation_payment": {
-    "package": "openimis-be-calcrule_capitation_payment",
-    "git": "https://github.com/openimis/openimis-be-calcrule_capitation_payment_py",
-    "version": "1.8.0"
-  },
-  "calcrule_commission": {
-    "package": "openimis-be-calcrule_commission",
-    "git": "https://github.com/openimis/openimis-be-calcrule_commission_py",
-    "version": "1.6.1"
-  },
-  "calcrule_validations": {
-    "package": "openimis-be-calcrule_validations",
-    "git": "https://github.com/openimis/openimis-be-calcrule_validations_py",
-    "version": "1.1.0"
-  },
-  "calcrule_contribution_income_percentage": {
-    "package": "openimis-be-calcrule_contribution_income_percentage",
-    "git": "https://github.com/openimis/openimis-be-calcrule_contribution_income_percentage_py",
-    "version": "1.7.0"
-  },
-  "calcrule_fees": {
-    "package": "openimis-be-calcrule_fees",
-    "git": "https://github.com/openimis/openimis-be-calcrule_fees_py",
-    "version": "1.6.1"
-  },
-  "calcrule_unconditional_casourcessh_payment": {
-    "package": "openimis-be-calcrule_unconditional_cash_payment",
-    "git": "https://github.com/openimis/openimis-be-calcrule_unconditional_cash_payment_py",
-    "version": "1.6.1"
-  },
-  "im_export": {
-    "package": "openimis-be-im_ ",
-    "git": "https://github.com/openimis/openimis-be-im_export_py",
-    "version": "1.3.0"
-  },
-  "dhis2_etl": {
-    "package": "openimis-be-dhis2_etl",
-    "git": "https://github.com/openimis/openimis-be-dhis2_etl_py",
-    "version": "1.3.1"
-  },
-  "social_protection": {
-    "package": "openimis-be-social_protection",
-    "git": "https://github.com/openimis/openimis-be-social_protection_py",
-    "version": "1.2.0"
-  },
-  "opensearch_reports": {
-    "package": "openimis-be-opensearch_reports",
-    "git": "https://github.com/openimis/openimis-be-opensearch_reports_py",
-    "version": "1.2.0"
-  },
-  "payment_cycle": {
-    "package": "openimis-be-payment_cycle",
-    "git": "https://github.com/openimis/openimis-be-payment_cycle_py",
-    "version": "1.2.0"
-  },
-  "calcrule_social_protection": {
-    "package": "openimis-be-calcrule_social_protection",
-    "git": "https://github.com/openimis/openimis-be-calcrule_social_protection_py",
-    "version": "1.2.0"
-  },
-  "payroll": {
-    "package": "openimis-be-payroll",
-    "git": "https://github.com/openimis/openimis-be-payroll_py",
-    "version": "1.2.0"
-  },
-  "controls": {
-    "package": "openimis-be-controls",
-    "git": "https://github.com/openimis/openimis-be-controls_py",
-    "version": "1.2.0"
-  },
-  "grievance_social_protection": {
-    "package": "openimis-be-grievance_social_protection",
-    "git": "https://github.com/openimis/openimis-be-grievance_social_protection_py",
-    "version": "1.0.0"
-  },
-  "claim_sampling": {
-    "package": "openimis-be-claim_sampling",
-    "git": "https://github.com/openimis/openimis-be-claim_sampling_py",
-    "version": "1.0.0"
-  },
-  "deduplication": {
-    "package": "openimis-be-deduplication",
-    "git": "https://github.com/openimis/openimis-be-deduplication_py",
-    "version": "1.1.0"
-  },
-  "api_etl": {
-    "package": "openimis-be-api_etl",
-    "git": "https://github.com/openimis/openimis-be-api_etl_py",
-    "version": "1.0.0"
-  }
+          "core":{
+            "package": "openimis-be-core",
+            "git": "https://github.com/openimis/openimis-be-core_py",
+            "version": "v1.9.0"
+        },
+
+        "individual":{
+            "package": "openimis-be-individual",
+            "git": "https://github.com/openimis/openimis-be-individual_py",
+            "version": "v1.3.0"
+        },
+
+        "workflow":{
+            "package": "openimis-be-workflow",
+            "git": "https://github.com/openimis/openimis-be-workflow_py",
+            "version": "v1.0.1"
+        },
+
+        "tasks_management":{
+            "package": "openimis-be-tasks_management",
+            "git": "https://github.com/openimis/openimis-be-tasks_management_py",
+            "version": "v1.3.0"
+        },
+
+        "report":{
+            "package": "openimis-be-report",
+            "git": "https://github.com/openimis/openimis-be-report_py",
+            "version": "v1.6.2"
+        },
+
+        "location":{
+            "package": "openimis-be-location",
+            "git": "https://github.com/openimis/openimis-be-location_py",
+            "version": "v1.9.0"
+        },
+
+        "medical":{
+            "package": "openimis-be-medical",
+            "git": "https://github.com/openimis/openimis-be-medical_py",
+            "version": "v1.9.0"
+        },
+
+        "medical_pricelist":{
+            "package": "openimis-be-medical_pricelist",
+            "git": "https://github.com/openimis/openimis-be-medical_pricelist_py",
+            "version": "v1.7.1"
+        },
+
+        "product":{
+            "package": "openimis-be-product",
+            "git": "https://github.com/openimis/openimis-be-product_py",
+            "version": "v1.8.0"
+        },
+
+        "insuree":{
+            "package": "openimis-be-insuree",
+            "git": "https://github.com/openimis/openimis-be-insuree_py",
+            "version": "v1.9.0"
+        },
+
+        "policy":{
+            "package": "openimis-be-policy",
+            "git": "https://github.com/openimis/openimis-be-policy_py",
+            "version": "v1.9.0"
+        },
+
+        "contribution":{
+            "package": "openimis-be-contribution",
+            "git": "https://github.com/openimis/openimis-be-contribution_py",
+            "version": "v1.9.0"
+        },
+
+        "payer":{
+            "package": "openimis-be-payer",
+            "git": "https://github.com/openimis/openimis-be-payer_py",
+            "version": "v1.6.2"
+        },
+
+        "payment":{
+            "package": "openimis-be-payment",
+            "git": "https://github.com/openimis/openimis-be-payment_py",
+            "version": "v1.9.0"
+        },
+
+        "claim":{
+            "package": "openimis-be-claim",
+            "git": "https://github.com/openimis/openimis-be-claim_py",
+            "version": "v1.9.0"
+        },
+
+        "claim_batch":{
+            "package": "openimis-be-claim_batch",
+            "git": "https://github.com/openimis/openimis-be-claim_batch_py",
+            "version": "v1.9.0"
+        },
+
+        "tools":{
+            "package": "openimis-be-tools",
+            "git": "https://github.com/openimis/openimis-be-tools_py",
+            "version": "v1.9.0"
+        },
+
+        "api_fhir_r4":{
+            "package": "openimis-be-api_fhir_r4",
+            "git": "https://github.com/openimis/openimis-be-api_fhir_r4_py",
+            "version": "v1.8.1"
+        },
+
+        "calculation":{
+            "package": "openimis-be-calculation",
+            "git": "https://github.com/openimis/openimis-be-calculation_py",
+            "version": "v1.9.0"
+        },
+
+        "contribution_plan":{
+            "package": "openimis-be-contribution-plan",
+            "git": "https://github.com/openimis/openimis-be-contribution_plan_py",
+            "version": "v1.9.0"
+        },
+
+        "policyholder":{
+            "package": "openimis-be-policyholder",
+            "git": "https://github.com/openimis/openimis-be-policyholder_py",
+            "version": "v1.9.0"
+        },
+
+        "contract":{
+            "package": "openimis-be-contract",
+            "git": "https://github.com/openimis/openimis-be-contract_py",
+            "version": "v1.9.0"
+        },
+
+        "invoice":{
+            "package": "openimis-be-invoice",
+            "git": "https://github.com/openimis/openimis-be-invoice_py",
+            "version": "v1.9.0"
+        },
+
+        "calcrule_contribution_legacy":{
+            "package": "openimis-be-calcrule-contribution-legacy",
+            "git": "https://github.com/openimis/openimis-be-calcrule_contribution_legacy_py",
+            "version": "v1.8.0"
+        },
+
+        "calcrule_third_party_payment":{
+            "package": "openimis-be-calcrule-third_party_payment",
+            "git": "https://github.com/openimis/openimis-be-calcrule_third_party_payment_py",
+            "version": "v1.8.1"
+        },
+
+        "calcrule_capitation_payment":{
+            "package": "openimis-be-calcrule-capitation_payment",
+            "git": "https://github.com/openimis/openimis-be-calcrule_capitation_payment_py",
+            "version": "v1.9.0"
+        },
+
+        "calcrule_commission":{
+            "package": "openimis-be-calcrule_commission",
+            "git": "https://github.com/openimis/openimis-be-calcrule_commission_py",
+            "version": "v1.6.1"
+        },
+
+        "calcrule_validations":{
+            "package": "openimis-be-calcrule_validations",
+            "git": "https://github.com/openimis/openimis-be-calcrule_validations_py",
+            "version": "v1.2.0"
+        },
+
+        "calcrule_contribution_income_percentage":{
+            "package": "openimis-be-calcrule_contribution_income_percentage",
+            "git": "https://github.com/openimis/openimis-be-calcrule_contribution_income_percentage_py",
+            "version": "v1.8.0"
+        },
+
+        "calcrule_fees":{
+            "package": "openimis-be-calcrule_fees",
+            "git": "https://github.com/openimis/openimis-be-calcrule_fees_py",
+            "version": "v1.6.1"
+        },
+
+        "calcrule_unconditional_cash_payment":{
+            "package": "openimis-be-calcrule_unconditional_cash_payment",
+            "git": "https://github.com/openimis/openimis-be-calcrule_unconditional_cash_payment_py",
+            "version": "v1.6.1"
+        },
+
+        "im_export":{
+            "package": "openimis-be-im_export",
+            "git": "https://github.com/openimis/openimis-be-im_export_py",
+            "version": "v1.4.0"
+        },
+
+        "dhis2_etl":{
+            "package": "openimis-be-dhis2_etl",
+            "git": "https://github.com/openimis/openimis-be-dhis2_etl_py",
+            "version": "v1.3.1"
+        },
+
+        "social_protection":{
+            "package": "openimis-be-social_protection",
+            "git": "https://github.com/openimis/openimis-be-social_protection_py",
+            "version": "v1.3.0"
+        },
+
+        "opensearch_reports":{
+            "package": "openimis-be-opensearch_reports",
+            "git": "https://github.com/openimis/openimis-be-opensearch_reports_py",
+            "version": "v1.2.2"
+        },
+
+        "payment_cycle":{
+            "package": "openimis-be-payment_cycle",
+            "git": "https://github.com/openimis/openimis-be-payment_cycle_py",
+            "version": "v1.3.0"
+        },
+
+        "calcrule_social_protection":{
+            "package": "openimis-be-calcrule_social_protection",
+            "git": "https://github.com/openimis/openimis-be-calcrule_social_protection_py",
+            "version": "v1.2.0"
+        },
+
+        "payroll":{
+            "package": "openimis-be-payroll",
+            "git": "https://github.com/openimis/openimis-be-payroll_py",
+            "version": "v1.3.0"
+        },
+
+        "controls":{
+            "package": "openimis-be-controls",
+            "git": "https://github.com/openimis/openimis-be-controls_py",
+            "version": "v1.2.0"
+        },
+
+        "grievance_social_protection":{
+            "package": "openimis-be-grievance_social_protection",
+            "git": "https://github.com/openimis/openimis-be-grievance_social_protection_py",
+            "version": "v1.1.0"
+        },
+
+        "claim_sampling":{
+            "package": "openimis-be-claim_sampling",
+            "git": "https://github.com/openimis/openimis-be-claim_sampling_py",
+            "version": "v1.1.0"
+        },
+
+        "deduplication":{
+            "package": "openimis-be-deduplication",
+            "git": "https://github.com/openimis/openimis-be-deduplication_py",
+            "version": "v1.2.0"
+        },
+
+        "api_etl":{
+            "package": "openimis-be-api_etl",
+            "git": "https://github.com/openimis/openimis-be-api_etl_py",
+            "version": "v1.1.0"
+        }
 }
 }

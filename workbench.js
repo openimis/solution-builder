@@ -115,7 +115,7 @@ const { createZip, processSolutions } = require('./solutionBuilder.js');
 
 async function main() {
     try {
-        const solution_path = './solution/solutions/coreMIS.json';
+        const solution_path = './solution/solutions/HF.json';
         const permission = fs.readFileSync('./solution/permissions_map.json', 'utf8');
         const permissionMap = JSON.parse(permission);
 

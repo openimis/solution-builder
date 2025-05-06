@@ -4,9 +4,5 @@
     "contributionPlan": "../modules/contribution-plan.json",
     "contract": "../modules/contract.json",
     "calculation-legacy":"../modules/calculation-legacy.json" 
-  },
-  "solutions": [
-    "insuree-bundle.json",
-    "calculation-formal-sector-bundle.json"
-  ]
+  }
 }
