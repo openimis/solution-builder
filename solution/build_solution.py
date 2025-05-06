@@ -25,7 +25,7 @@ def merge_solutions(solution_file, permission_map, path=None, modules=None, menu
     directory_path = os.path.dirname(solution_file)
     solution = load_json(solution_file)
     # load direct modules
-    for x in (solution['dependency'] if 'dependency' in solution  else []):
+    for x in (solution['solutions'] if 'solutions' in solution  else []):
         merge_solutions( get_absolute_path(x, directory_path ),permission_map, modules=modules, menu_dict=menu_dict, role_dict=role_dict)
     for x in (solution['modules'] if 'modules' in solution  else []):
         merge_solutions( get_absolute_path(x, directory_path ),permission_map, modules=modules, menu_dict=menu_dict, role_dict=role_dict)
@@ -130,14 +130,14 @@ def process_packages(modules):
         if not module_data:
             continue
 
-        fe_packages.extend(module_data.get("fe-packages", []))
-        be_packages.extend(module_data.get("be-packages", []))
+        fe_packages.extend(module_data.get("fePackages", []))
+        be_packages.extend(module_data.get("bePackages", []))
 
     return sorted(fe_packages, key=lambda x: x.get("name", "")), sorted(be_packages, key=lambda x: x.get("name", ""))
 
 
 def process_services(service_file):
-    """Process service dependencies from service.json and generate YAML output."""
+    """Process service solutions from service.json and generate YAML output."""
 
     service_data = load_json(service_file)
 
@@ -162,7 +162,7 @@ def process_services(service_file):
     return services_output
 
 
-def save_services_yaml(services):
+def save_services_yaml(services, out_path):
     """Save services as YAML format in generated-services.yml with correct indentation."""
     if not services:
         return
@@ -174,7 +174,7 @@ def save_services_yaml(services):
         def increase_indent(self, flow=False, indentless=False):
             return super(IndentedDumper, self).increase_indent(flow, False)
 
-    with open("compose.yml", "w") as file:
+    with open(os.path.join(out_path,"compose.yml"), "w") as file:
         yaml.dump(
             yaml_output, file,
             Dumper=IndentedDumper,
@@ -187,7 +187,7 @@ def save_services_yaml(services):
     print("Generated services written to compose.yml")
 
 
-def generate_role_fixtures(generated_roles_file, system_roles_file):
+def generate_role_fixtures(generated_roles_file, system_roles_file, out_path):
     """Generate role and role-right fixtures using natural keys, avoiding duplicates."""
 
 
@@ -239,19 +239,19 @@ def generate_role_fixtures(generated_roles_file, system_roles_file):
     os.makedirs("fixtures/core", exist_ok=True)
 
     if role_fixtures:
-        with open("fixtures/core/roles.json", "w", encoding="utf-8") as file:
+        with open(os.path.join(out_path,"fixtures/core/roles.json"), "w", encoding="utf-8") as file:
             json.dump(role_fixtures, file, indent=2)
 
     if role_right_fixtures:
-        with open("fixtures/core/roles-right.json", "w", encoding="utf-8") as file:
+        with open(os.path.join(out_path,"fixtures/core/roles-right.json"), "w", encoding="utf-8") as file:
             json.dump(role_right_fixtures, file, indent=2)
 
     print("Generated roles and roles-right fixtures successfully.")
 
 
-def generate_menu_fixtures():
+def generate_menu_fixtures(out_path):
     """Generate menu configuration fixture using generated-menu.json output."""
-    menu_file = "generated-menu.json"
+    menu_file = os.path.join(out_path, "generated-menu.json")
     menu_data = load_json(menu_file)
 
     if not menu_data or "menus" not in menu_data:
@@ -274,20 +274,20 @@ def generate_menu_fixtures():
         }
     ]
 
-    os.makedirs("fixtures/core", exist_ok=True)
-    with open("fixtures/core/menu-config.json", "w", encoding="utf-8") as file:
+    os.makedirs(os.path.join(out_path,"fixtures/core"), exist_ok=True)
+    with open(os.path.join(out_path, "fixtures/core/menu-config.json"), "w", encoding="utf-8") as file:
         json.dump(menu_fixtures, file, indent=2)
 
     print("Generated menu configuration fixture written to fixtures/core/menu-config.json")
 
 
-def format_be_packages(config):
+def format_be_packages(config, git=None):
     be_packages = {'modules':[]}
     for p in config:
-        be_packages['modules'].append(package_be_export(p))
+        be_packages['modules'].append(package_be_export(p, git))
     return be_packages
 
-def package_be_export(package):
+def package_be_export(package, git=None):
         #     {
         #     "name": "core",
         #     "pip": "git+https://github.com/openimis/openimis-be-core_py.git@develop#egg=openimis-be-core"
@@ -299,12 +299,12 @@ def package_be_export(package):
         return {
             "name": package['name'],
             "npm": (
-                f"{package['git']}@{package['version']}#egg={package['package']}" if 'git' in package
+                f"{package['git']}@{git}#egg={package['package']}" if git and 'git' in package
                 else package['package'] + '~=' + package['version']
             )
         }
         
-def format_fe_packages(config):
+def format_fe_packages(config, git=None):
     fe_packages = {"locales": [
         {
             "languages": ["en","en-GB"],
@@ -319,19 +319,19 @@ def format_fe_packages(config):
     ], 'modules':[]}
     
     for p in config:
-        fe_packages['modules'].append(package_fe_export(p))
+        fe_packages['modules'].append(package_fe_export(p, git))
     return fe_packages
 
-def package_fe_export(package):
+def package_fe_export(package, git=None):
         return {
             "name": package['name']+"Module",
             "npm": package['package']+ "@" + (
-                package['git'] + '#' + package['version'] if 'git' in package
+                package['git'] + '#' + git if git and 'git' in package
                 else  '>=' + package['version']
             )
         }
 
-def main(solution_file):
+def main(solution_file, out_path, git=None):
     #always loading
     directory_path = os.path.dirname(solution_file)
     file_path = os.path.dirname(__file__)
@@ -341,35 +341,35 @@ def main(solution_file):
     resolved_modules , menus_dict, roles_dict = merge_solutions(solution_file, permissions_map, modules = set([os.path.join(file_path,"modules/core.json")]))
     menus = sort_menus(menus_dict)
     roles = sort_roles(roles_dict)
-    
-    with open('generated-menu.json', 'w') as file:
+    os.makedirs(out_path, exist_ok=True)
+    with open(os.path.join(out_path, 'generated-menu.json'), 'w') as file:
         json.dump({"menus": menus}, file, indent=2)
     print("Generated menus written to generated-menu.json")
 
-    roles_output_file = 'generated-roles.json'
+    roles_output_file = os.path.join(out_path,"generated-roles.json")
     with open(roles_output_file, 'w') as file:
         json.dump({"roles": roles}, file, indent=2)
     print(f"Generated roles written to {roles_output_file}")
 
     fe_packages, be_packages = process_packages(resolved_modules)
     
-    fe_packages = format_fe_packages(fe_packages)
-    be_packages = format_be_packages(be_packages)
-    with open('fe-openimis.json', 'w') as file:
+    fe_packages = format_fe_packages(fe_packages, git)
+    be_packages = format_be_packages(be_packages, git)
+    with open(os.path.join(out_path,'fe-openimis.json'), 'w') as file:
         json.dump({"packages": fe_packages}, file, indent=2)
     print("Generated frontend packages written to fe-openimis.json")
 
-    with open('be-openimis.json', 'w') as file:
+    with open(os.path.join(out_path,'be-openimis.json'), 'w') as file:
         json.dump({"packages": be_packages}, file, indent=2)
     print("Generated backend packages written to be-openimis.json")
     service_file = os.path.join(file_path,'service.json')
     services = process_services(service_file)
-    save_services_yaml(services)
+    save_services_yaml(services, out_path)
     
-    generated_roles_file = os.path.join(os.getcwd(),"generated-roles.json")
+    generated_roles_file = os.path.join(out_path,"generated-roles.json")
     system_roles_file = os.path.join(file_path,"roles-data.json")
-    generate_role_fixtures(generated_roles_file, system_roles_file)
-    generate_menu_fixtures()
+    generate_role_fixtures(generated_roles_file, system_roles_file, out_path)
+    generate_menu_fixtures(out_path)
     print("Processing completed.")
     
 def get_absolute_path(file_path, path=None):
@@ -389,14 +389,22 @@ def print_help():
     print(
         "-f / --file Solution definition that need to be loaded"
     )
+    print(
+        "-b / --branch git branch to use (same for all packages)"
+    )
+    print(
+        "-o / --output path where to send the generated content"
+    )
     print("-h / --help print that menu")
 
 
 if __name__ == "__main__":
     solution_file = None
+    git = None
+    output = None
     try:
         opts, args = getopt.getopt(
-            sys.argv[1:], "f:", ["file="]
+            sys.argv[1:], "f:b:", ["file="]
         )
     except getopt.GetoptError:
         print_help()
@@ -407,7 +415,15 @@ if __name__ == "__main__":
             sys.exit()
         if opt in ("-f", "--file"):
             solution_file = arg
+        elif opt in ("-b", "--branch"):
+            git = arg
+        elif opt in ("-o", "--output"):
+            output = arg
     if solution_file is None:
         solution_file='./solution.json'
+        
+    if not output:
+        output = f'./output-{os.path.splitext(os.path.basename(solution_file))[0]}'
 
-    main(solution_file=get_absolute_path(solution_file))
+    main(solution_file=get_absolute_path(solution_file), git=git, out_path=output)
+    

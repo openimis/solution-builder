@@ -2,10 +2,10 @@
   "menus": [
     {
          "position":4,
-         "id": "OpenSearchReportsMenu",
-         "name":"Dashboard",
+         "id": "ReportsMenu",
+         "name":"Reports",
          "icon":"dashboard-icon",
-         "description":"Main dashboard",
+         "description":"Dashboard and reports",
          "submenus":[
             {
                "position":1,
@@ -34,24 +34,19 @@
          ]
       }
   ],
-  "fe-packages": [
-    {
-      "name": "opensearch_reports",
-      "package": "@openimis/fe-opensearch_reports",
-      "version": "1.2.0"
-    }
+  "services":[
+    "openSearch"
   ],
-  "be-packages": [
-    {
-      "name": "opensearch_reports",
-      "package": "openimis-be-opensearch_reports_py",
-      "version": "1.2.0"
-    }
+  "fePackages": [
+    "OpenSearchReportsModule"
+  ],
+  "bePackages": [
+    "opensearch_reports"
   ],
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "opensearch_reports.opensearch_reports",
         "opensearch_reports.update_opensearch_report"

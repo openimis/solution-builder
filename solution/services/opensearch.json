@@ -1,0 +1,14 @@
+{"serviceDefinitions":{
+    "base": {
+        "env_file": [
+            ".env.openSearch"
+        ]
+    },
+    "openSearch":{
+        "path": "compose.openSearch.yml",
+        "env_file": [
+            ".env",
+            ".env.openSearch"
+        ]
+    }
+}}

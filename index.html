@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solution Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .checkbox-group {
+            margin-top: 5px;
+            max-height: 150px; /* Optional: limit height and scroll if too many items */
+            overflow-y: auto;
+        }
+        .checkbox-group {
+            margin-top: 5px;
+        max-height: 150px;
+        overflow-y: auto;
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+        margin-right: 5%;
+        }
+        .checkbox-group label {
+            display: flex; /* Use flexbox to align checkbox and text */
+            align-items: center; /* Vertically center checkbox and text */
+            margin: 2px 0; /* Reduce vertical spacing between options */
+            padding: 0; /* Remove any default padding */
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin: 0 5px 0 0; /* Checkbox on left with minimal right margin */
+            width: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        .checkbox-group:last-child {
+            margin-right: 0;
+        }
+        select, input, textarea {
+            width: 100%;
+            margin-top: 5px;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #keyForm, #solutionForm {
+            display: none;
+        }
+        #keyForm.active, #solutionForm.active {
+            display: block;
+        }
+    </style>
+    <script src="https://unpkg.com/jsoneditor@9.10.2/dist/jsoneditor.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <link href="https://unpkg.com/jsoneditor@9.10.2/dist/jsoneditor.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="settingsForm" class="active">
+        <h2>Settings</h2>
+        <label>
+            <input type="radio" name="sourceType" value="github" onchange="selectSource('github')">
+            GitHub
+        </label>
+        <label>
+            <input type="radio" name="sourceType" value="local" checked onchange="selectSource('local')">
+            Local
+        </label>
+
+        <div id="githubSettings" style="display: none;">
+            <h3>GitHub Settings</h3>
+            <label for="githubPath">GitHub Path:</label>
+            <input type="text" id="githubPath" value="https://api.github.com/repos/openimis/solution-builder/contents/">
+            <br>
+            <label>
+                <input type="radio" name="githubAuth" value="anonymous" checked>
+                Anonymous
+            </label>
+            <label>
+                <input type="radio" name="githubAuth" value="authenticated">
+                Authenticated
+            </label>
+            <div id="githubApiKeyContainer" style="display: none;">
+                <label for="githubApiKeyInitial">GitHub API Key:</label>
+                <input type="text" id="githubApiKeyInitial">
+            </div>
+        </div>
+
+        <div id="localSettings" >
+            <h3>Local Settings</h3>
+            <button onclick="selectLocalFolder()">Select Folder</button>
+        </div>
+
+        <button onclick="proceedWithSettings()">Proceed</button>
+    </div>
+
+    <div id="solutionForm" class="inactive">
+        <h2>Solution Builder</h2>
+        <form>
+            <label for="solutions">solutions:</label>
+            <div id="solutions" class="checkbox-group"></div>
+            <br>
+            <label for="modules">Modules:</label>
+            <div id="modules" class="checkbox-group"></div>
+            <br>
+            <label for="other">Roles, menus... :</label>
+            <div id="other"></div>
+            <br>
+            <label for="gitBranch">Git Branch:</label>
+            <input type="text" id="gitBranch">
+            <br>
+            <button type="submit">Generate Solution</button>
+        </form>
+    </div>
+
+    <div id="result"></div>
+
+    <script src="solutionBuilder.js"></script>
+    <script src="solutionBuilderUI.js"></script>
+</body>
+</html>

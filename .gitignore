@@ -89,9 +89,9 @@ ipython_config.py
 
 # pipenv
 #   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
+#   However, in case of collaboration, if having platform-specific solutions or solutions
+#   having no cross-platform support, pipenv may install solutions that don't work, or not
+#   install all needed solutions.
 #Pipfile.lock
 
 # UV
@@ -169,3 +169,5 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+output*

@@ -1,23 +1,15 @@
 {
   "menus": [],
-  "fe-packages": [
-    {
-      "name": "deduplication",
-      "package": "@openimis/fe-deduplication",
-      "version": "1.0.1"
-    }
+  "fePackages": [
+"DeduplicationModule"
   ],
-  "be-packages": [
-    {
-      "name": "deduplication",
-      "package": "openimis-be-deduplication_py",
-      "version": "1.1.1"
-    }
+  "bePackages": [
+"deduplication"
   ],
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "deduplication.deduplication_review",
         "deduplication.deduplication_payment_review"

@@ -1,0 +1,7 @@
+{
+    "fePackages": [
+          ],
+    "bePackages": [
+        "workflow"
+          ]
+}

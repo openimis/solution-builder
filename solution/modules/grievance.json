@@ -18,24 +18,16 @@
          ]
       }
   ],
-  "fe-packages": [
-    {
-      "name": "grievance_social_protection",
-      "package": "@openimis/fe-grievance_social_protection",
-      "version": "1.0.0"
-    }
+  "fePackages": [
+"GrievanceSocialProtectionModule"
   ],
-  "be-packages": [
-    {
-      "name": "grievance_social_protection",
-      "package": "openimis-be-grievance_social_protection_py",
-      "version": "main"
-    }
+  "bePackages": [
+"grievance_social_protection"
   ],
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "grievance.read_grievance",
         "grievance.create_grievance",

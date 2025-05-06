@@ -1,11 +1,11 @@
 {
   "menus": [
     {
-         "position":2,
-         "id": "InsureeMainMenu",
-         "name":"InsureeMainMenu",
-         "icon":"insuree-icon",
-         "description":"Insuree panel",
+         "position":1,
+         "id": "ClientRegistryMainMenu",
+         "name": "Client Registry",
+         "icon": "task-icon",
+         "description": "Client Registry",
          "submenus":[
             {
                "position":6,
@@ -14,24 +14,16 @@
          ]
       }
   ],
-  "fe-packages": [
-    {
-      "name": "policyholder",
-      "package": "@openimis/fe-policyholder",
-      "version": "1.1.1"
-    }
+  "fePackages": [
+"PolicyHolderModule"
   ],
-  "be-packages": [
-    {
-      "name": "policyholder",
-      "package": "openimis-be-policyholder_py",
-      "version": "1.2.0"
-    }
+  "bePackages": [
+"policyholder"
   ],
    "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "policyholder.read_policyholder",
         "policyholder.read_policyholder_admins",

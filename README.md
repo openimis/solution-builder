@@ -4,32 +4,71 @@ This script processes a `solution.json` file and combines the `menus` key from m
 
 ## How It Works
 
+### file structure
+
+```yaml
+# undelying solution, share the same format
+solutions: []
+# named element to ensure unicity /  share the same format BUT cannot have modules and solutions
+modules: {}
+
+# list of menu to use,
+menus: [] 
+# list of name of the role to use,
+roles: []
+# list of name of the source to use, normally found in the source section of another file
+fePackages: []
+fePackageDefinitions: 
+  - PayerModule:  # open imis package name
+    - package: "@openimis/fe-payer", # PIP package name
+    - git: "https://github.com/openimis/openimis-fe-payer_js", # git URL
+    - version: "v1.4.4" # targeted released version
+bePackages: []
+bePackageDefinitions: 
+  - payer:  # openimis package name
+    - package: "openimis-be-payer", # NPM package name
+    - git: "https://github.com/openimis/openimis-be-payer_py", # git url
+    - version: "1.6.1" # targeted released version
+services:
+  serviceName1
+  serviceName2
+serviceDefinitions: 
+  - serviceName:
+    - path: pathToCompose # if  present  will overwright the rest
+    - env_file:
+      - .env1
+      - .env2
+
+initData: {}
+
+```
+
 ### 1. Input File:
 - The script reads `solution.json` from the current working directory.
 - The `solution.json` file should have a modules key containing a list of module bundle file names 
-(e.g., `social-protection-bundle.json`, `formal-sector-bundle.json`, etc.).
+(e.g., `social-protection-bundle.json`, `formal-sector-bundle.json`, etc.)
 
 ### 2. Module and Module Bundle Files:
 - Each module file listed under the `modules` key should be present in the same directory as `solution.json`.
 - Each module file should contain a `menus` key, which defines its menu structure.
-- Some modules may also contain a `dependency` key, listing other module bundles that must be processed even if they are not explicitly included in `solution.json`.
+- Some modules may also contain a `solutions` key, listing other module bundles that must be processed even if they are not explicitly included in `solution.json`.
 
 ### 3. Combining Menus:
 - The script reads all the module files, extracts their `menus`, and combines them.
 - If multiple entries share the same `id`, their `submenus` are merged instead of duplicating menu items.
 - Both menus and their `submenus` are sorted by the `position` field.
 
-### 4. Handling Dependencies:
-- If a module has a `dependency` key, the script ensures that the referenced module files are also processed, even if they are not explicitly listed in `solution.json`.
-- Dependencies are resolved recursively to ensure all required modules are included.
+### 4. Handling solutions:
+- If a module has a `solutions` key, the script ensures that the referenced module files are also processed, even if they are not explicitly listed in `solution.json`.
+- solutions are resolved recursively to ensure all required modules are included.
 
 ### 5. Handling Bundles:
 - Bundles are collections of multiple related modules grouped together in a single file.
 - If a bundle file is listed in `solution.json`, the script will process all its included modules.
-- Bundles may also have dependencies on other bundles, which are resolved recursively.
+- Bundles may also have solutions on other bundles, which are resolved recursively.
 
 ### 6. Missing Files:
-- If any module, bundle, or dependency file is missing, the script will print a warning but will continue processing the available files.
+- If any module, bundle, or solutions file is missing, the script will print a warning but will continue processing the available files.
 
 ## Example
 
@@ -47,7 +86,7 @@ This script processes a `solution.json` file and combines the `menus` key from m
 }
 ```
 
-### Example `social-protection-bundle.json` (Bundle with Dependencies)
+### Example `social-protection-bundle.json` (Bundle with solutions)
 ```json
 {
   "modules": [
@@ -58,13 +97,13 @@ This script processes a `solution.json` file and combines the `menus` key from m
     "payment-cycle.json",
     "deduplication.json"
   ],
-  "dependency": [
+  "solutions": [
     "grievance-bundle.json"
   ]
 }
 ```
 
-### Example `opensearch-report-bundle.json` (Bundle Without Dependencies)
+### Example `opensearch-report-bundle.json` (Bundle Without solutions)
 ```json
 {
   "modules": [
@@ -79,10 +118,10 @@ This script processes a `solution.json` file and combines the `menus` key from m
   "menus": [
     {
       "position": 1,
-      "id": "SocialRegistryMainMenu",
-      "name": "Social Registry",
+      "id": "ClientRegistryMainMenu",
+      "name": "Client Registry",
       "icon": "task-icon",
-      "description": "Social Registry",
+      "description": "Client Registry",
       "submenus": [
         {
           "position": 1,
@@ -139,13 +178,13 @@ This script processes a `solution.json` file and combines the `menus` key from m
          "payment-cycle.json",
          "deduplication.json"
        ],
-       "dependency": [
+       "solutions": [
          "grievance-bundle.json",
          "calculation-social-protection-bundle.json"
        ]
      }
      ```
-   - `dependency` key: it means that this bundle is related to other bundle and the additional package must be installed 
+   - `solutions` key: it means that this bundle is related to other bundle and the additional package must be installed 
    and considered in the final output. For example if `grievance-bundle.json` is not added in `solution.json` - this 
    bundle package will be added in the final output even though is not presented in `solution.json` file.
 
@@ -279,8 +318,8 @@ Here’s the complete table with all the submenu configurations extracted, inclu
 
 This section explains how the script processes `solution.json` to generate two package configuration files:
 
-1. **`be-openimis.json`**: Contains backend (`be-packages`) packages.  
-2. **`fe-openimis.json`**: Contains frontend (`fe-packages`) packages.  
+1. **`be-openimis.json`**: Contains backend (`bePackages`) packages.  
+2. **`fe-openimis.json`**: Contains frontend (`fePackages`) packages.  
 
 Each package is transformed to meet specific naming conventions and structure requirements based on its `type`.
 
@@ -395,8 +434,8 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "individual.read_individual",
         "individual.create_individual",
@@ -421,8 +460,8 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "grievance.create_grievance",
         "grievance.update_grievance"
@@ -437,8 +476,8 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "grievance.delete_grievance",
         "grievance.read_grievance"
@@ -453,8 +492,8 @@ Each module file should contain a `roles` section like this:
 {
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         {
           "name": "grievance.create_grievance",
@@ -513,7 +552,7 @@ This file consolidates all roles across modules, ensuring a structured and non-d
 # Service Configuration in `build_solution.py` (docker compose)
 
 ## Overview
-The script supports **Docker service configuration** through a `service.json` file. This allows defining service dependencies, environment files, and Compose YAML file structures. The script generates **`compose.yml`** as output, ensuring correct Docker service configuration.
+The script supports **Docker service configuration** through a `service.json` file. This allows defining service solutions, environment files, and Compose YAML file structures. The script generates **`compose.yml`** as output, ensuring correct Docker service configuration.
 
 ## `service.json` Structure
 The `service.json` file should be structured as an array of service definitions, where each entry contains:

@@ -1,0 +1,40 @@
+{
+  "menus": [
+    {
+         "position":10,
+         "id": "TasksMainMenu",
+         "name":"TasksMainMenu",
+         "icon":"task-icon",
+         "description":"Task panel",
+         "submenus":[
+            {
+               "position":2,
+               "id": "task.tasks"
+            },
+            {
+               "position":1,
+               "id":"task.allTasks"
+            }
+         ]
+      },
+      {
+         "position":6,
+         "id": "UserManagementMainMenu",
+         "name":"User Management",
+         "icon":"admin-icon",
+         "description":"Administration Panel",
+         "submenus":[
+            {
+               "position":11,
+               "id":"admin.taskExecutionerGroups"
+            }
+         ]
+      }
+  ],
+  "fePackages": [
+   "TasksManagementModule"
+  ],
+  "bePackages": [
+   "tasks_management"
+  ]
+}

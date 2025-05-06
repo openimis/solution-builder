@@ -1,10 +1,6 @@
 {
   "menus": [],
-  "be-packages": [
-    {
-      "name": "calcrule_social_protection",
-      "package": "openimis-be-calcrule_social_protection",
-      "version": "1.2.0"
-    }
+  "bePackages": [
+    "calcrule_social_protection"
   ]
 }

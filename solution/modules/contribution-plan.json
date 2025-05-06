@@ -1,10 +1,46 @@
 {
-  "menus": [],
-  "be-packages": [
+  "menus": [      
     {
-      "name": "contribution_plan",
-      "package": "openimis-be-contribution_plan_py",
-      "version": "1.2.0"
+    "position":1,
+    "id": "PaymentsMainMenu",
+    "name":"PaymentsMainMenu",
+    "icon":"task-icon",
+    "description":"Payment Management",
+    "submenus":[
+       {
+          "position":1,
+          "id":"admin.contributionPlans"
+       },
+       {
+        "position":2,
+        "id":"admin.contributionPlanBundles"
+      }
+    ]
+  }
+],
+  "roles": [
+    {
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
+      "permissions": [
+        "contribution_plan.query_contribution_plan",
+        "contribution_plan.create_contribution_plan",
+        "contribution_plan.update_contribution_plan",
+        "contribution_plan.delete_contribution_plan",
+        "contribution_plan.replace_contribution_plan",
+        "contribution_plan.query_contribution_plan_bundle",
+        "contribution_plan.create_contribution_plan_bundle",
+        "contribution_plan.update_contribution_plan_bundle",
+        "contribution_plan.delete_contribution_plan_bundle",
+        "contribution_plan.replace_contribution_plan_bundle"
+      ]
     }
-  ]
+
+  ],
+  "bePackages": [
+"contribution_plan"
+  ],
+  "fePackages": [
+    "ContributionPlanModule"
+      ]
 }

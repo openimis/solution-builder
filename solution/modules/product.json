@@ -9,13 +9,13 @@
          "submenus":[
             {
                "position":3,
-               "id":"insuree.policies"
+               "id":"iadmin.products"
             }
          ]
       }
   ],
   "fePackages": [
-"PolicyModule"
+"ProductModule"
   ],
   "bePackages": [
 "policy"
@@ -25,16 +25,11 @@
       "roleName": "LOCAL Administrator",
       "code": "local_admin",
       "permissions": [
-        "policy.policy.read_policies",
-        "policy.read_policy_officers",
-        "policy.read_policies_by_insuree",
-        "policy.read_policies_by_family",
-        "policy.read_eligibilities",
-        "policy.create_policies",
-        "policy.renew_policies",
-        "policy.edit_policies",
-        "policy.suspend_policies",
-        "policy.delete_policies"
+        "product.product",
+        "product.create_product",
+        "product.update_product",
+        "product.delete_product",
+        "product.duplicate_product"
       ]
     }
    ]

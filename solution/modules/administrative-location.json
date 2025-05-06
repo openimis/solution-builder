@@ -1,0 +1,18 @@
+{
+    "fePackages": [ "LocationModule"],
+    "bePackages": [ "location"],
+     "roles": [
+      {
+        "roleName": "LOCAL Administrator",
+        "code": "local_admin",
+        "permissions": [
+            "location.read_locations",
+            "location.create_locations",
+            "location.edit_locations",
+            "location.delete_locations",
+            "location.move_location",
+            "location.create_region_locations"
+        ]
+      }
+     ]
+  }

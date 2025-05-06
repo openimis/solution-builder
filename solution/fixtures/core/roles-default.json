@@ -90,7 +90,7 @@
             "ValidityTo": null,
             "LegacyID": null,
             "RoleUUID": "e794c4ab-3554-4f14-98c4-a5c72d6c3e9a",
-            "RoleName": "IMIS Administrator",
+            "roleName": "LOCAL Administrator",
             "AltLanguage": null,
             "IsSystem": 64,
             "IsBlocked": false,

@@ -1,0 +1,15 @@
+{
+  "modules": {
+    "grievance": "../modules/grievance.json",
+    "openserach": "../modules/opensearch-report.json"
+  },
+  "solutions": [
+    "./formal-sector-bundle.json",
+    "./healthfinancing-bundle.json",
+    "./core-bundle.json"
+  ],
+  "services":["db"],
+  "fePackageSource":{
+    
+  }
+}

@@ -1,7 +1,7 @@
 {
-  "dependency": [
-    "bundles/social-protection-bundle.json",
-    "bundles/opensearch-report-bundle.json",
-    "bundles/formal-sector-bundle.json"
+  "solutions": [
+    "solutions/social-protection-bundle.json",
+    "solutions/opensearch-report-bundle.json",
+    "solutions/formal-sector-bundle.json"
   ]
 }

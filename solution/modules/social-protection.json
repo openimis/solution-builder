@@ -1,11 +1,11 @@
 {
   "menus": [
       {
-         "position":1,
-         "id": "SocialRegistryMainMenu",
-         "name":"Social Registry",
+         "position":3,
+         "id": "BenefitPlanMainMenu",
+         "name":"BenefitPlans",
          "icon":"task-icon",
-         "description":"Social Registry",
+         "description":"Benefit Plans",
          "submenus":[
             {
                "position":2,
@@ -14,24 +14,16 @@
          ]
       }
   ],
-  "fe-packages": [
-    {
-      "name": "social_protection",
-      "package": "@openimis/fe-social_protection",
-      "version": "1.2.0"
-    }
+  "fePackages": [
+    "SocialProtectionModule"
   ],
-  "be-packages": [
-    {
-      "name": "social_protection",
-      "package": "openimis-be-social_protection_py",
-      "version": "1.2.0"
-    }
+  "bePackages": [
+    "social_protection"
   ],
   "roles": [
     {
-      "roleName": "IMIS Administrator",
-      "code": "admin",
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
       "permissions": [
         "social_protection.read_benefit_plan",
         "social_protection.create_benefit_plan",

@@ -1,10 +1,54 @@
 {
-  "menus": [],
-  "be-packages": [
+  "menus": [
     {
-      "name": "contract",
-      "package": "openimis-be-contract_py",
-      "version": "1.2.0"
+      "position":2,
+      "id": "EnrolmentMainMenu",
+      "name":"EnrolmentMainMenu",
+      "icon":"how-to-reg-icon",
+      "description":"Enrolment",
+      "submenus":[
+         {
+            "position":1,
+            "id":"legalAndFinance.contracts"
+         }
+      ]
+   }
+  ],
+  "roles": [
+    {
+      "roleName": "LOCAL Administrator",
+      "code": "local_admin",
+      "permissions": [
+        "contract.read_contract",
+        "contract.read_contract_admins",
+        "contract.create_contract",
+        "contract.update_contract",
+        "contract.delete_contract",
+        "contract.renew_contract",
+        "contract.submit_contract",
+        "contract.approve_ask_for_change_contract",
+        "contract.amend_contract",
+        "contract.read_payment",
+        "contract.create_payments",
+        "contract.update_payments",
+        "contract.delete_payments",
+        "contract.approve_payments",
+        "contract.read_contract_policyholder_portal",
+        "contract.create_contract_policyholder_portal",
+        "contract.update_contract_policyholder_portal",
+        "contract.submit_contract_policyholder_portal",
+        "contract.amend_contract_policyholder_portal",
+        "contract.invoice_create"
+      ]
     }
-  ]
+
+  ],
+  "bePackages": [
+    "contract",
+    "invoice",
+    "contribution"
+  ],
+  "fePackages": [
+    "ContractModule"
+      ]
 }

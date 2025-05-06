@@ -1,0 +1,33 @@
+{
+    "fePackages": ["LocationModule"],
+    "bePackages": [ "location", "medical", "medical_pricelist"],
+    "roles": [
+      {
+        "roleName": "LOCAL Administrator",
+        "code": "local_admin",
+        "permissions": [
+          "location.read_locations",
+          "location.read_health_facilities",
+          "location.create_locations",
+          "location.edit_locations",
+          "location.delete_locations",
+          "location.move_location"
+        ]
+      }
+     ],
+     "menus": [
+      {
+        "position":6,
+        "id": "AdministrationMainMenu",
+        "name":"Administration",
+        "icon":"administration-icon",
+        "description":"Administration",
+        "submenus":[
+           {
+              "position":9,
+              "id": "admin.locations"
+           }
+        ]
+     }
+    ]
+  }
