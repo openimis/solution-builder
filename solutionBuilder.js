@@ -4,6 +4,7 @@ if(typeof window === 'undefined'){
     path = require('path'); // CommonJS
     JSZip = require('jszip'); // CommonJS
     yaml = require('js-yaml'); // 
+    const { Blob } = require('buffer');
 }
 
 

@@ -1,6 +1,8 @@
 
 const fs = require('fs');
 const yaml = require('js-yaml');
+const simpleGit = require('simple-git');
+const unzipper = require('unzipper');
 
 
 async function extractFERepoList(data, data_rel) {
@@ -100,21 +102,53 @@ async function extractFERepoList(data, data_rel) {
 }
 
 
+async function sendToExternalSolutionRepo(folderName, zipPath) {
+    const repoUrl = 'https://github.com/openimis/solutions.git';
+    const branchName = `solution/${folderName}`;
+    const tempDir = path.join(__dirname, 'temp_solutions_repo');
+    const unzipDir = path.join(__dirname, 'unzipped_output');
+    const targetFolder = path.join(tempDir, folderName);
 
+    // Clean up any previous temp/unzip folder
+    if (fs.existsSync(tempDir)) fs.rmSync(tempDir, { recursive: true });
+    if (fs.existsSync(unzipDir)) fs.rmSync(unzipDir, { recursive: true });
 
-// source = extractRepoList();
+    fs.mkdirSync(unzipDir);
 
-// try {
-//     fs.writeFileSync('output.json', JSON.stringify(source, null, 2));
-//     console.log('JSON file has been written successfully');
-// } catch (error) {
-//     console.error('Error writing JSON file:', error);
-// }
+    // Unzip output.zip
+    await fs.createReadStream(zipPath)
+        .pipe(unzipper.Extract({ path: unzipDir }))
+        .promise();
+
+    const git = simpleGit();
+
+    // Clone the repo and checkout a new branch
+    await git.clone(repoUrl, tempDir);
+    const gitRepo = simpleGit(tempDir);
+    await gitRepo.checkout('develop');
+    await gitRepo.checkoutBranch(branchName, 'develop');
+
+    // Create or overwrite target folder in the cloned repo
+    if (!fs.existsSync(targetFolder)) fs.mkdirSync(targetFolder);
+    fs.cpSync(unzipDir, targetFolder, { recursive: true });
+
+    // Commit and push
+    await gitRepo.add('.');
+    await gitRepo.commit(`Add/update ${folderName} solution`);
+    await gitRepo.push('origin', branchName);
+    console.log(`✔️ Pushed ${folderName} to branch ${branchName}`);
+}
+
 
 const { createZip, processSolutions } = require('./solutionBuilder.js');
 
 async function main() {
     try {
+        const args = process.argv.slice(2);
+        const shouldPublish = args.includes('--publish');
+        const folderArg = args.find(arg => arg.startsWith('--folder='));
+        const solutionName = folderArg ? folderArg.split('=')[1] : 'default-solution';
+        
         const solution_path = './solution/solutions/HF.json';
         const permission = fs.readFileSync('./solution/permissions_map.json', 'utf8');
         const permissionMap = JSON.parse(permission);
@@ -124,9 +158,14 @@ async function main() {
             process.cwd(),
             permissionMap,
         );
-
-;
-        await createZip(output,'output.zip')
+        
+        const zipPath = path.join(__dirname, 'output.zip');
+        await createZip(output, zipPath);
+        if (shouldPublish) {
+            await sendToExternalSolutionRepo(solutionName, zipPath);
+        } else {
+            console.log('🛈 Skipping publish step (use --publish to enable)');
+        }
     } catch (error) {
         console.error('Error:', error);
     }
