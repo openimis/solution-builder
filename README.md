@@ -4,6 +4,28 @@ This script processes a `solution.json` file and combines the `menus` key from m
 
 ## How It Works
 
+### ⚠️ Requirements
+
+- **Node.js v18 or higher is required**
+  - This version is necessary for modern features like `Blob` and `arrayBuffer()` support used during ZIP creation.
+  - You can verify your version with:
+    ```bash
+    node -v
+    ```
+---
+
+### 🚀 What It Does
+
+The `workbench.js` script:
+1. **Reads** a solution configuration JSON (e.g., `HF.json`).
+2. **Generates** supporting files like:
+   - `fe-openimis.json`
+   - `generated-menu.json`
+   - `generated-roles.json`
+   - `compose.yml`
+3. **Creates** a ZIP archive (`output.zip`) containing the above outputs.
+4. **(Optional)** Pushes the generated solution to a new branch in the `openimis/solutions` GitHub repo.
+
 ### file structure
 
 ```yaml
