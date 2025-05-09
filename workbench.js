@@ -3,6 +3,7 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const simpleGit = require('simple-git');
 const unzipper = require('unzipper');
+const os = require('os');
 
 
 async function extractFERepoList(data, data_rel) {
@@ -102,6 +103,124 @@ async function extractFERepoList(data, data_rel) {
 }
 
 
+// Function to handle and fix YAML block strings (e.g., | or |+)
+function fixYmlBlockStrings(content) {
+    return content
+        .replace(/^\|[ \t]*$/gm, '')  // Remove unnecessary | at the beginning of lines
+        .replace(/\|[\r\n]+/g, '\n')  // Fix the newlines and keep the content formatted correctly
+        .replace(/\|[\+\-]*\r?\n/g, '\n');  // Handle case for |+ or |- with additional newline handling
+}
+
+// Ensure dist-dkr repo is cloned and on the correct branch
+async function ensureDistDkrRepo(branch = 'develop') {
+    const distDkrRepoPath = path.resolve('.cache/openimis-dist_dkr');
+    
+    if (!fs.existsSync(distDkrRepoPath)) {
+        console.log('🔄 Cloning dist-dkr repository...');
+        await simpleGit().clone('https://github.com/openimis/openimis-dist_dkr.git', distDkrRepoPath);
+    }
+  
+    const git = simpleGit(distDkrRepoPath);
+    const currentBranch = (await git.branch()).current;
+  
+    if (currentBranch !== branch) {
+        console.log(`🔀 Checking out branch '${branch}'`);
+        await git.checkout(branch);
+    }
+  
+    return distDkrRepoPath;
+}
+
+// Generate the compose.yml based on the solutionName or any specific config
+function generateComposeYml(solutionName) {
+    const composeConfig = {
+        include: [
+            { path: 'compose.base.yml' },
+            { path: `compose.${process.env.DB_DEFAULT || 'postgresql'}.yml` },
+            { path: 'compose.openSearch.yml' },
+            { path: 'compose.cache.yml' }
+        ]
+    };
+
+    const composeContent = yaml.dump(composeConfig);
+    const composeFilePath = path.resolve(`./solution/compose.yml`);
+    
+    // Write the generated compose.yml to the solution directory
+    fs.writeFileSync(composeFilePath, composeContent, 'utf8');
+    console.log(`✔️ Generated compose.yml for solution: ${solutionName}`);
+    return composeFilePath;
+}
+
+// Get the paths from compose.yml
+function getComposeFilePaths(composePath) {
+    const content = fs.readFileSync(composePath, 'utf8');
+    const parsed = yaml.load(content);
+    const paths = new Set();
+  
+    if (parsed && parsed.include) {
+        // Collect all paths from the "include" section in compose.yml
+        for (const item of parsed.include) {
+            if (item.path) {
+                paths.add(item.path);
+            }
+        }
+    }
+  
+    return [...paths]; // Return paths as an array
+}
+
+// Copy files defined in compose.yml from the dist-dkr repo
+async function copyDistDkrAssetsFromCompose(composeFilePath, branch = 'develop') {
+    if (!fs.existsSync(composeFilePath)) {
+        console.warn('⚠️ compose.yml not found in the solution folder, skipping...');
+        return {};
+    }
+
+    // Read and parse the compose.yml to get the file paths
+    const composeFile = fs.readFileSync(composeFilePath, 'utf8');
+    let composeConfig;
+    try {
+        composeConfig = yaml.load(composeFile); // Parse the YAML file
+    } catch (error) {
+        console.error('⚠️ Error reading compose.yml', error);
+        return {};
+    }
+
+    // Ensure dist-dkr repo is cloned and checked out to the right branch
+    const distDkrRepoPath = await ensureDistDkrRepo(branch);
+
+    const outputFiles = {};
+
+    // Ensure we are getting the paths from composeConfig
+    if (composeConfig.include && Array.isArray(composeConfig.include)) {
+        for (const item of composeConfig.include) {
+            if (item.path) {
+                // Resolve path within dist-dkr repo
+                const filePath = item.path.replace('${DB_DEFAULT:-postgresql}', 'postgresql'); // Resolve dynamic paths
+                const srcPath = path.join(distDkrRepoPath, filePath); // Full path inside dist-dkr repo
+
+                if (fs.existsSync(srcPath)) {
+                    // Read the file content
+                    let fileContent = fs.readFileSync(srcPath, 'utf8');
+                    
+                    // Fix YAML block strings if necessary
+                    fileContent = fixYmlBlockStrings(fileContent);
+
+                    outputFiles[item.path] = fileContent;
+                    console.log(`✔️ Copied ${item.path} from dist-dkr`);
+                } else {
+                    console.warn(`⚠️ File ${item.path} not found at path: ${srcPath}`);
+                }
+            }
+        }
+    } else {
+        console.warn('⚠️ No include array found in compose.yml.');
+    }
+
+    return outputFiles;
+}
+
+
 async function sendToExternalSolutionRepo(folderName, zipPath) {
     const repoUrl = 'https://github.com/openimis/solutions.git';
     const branchName = `solution/${folderName}`;
@@ -153,14 +272,23 @@ async function main() {
         const permission = fs.readFileSync('./solution/permissions_map.json', 'utf8');
         const permissionMap = JSON.parse(permission);
 
+        const composeFilePath = generateComposeYml(solutionName);
+
         const output = await processSolutions(
             solution_path,
             process.cwd(),
             permissionMap,
         );
-        
+
+        // Get dist-dkr files from compose.yml and merge them into output
+        const composeFiles = await copyDistDkrAssetsFromCompose(composeFilePath, 'develop');
+        Object.assign(output, composeFiles);
+
+        // Create zip
         const zipPath = path.join(__dirname, 'output.zip');
         await createZip(output, zipPath);
+
+        // Publish if requested
         if (shouldPublish) {
             await sendToExternalSolutionRepo(solutionName, zipPath);
         } else {
