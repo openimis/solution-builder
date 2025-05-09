@@ -8,5 +8,8 @@
     "./good-distribution-bundle.json",
     "./core-bundle.json"
   ],
-  "services":["db"]
+  "services":["db"],
+  "moduleConfiguration": {
+    "logo": "./sources/logo/coremis.png"
+  }
 }

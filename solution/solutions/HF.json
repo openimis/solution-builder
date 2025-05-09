@@ -11,5 +11,8 @@
   "services":["db"],
   "fePackageSource":{
     
+  },
+  "moduleConfiguration": {
+    "logo": "./sources/logo/openIMIS.png"
   }
 }

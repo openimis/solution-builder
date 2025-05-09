@@ -7,6 +7,9 @@ if(typeof window === 'undefined'){
     const { Blob } = require('buffer');
 }
 
+const mime = require('mime-types');
+const { v4: uuidv4 } = require('uuid');
+
 
 
 // solution-builder.js
@@ -141,20 +144,24 @@ function getFePackageConf(name, definition, branch){
 }
 
 
-function makeCoreModuleConfiguration(menus){
+function makeCoreModuleConfiguration(menusDict) {
+    const config = {
+        menus: Object.values(menusDict).sort((a, b) => (a.position || 0) - (b.position || 0))
+    };
+
     return [
         {
-          "model": "core.moduleconfiguration",
-          "fields": {
-            "id": "ebdbdbe5-c9be-4e66-8c49-edd1e5284c7c",
-            "module": "fe-core",
-            "version": "1",
-            "config": "{\n  \"menus\": "+JSON.stringify(menus).replace(/"/g, '\"')+"}",
-            "is_exposed": true,
-            "layer": "fe"
-          }
+            model: 'core.moduleconfiguration',
+            fields: {
+                id: uuidv4(),
+                module: 'fe-core',
+                version: '1',
+                config: JSON.stringify(config, null, 2),
+                is_exposed: true,
+                layer: 'fe'
+            }
         }
-      ]
+    ];
 }
 
 async function processSolutions(    
@@ -164,13 +171,27 @@ async function processSolutions(
     branch = 'develop'
 )
 {
-    solutionFilePath = getAbsolutePath(typeof solutionFile == 'string'?solutionFile:'', '', false)
-    const merged = await mergeSolutions(
-        solutionFile,
-        directoryPath,
-        permissionMap
-    )
-    let result = {}
+    const solutionFilePath = getAbsolutePath(typeof solutionFile === 'string' ? solutionFile : '', '', false);
+
+    let solutionJson = {};
+    try {
+        solutionJson = JSON.parse(fs.readFileSync(solutionFile, 'utf8'));
+    } catch (e) {
+        console.warn('⚠️ Failed to parse root solution JSON file:', e.message);
+    }
+
+    let logoPath = null;
+    if (solutionJson?.moduleConfiguration?.logo) {
+        logoPath = path.resolve(path.dirname(solutionFilePath), solutionJson.moduleConfiguration.logo);
+    }
+
+    let themePath = null;
+    if (solutionJson?.moduleConfiguration?.theme) {
+        themePath = path.resolve(path.dirname(solutionFilePath), solutionJson.moduleConfiguration.theme);
+    }
+
+    let merged = await mergeSolutions(solutionFile, directoryPath, permissionMap);
+    let result = {};
 
     for (let key in merged.moduleRefDict || {}) {
         const depPath = getAbsolutePath(merged.moduleRefDict[key], solutionFilePath);
@@ -229,8 +250,12 @@ async function processSolutions(
     if(PIPModules.size>0){
         output['be-openimis.json'] ={"modules": [...PIPModules]};
     }
-    if(Object.keys(merged.menusDict).length>0){
-        output['fixtures/module-configuration-core.json'] =makeCoreModuleConfiguration(merged.menusDict);
+    if (Object.keys(merged.menusDict).length > 0) {
+        const coreModuleConfig = makeCoreModuleConfiguration(merged.menusDict);
+
+        // Inject logo/theme using resolved paths
+        await injectLogoTheme(coreModuleConfig[0], logoPath, themePath);
+        output['fixtures/module-configuration-core.json'] = coreModuleConfig;
     }
     if(Object.keys(merged.rolesDict).length>0){
         output['fixtures/roles.json'] = merged.rolesDict;
@@ -420,6 +445,41 @@ function mergeMenusData(menus, menuDict) {
     }
 
     return menuDict;
+}
+
+
+async function injectLogoTheme(menuJson, logoPath, themePath) {
+    if (!menuJson.fields || !menuJson.fields.config) {
+        console.warn("⚠️ menuJson is missing 'fields.config'");
+        return;
+    }
+
+    // Parse the existing config JSON string
+    let config;
+    try {
+        config = JSON.parse(menuJson.fields.config);
+    } catch (e) {
+        console.error("❌ Failed to parse menuJson.fields.config:", e);
+        return;
+    }
+
+    // Inject logo
+    if (logoPath && fs.existsSync(logoPath)) {
+        const img = fs.readFileSync(logoPath);
+        const mimeType = mime.lookup(logoPath) || 'image/png';
+        const base64 = img.toString('base64');
+        config.logo = {
+            value: `data:${mimeType};base64,${base64}`
+        };
+    }
+
+    // Inject theme
+    if (themePath && fs.existsSync(themePath)) {
+        const themeData = JSON.parse(fs.readFileSync(themePath, 'utf8'));
+        config.theme = themeData.theme;
+    }
+    // Write back to config as string
+    menuJson.fields.config = JSON.stringify(config, null, 2);
 }
 
 
