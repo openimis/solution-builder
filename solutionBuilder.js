@@ -250,9 +250,6 @@ async function processSolutions(
     if(PIPModules.size>0){
         output['be-openimis.json'] ={"modules": [...PIPModules]};
     }
-    if(Object.keys(merged.menusDict).length>0){
-        output['fixtures/module-configuration-core.json'] =makeCoreModuleConfiguration(merged.menusDict);
-    }
     if (Object.keys(merged.menusDict).length > 0) {
         const coreModuleConfig = makeCoreModuleConfiguration(merged.menusDict);
 
@@ -479,9 +476,7 @@ async function injectLogoTheme(menuJson, logoPath, themePath) {
     // Inject theme
     if (themePath && fs.existsSync(themePath)) {
         const themeData = JSON.parse(fs.readFileSync(themePath, 'utf8'));
-        config.theme = {
-            value: themeData
-        };
+        config.theme = themeData.theme;
     }
     // Write back to config as string
     menuJson.fields.config = JSON.stringify(config, null, 2);
