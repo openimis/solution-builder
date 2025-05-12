@@ -8,24 +8,23 @@
       "description": "Administration",
       "submenus": [
         {
-          "position": 2,
-          "id": "admin.products"
+          "position": 4,
+          "id": "admin.payers"
         }
       ]
     }
   ],
-  "fePackages": ["ProductModule"],
-  "bePackages": ["product"],
+  "fePackages": ["PayerModule"],
+  "bePackages": ["payer"],
   "roles": [
     {
       "roleName": "LOCAL Administrator",
       "code": "local_admin",
       "permissions": [
-        "product.product",
-        "product.create_product",
-        "product.update_product",
-        "product.delete_product",
-        "product.duplicate_product"
+        "payer.payers",
+        "payer.create_payers",
+        "payer.update_payers",
+        "payer.delete_payers"
       ]
     }
   ]
