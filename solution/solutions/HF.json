@@ -1,7 +1,8 @@
 {
   "modules": {
     "grievance": "../modules/grievance.json",
-    "openserach": "../modules/opensearch-report.json"
+    "individual": "../modules/individual.json",
+    "workflow": "../modules/workflow.json"
   },
   "solutions": [
     "./formal-sector-bundle.json",

@@ -4,9 +4,13 @@
     "policy": "../modules/policy.json",
     "product": "../modules/product.json",
     "healthFacility": "../modules/healthfacility.json",
-    "invoiceCustomer":"../modules/invoice-customer.json",
-    "invoiceSupplier":"../modules/invoice-supplier.json",
-    "report": "../modules/report.json"
-
+    "invoiceCustomer": "../modules/invoice-customer.json",
+    "invoiceSupplier": "../modules/invoice-supplier.json",
+    "report": "../modules/report.json",
+    "medical": "../modules/medical.json",
+    "payer": "../modules/payer.json",
+    "claim": "../modules/claim.json",
+    "claim_batch": "../modules/claim_batch.json",
+    "payment": "../modules/payment.json"
   }
 }

@@ -1,0 +1,6 @@
+{
+  "menus": [],
+  "fePackages": ["MedicalModule", "MedicalPriceListModule"],
+  "bePackages": ["medical", "medical_pricelist"],
+  "roles": []
+}

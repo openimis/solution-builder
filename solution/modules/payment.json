@@ -1,0 +1,6 @@
+{
+  "menus": [],
+  "fePackages": ["PaymentModule"],
+  "bePackages": ["payment"],
+  "roles": []
+}

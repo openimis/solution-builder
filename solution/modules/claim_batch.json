@@ -1,0 +1,6 @@
+{
+  "menus": [],
+  "fePackages": ["ClaimBatchModule"],
+  "bePackages": ["claim_batch"],
+  "roles": []
+}
