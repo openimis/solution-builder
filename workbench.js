@@ -132,7 +132,7 @@ function generateComposeYml(solutionName) {
     const composeConfig = {
         include: [
             { path: 'compose.base.yml' },
-            { path: `compose.${process.env.DB_DEFAULT || 'postgresql'}.yml` },
+            { path: `compose.mssql.yml` },
             { path: `compose.postgresql.yml` },
             { path: 'compose.openSearch.yml' },
             { path: 'compose.cache.yml' }
