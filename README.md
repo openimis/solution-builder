@@ -4,6 +4,113 @@ This script processes a `solution.json` file and combines the `menus` key from m
 
 ## How It Works
 
+### ⚠️ Requirements
+
+- **Node.js v18 or higher is required**
+  - This version is necessary for modern features like `Blob` and `arrayBuffer()` support used during ZIP creation.
+  - You can verify your version with:
+    ```bash
+    node -v
+    ```
+---
+
+### 🚀 What It Does
+
+The `workbench.js` script:
+1. **Reads** a solution configuration JSON (e.g., `HF.json`).
+2. **Generates** supporting files like:
+   - `fe-openimis.json`
+   - `generated-menu.json`
+   - `generated-roles.json`
+   - `compose.yml`
+3. **Creates** a ZIP archive (`output.zip`) containing the above outputs.
+4. **(Optional)** Pushes the generated solution to a new branch in the `openimis/solutions` GitHub repo.
+
+### Usage
+
+#### 📦 Basic: Generate ZIP Only
+
+```bash
+node workbench.js
+```
+
+This will create `output.zip` in the project root with the generated solution files.
+
+---
+
+#### 🚀 Publish to GitHub
+
+```bash
+node workbench.js --publish
+```
+
+This generates the ZIP and:
+
+* Clones the [openimis/solutions](https://github.com/openimis/solutions) repository.
+* Creates a new branch based on `develop`.
+* Pushes the solution into a subfolder matching the default name (`default-solution`).
+
+---
+
+#### 📝 Publish with Custom Folder Name
+
+```bash
+node workbench.js --publish --folder=coreMIS-test
+```
+
+This behaves like the previous command but publishes the solution inside a subfolder called `coreMIS-test`.
+
+---
+
+### Example Output Structure
+
+After running, you will see:
+
+```
+output.zip
+solution/
+├— fe-openimis.json
+├— generated-menu.json
+├— generated-roles.json
+└— compose.yml
+```
+
+---
+
+### 🚼 Cleanup
+
+Temporary folders (`temp_solutions_repo` and `unzipped_output`) are automatically cleaned between runs.
+
+---
+
+### 📁 Default Config Path
+
+Ensure your `<solution>.json` is located at:
+
+```
+./solution/solutions/<solution>.json
+```
+
+You can customize this path in the script if needed.
+
+---
+
+### 🔥 Dependencies
+
+Install dependencies using:
+
+```bash
+npm install jszip simple-git yaml unzipper
+```
+
+---
+
+### 📬 Contributing
+
+Merge to `develop` in `openimis/solutions` is disabled. This script creates a **new branch** like `solution/coreMIS-test` and **pushes only that branch**.
+
+---
+
 ### file structure
 
 ```yaml

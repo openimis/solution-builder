@@ -9,6 +9,11 @@
     "./healthfinancing-bundle.json",
     "./core-bundle.json"
   ],
-  "services": ["db"],
-  "fePackageSource": {}
+  "services":["db"],
+  "fePackageSource":{
+    
+  },
+  "moduleConfiguration": {
+    "logo": "./sources/logo/openIMIS.png"
+  }
 }

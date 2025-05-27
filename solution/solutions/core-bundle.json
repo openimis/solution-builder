@@ -12,5 +12,8 @@
     "../services/base.json",
     "../services/cache.json",
     "../services/opensearch.json"
-  ]
+  ],
+  "moduleConfiguration": {
+    "logo": "./sources/logo/openIMIS.png"
+  }
 }
