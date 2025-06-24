@@ -6,10 +6,14 @@
   "solutions": [
     "./social-protection-bundle.json",
     "./good-distribution-bundle.json",
-    "./core-bundle.json"
+    "./core-bundle.json" 
   ],
   "services":["db"],
   "moduleConfiguration": {
     "logo": "./sources/logo/coremis.png"
-  }
+  },
+  "initData":[
+    "../fixtures/core/roles-coreMIS.json",
+    "../fixtures/core/rights-case-worker-social-officer.json"
+  ]
 }

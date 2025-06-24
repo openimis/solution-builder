@@ -40,15 +40,6 @@
         "invoice.delete_all_message_event"
       ]
     }
-   ],
-  "initData": [
-    "gender.json",
-    "education.json",
-    "profession.json",
-    "relations.json",
-    "identification-types.json",
-    "family-type.json",
-    "relations.json",
-    "confirmation-type.json"
-  ]
+   ]
+
 }

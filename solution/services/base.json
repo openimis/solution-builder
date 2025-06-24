@@ -2,15 +2,13 @@
     "base": {
         "path": "compose.base.yml",
         "env_file": [
-            ".env",
-            ".env.redis",
-            ".env.openSearch"
+            ".env"
         ]
     },
     "db":{
         "path": "compose.${DB_DEFAULT:-postgresql}.yml",
         "env_file": [
-            ".env.database"
+            ".env"
         ]
     }
 }}

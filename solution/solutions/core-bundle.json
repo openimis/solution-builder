@@ -11,7 +11,7 @@
     "../sources/fe-source.json",
     "../services/base.json",
     "../services/cache.json",
-    "../services/opensearch.json"
+    "../services/openSearch.json"
   ],
   "moduleConfiguration": {
     "logo": "./sources/logo/openIMIS.png"

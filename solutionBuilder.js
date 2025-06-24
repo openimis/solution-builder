@@ -102,12 +102,22 @@ function getServiceConf(name, definition, services = {}){
         console.log(name + " service has no definition")
         return {}
     }
-    if( !(services.hasOwnProperty(name))){
-        services[name] = {};
-        }
-    if(definition.hasOwnProperty('path')){
-        services[name]['path'] = definition['path']
+
+    if(!definition.hasOwnProperty('path')  ){
+        console.log(name + " service has no path ")
+        return {}
     }
+    
+    if ( services[name] === undefined){
+        services[name]= {};
+    }
+    
+    services[name] = {
+        "path": definition['path'],
+    }
+
+    
+
     if(definition.hasOwnProperty('env_file')){
         if(!services[name].hasOwnProperty('env_file')){
             services[name]['env_file'] = []
@@ -117,6 +127,15 @@ function getServiceConf(name, definition, services = {}){
                 services[name]['env_file'].push(definition['env_file'][env_file])
             }
         }
+    }
+    if(definition.hasOwnProperty('env_contrib')){
+        for(let contrib in definition['env_contrib']){
+            if ( services[contrib] === undefined){
+                services[contrib] = {}
+            }
+            services[contrib]['env_file'] = [...(services[contrib]['env_file'] || []), ...definition['env_contrib'][contrib]] 
+        }
+
     }
 
     return services
@@ -213,9 +232,7 @@ async function processSolutions(
             service = merged.servicesList[idx]
             merged.servicesDefDict =  getServiceConf(service, result.servicesDefDict[service], services)
         }
-        for (attr in merged.initData){
-            merged.initData[attr].assign(...result.initData[attr]);
-        }
+        Array.prototype.push.apply(merged.initData,result.initData);
         
     }
     let PIPModules = new Set()
@@ -261,8 +278,16 @@ async function processSolutions(
         output['fixtures/roles.json'] = merged.rolesDict;
     }
     if(Object.keys(merged.initData).length>0){
-        output['fixtures/other-init-data.json'] = [...merged.initData];
+        for (const value of merged.initData){
+            // get file name from path filename
+            const filename = path.basename(value);
+            // add file in outpur
+            const data =  await fetchJSON(value);
+            output[`fixtures/${filename}`] = data;
+        }
     }
+        
+    
     if(Object.keys(services).length>0){
         output['compose.yml'] = services;
     }
@@ -326,7 +351,9 @@ async function mergeSolutions(
         fePackagesDefDict = result.fePackagesDefDict;
         servicesList = result.servicesList;
         servicesDefDict = result.servicesDefDict;
-        initData = result.initData;
+        for(let idx in result.initData){
+            initData.add(getAbsolutePath(result.initData[idx], depPath));
+        }
     }
     // Process modules
     for (let key in solution.modules || {} ) {
@@ -339,13 +366,14 @@ async function mergeSolutions(
     }
     bePackagesList = [...(solution.bePackages || []), ...bePackagesList]
     for (let key in solution.bePackageDefinitions || {}) {
-        bePackagesDefDict[key] = solution.bePackageDefinitions [key];
+        bePackagesDefDict[key] = solution.bePackageDefinitions[key];
     }
     servicesList = [...(solution.services || []), ...servicesList]
-
     for (let key in solution.serviceDefinitions || {}) {
-        servicesDefDict =  getServiceConf(key, solution.serviceDefinitions[key], servicesDefDict)
-
+        servicesDefDict[key] = solution.serviceDefinitions[key];
+    }
+    for(let idx in solution.initData){
+        initData.add(getAbsolutePath(solution.initData[idx], solutionFilePath));
     }
 
     // Merge roles
