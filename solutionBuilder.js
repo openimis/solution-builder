@@ -319,8 +319,12 @@ async function processSolutions(
         await injectLogoTheme(coreModuleConfig[0], logoPath, themePath);
         output['fixtures/module-configuration-core.json'] = coreModuleConfig;
     }
-    if(Object.keys(merged.rolesDict).length>0){
+    if (Object.keys(merged.rolesDict).length > 0) {
         output['fixtures/roles.json'] = merged.rolesDict;
+    
+        const transformed = transformRoles(merged.rolesDict);
+        output['fixtures/gen-roles.json'] = transformed.roles;
+        output['fixtures/gen-roles-right.json'] = transformed.rolesRight;
     }
     // merging all fixture
 
@@ -564,6 +568,53 @@ function getHeaders() {
     }
     return headers;
 }
+
+
+function transformRoles(rolesDict) {
+    const roleFixtures = [];
+    const roleRightFixtures = [];
+    const validityFrom = "2025-01-01T00:00:00Z";
+
+    for (const key in rolesDict) {
+        const role = rolesDict[key];
+        const roleUuid = uuidv4();
+
+        roleFixtures.push({
+            model: "core.role",
+            fields: {
+                uuid: roleUuid,
+                name: role.roleName,
+                alt_language: null,
+                is_system: 0,
+                is_blocked: false,
+                audit_user_id: null,
+                validity_from: validityFrom,
+                validity_to: null,
+                legacy_id: null
+            }
+        });
+
+        for (const perm of role.permissions) {
+            roleRightFixtures.push({
+                model: "core.roleright",
+                fields: {
+                    validity_from: validityFrom,
+                    validity_to: null,
+                    legacy_id: null,
+                    right_id: perm.code,
+                    audit_user_id: null,
+                    role: [role.roleName]
+                }
+            });
+        }
+    }
+
+    return {
+        roles: roleFixtures,
+        rolesRight: roleRightFixtures
+    };
+}
+
 
 // Function to create a zip file
 async function createZip(data, filename) {
