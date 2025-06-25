@@ -338,7 +338,7 @@ async function processSolutions(
     if (Object.keys(merged.rolesDict).length > 0) {
         output['fixtures/roles.json'] = merged.rolesDict;
     
-        const transformed = transformRoles(merged.rolesDict);
+        const transformed = transformRolesToFixture(merged.rolesDict);
         output['fixtures/roles.json'] = transformed.roles;
         output['fixtures/roles-right.json'] = transformed.rolesRight;
     }
@@ -586,7 +586,7 @@ function getHeaders() {
 }
 
 
-function transformRoles(rolesDict) {
+function transformRolesToFixture(rolesDict) {
     const roleFixtures = [];
     const roleRightFixtures = [];
     const validityFrom = "2025-01-01T00:00:00Z";
