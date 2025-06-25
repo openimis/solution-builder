@@ -206,6 +206,22 @@ async function mergeAndSortFixtures(inputFiles, output) {
       fixturesByModel[model].push(entry);
     }
   }
+  
+  if (output['fixtures/roles.json']) {
+    if (!fixturesByModel['core.role']) {
+      fixturesByModel['core.role'] = [];
+    }
+    fixturesByModel['core.role'].push(...output['fixtures/roles.json']);
+    delete output['fixtures/roles.json'];
+  }
+
+  if (output['fixtures/roles-right.json']) {
+    if (!fixturesByModel['core.roleright']) {
+      fixturesByModel['core.roleright'] = [];
+    }
+    fixturesByModel['core.roleright'].push(...output['fixtures/roles-right.json']);
+    delete output['fixtures/roles-right.json'];
+  }
 
   // Sort and save each model's fixtures
   for (const model in fixturesByModel) {
@@ -323,8 +339,8 @@ async function processSolutions(
         output['fixtures/roles.json'] = merged.rolesDict;
     
         const transformed = transformRoles(merged.rolesDict);
-        output['fixtures/gen-roles.json'] = transformed.roles;
-        output['fixtures/gen-roles-right.json'] = transformed.rolesRight;
+        output['fixtures/roles.json'] = transformed.roles;
+        output['fixtures/roles-right.json'] = transformed.rolesRight;
     }
     // merging all fixture
 
