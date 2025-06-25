@@ -182,6 +182,48 @@ function makeCoreModuleConfiguration(menusDict) {
         }
     ];
 }
+// Function to merge and sort fixtures
+async function mergeAndSortFixtures(inputFiles, output) {
+  // Ensure output directory exists
+
+
+  // Object to store fixtures grouped by model
+  const fixturesByModel = {};
+
+  // Process each input file
+  for (const filePath of inputFiles) {
+    const filename = path.basename(filePath);
+    console.log(`Processing file: ${filename}`);
+
+    const data = await fetchJSON(filePath);
+    
+    // Group entries by model
+    for (const entry of data) {
+      const model = entry.model;
+      if (!fixturesByModel[model]) {
+        fixturesByModel[model] = [];
+      }
+      fixturesByModel[model].push(entry);
+    }
+  }
+
+  // Sort and save each model's fixtures
+  for (const model in fixturesByModel) {
+    // Sort entries by pk (primary key) if it exists
+    fixturesByModel[model].sort((a, b) => {
+      const pkA = a.pk || 0;
+      const pkB = b.pk || 0;
+      return pkA - pkB;
+    });
+    // Create output file path
+    const filename = `${model.replace('.', '_')}.json`;
+    // Write sorted fixtures to file
+    output[`fixtures/${filename}`] =  fixturesByModel[model];
+
+  }
+
+  return output;
+}
 
 async function processSolutions(    
     solutionFile, 
@@ -233,6 +275,9 @@ async function processSolutions(
             merged.servicesDefDict =  getServiceConf(service, result.servicesDefDict[service], services)
         }
         Array.prototype.push.apply(merged.initData,result.initData);
+        for(let data of result.initData){
+            merged.initData.add(getAbsolutePath(data, solutionFilePath));
+        }
         
     }
     let PIPModules = new Set()
@@ -277,15 +322,13 @@ async function processSolutions(
     if(Object.keys(merged.rolesDict).length>0){
         output['fixtures/roles.json'] = merged.rolesDict;
     }
-    if(Object.keys(merged.initData).length>0){
-        for (const value of merged.initData){
-            // get file name from path filename
-            const filename = path.basename(value);
-            // add file in outpur
-            const data =  await fetchJSON(value);
-            output[`fixtures/${filename}`] = data;
-        }
-    }
+    // merging all fixture
+
+    output = mergeAndSortFixtures(merged.initData, output);
+
+    // sorting fixture by model
+
+    // adding fixture file to output
         
     
     if(Object.keys(services).length>0){
