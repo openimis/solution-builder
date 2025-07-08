@@ -16,6 +16,13 @@ async function selectLocalFolder() {
   } catch (err) {
     console.error("Error selecting folder:", err);
   }
+  try {
+    const dirHandle = await window.showDirectoryPicker();
+    DIRECTORY = dirHandle; // Store directory handle instead of a URL
+    init();
+  } catch (err) {
+    console.error("Error selecting folder:", err);
+  }
 }
 
 function isHttpUrl(str) {
@@ -53,6 +60,12 @@ async function fetchJSON(handleOrUrl, DIRECTORY = null, rootPath = "") {
           create: false,
         });
       }
+      // Navigate directories if there are multiple parts
+      for (let i = 0; i < pathParts.length - 1; i++) {
+        currentDir = await currentDir.getDirectoryHandle(pathParts[i], {
+          create: false,
+        });
+      }
 
       // Get the file handle from the final directory
       const fileName = pathParts[pathParts.length - 1];
@@ -83,7 +96,14 @@ function getBePackageConf(name, definition, branch) {
     return {};
   }
 
+  if (definition.hasOwnProperty("branch")) {
+    branch = definition.branch;
+  }
+
   let pip = "";
+  if (definition.hasOwnProperty("branch")) {
+    branch = definition.branch;
+  }
   if (branch == "released") {
     pip = definition.package + "~=" + definition.version;
   } else {
@@ -129,6 +149,11 @@ function getFePackageConf(name, definition, branch) {
     console.log(name + " fe has no definition");
     return {};
   }
+
+  if (definition.hasOwnProperty("branch")) {
+    branch = definition.branch;
+  }
+
   let npm = "";
   if (branch == "released") {
     npm = definition.package + "@>=" + definition.version;

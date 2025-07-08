@@ -1,0 +1,16 @@
+{
+  "modules": {
+    "grievance": "../modules/grievance.json",
+    "individual": "../modules/individual.json",
+    "workflow": "../modules/workflow.json",
+    "claim_ai": "../modules/claim-ai.json",
+    "api_fhir_r4": "../modules/api_fhir_r4.json"
+  },
+  "solutions": [
+    "./core-bundle.json",
+    "./formal-sector-bundle.json",
+    "./claim-ai-bundle.json"
+  ],
+  "services": ["db"],
+  "fePackageSource": {}
+}

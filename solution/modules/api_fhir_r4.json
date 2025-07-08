@@ -1,0 +1,6 @@
+{
+  "menus": [],
+  "fePackages": [],
+  "bePackages": ["api_fhir_r4"],
+  "roles": []
+}

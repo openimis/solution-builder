@@ -107,7 +107,7 @@ const { createZip, processSolutions } = require("./solutionBuilder.js");
 
 async function main() {
   try {
-    const solution_path = "./solution/solutions/HF.json";
+    const solution_path = "./solution/solutions/claim-ai.json";
     const permission = fs.readFileSync(
       "./solution/permissions_map.json",
       "utf8"
