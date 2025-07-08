@@ -44,9 +44,7 @@
     }
   ],
   "initData": [
-    "../fixtures/core/language.json",
-    "../fixtures/core/roles-base.json",
-    "../fixtures/core/rights-system-admin.json"
+    "../fixtures/core/language.json"
   ],
   "services":["base", "cache"]
 }

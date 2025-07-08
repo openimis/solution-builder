@@ -1,8 +1,6 @@
 {
   "modules": {
-    "grievance": "../modules/grievance.json",
-    "individual": "../modules/individual.json",
-    "workflow": "../modules/workflow.json"
+    "grievance": "../modules/grievance.json"
   },
   "solutions": [
     "./formal-sector-bundle.json",

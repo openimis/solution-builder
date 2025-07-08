@@ -8,6 +8,7 @@
     "healthFacility": "../modules/healthfacility.json",
     "invoiceCustomer": "../modules/invoice-customer.json",
     "invoiceSupplier": "../modules/invoice-supplier.json",
+    "paymentPlan":"../modules/payment-plan.json",
     "report": "../modules/report.json",
     "medical": "../modules/medical.json",
     "payer": "../modules/payer.json",
