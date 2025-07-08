@@ -368,8 +368,8 @@ def main(solution_file, out_path, git=None):
     
     generated_roles_file = os.path.join(out_path,"generated-roles.json")
     system_roles_file = os.path.join(file_path,"roles-data.json")
-    generate_role_fixtures(generated_roles_file, system_roles_file, out_path)
-    generate_menu_fixtures(out_path)
+    #generate_role_fixtures(generated_roles_file, system_roles_file, out_path)
+    #generate_menu_fixtures(out_path)
     print("Processing completed.")
     
 def get_absolute_path(file_path, path=None):

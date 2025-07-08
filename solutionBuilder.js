@@ -241,6 +241,21 @@ async function mergeAndSortFixtures(inputFiles, output) {
   return output;
 }
 
+function transformComposeContent(composeContent) {
+  let object = {'include': []}
+  // Iterate through each key in the composeContent object
+  for (const [key, value] of Object.entries(composeContent)) {
+    const line = {'path': value.path};
+    // Handle env_file section
+    if (value.env_file && value.env_file.length > 0) {
+      line['env_file'] = [...value.env_file];
+    }
+    object['include'].push(line) 
+  }
+  
+  return object;
+}
+
 async function processSolutions(    
     solutionFile, 
     directoryPath,
@@ -325,6 +340,10 @@ async function processSolutions(
               ]
         };
     }
+    if(services){
+        output['compose.yml'] = transformComposeContent(services);
+    }
+
     if(PIPModules.size>0){
         output['be-openimis.json'] ={"modules": [...PIPModules]};
     }

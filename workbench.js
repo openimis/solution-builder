@@ -123,30 +123,11 @@ async function ensureDistDkrRepo(branch = 'develop') {
         console.log(`🔀 Checking out branch '${branch}'`);
         await git.checkout(branch);
     }
+    git.pull();
   
     return distDkrRepoPath;
 }
 
-// Generate the compose.yml based on the solutionName or any specific config
-function generateComposeYml(solutionName) {
-    const composeConfig = {
-        include: [
-            { path: 'compose.base.yml' },
-            { path: `compose.mssql.yml` },
-            { path: `compose.postgresql.yml` },
-            { path: 'compose.openSearch.yml' },
-            { path: 'compose.cache.yml' }
-        ]
-    };
-
-    const composeContent = yaml.dump(composeConfig);
-    const composeFilePath = path.resolve(`./solution/compose.yml`);
-    
-    // Write the generated compose.yml to the solution directory
-    fs.writeFileSync(composeFilePath, composeContent, 'utf8');
-    console.log(`✔️ Generated compose.yml for solution: ${solutionName}`);
-    return composeFilePath;
-}
 
 // Get the paths from compose.yml
 function getComposeFilePaths(composePath) {
@@ -167,21 +148,10 @@ function getComposeFilePaths(composePath) {
 }
 
 // Copy files defined in compose.yml from the dist-dkr repo
-async function copyDistDkrAssetsFromCompose(composeFilePath, branch = 'develop') {
-    if (!fs.existsSync(composeFilePath)) {
-        console.warn('⚠️ compose.yml not found in the solution folder, skipping...');
-        return {};
-    }
+async function copyDistDkrAssetsFromCompose(composeContent, branch = 'develop') {
 
-    // Read and parse the compose.yml to get the file paths
-    const composeFile = fs.readFileSync(composeFilePath, 'utf8');
-    let composeConfig;
-    try {
-        composeConfig = yaml.load(composeFile); // Parse the YAML file
-    } catch (error) {
-        console.error('⚠️ Error reading compose.yml', error);
-        return {};
-    }
+    // Read and parse the compose content to get the file paths
+
 
     // Ensure dist-dkr repo is cloned and checked out to the right branch
     const distDkrRepoPath = await ensureDistDkrRepo(branch);
@@ -189,8 +159,8 @@ async function copyDistDkrAssetsFromCompose(composeFilePath, branch = 'develop')
     const outputFiles = {};
 
     // Ensure we are getting the paths from composeConfig
-    if (composeConfig.include && Array.isArray(composeConfig.include)) {
-        for (const item of composeConfig.include) {
+    if (composeContent.include && Array.isArray(composeContent.include)) {
+        for (const item of composeContent.include) {
             if (item.path) {
                 // Resolve path within dist-dkr repo
                 const filePath = item.path.replace('${DB_DEFAULT:-postgresql}', 'postgresql'); // Resolve dynamic paths
@@ -209,7 +179,22 @@ async function copyDistDkrAssetsFromCompose(composeFilePath, branch = 'develop')
                     console.warn(`⚠️ File ${item.path} not found at path: ${srcPath}`);
                 }
             }
+            // Handle env files and their .example equivalents
+            if (item.env_file && Array.isArray(item.env_file)) {
+                for (const envFile of item.env_file) {
+                    // Process the .env file itself
+                    const envSrcPath = path.join(distDkrRepoPath, envFile + '.example');
+                    if (fs.existsSync(envSrcPath)) {
+                        const envContent = fs.readFileSync(envSrcPath, 'utf8');
+                        outputFiles[envFile] = envContent;
+                        console.log(`✔️ Copied ${envFile} from dist-dkr`);
+                    } else {
+                        console.warn(`⚠️ File ${envFile} not found at path: ${envSrcPath}`);
+                    }
+                }
+            }
         }
+
     } else {
         console.warn('⚠️ No include array found in compose.yml.');
     }
@@ -269,7 +254,6 @@ async function main() {
         const permission = fs.readFileSync('./solution/permissions_map.json', 'utf8');
         const permissionMap = JSON.parse(permission);
 
-        const composeFilePath = generateComposeYml(solutionName);
 
         const output = await processSolutions(
             solution_path,
@@ -278,7 +262,7 @@ async function main() {
         );
 
         // Get dist-dkr files from compose.yml and merge them into output
-        const composeFiles = await copyDistDkrAssetsFromCompose(composeFilePath, 'develop');
+        const composeFiles = await copyDistDkrAssetsFromCompose(output['compose.yml'], 'develop');
         Object.assign(output, composeFiles);
 
         // Create zip
