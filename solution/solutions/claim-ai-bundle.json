@@ -1,0 +1,16 @@
+{
+  "modules": {
+    "insuree": "../modules/insuree.json",
+    "policy": "../modules/policy.json",
+    "claim": "../modules/claim.json",
+    "claim_batch": "../modules/claim_batch.json",
+    "product": "../modules/product.json",
+    "healthFacility": "../modules/healthfacility.json",
+    "invoiceCustomer": "../modules/invoice-customer.json",
+    "invoiceSupplier": "../modules/invoice-supplier.json",
+    "report": "../modules/report.json",
+    "medical": "../modules/medical.json",
+    "payer": "../modules/payer.json",
+    "payment": "../modules/payment.json"
+  }
+}

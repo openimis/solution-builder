@@ -1,0 +1,6 @@
+{
+  "menus": [],
+  "fePackages": ["ClaimAIQualityModule"],
+  "bePackages": ["claim_ai", "claim_ai_quality"],
+  "roles": []
+}
