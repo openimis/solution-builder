@@ -84,7 +84,11 @@ function getBePackageConf(name, definition, branch){
         return {}
     }
     
-    let pip = ''
+  let pip = "";
+  // overide the branch if a branch is specified in the source
+  if (definition.hasOwnProperty("branch")) {
+    branch = definition.branch;
+  }
     if (branch == 'released'){
         pip =  definition.package + "~=" + definition.version;
     }else{
@@ -650,6 +654,40 @@ function transformRolesToFixture(rolesDict) {
     };
 }
 
+async function createSolutionDirectory(baseDir, output)
+{
+  try {
+              // Ensure the base directory exists
+              await fs.mkdirSync(baseDir, { recursive: true });
+
+              // Iterate over the output object
+              for (const [filePath, content] of Object.entries(output)) {
+                // Resolve the full path for the file
+                const fullPath = path.join(baseDir, filePath);
+
+                // Ensure the directory for the file exists
+                const dir = path.dirname(fullPath);
+                await fs.mkdirSync(dir, { recursive: true });
+
+                // Write the file content
+                if (fullPath.toLowerCase().endsWith('.yml') || fullPath.toLowerCase().endsWith('.yaml')) {
+                // Stringify as YAML
+                    await fs.writeFileSync(fullPath, yaml.dump(content));
+                } else if (fullPath.toLowerCase().endsWith('.json') ){
+                    // Stringify as JSON with formatting
+                    await fs.writeFileSync(fullPath, JSON.stringify(content, null, 2));
+                } else {
+                    // Stringify as JSON with formatting
+                    await fs.writeFileSync(fullPath, content);
+                }
+              }
+
+              console.log(`Directory and files created successfully in ${baseDir}`);
+            } catch (error) {
+              console.error('Error creating directory and files:', error);
+              throw error;
+            }
+}
 
 // Function to create a zip file
 async function createZip(data, filename) {
@@ -688,4 +726,4 @@ async function createZip(data, filename) {
 
 
 
-module.exports = { mergeSolutions, getAbsolutePath, createZip, processSolutions };
+module.exports = { mergeSolutions, getAbsolutePath, createZip, processSolutions, createSolutionDirectory };

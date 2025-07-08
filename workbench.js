@@ -129,24 +129,6 @@ async function ensureDistDkrRepo(branch = 'develop') {
 }
 
 
-// Get the paths from compose.yml
-function getComposeFilePaths(composePath) {
-    const content = fs.readFileSync(composePath, 'utf8');
-    const parsed = yaml.load(content);
-    const paths = new Set();
-  
-    if (parsed && parsed.include) {
-        // Collect all paths from the "include" section in compose.yml
-        for (const item of parsed.include) {
-            if (item.path) {
-                paths.add(item.path);
-            }
-        }
-    }
-  
-    return [...paths]; // Return paths as an array
-}
-
 // Copy files defined in compose.yml from the dist-dkr repo
 async function copyDistDkrAssetsFromCompose(composeContent, branch = 'develop') {
 
@@ -171,9 +153,9 @@ async function copyDistDkrAssetsFromCompose(composeContent, branch = 'develop') 
                     let fileContent = fs.readFileSync(srcPath, 'utf8');
                     
                     // Fix YAML block strings if necessary
-                    fileContent = fixYmlBlockStrings(fileContent);
+                    fileContent = yaml.load(fileContent);
 
-                    outputFiles[item.path] = fileContent;
+                    outputFiles[filePath] = fileContent;
                     console.log(`✔️ Copied ${item.path} from dist-dkr`);
                 } else {
                     console.warn(`⚠️ File ${item.path} not found at path: ${srcPath}`);
@@ -202,46 +184,50 @@ async function copyDistDkrAssetsFromCompose(composeContent, branch = 'develop') 
     return outputFiles;
 }
 
+const getFormattedDate = () => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-based, so +1
+  const day = String(now.getDate()).padStart(2, '0');
+  return `${year}${month}${day}`;
+};
 
-async function sendToExternalSolutionRepo(folderName, zipPath) {
+async function sendToExternalSolutionRepo(folderName, solutionFolder) {
     const repoUrl = 'https://github.com/openimis/solutions.git';
-    const branchName = `solution/${folderName}`;
-    const tempDir = path.join(__dirname, 'temp_solutions_repo');
-    const unzipDir = path.join(__dirname, 'unzipped_output');
-    const targetFolder = path.join(tempDir, folderName);
-
+    const branchName = `solution/${folderName}/${getFormattedDate()}`;
+    const tempDir = path.join(__dirname, '.cache/temp_solutions_repo');
+    
     // Clean up any previous temp/unzip folder
-    if (fs.existsSync(tempDir)) fs.rmSync(tempDir, { recursive: true });
-    if (fs.existsSync(unzipDir)) fs.rmSync(unzipDir, { recursive: true });
-
-    fs.mkdirSync(unzipDir);
-
-    // Unzip output.zip
-    await fs.createReadStream(zipPath)
-        .pipe(unzipper.Extract({ path: unzipDir }))
-        .promise();
-
+    if (!fs.existsSync(tempDir)){
+      await git.clone(repoUrl, tempDir);
+    }
     const git = simpleGit();
-
-    // Clone the repo and checkout a new branch
-    await git.clone(repoUrl, tempDir);
     const gitRepo = simpleGit(tempDir);
-    await gitRepo.checkout('develop');
-    await gitRepo.checkoutBranch(branchName, 'develop');
+    await gitRepo.checkout('develop');      // Clone the repo and checkout a new branch
+    
+    const localBranches = await gitRepo.branchLocal();
+    if(localBranches.all.includes(branchName)){
+       await gitRepo.checkout(branchName); 
+    }else{
+      await gitRepo.checkoutBranch(branchName, 'develop');
 
+    }
     // Create or overwrite target folder in the cloned repo
+    const targetFolder = path.join(tempDir,folderName)
     if (!fs.existsSync(targetFolder)) fs.mkdirSync(targetFolder);
-    fs.cpSync(unzipDir, targetFolder, { recursive: true });
-
+    fs.cpSync(solutionFolder, targetFolder, { recursive: true });
     // Commit and push
+
     await gitRepo.add('.');
     await gitRepo.commit(`Add/update ${folderName} solution`);
-    await gitRepo.push('origin', branchName);
+    //await gitRepo.push('origin', branchName);
     console.log(`✔️ Pushed ${folderName} to branch ${branchName}`);
 }
 
 
-const { createZip, processSolutions } = require("./solutionBuilder.js");
+
+
+const { createZip, processSolutions , createSolutionDirectory} = require("./solutionBuilder.js");
 
 async function main() {
     try {
@@ -249,31 +235,36 @@ async function main() {
         const shouldPublish = args.includes('--publish');
         const folderArg = args.find(arg => arg.startsWith('--folder='));
         const solutionName = folderArg ? folderArg.split('=')[1] : 'default-solution';
-        
-        const solution_path = './solution/solutions/HF.json';
+        const solutions = {
+          'coreMIS': './solution/solutions/coreMIS.json',
+          'SHI': './solution/solutions/HF.json',
+          'claimai': './solution/solutions/HF.json',
+          'full' : './solution/solutions/full.json',
+        }
         const permission = fs.readFileSync('./solution/permissions_map.json', 'utf8');
         const permissionMap = JSON.parse(permission);
+        let output = []
+        for (const [name, solution_path] of Object.entries(solutions)){
+          console.log(`generating ${name}`)
+          output[name] = await processSolutions(
+              solution_path,
+              process.cwd(),
+              permissionMap,
+          );
+          // Get dist-dkr files from compose.yml and merge them into output
+          const composeFiles = await copyDistDkrAssetsFromCompose(output[name]['compose.yml'], 'develop');
+          Object.assign(output[name], composeFiles);
+          const zipPath = path.join(__dirname, 'build', name +'.zip');
+          await createZip(output[name], zipPath);
+          baseDir = 'build/'+name
+          await createSolutionDirectory(baseDir, output[name])
 
-
-        const output = await processSolutions(
-            solution_path,
-            process.cwd(),
-            permissionMap,
-        );
-
-        // Get dist-dkr files from compose.yml and merge them into output
-        const composeFiles = await copyDistDkrAssetsFromCompose(output['compose.yml'], 'develop');
-        Object.assign(output, composeFiles);
-
-        // Create zip
-        const zipPath = path.join(__dirname, 'output.zip');
-        await createZip(output, zipPath);
-
-        // Publish if requested
-        if (shouldPublish) {
-            await sendToExternalSolutionRepo(solutionName, zipPath);
-        } else {
-            console.log('🛈 Skipping publish step (use --publish to enable)');
+          // Publish if requested
+          if (shouldPublish) {
+              await sendToExternalSolutionRepo(name, baseDir);
+          } else {
+              console.log('🛈 Skipping publish step (use --publish to enable)');
+          }
         }
     } catch (error) {
         console.error('Error:', error);
