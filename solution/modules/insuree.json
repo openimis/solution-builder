@@ -49,13 +49,13 @@
     }
    ],
   "initData": [
-    "gender.json",
-    "education.json",
-    "profession.json",
-    "relations.json",
-    "identification-types.json",
-    "family-type.json",
-    "relations.json",
-    "confirmation-type.json"
+    "../fixtures/insuree/gender.json",
+    "../fixtures/insuree/education.json",
+    "../fixtures/insuree/profession.json",
+    "../fixtures/insuree/relations.json",
+    "../fixtures/insuree/identification-types.json",
+    "../fixtures/insuree/family-type.json",
+    "../fixtures/insuree/relations.json",
+    "../fixtures/insuree/confirmation-type.json"
   ]
 }

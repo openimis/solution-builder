@@ -43,11 +43,10 @@
       ]
     }
   ],
-  "initData": {
-    "roles":"roles.json",
-    "rolesRight":"roles-right.json",
-    "language":"language.json",
-    "rolesDefault":"roles-default.json"
-  },
+  "initData": [
+    "../fixtures/core/language.json",
+    "../fixtures/core/roles-base.json",
+    "../fixtures/core/rights-system-admin.json"
+  ],
   "services":["base", "cache"]
 }

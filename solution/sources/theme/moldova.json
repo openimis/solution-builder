@@ -1,0 +1,16 @@
+{
+  "theme":
+  {
+    "name": "defaultBlue",
+    "primaryColor": "#004E96",
+    "errorColor": "#801a00",
+    "whiteColor": "#fff",
+    "backgroundColor": "#e4f2ff",
+    "headerColor": "#BCD4E6",
+    "greyColor": "grey",
+    "selectedTableRowColor": "rgba(0, 0, 0, 0.08)",
+    "hoveredTableRowColor": "rgba(0, 0, 0, 0.12)",
+    "toggledButtonColor": "#999999",
+    "lockedBackgroundPattern": "repeating-linear-gradient(45deg, #D3D3D3 1px, #D3D3D3 1px, #fff 10px, #fff 10px)"
+  }
+}

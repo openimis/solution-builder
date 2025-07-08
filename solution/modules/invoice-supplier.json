@@ -40,15 +40,5 @@
         "bill.delete_all_event_message"
       ]
     }
-   ],
-  "initData": [
-    "gender.json",
-    "education.json",
-    "profession.json",
-    "relations.json",
-    "identification-types.json",
-    "family-type.json",
-    "relations.json",
-    "confirmation-type.json"
-  ]
+   ]
 }

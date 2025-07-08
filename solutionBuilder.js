@@ -3,7 +3,11 @@ if (typeof window === "undefined") {
   path = require("path"); // CommonJS
   JSZip = require("jszip"); // CommonJS
   yaml = require("js-yaml"); //
+  const { Blob } = require("buffer");
 }
+
+const mime = require("mime-types");
+const { v4: uuidv4 } = require("uuid");
 
 // solution-builder.js
 // Base URL for fetching files from the repository
@@ -132,11 +136,41 @@ function getServiceConf(name, definition, services = {}) {
     if (!services[name].hasOwnProperty("env_file")) {
       services[name]["env_file"] = [];
     }
-    for (let env_file in definition["env_file"]) {
-      if (
-        !services[name]["env_file"].includes(definition["env_file"][env_file])
-      ) {
-        services[name]["env_file"].push(definition["env_file"][env_file]);
+
+    if (!definition.hasOwnProperty("path")) {
+      console.log(name + " service has no path ");
+      return {};
+    }
+
+    if (services[name] === undefined) {
+      services[name] = {};
+    }
+
+    services[name] = {
+      path: definition["path"],
+    };
+
+    if (definition.hasOwnProperty("env_file")) {
+      if (!services[name].hasOwnProperty("env_file")) {
+        services[name]["env_file"] = [];
+      }
+      for (let env_file in definition["env_file"]) {
+        if (
+          !services[name]["env_file"].includes(definition["env_file"][env_file])
+        ) {
+          services[name]["env_file"].push(definition["env_file"][env_file]);
+        }
+      }
+    }
+    if (definition.hasOwnProperty("env_contrib")) {
+      for (let contrib in definition["env_contrib"]) {
+        if (services[contrib] === undefined) {
+          services[contrib] = {};
+        }
+        services[contrib]["env_file"] = [
+          ...(services[contrib]["env_file"] || []),
+          ...definition["env_contrib"][contrib],
+        ];
       }
     }
   }
@@ -167,21 +201,84 @@ function getFePackageConf(name, definition, branch) {
   };
 }
 
-function makeCoreModuleConfiguration(menus) {
+function makeCoreModuleConfiguration(menusDict) {
+  const config = {
+    menus: Object.values(menusDict).sort(
+      (a, b) => (a.position || 0) - (b.position || 0)
+    ),
+  };
+
   return [
     {
       model: "core.moduleconfiguration",
       fields: {
-        id: "ebdbdbe5-c9be-4e66-8c49-edd1e5284c7c",
+        id: uuidv4(),
         module: "fe-core",
         version: "1",
-        config:
-          '{\n  "menus": ' + JSON.stringify(menus).replace(/"/g, '"') + "}",
+        config: JSON.stringify(config, null, 2),
         is_exposed: true,
         layer: "fe",
       },
     },
   ];
+}
+// Function to merge and sort fixtures
+async function mergeAndSortFixtures(inputFiles, output) {
+  // Ensure output directory exists
+
+  // Object to store fixtures grouped by model
+  const fixturesByModel = {};
+
+  // Process each input file
+  for (const filePath of inputFiles) {
+    const filename = path.basename(filePath);
+    console.log(`Processing file: ${filename}`);
+
+    const data = await fetchJSON(filePath);
+
+    // Group entries by model
+    for (const entry of data) {
+      const model = entry.model;
+      if (!fixturesByModel[model]) {
+        fixturesByModel[model] = [];
+      }
+      fixturesByModel[model].push(entry);
+    }
+  }
+
+  if (output["fixtures/roles.json"]) {
+    if (!fixturesByModel["core.role"]) {
+      fixturesByModel["core.role"] = [];
+    }
+    fixturesByModel["core.role"].push(...output["fixtures/roles.json"]);
+    delete output["fixtures/roles.json"];
+  }
+
+  if (output["fixtures/roles-right.json"]) {
+    if (!fixturesByModel["core.roleright"]) {
+      fixturesByModel["core.roleright"] = [];
+    }
+    fixturesByModel["core.roleright"].push(
+      ...output["fixtures/roles-right.json"]
+    );
+    delete output["fixtures/roles-right.json"];
+  }
+
+  // Sort and save each model's fixtures
+  for (const model in fixturesByModel) {
+    // Sort entries by pk (primary key) if it exists
+    fixturesByModel[model].sort((a, b) => {
+      const pkA = a.pk || 0;
+      const pkB = b.pk || 0;
+      return pkA - pkB;
+    });
+    // Create output file path
+    const filename = `${model.replace(".", "_")}.json`;
+    // Write sorted fixtures to file
+    output[`fixtures/${filename}`] = fixturesByModel[model];
+  }
+
+  return output;
 }
 
 async function processSolutions(
@@ -198,32 +295,73 @@ async function processSolutions(
   const merged = await mergeSolutions(
     solutionFile,
     directoryPath,
-    permissionMap
+    permissionMap,
+    (branch = "develop")
   );
-  let result = {};
-
-  for (let key in merged.moduleRefDict || {}) {
-    const depPath = getAbsolutePath(
-      merged.moduleRefDict[key],
-      solutionFilePath
+  {
+    const solutionFilePath = getAbsolutePath(
+      typeof solutionFile === "string" ? solutionFile : "",
+      "",
+      false
     );
-    result = await mergeSolutions(depPath, directoryPath, permissionMap);
-    // Merge roles
-    Object.assign(merged.rolesDict, result.rolesDict);
-    Object.assign(merged.menusDict, result.menusDict);
-    Object.assign(merged.moduleRefDict, result.moduleRefDict);
-    Array.prototype.push.apply(merged.bePackagesList, result.bePackagesList);
-    Object.assign(merged.bePackagesDefDict, result.bePackagesDefDict);
-    Array.prototype.push.apply(merged.fePackagesList, result.fePackagesList);
-    Object.assign(merged.fePackagesDefDict, result.fePackagesDefDict);
-    Array.prototype.push.apply(merged.servicesList, result.servicesList);
-    for (let idx in result.servicesDefDict) {
-      service = merged.servicesList[idx];
-      merged.servicesDefDict = getServiceConf(
-        service,
-        result.servicesDefDict[service],
-        services
+
+    let solutionJson = {};
+    try {
+      solutionJson = JSON.parse(fs.readFileSync(solutionFile, "utf8"));
+    } catch (e) {
+      console.warn("⚠️ Failed to parse root solution JSON file:", e.message);
+    }
+
+    let logoPath = null;
+    if (solutionJson?.moduleConfiguration?.logo) {
+      logoPath = path.resolve(
+        path.dirname(solutionFilePath),
+        solutionJson.moduleConfiguration.logo
       );
+    }
+
+    let themePath = null;
+    if (solutionJson?.moduleConfiguration?.theme) {
+      themePath = path.resolve(
+        path.dirname(solutionFilePath),
+        solutionJson.moduleConfiguration.theme
+      );
+    }
+
+    let merged = await mergeSolutions(
+      solutionFile,
+      directoryPath,
+      permissionMap
+    );
+    let result = {};
+
+    for (let key in merged.moduleRefDict || {}) {
+      const depPath = getAbsolutePath(
+        merged.moduleRefDict[key],
+        solutionFilePath
+      );
+      result = await mergeSolutions(depPath, directoryPath, permissionMap);
+      // Merge roles
+      Object.assign(merged.rolesDict, result.rolesDict);
+      Object.assign(merged.menusDict, result.menusDict);
+      Object.assign(merged.moduleRefDict, result.moduleRefDict);
+      Array.prototype.push.apply(merged.bePackagesList, result.bePackagesList);
+      Object.assign(merged.bePackagesDefDict, result.bePackagesDefDict);
+      Array.prototype.push.apply(merged.fePackagesList, result.fePackagesList);
+      Object.assign(merged.fePackagesDefDict, result.fePackagesDefDict);
+      Array.prototype.push.apply(merged.servicesList, result.servicesList);
+      for (let idx in result.servicesDefDict) {
+        service = merged.servicesList[idx];
+        merged.servicesDefDict = getServiceConf(
+          service,
+          result.servicesDefDict[service],
+          services
+        );
+      }
+      Array.prototype.push.apply(merged.initData, result.initData);
+      for (let data of result.initData) {
+        merged.initData.add(getAbsolutePath(data, solutionFilePath));
+      }
     }
     for (attr in merged.initData) {
       merged.initData[attr].assign(...result.initData[attr]);
@@ -274,15 +412,27 @@ async function processSolutions(
     output["be-openimis.json"] = { modules: [...PIPModules] };
   }
   if (Object.keys(merged.menusDict).length > 0) {
-    output["fixtures/module-configuration-core.json"] =
-      makeCoreModuleConfiguration(merged.menusDict);
+    const coreModuleConfig = makeCoreModuleConfiguration(merged.menusDict);
+
+    // Inject logo/theme using resolved paths
+    await injectLogoTheme(coreModuleConfig[0], logoPath, themePath);
+    output["fixtures/module-configuration-core.json"] = coreModuleConfig;
   }
   if (Object.keys(merged.rolesDict).length > 0) {
     output["fixtures/roles.json"] = merged.rolesDict;
+
+    const transformed = transformRolesToFixture(merged.rolesDict);
+    output["fixtures/roles.json"] = transformed.roles;
+    output["fixtures/roles-right.json"] = transformed.rolesRight;
   }
-  if (Object.keys(merged.initData).length > 0) {
-    output["fixtures/other-init-data.json"] = [...merged.initData];
-  }
+  // merging all fixture
+
+  output = mergeAndSortFixtures(merged.initData, output);
+
+  // sorting fixture by model
+
+  // adding fixture file to output
+
   if (Object.keys(services).length > 0) {
     output["compose.yml"] = services;
   }
@@ -355,7 +505,9 @@ async function mergeSolutions(
     fePackagesDefDict = result.fePackagesDefDict;
     servicesList = result.servicesList;
     servicesDefDict = result.servicesDefDict;
-    initData = result.initData;
+    for (let idx in result.initData) {
+      initData.add(getAbsolutePath(result.initData[idx], depPath));
+    }
   }
   // Process modules
   for (let key in solution.modules || {}) {
@@ -371,19 +523,12 @@ async function mergeSolutions(
     bePackagesDefDict[key] = solution.bePackageDefinitions[key];
   }
   servicesList = [...(solution.services || []), ...servicesList];
-
   for (let key in solution.serviceDefinitions || {}) {
-    servicesDefDict = getServiceConf(
-      key,
-      solution.serviceDefinitions[key],
-      servicesDefDict
-    );
+    servicesDefDict[key] = solution.serviceDefinitions[key];
   }
-
-  // Merge roles
-  rolesDict = mergeRolesData(solution.roles || [], permissionMap, rolesDict);
-  // Merge menus
-  menusDict = mergeMenusData(solution.menus || [], menusDict);
+  for (let idx in solution.initData) {
+    initData.add(getAbsolutePath(solution.initData[idx], solutionFilePath));
+  }
 
   return {
     rolesDict,
@@ -482,6 +627,40 @@ function mergeMenusData(menus, menuDict) {
   return menuDict;
 }
 
+async function injectLogoTheme(menuJson, logoPath, themePath) {
+  if (!menuJson.fields || !menuJson.fields.config) {
+    console.warn("⚠️ menuJson is missing 'fields.config'");
+    return;
+  }
+
+  // Parse the existing config JSON string
+  let config;
+  try {
+    config = JSON.parse(menuJson.fields.config);
+  } catch (e) {
+    console.error("❌ Failed to parse menuJson.fields.config:", e);
+    return;
+  }
+
+  // Inject logo
+  if (logoPath && fs.existsSync(logoPath)) {
+    const img = fs.readFileSync(logoPath);
+    const mimeType = mime.lookup(logoPath) || "image/png";
+    const base64 = img.toString("base64");
+    config.logo = {
+      value: `data:${mimeType};base64,${base64}`,
+    };
+  }
+
+  // Inject theme
+  if (themePath && fs.existsSync(themePath)) {
+    const themeData = JSON.parse(fs.readFileSync(themePath, "utf8"));
+    config.theme = themeData.theme;
+  }
+  // Write back to config as string
+  menuJson.fields.config = JSON.stringify(config, null, 2);
+}
+
 // Function to get headers with GitHub API key
 function getHeaders() {
   const headers = {
@@ -495,6 +674,51 @@ function getHeaders() {
     headers["Authorization"] = `Bearer ${githubApiKey}`;
   }
   return headers;
+}
+
+function transformRolesToFixture(rolesDict) {
+  const roleFixtures = [];
+  const roleRightFixtures = [];
+  const validityFrom = "2025-01-01T00:00:00Z";
+
+  for (const key in rolesDict) {
+    const role = rolesDict[key];
+    const roleUuid = uuidv4();
+
+    roleFixtures.push({
+      model: "core.role",
+      fields: {
+        uuid: roleUuid,
+        name: role.roleName,
+        alt_language: null,
+        is_system: 0,
+        is_blocked: false,
+        audit_user_id: null,
+        validity_from: validityFrom,
+        validity_to: null,
+        legacy_id: null,
+      },
+    });
+
+    for (const perm of role.permissions) {
+      roleRightFixtures.push({
+        model: "core.roleright",
+        fields: {
+          validity_from: validityFrom,
+          validity_to: null,
+          legacy_id: null,
+          right_id: perm.code,
+          audit_user_id: null,
+          role: [role.roleName],
+        },
+      });
+    }
+  }
+
+  return {
+    roles: roleFixtures,
+    rolesRight: roleRightFixtures,
+  };
 }
 
 // Function to create a zip file

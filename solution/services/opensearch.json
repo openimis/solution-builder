@@ -1,14 +1,16 @@
-{"serviceDefinitions":{
-    "base": {
-        "env_file": [
-            ".env.openSearch"
-        ]
-    },
-    "openSearch":{
-        "path": "compose.openSearch.yml",
-        "env_file": [
-            ".env",
-            ".env.openSearch"
-        ]
+{"serviceDefinitions":
+    {
+        "openSearch":{
+            "path": "compose.openSearch.yml",
+            "env_file": [
+                ".env",
+                ".env.openSearch"
+            ],
+            "env_contrib":{
+                "base": [
+                        ".env.openSearch"
+                    ]
+            }
+        }
     }
-}}
+}

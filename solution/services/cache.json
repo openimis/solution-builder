@@ -1,13 +1,13 @@
 {"serviceDefinitions":{
-    "base": {
-        "env_file": [
-            ".env.cache"
-        ]
-    },
     "cache":{
         "path": "compose.cache.yml",
         "env_file": [
             ".env.cache"
-        ]
+        ],
+        "env_contrib": {   
+            "base":  [
+                    ".env.cache"
+                ]
+        }
     }
 }}
