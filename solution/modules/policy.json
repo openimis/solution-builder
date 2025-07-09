@@ -15,10 +15,10 @@
       }
   ],
   "fePackages": [
-"PolicyModule"
+"PolicyModule", "ContributionModule"
   ],
   "bePackages": [
-"policy"
+"policy", "contribution"
   ],
    "roles": [
     {
@@ -34,7 +34,12 @@
         "policy.renew_policies",
         "policy.edit_policies",
         "policy.suspend_policies",
-        "policy.delete_policies"
+        "policy.delete_policies",
+        "contribution.read_premiums",
+        "contribution.create_premiums",
+        "contribution.update_premiums",
+        "contribution.delete_premiums"
+
       ]
     }
    ]
