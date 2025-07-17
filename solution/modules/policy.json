@@ -15,7 +15,7 @@
       }
   ],
   "fePackages": [
-"PolicyModule", "ContributionModule"
+  "PolicyModule", "ContributionModule"
   ],
   "bePackages": [
 "policy", "contribution"

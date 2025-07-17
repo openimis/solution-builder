@@ -9,6 +9,13 @@
         "program": "${workspaceFolder}/workbench.js",
         "request": "launch",
         "type": "node"
+    },
+      {
+        "name": "Workbench publish",
+        "program": "${workspaceFolder}/workbench.js",
+        "args": ["--publish"],
+        "request": "launch",
+        "type": "node"
     }
     ]
 }

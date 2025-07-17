@@ -1,0 +1,21 @@
+{
+  "modules": {
+    "grievance": "../modules/grievance.json",
+    "opeserach": "../modules/opensearch-report.json",
+      "individual":"../modules/individual.json",
+    "api-import": "../modules/api-import.json",
+    "deduplication": "../modules/deduplication.json"
+  },
+  "solutions": [
+    "./social-protection-bundle.json",
+    "./core-bundle.json" 
+  ],
+  "services":["db"],
+  "moduleConfiguration": {
+    "logo": "./sources/logo/coremis.png"
+  },
+  "initData":[
+    "../fixtures/core/roles-coreMIS.json",
+    "../fixtures/core/rights-case-worker-social-officer.json"
+  ]
+}
