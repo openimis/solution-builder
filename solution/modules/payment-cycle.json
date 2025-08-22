@@ -1,18 +1,11 @@
 {
   "menus": [
-      {
-         "position":3,
-         "id": "PaymentsMainMenu",
-         "name":"PaymentsMainMenu",
-         "icon":"task-icon",
-         "description":"Payment Management",
-         "submenus":[
-            {
-               "position":5,
-               "id": "legalAndFinance.paymentCycles"
-            }
-         ]
-      }
+    {
+      "mainMenu": "PaymentsMainMenu",
+      "position":5,
+      "id": "legalAndFinance.paymentCycles",
+      "icon": "TimelapseIcon"
+    }
   ],
   "fePackages": [
 "PaymentCycleModule"

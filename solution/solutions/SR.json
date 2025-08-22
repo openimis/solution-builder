@@ -2,13 +2,15 @@
   "modules": {
     "grievance": "../modules/grievance.json",
     "opeserach": "../modules/opensearch-report.json",
-      "individual":"../modules/individual.json",
+    "individual":"../modules/individual.json",
     "api-import": "../modules/api-import.json",
-    "deduplication": "../modules/deduplication.json"
+    "deduplication": "../modules/deduplication.json",
+    "social-protection": "../modules/social-protection.json",
+    "workflow":"../modules/workflow.json"
   },
   "solutions": [
-    "./social-protection-bundle.json",
-    "./core-bundle.json" 
+    "./core-bundle.json",
+    "../sources/main-menus.json"
   ],
   "services":["db"],
   "moduleConfiguration": {

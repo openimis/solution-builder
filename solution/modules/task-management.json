@@ -1,34 +1,24 @@
 {
   "menus": [
-    {
-         "position":10,
-         "id": "TasksMainMenu",
-         "name":"TasksMainMenu",
-         "icon":"task-icon",
-         "description":"Task panel",
-         "submenus":[
-            {
-               "position":2,
-               "id": "task.tasks"
-            },
-            {
-               "position":1,
-               "id":"task.allTasks"
-            }
-         ]
+      {
+         "mainMenu":"TasksMainMenu",
+         "position":2,
+         "id": "task.tasks",
+         "icon" : "AssignmentTurnedInIcon"
       },
       {
-         "position":6,
-         "id": "UserManagementMainMenu",
-         "name":"User Management",
-         "icon":"admin-icon",
-         "description":"Administration Panel",
-         "submenus":[
-            {
-               "position":11,
-               "id":"admin.taskExecutionerGroups"
-            }
-         ]
+         "mainMenu":"TasksMainMenu",
+         "position":1,
+         "id":"task.allTasks",
+         "icon" : "AssignmentIcon"
+      }
+         ,
+      {
+         "mainMenu": "UserManagementMainMenu",
+         "position":11,
+         "id":"admin.taskExecutionerGroups",
+         "icon":"AssignmentIndIcon"
+
       }
   ],
   "fePackages": [

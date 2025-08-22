@@ -1,16 +1,11 @@
 {
   "menus": [    {
-    "position":1,
-    "id": "PaymentsMainMenu",
-    "name":"PaymentsMainMenu",
-    "icon":"task-icon",
-    "description":"Payment Management",
-    "submenus":[
-       {
-          "position":3,
-          "id":"legalAndFinance.paymentPlans"
-       }
-    ]
+      "mainMenu": "PaymentsMainMenu",
+      "position":3,
+      "id":"legalAndFinance.paymentPlans",
+      "icon":"PriceChangeIcon"
+
+
   }],
   "roles": [
     {

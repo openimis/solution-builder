@@ -1,38 +1,38 @@
 {
   "menus": [
+
+
     {
-         "position":4,
-         "id": "ReportsMenu",
-         "name":"Reports",
-         "icon":"dashboard-icon",
-         "description":"Dashboard and reports",
-         "submenus":[
-            {
-               "position":1,
-               "id": "openSearch.individualReports"
-            },
-            {
-               "position":2,
-               "id": "openSearch.groupReports"
-            },
-            {
-               "position":3,
-               "id": "openSearch.beneficiaryReports"
-            },
-            {
-               "position":5,
-               "id": "openSearch.grievanceReports"
-            },
-             {
-               "position":4,
-               "id": "openSearch.dataUpdatesReports"
-            },
-             {
-               "position":6,
-               "id": "openSearch.openSearchConfig"
-            }
-         ]
-      }
+        "mainMenu": "ReportsMenu",
+        "position":1,
+        "id": "openSearch.individualReports"
+    },
+    {
+        "mainMenu": "ReportsMenu",
+        "position":2,
+        "id": "openSearch.groupReports"
+    },
+    {
+        "mainMenu": "ReportsMenu",
+        "position":3,
+        "id": "openSearch.beneficiaryReports"
+    },
+    {
+        "mainMenu": "ReportsMenu",
+        "position":5,
+        "id": "openSearch.grievanceReports"
+    },
+      {
+        "mainMenu": "ReportsMenu",
+        "position":4,
+        "id": "openSearch.dataUpdatesReports"
+    },
+      {
+        "mainMenu": "ReportsMenu",
+        "position":6,
+        "id": "openSearch.openSearchConfig"
+    }
+ 
   ],
   "services":[
     "openSearch"

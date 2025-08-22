@@ -240,7 +240,7 @@ async function main() {
           'SHI': './solution/solutions/HF.json',
           'claimai': './solution/solutions/HF.json',
           'full' : './solution/solutions/full.json',
-          'SR': './solution/solutions/full.json'
+          'SR': './solution/solutions/SR.json'
         }
         const permission = fs.readFileSync('./solution/permissions_map.json', 'utf8');
         const permissionMap = JSON.parse(permission);

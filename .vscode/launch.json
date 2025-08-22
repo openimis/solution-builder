@@ -8,14 +8,16 @@
         "name": "Workbench",
         "program": "${workspaceFolder}/workbench.js",
         "request": "launch",
-        "type": "node"
+        "type": "node",
+        "runtimeExecutable": "/usr/bin/node"
     },
       {
         "name": "Workbench publish",
         "program": "${workspaceFolder}/workbench.js",
         "args": ["--publish"],
         "request": "launch",
-        "type": "node"
+        "type": "node",
+        "runtimeExecutable": "/usr/bin/node"
     }
     ]
 }

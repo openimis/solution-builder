@@ -1,5 +1,13 @@
 {
-  "menus": [],
+  "menus": [
+      {
+        "mainMenu": "PaymentsMainMenu",
+          "position":10,
+          "id":"payment.menu.payments",
+          "icon":"PersonIcon"
+      }
+
+  ],
   "fePackages": ["PaymentModule"],
   "bePackages": ["payment"],
   "roles": []

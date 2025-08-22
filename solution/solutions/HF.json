@@ -5,7 +5,8 @@
   "solutions": [
     "./formal-sector-bundle.json",
     "./healthfinancing-bundle.json",
-    "./core-bundle.json"
+    "./core-bundle.json",
+    "../sources/main-menus.json"
   ],
   "services":["db"],
   "fePackageSource":{

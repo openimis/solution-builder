@@ -1,18 +1,11 @@
 {
   "menus": [
     {
-      "position":2,
-      "id": "EnrolmentMainMenu",
-      "name":"EnrolmentMainMenu",
-      "icon":"how-to-reg-icon",
-      "description":"Enrolment",
-         "submenus":[
-            {
-               "position":3,
-               "id":"insuree.policies"
-            }
-         ]
-      }
+      "mainMenu": "EnrolmentMainMenu",
+      "position":3,
+      "id":"insuree.policies"
+
+    }
   ],
   "fePackages": [
   "PolicyModule", "ContributionModule"

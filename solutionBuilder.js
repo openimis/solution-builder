@@ -245,6 +245,71 @@ async function mergeAndSortFixtures(inputFiles, output) {
   return output;
 }
 
+function mergeMenuDictionaries(mergedMenusDict, resultMenusDict) {
+    // Helper function to merge submenus
+    function mergeSubmenus(existingSubmenus, newSubmenus, mainMenuId) {
+        const submenus = existingSubmenus ? [...existingSubmenus] : [];
+        if (!newSubmenus) return submenus;
+
+        // Remove submenus from other main menus to ensure uniqueness
+        function removeSubmenuFromOtherMenus(submenuId, targetMainMenuId) {
+            for (const menuId in mergedMenusDict) {
+                if (menuId !== targetMainMenuId && mergedMenusDict[menuId].submenus) {
+                    mergedMenusDict[menuId].submenus = mergedMenusDict[menuId].submenus.filter(
+                        submenu => submenu.id !== submenuId
+                    );
+                }
+            }
+        }
+
+        // Merge or add new submenus
+        newSubmenus.forEach(newSubmenu => {
+            removeSubmenuFromOtherMenus(newSubmenu.id, mainMenuId);
+            const existingIndex = submenus.findIndex(submenu => submenu.id === newSubmenu.id);
+            if (existingIndex !== -1) {
+                // Update existing submenu
+                submenus[existingIndex] = { ...newSubmenu };
+            } else {
+                // Add new submenu
+                submenus.push({ ...newSubmenu });
+            }
+        });
+
+        return submenus;
+    }
+
+    // Iterate through resultMenusDict to merge into mergedMenusDict
+    for (const menuId in resultMenusDict) {
+        const resultMenu = resultMenusDict[menuId];
+        const existingMenu = mergedMenusDict[menuId] || {};
+
+        // Merge main menu fields, preserving existing submenus if not provided in result
+        mergedMenusDict[menuId] = {
+            position: resultMenu.position !== undefined ? resultMenu.position : existingMenu.position,
+            id: menuId,
+            name: resultMenu.name !== undefined ? resultMenu.name : existingMenu.name,
+            icon: resultMenu.icon !== undefined ? resultMenu.icon : existingMenu.icon,
+            description: resultMenu.description !== undefined ? resultMenu.description : existingMenu.description,
+            submenus: mergeSubmenus(existingMenu.submenus, resultMenu.submenus, menuId)
+        };
+    }
+
+    return mergedMenusDict;
+}
+
+function  cleanMenuDictionaries(menusDict) {
+
+    // Iterate through resultMenusDict to merge into mergedMenusDict
+    for (const menuId in menusDict) {
+        if(menusDict[menuId].submenus.length === 0 || menusDict[menuId].name === undefined){
+            delete menusDict[menuId];
+        }
+    }
+
+    return menusDict;
+}
+
+
 function transformComposeContent(composeContent) {
   let object = {'include': []}
   // Iterate through each key in the composeContent object
@@ -298,7 +363,7 @@ async function processSolutions(
         );
         // Merge roles
         Object.assign(merged.rolesDict, result.rolesDict);
-        Object.assign(merged.menusDict, result.menusDict);
+        merged.menusDict = mergeMenuDictionaries(merged.menusDict, result.menusDict);
         Object.assign(merged.moduleRefDict, result.moduleRefDict);
         Array.prototype.push.apply(merged.bePackagesList,result.bePackagesList);
         Object.assign(merged.bePackagesDefDict, result.bePackagesDefDict);
@@ -315,6 +380,9 @@ async function processSolutions(
         }
         
     }
+
+    merged.menusDict = cleanMenuDictionaries(merged.menusDict)
+
     let PIPModules = new Set()
     merged.bePackagesList = merged.bePackagesList.filter((item, index) => merged.bePackagesList.indexOf(item) === index)
     for (let idx in merged.bePackagesList){
@@ -546,21 +614,75 @@ function mergeRolesData(roles, permissionMap, roleDict) {
 }
 
 function mergeMenusData(menus, menuDict) {
+    // Helper function to find and remove submenu from all main menus
+    function removeSubmenuFromOtherMenus(submenuId, targetMainMenuId) {
+        for (const mainMenuId in menuDict) {
+            if (mainMenuId !== targetMainMenuId && menuDict[mainMenuId].submenus) {
+                menuDict[mainMenuId].submenus = menuDict[mainMenuId].submenus.filter(
+                    submenu => submenu.id !== submenuId
+                );
+            }
+        }
+    }
+
     for (const menu of menus) {
-        const menuId = menu.id;
-        menuDict[menuId] = {
-            position: menu.position,
-            id: menu.id,
-            name: menu.name,
-            icon: menu.icon,
-            description: menu.description,
-            submenus: menu.submenus || []
-        };
+        // Handle submenu payload (has mainMenu field)
+        if (menu.mainMenu) {
+            const mainMenuId = menu.mainMenu;
+            const submenu = {
+                position: menu.position,
+                id: menu.id,
+                name: menu.name,
+                icon: menu.icon,
+                description: menu.description
+            };
+
+            // Create minimal main menu if it doesn't exist
+            if (!menuDict[mainMenuId]) {
+                menuDict[mainMenuId] = {
+                    id: mainMenuId,
+                    submenus: []
+                };
+            }
+
+            // Remove this submenu from other main menus
+            removeSubmenuFromOtherMenus(menu.id, mainMenuId);
+
+            // Add submenu to the target main menu
+            if (!menuDict[mainMenuId].submenus) {
+                menuDict[mainMenuId].submenus = [];
+            }
+            // Check if submenu already exists
+            const existingSubmenuIndex = menuDict[mainMenuId].submenus.findIndex(
+                sm => sm.id === menu.id
+            );
+            if (existingSubmenuIndex !== -1) {
+                // Update existing submenu
+                menuDict[mainMenuId].submenus[existingSubmenuIndex] = submenu;
+            } else {
+                // Add new submenu
+                menuDict[mainMenuId].submenus.push(submenu);
+            }
+        } 
+        // Handle main menu payload
+        else {
+            const menuId = menu.id;
+            // Preserve existing submenus if new payload doesn't include them
+            const existingSubmenus = menuDict[menuId]?.submenus || [];
+            
+            menuDict[menuId] = {
+                position: menu.position,
+                id: menu.id,
+                name: menu.name,
+                icon: menu.icon,
+                description: menu.description,
+                submenus: menu.submenus || existingSubmenus
+            };
+        }
     }
 
     return menuDict;
 }
-
 
 async function injectLogoTheme(menuJson, logoPath, themePath) {
     if (!menuJson.fields || !menuJson.fields.config) {

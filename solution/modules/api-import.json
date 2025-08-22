@@ -1,18 +1,12 @@
 {
   "menus": [
       {
-         "position":1,
-         "id": "ClientRegistryMainMenu",
-         "name":"Client Registry",
-         "icon":"task-icon",
-         "description":"Client Registry",
-         "submenus":[
-            {
-               "position":1,
-               "id":"individual.api_imports"
-            }
-         ]
+          "mainMenu": "ClientRegistryMainMenu",
+          "position":1,
+          "id":"individual.api_imports",
+          "icon": "PublishIcon"
       }
+      
   ],
   "fePackages": [],
   "bePackages": ["api_etl" ],

@@ -1,22 +1,19 @@
 {
   "menus": [
       {
-         "position":1,
-         "id": "ClientRegistryMainMenu",
-         "name":"Client Registry",
-         "icon":"task-icon",
-         "description":"Client Registry",
-         "submenus":[
-            {
-               "position":4,
-               "id":"individual.groups"
-            },
-            {
-               "position":3,
-               "id":"individual.individuals"
-            }
-         ]
+        "mainMenu": "ClientRegistryMainMenu",
+          "position":4,
+          "id":"individual.groups",
+          "icon":"GroupIcon"
+      },
+      {
+        "mainMenu": "ClientRegistryMainMenu",
+          "position":3,
+          "id":"individual.individuals",
+          "icon":"PersonIcon"
       }
+         
+      
   ],
   "fePackages": [
     "IndividualModule"

@@ -1,25 +1,24 @@
 {
   "menus": [
+      {
+      "mainMenu": "ClientRegistryMainMenu",
+        "position":12,
+        "id": "insuree.familiesOrGroups",
+        "icon":"GroupIcon"
+    },
     {
-      "id": "ClientRegistryMainMenu",
-      "name": "Client Registry",
-      "icon": "task-icon",
-      "description": "Client Registry",
-         "submenus":[
-            {
-               "position":12,
-               "id": "insuree.familiesOrGroups"
-            },
-            {
-               "position":11,
-               "id":"insuree.addFamilyOrGroup"
-            },
-            {
-               "position":13,
-               "id":"insuree.insurees"
-            }
-         ]
-      }
+      "mainMenu": "ClientRegistryMainMenu",
+        "position":11,
+        "id":"insuree.addFamilyOrGroup",
+        "icon":"GroupAddIcon"
+    },
+    {
+      "mainMenu": "ClientRegistryMainMenu",
+        "position":13,
+        "id":"insuree.insurees",
+          "icon":"PersonIcon"
+    }
+
   ],
   "fePackages": [
 "InsureeModule"

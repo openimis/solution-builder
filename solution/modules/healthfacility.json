@@ -1,5 +1,5 @@
 {
-  "fePackages": ["LocationModule"],
+  "fePackages": ["LocationModule", "AdminModule"],
   "bePackages": [ "location"],
      "roles": [
       {
@@ -14,19 +14,12 @@
       }
      ],  
     "menus": [
-      {
-        "position":6,
-        "id": "AdministrationMainMenu",
-        "name":"Administration",
-        "icon":"administration-icon",
-        "description":"Administration",
-        "submenus":[
-
-           {
-              "position":3,
-              "id": "admin.healthFacilities"
-           }
-        ]
-     }
+        {
+          "mainMenu": "AdministrationMainMenu",
+          "position":3,
+          "id": "admin.healthFacilities"
+        }
+    
+  
     ]
   }

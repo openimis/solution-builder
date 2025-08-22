@@ -1,0 +1,83 @@
+{  
+    "menus":[
+        {
+            "position":1,
+            "id": "ClientRegistryMainMenu",
+            "name":"Client Registry",
+            "icon":"GroupsIcon",
+            "description":"Client Registry menu"
+        },
+        {
+            "position":2,
+            "id": "EnrolmentMainMenu",
+            "name":"Enrolment",
+            "icon":"ShieldIcon",
+            "description":"Enrolment menu"
+        }, 
+         {
+            "position":3,
+            "id": "BenefitMainMenu",
+            "name":"Benfits and claims",
+            "icon":"PaymentsIcon",
+            "description":"Benefit and clim  menu"
+        },   
+        {
+            "position":3,
+            "id": "PaymentsMainMenu",
+            "name":"Payments",
+            "icon":"PaymentsIcon",
+            "description":"Payment Management menu"
+        },   
+        {
+            "position":4,
+            "id": "TasksMainMenu",
+            "name":"Tasks",
+            "icon":"AssignmentIcon",
+            "description":"Task menu"
+        },
+        {
+            "position":5,
+            "id": "GrievanceMainMenu",
+            "name":"Grievance",
+            "icon":"FeedbackIcon",
+            "description":"Grievances"
+        },
+        {
+            "position":6,
+            "id": "ReportsMenu",
+            "name":"Reports",
+            "icon":"DashboardIcon",
+            "description":"Dashboard and reports"
+        },
+        {
+            "position":7,
+            "id": "SchemeAdministrationMainMenu",
+            "name":"SchemeAdministration",
+            "icon":"Diversity2Icon",
+            "description":"Tschem administration ask menu"
+        },
+        
+        {
+            "position":8,
+            "id": "UserManagementMainMenu",
+            "name":"User Management",
+            "icon":"AdminPanelSettingsIcon",
+            "description":"User management menu"
+        },     
+        {
+            "position":9,
+            "id": "AdministrationMainMenu",
+            "name":"Administration",
+            "icon":"TuneIcon",
+            "description":"Administration menu"
+        },
+        {
+            "position":10,
+            "id": "ProfileMainMenu",
+            "name":"Profile",
+            "icon": "AccountCircleIcon",
+            "description":"Profile menu"
+        
+        }
+    ]
+}

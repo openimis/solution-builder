@@ -1,17 +1,10 @@
 {
   "menus": [
     {
-      "position":2,
-      "id": "EnrolmentMainMenu",
-      "name":"EnrolmentMainMenu",
-      "icon":"how-to-reg-icon",
-      "description":"Enrolment",
-      "submenus":[
-         {
-            "position":1,
-            "id":"legalAndFinance.contracts"
-         }
-      ]
+      "mainMenu": "EnrolmentMainMenu",
+      "position":1,
+      "id":"legalAndFinance.contracts",
+      "icon":"RequestPageIcon"
    }
   ],
   "roles": [
@@ -46,7 +39,8 @@
   "bePackages": [
     "contract",
     "invoice",
-    "contribution"
+    "contribution",
+    "contribution_plan"
   ],
   "fePackages": [
     "ContractModule"

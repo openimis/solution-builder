@@ -9,7 +9,8 @@
   "solutions": [
     "./core-bundle.json",
     "./formal-sector-bundle.json",
-    "./claim-ai-bundle.json"
+    "./claim-ai-bundle.json",
+    "../sources/main-menus.json"
   ],
   "services": ["db"],
   "fePackageSource": {}

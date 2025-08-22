@@ -6,7 +6,8 @@
   "solutions": [
     "./social-protection-bundle.json",
     "./good-distribution-bundle.json",
-    "./core-bundle.json" 
+    "./core-bundle.json",
+    "../sources/main-menus.json"
   ],
   "services":["db"],
   "moduleConfiguration": {

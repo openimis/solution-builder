@@ -1,17 +1,10 @@
 {
   "menus": [
     {
+      "mainMenu": "SchemeAdministrationMainMenu",
       "position": 2,
-      "id": "AdministrationMainMenu",
-      "name": "Administration",
-      "icon": "administration-icon",
-      "description": "Administration",
-      "submenus": [
-        {
-          "position": 2,
-          "id": "admin.products"
-        }
-      ]
+      "id": "admin.products",
+      "icon": "SpaIcon"
     }
   ],
   "fePackages": ["ProductModule"],

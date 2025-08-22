@@ -1,6 +1,32 @@
 {
-  "menus": [],
-  "fePackages": ["MedicalModule", "MedicalPriceListModule"],
+  "menus": [    
+    {
+        "mainMenu": "SchemeAdministrationMainMenu",
+        "position":9,
+        "id": "admin.menu.medicalServicesPrices",
+        "icon": "MedicalServicesIcon"
+    },
+    {
+        "mainMenu": "SchemeAdministrationMainMenu",
+        "position":10,
+        "id": "admin.menu.medicalItemsPrices",
+        "icon": "VaccinesIcon"
+    },
+    {
+        "mainMenu": "SchemeAdministrationMainMenu",
+        "position":11,
+        "id": "admin.menu.medicalServices",
+        "icon": "MedicalServicesIcon"
+    },
+    {
+        "mainMenu": "SchemeAdministrationMainMenu",
+        "position":12,
+        "id": "admin.menu.medicalItems",
+        "icon": "VaccinesIcon"
+    }
+    
+    ],
+  "fePackages": ["MedicalModule", "MedicalPriceListModule", "AdminModule"],
   "bePackages": ["medical", "medical_pricelist"],
   "roles": []
 }

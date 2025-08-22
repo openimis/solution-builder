@@ -1,18 +1,12 @@
 {
   "menus": [
-      {
-         "position":2,
-         "id": "PaymentsMainMenu",
-         "name":"PaymentsMainMenu",
-         "icon":"task-icon",
-         "description":"Payment Management",
-         "submenus":[
-            {
-               "position":20,
-               "id": "legalAndFinance.paymentPoint"
-            }
-         ]
-      }
+    {
+        "mainMenu": "PaymentsMainMenu",
+        "position":20,
+        "id": "legalAndFinance.paymentPoint",
+        "icon": "StoreIcon"
+    }
+
   ],
   "fePackages": ["PayrollModule"],
   "bePackages": ["payroll"],

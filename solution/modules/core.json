@@ -1,21 +1,17 @@
 {
   "menus": [
-    {
-         "position":5,
-         "id": "ConfigMainMenu",
-         "name":"Configurations",
-         "icon":"task-icon",
-         "description":"Configurations",
-         "submenus":[
-            {
-               "position":4,
-               "id": "profile.myProfile"
-            },
-            {
-               "position":5,
-               "id":"profile.changePassword"
-            }
-         ]
+
+      {
+        "mainMenu": "ProfileMainMenu",
+          "position":4,
+          "id": "profile.myProfile",
+          "icon": "AccountCircleIcon"
+      },
+      {
+        "mainMenu": "ProfileMainMenu",
+          "position":5,
+          "id":"profile.changePassword",
+          "icon": "PasswordIcon"
       }
   ],
   "fePackages": [

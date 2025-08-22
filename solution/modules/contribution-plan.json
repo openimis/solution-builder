@@ -1,22 +1,17 @@
 {
   "menus": [      
+
     {
-    "position":1,
-    "id": "PaymentsMainMenu",
-    "name":"PaymentsMainMenu",
-    "icon":"task-icon",
-    "description":"Payment Management",
-    "submenus":[
-       {
-          "position":1,
-          "id":"admin.contributionPlans"
-       },
-       {
-        "position":2,
-        "id":"admin.contributionPlanBundles"
-      }
-    ]
-  }
+      "mainMenu": "SchemeAdministrationMainMenu",
+      "position":1,
+      "id":"admin.contributionPlans"
+    },
+    {
+      "mainMenu": "SchemeAdministrationMainMenu",
+      "position":2,
+      "id":"admin.contributionPlanBundles"
+   }
+
 ],
   "roles": [
     {

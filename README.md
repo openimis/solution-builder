@@ -299,27 +299,56 @@ initData: {}
    - Place all the module files listed in `<module>-bundle.json` files in the same directory. Each file should have a structure similar to the example below:
      ```json
      {
-       "menus": [
-         {
-           "position": 1,
-           "id": "MainMenu",
-           "name": "Main",
-           "icon": "main-icon",
-           "description": "Main menu",
-           "submenus": [
-             {
-               "position": 1,
-               "id": "submenu1"
-             },
-             {
-               "position": 2,
-               "id": "submenu2"
-             }
-           ]
-         }
-       ]
+      "menus": [
+        {
+            "position":10,
+            "id": "TasksMainMenu",
+            "name":"TasksMainMenu",
+            "icon":"task-icon",
+            "description":"Task panel"
+        },
+          {
+            "mainMenu":"TasksMainMenu",
+            "position":2,
+            "id": "task.tasks",
+            "icon" : "AssignmentTurnedInIcon"
+          },
+          {
+            "mainMenu":"TasksMainMenu",
+            "position":1,
+            "id":"task.allTasks",
+            "icon" : "AssignmentIcon"
+          }
+            ,
+          {
+            "mainMenu": "UserManagementMainMenu",
+            "position":11,
+            "id":"admin.taskExecutionerGroups",
+            "icon":"AssignmentIndIcon"
+
+          }
+      ],
      }
      ```
+    
+    main menus list
+   
+    from core bundle
+    - "ClientRegistryMainMenu"
+    - "AdministrationMainMenu"
+    - "UserManagementMainMenu"
+    - "ProfileMainMenu",
+
+    from task management module
+    - "TasksMainMenu"
+
+    from grievance module
+    - "GrievanceMainMenu"
+    
+
+
+
+
 
 4. **Run the Script:**
    - Save the script as `build_solution.py` in the same directory as `solution.json` and the module files.

@@ -18,8 +18,8 @@
          ]
       }
   ],
-  "fePackages": [],
-  "bePackages": [],
+  "fePackages": ["CoreModule","AdminModule"],
+  "bePackages": ["core"],
   "roles": [
     {
       "roleName": "LOCAL Administrator",

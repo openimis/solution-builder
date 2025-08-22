@@ -1,17 +1,10 @@
 {
   "menus": [
     {
-      "position":3,
-      "id": "PaymentsMainMenu",
-      "name":"PaymentsMainMenu",
-      "icon":"task-icon",
-      "description":"Payment Management",
-      "submenus":[
-         {
-            "position":51,
-            "id": "legalAndFinance.invoices"
-         }
-      ]
+      "mainMenu": "PaymentsMainMenu",
+        "position":51,
+        "id": "legalAndFinance.invoices",
+        "icon":"ReceiptIcon"
    }
   ],
   "fePackages": ["InvoiceModule"],

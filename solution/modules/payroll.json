@@ -1,30 +1,25 @@
 {
   "menus": [
-      {
-         "position":2,
-         "id": "PaymentMenu",
-         "name":"Payment",
-         "icon":"task-icon",
-         "description":"PaymentNameMenu",
-         "submenus":[
-            {
-               "position":14,
-               "id": "legalAndFinance.payrollsReconciled"
-            },
-            {
-               "position":13,
-               "id": "legalAndFinance.payrollsApproved"
-            },
-            {
-               "position":12,
-               "id": "legalAndFinance.payrollsPending"
-            },
-            {
-               "position":11,
-               "id": "legalAndFinance.payrolls"
-            }
-         ]
-      }
+    {
+        "mainMenu": "PaymentsMainMenu",
+        "position":14,
+        "id": "legalAndFinance.payrollsReconciled"
+    },
+    {
+        "mainMenu": "PaymentsMainMenu",
+        "position":13,
+        "id": "legalAndFinance.payrollsApproved"
+    },
+    {
+        "mainMenu": "PaymentsMainMenu",
+        "position":12,
+        "id": "legalAndFinance.payrollsPending"
+    },
+    {
+        "mainMenu": "PaymentsMainMenu",
+        "position":11,
+        "id": "legalAndFinance.payrolls"
+    }
   ],
   "fePackages": ["PayrollModule"],
   "bePackages": ["payroll"],

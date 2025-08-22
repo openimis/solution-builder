@@ -1,25 +1,19 @@
 {
   "menus": [
       {
-         "position":3,
-         "id": "BenefitPlanMainMenu",
-         "name":"BenefitPlans",
-         "icon":"task-icon",
-         "description":"Benefit Plans",
-         "submenus":[
-            {
-               "position":2,
-               "id":"socialProtection.benefitPlans"
-            }
-         ]
+        "mainMenu": "EnrolmentMainMenu",
+        "position":2,
+        "id":"socialProtection.benefitPlans",
+        "icon": "SpaIcon"
       }
   ],
   "fePackages": [
     "SocialProtectionModule"
   ],
   "bePackages": [
-    "social_protection"
-  ],
+    "social_protection",
+    "contribution_plan"
+  ], 
   "roles": [
     {
       "roleName": "LOCAL Administrator",
