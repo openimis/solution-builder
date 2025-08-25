@@ -1,0 +1,17 @@
+{
+  "menus": [],
+  "fePackages": ["ClaimSamplingModule"],
+  "bePackages": ["claim_sampling"],
+  "roles": [
+    {
+        "roleName": "LOCAL Administrator",
+        "code": "local_admin",
+        "permissions": [
+            "claim_sampling.read_claim_sampling",
+            "claim_sampling.create_claim_sampling",
+            "claim_sampling.update_claim_sampling",
+            "claim_sampling.approve_claim_sampling"
+        ]
+  }
+]
+}
