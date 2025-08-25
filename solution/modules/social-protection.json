@@ -12,7 +12,8 @@
   ],
   "bePackages": [
     "social_protection",
-    "contribution_plan"
+    "contribution_plan",
+    "calcrule_validations"
   ], 
   "roles": [
     {
