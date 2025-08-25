@@ -15,5 +15,14 @@
   ],
   "moduleConfiguration": {
     "logo": "./sources/logo/openIMIS.png"
-  }
+  },
+  "locales": [
+    {
+      "languages": [
+        "en",
+        "en-GB"
+      ],
+      "intl": "en-GB",
+      "fileNames": "en"
+    }]
 }

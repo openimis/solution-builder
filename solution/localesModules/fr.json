@@ -1,0 +1,11 @@
+{
+    "locales":[ {
+      "languages": [
+        "fr",
+        "fr-FR"
+      ],
+      "intl": "fr-FR",
+      "fileNames": "fr"
+    }],
+    "fePackages":["LanguageFrModule"]
+}

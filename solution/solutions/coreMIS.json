@@ -7,7 +7,8 @@
     "./social-protection-bundle.json",
     "./good-distribution-bundle.json",
     "./core-bundle.json",
-    "../sources/main-menus.json"
+    "../sources/main-menus.json",
+    "../localesModules/fr.json"
   ],
   "services":["db"],
   "moduleConfiguration": {

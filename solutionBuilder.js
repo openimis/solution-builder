@@ -368,6 +368,9 @@ async function processSolutions(
         Array.prototype.push.apply(merged.bePackagesList,result.bePackagesList);
         Object.assign(merged.bePackagesDefDict, result.bePackagesDefDict);
         Array.prototype.push.apply(merged.fePackagesList,result.fePackagesList);
+        Array.prototype.push.apply(merged.locales,result.locales);
+
+
         Object.assign(merged.fePackagesDefDict, result.fePackagesDefDict);
         Array.prototype.push.apply(merged.servicesList,result.servicesList);
         for (let idx  in result.servicesDefDict){
@@ -391,6 +394,7 @@ async function processSolutions(
     }
     let NPMModules = new Set()
     merged.fePackagesList = merged.fePackagesList.filter((item, index) => merged.fePackagesList.indexOf(item) === index)
+
     for (let idx  in merged.fePackagesList){
         fePackage = merged.fePackagesList[idx]
         NPMModules.add(getFePackageConf(fePackage, merged.fePackagesDefDict[fePackage], branch))
@@ -406,10 +410,7 @@ async function processSolutions(
     if(NPMModules.size>0){
         output['fe-openimis.json'] ={
             "modules": [...NPMModules], 
-            "locales": [
-                { "languages": ["en", "en-GB"], "intl": "en-GB", "fileNames": "en" },
-                { "languages": ["fr", "fr-FR"], "intl": "fr-FR", "fileNames": "fr" }
-              ]
+            "locales": [...merged.locales]
         };
     }
     if(services){
@@ -458,6 +459,7 @@ async function mergeSolutions(
     moduleRefDict = {},
     bePackagesList = new Set(), bePackagesDefDict = {},
     fePackagesList = new Set(), fePackagesDefDict = {},
+    locales = new Set(),
     servicesList = new Set(), servicesDefDict = {},
     initData = new Set()) 
 {
@@ -493,6 +495,7 @@ async function mergeSolutions(
             moduleRefDict,
             bePackagesList, bePackagesDefDict,
             fePackagesList, fePackagesDefDict,
+            locales,
             servicesList, servicesDefDict,
             initData,
         );
@@ -502,6 +505,7 @@ async function mergeSolutions(
         bePackagesList  = result.bePackagesList;
         bePackagesDefDict = result.bePackagesDefDict;
         fePackagesList = result.fePackagesList;
+        locales = result.locales;
         fePackagesDefDict = result.fePackagesDefDict;
         servicesList = result.servicesList;
         servicesDefDict = result.servicesDefDict;
@@ -522,6 +526,18 @@ async function mergeSolutions(
     for (let key in solution.bePackageDefinitions || {}) {
         bePackagesDefDict[key] = solution.bePackageDefinitions[key];
     }
+    // Merge arrays and remove duplicates based on locale.intl
+    locales = [...(solution.locales || []), ...locales];
+
+    // Use reduce to create a dictionary with intl as the key
+    const localesDict = locales.reduce((dict, locale) => {
+    dict[locale.intl] = locale;
+    return dict;
+    }, {});
+
+    // Convert dictionary values back to an array
+    locales = Object.values(localesDict);
+
     servicesList = [...(solution.services || []), ...servicesList]
     for (let key in solution.serviceDefinitions || {}) {
         servicesDefDict[key] = solution.serviceDefinitions[key];
@@ -541,6 +557,7 @@ async function mergeSolutions(
         moduleRefDict,
         bePackagesList, bePackagesDefDict,
         fePackagesList, fePackagesDefDict,
+        locales,
         servicesList, servicesDefDict,
         initData
     };

@@ -12,6 +12,4 @@
     "./claim-ai-bundle.json",
     "../sources/main-menus.json"
   ],
-  "services": ["db"],
-  "fePackageSource": {}
-}
+  "services": ["db"]}

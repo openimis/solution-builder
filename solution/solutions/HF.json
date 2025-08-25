@@ -6,7 +6,8 @@
     "./formal-sector-bundle.json",
     "./healthfinancing-bundle.json",
     "./core-bundle.json",
-    "../sources/main-menus.json"
+    "../sources/main-menus.json",
+    "../localesModules/fr.json"
   ],
   "services":["db"],
   "fePackageSource":{
