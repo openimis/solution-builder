@@ -190,6 +190,12 @@
       "git": "https://github.com/openimis/openimis-fe-claim_ai_quality_js.git",
       "version": "v2.0.0",
       "branch": "develop"
+    },
+    "CoreMISLanguageModule": {
+      "package": "@openimis/fe-coremis_language_pack",
+      "git": "https://github.com/openimis/openimis-fe-coremis_language_pack_js.git",
+      "version": "v1.2.0",
+      "branch": "develop"
     }
   }
 }
