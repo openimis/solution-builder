@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "js-yaml": "^4.1.0",
+    "js-yaml": "^4.1.1",
     "jszip": "^3.10.1",
     "mime-types": "^3.0.1",
     "simple-git": "^3.28.0",
