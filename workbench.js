@@ -240,18 +240,21 @@ async function main() {
           'SHI': './solution/solutions/HF.json',
           'claimai': './solution/solutions/HF.json',
           'full' : './solution/solutions/full.json',
-          'SR': './solution/solutions/SR.json'
+          'SR': './solution/solutions/SR.json',
+          'IBR': './solution/solutions/IBR.json'
         }
         const permission = fs.readFileSync('./solution/permissions_map.json', 'utf8');
         const permissionMap = JSON.parse(permission);
         let output = []
         for (const [name, solution_path] of Object.entries(solutions)){
           console.log(`generating ${name}`)
-          output[name] = await processSolutions(
+          const result = await processSolutions(
               solution_path,
               process.cwd(),
               permissionMap,
           );
+          output[name] = result.output;
+          const modules = result.modules;
           // Get dist-dkr files from compose.yml and merge them into output
           const composeFiles = await copyDistDkrAssetsFromCompose(output[name]['compose.yml'], 'develop');
           Object.assign(output[name], composeFiles);
@@ -259,6 +262,16 @@ async function main() {
           await createZip(output[name], zipPath);
           baseDir = 'build/'+name
           await createSolutionDirectory(baseDir, output[name])
+
+          // Generate Confluence markup
+          console.log(`📝 Generating Confluence markup for ${name}...`);
+          try {
+            const labels = modules.join(',');
+            const { execSync } = require('child_process');
+            execSync(`node script/generate-solution-markup.js ${name} "${labels}"`, { stdio: 'inherit' });
+          } catch (error) {
+            console.error(`❌ Failed to generate markup for ${name}: ${error.message}`);
+          }
 
           // Publish if requested
           if (shouldPublish) {

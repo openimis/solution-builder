@@ -245,6 +245,34 @@ async function mergeAndSortFixtures(inputFiles, output) {
   return output;
 }
 
+function mergeRoleDictionaries(mergedMenusDict, resultMenusDict) {
+    for (const roleCode in mergedMenusDict) {
+        const role = mergedMenusDict[roleCode];
+        const permissions = role.permissions || [];
+
+        if (roleCode in resultMenusDict) {
+            // Role exists, merge permissions without duplicates
+            const existingPermissionCodes = new Set(
+                resultMenusDict[roleCode].permissions.map(p => p.code)
+            );
+            for (const perm of permissions) {
+                if (!existingPermissionCodes.has(perm.code)) {
+                    resultMenusDict[roleCode].permissions.push(perm);
+                    existingPermissionCodes.add(perm.code);
+                }
+            }
+        } else {
+            // Role doesn't exist, add it directly
+            resultMenusDict[roleCode] = {
+                roleName: role.roleName,
+                code: roleCode,
+                permissions: [...permissions] // Create a new array to avoid reference issues
+            };
+        }
+    }
+    return resultMenusDict;
+}
+
 function mergeMenuDictionaries(mergedMenusDict, resultMenusDict) {
     // Helper function to merge submenus
     function mergeSubmenus(existingSubmenus, newSubmenus, mainMenuId) {
@@ -362,7 +390,7 @@ async function processSolutions(
             permissionMap,
         );
         // Merge roles
-        Object.assign(merged.rolesDict, result.rolesDict);
+        merged.rolesDict = mergeRoleDictionaries(merged.rolesDict, result.rolesDict)
         merged.menusDict = mergeMenuDictionaries(merged.menusDict, result.menusDict);
         Object.assign(merged.moduleRefDict, result.moduleRefDict);
         Array.prototype.push.apply(merged.bePackagesList,result.bePackagesList);
@@ -428,8 +456,7 @@ async function processSolutions(
         output['fixtures/module-configuration-core.json'] = coreModuleConfig;
     }
     if (Object.keys(merged.rolesDict).length > 0) {
-        output['fixtures/roles.json'] = merged.rolesDict;
-    
+   
         const transformed = transformRolesToFixture(merged.rolesDict);
         output['fixtures/roles.json'] = transformed.roles;
         output['fixtures/roles-right.json'] = transformed.rolesRight;
@@ -446,8 +473,8 @@ async function processSolutions(
     if(Object.keys(services).length>0){
         output['compose.yml'] = services;
     }
-    
-    return output
+
+    return { output, modules: Object.keys(merged.moduleRefDict) }
 }
 
 async function mergeSolutions(
@@ -604,7 +631,6 @@ function mergeRolesData(roles, permissionMap, roleDict) {
     for (const role of roles) {
         const roleCode = role.code;
         const permissions = role.permissions || [];
-
         const mappedPermissions = permissions
             .filter(permission => permission in permissionMap)
             .map(permission => ({
@@ -617,7 +643,16 @@ function mergeRolesData(roles, permissionMap, roleDict) {
         }
 
         if (roleCode in roleDict) {
-            roleDict[roleCode].permissions.push(...mappedPermissions);
+            // Merge permissions, avoiding duplicates based on code
+            const existingPermissionCodes = new Set(
+                roleDict[roleCode].permissions.map(p => p.code)
+            );
+            for (const perm of mappedPermissions) {
+                if (!existingPermissionCodes.has(perm.code)) {
+                    roleDict[roleCode].permissions.push(perm);
+                    existingPermissionCodes.add(perm.code);
+                }
+            }
         } else {
             roleDict[roleCode] = {
                 roleName: role.roleName,
@@ -626,7 +661,6 @@ function mergeRolesData(roles, permissionMap, roleDict) {
             };
         }
     }
-
     return roleDict;
 }
 
@@ -747,6 +781,35 @@ function getHeaders() {
     return headers;
 }
 
+function generateDeterministicUUID(inputString) {
+    // Initialize seed for deterministic random
+    let seed = 0;
+    for (let i = 0; i < inputString.length; i++) {
+        seed += inputString.charCodeAt(i);
+    }
+    
+    // Simple pseudo-random number generator based on seed
+    function seededRandom() {
+        seed = (seed * 9301 + 49297) % 233280;
+        return seed / 233280;
+    }
+    
+    // UUID template: 8-4-4-4-12 characters
+    const chars = '0123456789abcdef';
+    let uuid = '';
+    
+    // Generate UUID parts
+    for (let i = 0; i < 36; i++) {
+        if (i === 8 || i === 13 || i === 18 || i === 23) {
+            uuid += '-';
+        } else {
+            uuid += chars[Math.floor(seededRandom() * 16)];
+        }
+    }
+    
+    return uuid;
+}
+
 
 function transformRolesToFixture(rolesDict) {
     const roleFixtures = [];
@@ -755,7 +818,7 @@ function transformRolesToFixture(rolesDict) {
 
     for (const key in rolesDict) {
         const role = rolesDict[key];
-        const roleUuid = uuidv4();
+        const roleUuid = generateDeterministicUUID(key);
 
         roleFixtures.push({
             model: "core.role",

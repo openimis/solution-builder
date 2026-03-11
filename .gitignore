@@ -194,3 +194,6 @@ config.local.*
 # Windows specific files
 Thumbs.db
 desktop.ini
+
+# Confluence script credentials
+script/config.js
