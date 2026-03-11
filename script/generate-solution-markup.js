@@ -162,7 +162,7 @@ async function main() {
   // Sort pages by their ancestry depth to ensure proper ordering
   matchingPages.sort((a, b) => (a.ancestors?.length || 0) - (b.ancestors?.length || 0));
 
-  let markup = `h1. Solution Overview - ${solutionName} (${CONFIG.filterLabels.join(', ')})\n\n{toc}\n\n`;
+  let markup = `h1. Solution Overview - ${solutionName}\n\n{toc}\n\nh2. Modules\n${CONFIG.filterLabels.map(label => `* ${label}`).join('\n')}\n\n`;
 
   for (const page of matchingPages) {
     const depth = (page.ancestors?.length || 0) - (page.ancestors?.find(a => a.id === targetPageId) ? 1 : 0);
@@ -190,7 +190,7 @@ async function main() {
     type: 'page',
     title: pageTitle,
     space: { key: CONFIG.spaceKey },
-    version: { number: currentVersion },
+    version: { number: currentVersion + 1 },
     status: 'current',                    // ← changed from 'draft' so content actually shows
     body: {
       storage: {
