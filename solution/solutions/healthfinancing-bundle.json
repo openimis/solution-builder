@@ -3,15 +3,16 @@
     "insuree": "../modules/insuree.json",
     "policy": "../modules/policy.json",
     "claim": "../modules/claim.json",
-    "claim_batch": "../modules/claim_batch.json",
+    "claim-batch": "../modules/claim_batch.json",
     "product": "../modules/product.json",
-    "healthFacility": "../modules/healthfacility.json",
-    "invoiceCustomer": "../modules/invoice-customer.json",
-    "invoiceSupplier": "../modules/invoice-supplier.json",
-    "paymentPlan":"../modules/payment-plan.json",
+    "health-facility": "../modules/healthfacility.json",
+    "invoice-customer": "../modules/invoice-customer.json",
+    "invoice-supplier": "../modules/invoice-supplier.json",
+    "payment-plan":"../modules/payment-plan.json",
     "report": "../modules/report.json",
     "medical": "../modules/medical.json",
     "payer": "../modules/payer.json",
-    "payment": "../modules/payment.json"
+    "payment": "../modules/payment.json",
+    "controls": "../modules/controls.json"
   }
 }

@@ -12,7 +12,8 @@
   ],
   "services":["db"],
   "moduleConfiguration": {
-    "logo": "./sources/logo/coremis.png"
+    "logo": "./sources/logo/IBR.svg",
+    "theme":  "./sources/theme/IBR.json"
   },
   "initData":[
     "../fixtures/core/roles-coreMIS.json",

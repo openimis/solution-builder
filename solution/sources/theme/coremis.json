@@ -1,0 +1,15 @@
+{
+  "theme": {
+    "name": "coremis",
+    "primaryColor": "#D85F1B",
+    "errorColor": "#A30000",
+    "whiteColor": "#fff",
+    "backgroundColor": "#FFF0E8",
+    "headerColor": "#E89A6A",
+    "greyColor": "#666666",
+    "selectedTableRowColor": "rgba(216, 95, 27, 0.1)",
+    "hoveredTableRowColor": "rgba(216, 95, 27, 0.15)",
+    "toggledButtonColor": "#8C4F3D",
+    "lockedBackgroundPattern": "repeating-linear-gradient(45deg, #E89A6A 1px, #E89A6A 1px, #fff 10px, #fff 10px)"
+  }
+}

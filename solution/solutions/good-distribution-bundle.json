@@ -1,9 +1,9 @@
 {
   "modules": {
-    "invoiceSupplier":"../modules/invoice-supplier.json",
-    "paymentPlan":"../modules/payment-plan.json",
-    "reconciliation":"../modules/payroll.json",
-    "paymentCycle":"../modules/payment-cycle.json",
-    "paymentPoint":"../modules/payment-point.json"
+    "invoice-supplier":"../modules/invoice-supplier.json",
+    "payment-plan":"../modules/payment-plan.json",
+    "payroll":"../modules/payroll.json",
+    "payment-cycle":"../modules/payment-cycle.json",
+    "payment-point":"../modules/payment-point.json"
   }
 }

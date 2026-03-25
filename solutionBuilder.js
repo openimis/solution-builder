@@ -414,18 +414,20 @@ async function processSolutions(
 
     merged.menusDict = cleanMenuDictionaries(merged.menusDict)
 
+    const assemblyBranch = merged.bePackagesDefDict['assembly']?.branch || 'develop';
+
     let PIPModules = new Set()
     merged.bePackagesList = merged.bePackagesList.filter((item, index) => merged.bePackagesList.indexOf(item) === index)
     for (let idx in merged.bePackagesList){
         bePackage = merged.bePackagesList[idx]
-        PIPModules.add(getBePackageConf(bePackage, merged.bePackagesDefDict[bePackage], branch))
+        PIPModules.add(getBePackageConf(bePackage, merged.bePackagesDefDict[bePackage], assemblyBranch))
     }
     let NPMModules = new Set()
     merged.fePackagesList = merged.fePackagesList.filter((item, index) => merged.fePackagesList.indexOf(item) === index)
 
     for (let idx  in merged.fePackagesList){
         fePackage = merged.fePackagesList[idx]
-        NPMModules.add(getFePackageConf(fePackage, merged.fePackagesDefDict[fePackage], branch))
+        NPMModules.add(getFePackageConf(fePackage, merged.fePackagesDefDict[fePackage], assemblyBranch))
     }
     let services = {}
     for (let idx  in merged.servicesList){
@@ -474,7 +476,7 @@ async function processSolutions(
         output['compose.yml'] = services;
     }
 
-    return { output, modules: Object.keys(merged.moduleRefDict) }
+    return { output, modules: Object.keys(merged.moduleRefDict), assemblyBranch }
 }
 
 async function mergeSolutions(

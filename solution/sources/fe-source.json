@@ -196,6 +196,12 @@
       "git": "https://github.com/openimis/openimis-fe-coremis_language_pack_js.git",
       "version": "v1.2.0",
       "branch": "develop"
+    },
+    "assembly": {
+      "package": "openimis-fe",
+      "git": "https://github.com/openimis/openimis-fe",
+      "version": "26.04",
+      "branch": "develop"
     }
   }
 }

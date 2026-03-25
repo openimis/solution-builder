@@ -21,5 +21,9 @@
         }
     
   
-    ]
+    ],
+  "initData":[
+    "../fixtures/heathfacility/legalform.json",
+    "../fixtures/heathfacility/sublevel.json"
+  ]
   }

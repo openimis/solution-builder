@@ -267,6 +267,12 @@
       "git": "https://github.com/openimis/openimis-be-claim_ai_quality_py",
       "version": "v2.0.0",
       "branch": "develop"
+    },
+    "assembly": {
+      "package": "openimis-be",
+      "git": "https://github.com/openimis/openimis-be",
+      "version": "26.04",
+      "branch": "develop"
     }
   }
 }

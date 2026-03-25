@@ -1,10 +1,10 @@
 {
   "modules": {
     "location": "../modules/location.json",
-    "taskManagement": "../modules/task-management.json",
+    "task-management": "../modules/task-management.json",
     "calculation": "../modules/calculation.json",
     "core": "../modules/core.json",
-    "userManagement": "../modules/user-management.json"
+    "user-management": "../modules/user-management.json"
   },
   "solutions": [
     "../sources/be-sources.json",

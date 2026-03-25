@@ -1,0 +1,18 @@
+{
+  "theme": 
+    {
+      "name": "SocialHealthInsurance",
+      "primaryColor": "#A4A0D0",
+      "errorColor": "#801a00",
+      "whiteColor": "#fff",
+      "backgroundColor": "#F0F0FF",
+      "headerColor": "#C9C6E6",
+      "greyColor": "#666666",
+      "selectedTableRowColor": "rgba(164, 160, 208, 0.1)",
+      "hoveredTableRowColor": "rgba(164, 160, 208, 0.15)",
+      "toggledButtonColor": "#6B6799",
+      "lockedBackgroundPattern": "repeating-linear-gradient(45deg, #C9C6E6 1px, #C9C6E6 1px, #fff 10px, #fff 10px)"
+    }
+
+  
+}

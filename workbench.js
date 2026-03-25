@@ -1,5 +1,6 @@
 
 const fs = require('fs');
+const path = require('path');
 const yaml = require('js-yaml');
 const simpleGit = require('simple-git');
 const unzipper = require('unzipper');
@@ -233,44 +234,57 @@ async function main() {
     try {
         const args = process.argv.slice(2);
         const shouldPublish = args.includes('--publish');
+        const shouldDocs = args.includes('--docs');
         const folderArg = args.find(arg => arg.startsWith('--folder='));
         const solutionName = folderArg ? folderArg.split('=')[1] : 'default-solution';
         const solutions = {
-          'coreMIS': './solution/solutions/coreMIS.json',
-          'SHI': './solution/solutions/HF.json',
-          'claimai': './solution/solutions/HF.json',
+          // 'coreMIS': './solution/solutions/coreMIS.json',
+          // 'SHI': './solution/solutions/HF.json',
+          // 'claimai': './solution/solutions/HF.json',
           'full' : './solution/solutions/full.json',
-          'SR': './solution/solutions/SR.json',
-          'IBR': './solution/solutions/IBR.json'
+          // 'SR': './solution/solutions/SR.json',
+          // 'IBR': './solution/solutions/IBR.json'
         }
         const permission = fs.readFileSync('./solution/permissions_map.json', 'utf8');
         const permissionMap = JSON.parse(permission);
         let output = []
         for (const [name, solution_path] of Object.entries(solutions)){
           console.log(`generating ${name}`)
-          const result = await processSolutions(
+          const { output: solutionOutput, modules, assemblyBranch } = await processSolutions(
               solution_path,
               process.cwd(),
               permissionMap,
           );
-          output[name] = result.output;
-          const modules = result.modules;
+          output[name] = solutionOutput;
           // Get dist-dkr files from compose.yml and merge them into output
-          const composeFiles = await copyDistDkrAssetsFromCompose(output[name]['compose.yml'], 'develop');
+          const composeFiles = await copyDistDkrAssetsFromCompose(output[name]['compose.yml'], assemblyBranch);
           Object.assign(output[name], composeFiles);
           const zipPath = path.join(__dirname, 'build', name +'.zip');
           await createZip(output[name], zipPath);
           baseDir = 'build/'+name
           await createSolutionDirectory(baseDir, output[name])
 
-          // Generate Confluence markup
-          console.log(`📝 Generating Confluence markup for ${name}...`);
-          try {
-            const labels = modules.join(',');
-            const { execSync } = require('child_process');
-            execSync(`node script/generate-solution-markup.js ${name} "${labels}"`, { stdio: 'inherit' });
-          } catch (error) {
-            console.error(`❌ Failed to generate markup for ${name}: ${error.message}`);
+          // Generate aggregated Confluence markup only if --publish or --docs is set
+          if (shouldPublish || shouldDocs) {
+            console.log(`📝 Generating aggregated Confluence markup for ${name} using aggregator config...`);
+            try {
+              const additionalLabels = modules.join(',');
+              const { execSync } = require('child_process');
+              const publishFlag = (shouldPublish || shouldDocs) ? '--publish' : '';
+              execSync(`node script/generate-confluence-aggregator.js ${name} "${additionalLabels}" ${publishFlag}`, { stdio: 'inherit' });
+              // Copy the generated markup to build directory
+              const markupFile = `${name}-aggregated-markup.txt`;
+              if (fs.existsSync(markupFile)) {
+                const docsDir = path.join(__dirname, 'build', name, 'docs');
+                if (!fs.existsSync(docsDir)) fs.mkdirSync(docsDir, { recursive: true });
+                fs.copyFileSync(markupFile, path.join(docsDir, markupFile));
+                console.log(`✔️ Copied ${markupFile} to build/${name}/docs/`);
+              }
+            } catch (error) {
+              console.error(`❌ Failed to generate aggregated markup for ${name}: ${error.message}`);
+            }
+          } else {
+            console.log('🛈 Skipping KB page update (use --publish or --docs to enable)');
           }
 
           // Publish if requested

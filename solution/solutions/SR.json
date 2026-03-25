@@ -1,21 +1,25 @@
 {
   "modules": {
     "grievance": "../modules/grievance.json",
-    "opeserach": "../modules/opensearch-report.json",
+    "opensearch-report": "../modules/opensearch-report.json",
     "individual":"../modules/individual.json",
     "api-import": "../modules/api-import.json",
     "deduplication": "../modules/deduplication.json",
-    "social-protection": "../modules/social-protection.json",
     "workflow":"../modules/workflow.json"
   },
   "solutions": [
     "./core-bundle.json",
     "../sources/main-menus.json",
     "../localesModules/fr.json"
+   
   ],
+   "bePackages": [
+    "contribution_plan"
+  ], 
   "services":["db"],
   "moduleConfiguration": {
-    "logo": "./sources/logo/coremis.png"
+    "logo": "./sources/logo/SR.svg",
+    "theme":  "./sources/theme/SR.json"
   },
   "initData":[
     "../fixtures/core/roles-coreMIS.json",

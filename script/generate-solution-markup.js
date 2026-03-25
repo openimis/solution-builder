@@ -1,6 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
-const config = require('./config'); // ← credentials loaded from git-ignored file
+const { createConfig } = require('./confluence-utils');
 
 const solutionName = process.argv[2];
 if (!solutionName) {
@@ -32,16 +32,7 @@ if (process.argv[3]) {
   filterLabels = Object.keys(solution.modules || {});
 }
 
-const CONFIG = {
-  baseUrl: config.baseUrl,
-  email: config.email,
-  apiToken: config.apiToken,
-  spaceKey: config.spaceKey,
-  rootPageId: config.rootPageId,
-  filterLabels: filterLabels,
-  modulePrefix: config.modulePrefix || 'module-',
-  outputFile: `${solutionName}-solution-markup.txt`
-};
+const CONFIG = createConfig(filterLabels, solutionName);
 
 const api = axios.create({
   baseURL: CONFIG.baseUrl,
@@ -61,7 +52,7 @@ function isModulePage(page) {
 
 async function getAllChildren(pageId, depth = 0) {
   const childRes = await api.get(`/rest/api/content/${pageId}/child/page`, {
-    params: { limit: 200, expand: 'metadata.labels,title' }
+    params: { status: 'any', limit: 200, expand: 'metadata.labels,title' }
   });
   const children = childRes.data.results;
   const result = [];
@@ -77,7 +68,7 @@ async function getAllChildren(pageId, depth = 0) {
 
 async function generateMarkupForPage(page, depth) {
   let markup = `h${Math.min(depth + 1, 6)}. ${page.title}\n`;
-  markup += `{include:${CONFIG.spaceKey}:${page.title}}\n\n`;
+  markup += `{excerpt:${CONFIG.spaceKey}:${page.title}|name=content}\n\n`;
 
   const children = await getAllChildren(page.id, depth + 1);
   const cleanChildren = children.filter(c => !isModulePage(c));
@@ -87,6 +78,38 @@ async function generateMarkupForPage(page, depth) {
   }
 
   return markup;
+}
+
+async function generateRelevantTreeMarkup(pageId, depth, matchingIds, visited = new Set()) {
+  if (visited.has(pageId)) return '';
+  visited.add(pageId);
+
+  const pageRes = await api.get(`/rest/api/content/${pageId}?expand=metadata.labels,title`);
+  const page = pageRes.data;
+
+  const hasMatchHere = hasMatchingLabel(page);
+  let subtreeHasMatch = hasMatchHere;
+  let markup = '';
+
+  const childRes = await api.get(`/rest/api/content/${pageId}/child/page`, {
+    params: { status: 'any', limit: 200, expand: 'metadata.labels,title' }
+  });
+  const children = childRes.data.results;
+
+  for (const child of children) {
+    const childMarkup = await generateRelevantTreeMarkup(child.id, depth + 1, matchingIds, visited);
+    if (childMarkup) {
+      subtreeHasMatch = true;
+      markup += childMarkup;
+    }
+  }
+
+  if (hasMatchHere || subtreeHasMatch) {
+    const pageMarkup = depth == 0 ? '' : `h${Math.min(depth + 1, 6)}. ${page.title}\n{excerpt:${CONFIG.spaceKey}:${page.title}|name=content}\n\n`;
+    return pageMarkup + markup;
+  } else {
+    return '';
+  }
 }
 
 async function main() {
@@ -159,15 +182,12 @@ async function main() {
   const matchingPages = uniqueResults;
   console.log(`✅ Found ${matchingPages.length} matching pages`);
 
-  // Sort pages by their ancestry depth to ensure proper ordering
-  matchingPages.sort((a, b) => (a.ancestors?.length || 0) - (b.ancestors?.length || 0));
+  const matchingIds = new Set(matchingPages.map(p => p.id));
 
   let markup = `h1. Solution Overview - ${solutionName}\n\n{toc}\n\nh2. Modules\n${CONFIG.filterLabels.map(label => `* ${label}`).join('\n')}\n\n`;
 
-  for (const page of matchingPages) {
-    const depth = (page.ancestors?.length || 0) - (page.ancestors?.find(a => a.id === targetPageId) ? 1 : 0);
-    markup += await generateMarkupForPage(page, depth + 1);
-  }
+  const treeMarkup = await generateRelevantTreeMarkup(targetPageId, 0, matchingIds);
+  markup += treeMarkup;
 
   fs.writeFileSync(CONFIG.outputFile, markup);
   console.log(`🎉 Markup generated → ${CONFIG.outputFile}`);

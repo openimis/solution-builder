@@ -20,5 +20,8 @@
         "payer.delete_payers"
       ]
     }
+  ],  
+  "initData":[
+    "../fixtures/payer/payer-type.json"
   ]
 }

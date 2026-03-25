@@ -1,0 +1,16 @@
+{
+  "theme": 
+    {
+      "name": "socialRegistry",
+      "primaryColor": "#F4AE2B",
+      "errorColor": "#B32D00",
+      "whiteColor": "#fff",
+      "backgroundColor": "#FFF5E0",
+      "headerColor": "#FAD08A",
+      "greyColor": "#666666",
+      "selectedTableRowColor": "rgba(244, 174, 43, 0.1)",
+      "hoveredTableRowColor": "rgba(244, 174, 43, 0.15)",
+      "toggledButtonColor": "#8C7A3D",
+      "lockedBackgroundPattern": "repeating-linear-gradient(45deg, #E6C98A 1px, #E6C98A 1px, #fff 10px, #fff 10px)"
+    }
+}

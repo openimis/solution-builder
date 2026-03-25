@@ -1,7 +1,7 @@
 {
   "modules": {
     "policyholder": "../modules/policyholder.json",
-    "contributionPlan": "../modules/contribution-plan.json",
+    "contribution-plan": "../modules/contribution-plan.json",
     "contract": "../modules/contract.json",
     "calculation-legacy":"../modules/calculation-legacy.json" 
   }

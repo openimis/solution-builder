@@ -14,6 +14,7 @@
     
   },
   "moduleConfiguration": {
-    "logo": "./sources/logo/openIMIS.png"
+    "logo": "./sources/logo/SHI.svg", 
+    "theme":  "./sources/theme/SHI.json"
   }
 }

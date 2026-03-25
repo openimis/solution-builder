@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
     {
+        "name": "docs",
+        "program": "${workspaceFolder}/script/generate-confluence-aggregator.js",
+        "request": "launch",
+        "type": "node",
+        "runtimeExecutable": "/usr/bin/node"
+    },
+    {
         "name": "Workbench",
         "program": "${workspaceFolder}/workbench.js",
         "request": "launch",
@@ -15,6 +22,21 @@
         "name": "Workbench publish",
         "program": "${workspaceFolder}/workbench.js",
         "args": ["--publish"],
+        "request": "launch",
+        "type": "node",
+        "runtimeExecutable": "/usr/bin/node"
+    },
+      {
+        "name": "Workbench docs",
+        "program": "${workspaceFolder}/workbench.js",
+        "args": ["--docs"],
+        "request": "launch",
+        "type": "node",
+        "runtimeExecutable": "/usr/bin/node"
+    },
+      {
+        "name": "Docs tree",
+        "program": "${workspaceFolder}/script/dump-confluence-tree.js",
         "request": "launch",
         "type": "node",
         "runtimeExecutable": "/usr/bin/node"

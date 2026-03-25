@@ -1,0 +1,17 @@
+{
+  "theme": {
+      "name": "integratedBeneficiaryManagement",
+      "primaryColor": "#C80F0F",
+      "errorColor": "#A30000",
+      "whiteColor": "#fff",
+      "backgroundColor": "#FFE6E6",
+      "headerColor": "#E66C6C",
+      "greyColor": "#666666",
+      "selectedTableRowColor": "rgba(200, 15, 15, 0.1)",
+      "hoveredTableRowColor": "rgba(200, 15, 15, 0.15)",
+      "toggledButtonColor": "#7A3333",
+      "lockedBackgroundPattern": "repeating-linear-gradient(45deg, #E68A8A 1px, #E68A8A 1px, #fff 10px, #fff 10px)" 
+    }
+
+  
+}

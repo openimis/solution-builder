@@ -1,0 +1,9 @@
+{
+  "menus": [],
+  "bePackages": ["controls"],
+  "roles": [],
+  "initData":[
+  "../fixtures/controls/control.json"
+]
+
+}

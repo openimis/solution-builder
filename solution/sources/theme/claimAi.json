@@ -1,0 +1,17 @@
+{
+  "theme":
+    {
+      "name": "claimAI",
+      "primaryColor": "#F57C00",
+      "errorColor": "#D81B60",
+      "whiteColor": "#FFFFFF",
+      "backgroundColor": "#FFF3E0",
+      "headerColor": "#FFCC80",
+      "greyColor": "#616161",
+      "selectedTableRowColor": "rgba(245, 124, 0, 0.08)",
+      "hoveredTableRowColor": "rgba(245, 124, 0, 0.12)",
+      "toggledButtonColor": "#FF9800",
+      "lockedBackgroundPattern": "repeating-linear-gradient(45deg, #FFE0B2 1px, #FFE0B2 1px, #FFFFFF 10px, #FFFFFF 10px)"
+    }
+  
+}
