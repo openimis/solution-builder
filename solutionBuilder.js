@@ -41,33 +41,44 @@ async function fetchJSON(handleOrUrl,DIRECTORY=null, rootPath = '') {
     } 
     // Case 2: Browser File System Access API (directory handle)
     else if (typeof DIRECTORY !== 'undefined' && typeof DIRECTORY !== 'string' && DIRECTORY) {
+        try {
+            if (typeof handleOrUrl == 'string') {
+                // Split the path into parts (e.g., "subfolder/file.txt" -> ["subfolder", "file.txt"])
+                const pathParts = handleOrUrl.split('/').filter(part => part.length > 0);
+                let currentDir = DIRECTORY;
 
-        if (typeof handleOrUrl == 'string') {
-            // Split the path into parts (e.g., "subfolder/file.txt" -> ["subfolder", "file.txt"])
-            const pathParts = handleOrUrl.split('/').filter(part => part.length > 0);
-            let currentDir = DIRECTORY;
+                // Navigate directories if there are multiple parts
+                for (let i = 0; i < pathParts.length - 1; i++) {
+                    currentDir = await currentDir.getDirectoryHandle(pathParts[i], { create: false });
+                }
 
-            // Navigate directories if there are multiple parts
-            for (let i = 0; i < pathParts.length - 1; i++) {
-                currentDir = await currentDir.getDirectoryHandle(pathParts[i], { create: false });
+                // Get the file handle from the final directory
+                const fileName = pathParts[pathParts.length - 1];
+                fileHandle = await currentDir.getFileHandle(fileName);
+            } else {
+                // Assume handleOrUrl is an object with a handle property (file or directory handle)
+                fileHandle = handleOrUrl;
             }
-
-            // Get the file handle from the final directory
-            const fileName = pathParts[pathParts.length - 1];
-            fileHandle = await currentDir.getFileHandle(fileName);
-        } else {
-            // Assume handleOrUrl is an object with a handle property (file or directory handle)
-            fileHandle = handleOrUrl;
+            const file = await fileHandle.getFile();
+            const text = await file.text();
+            return JSON.parse(text);
+        } catch (error) {
+            console.error(`File not found: ${handleOrUrl}`);
+            return null;
         }
-        const file = await fileHandle.getFile();
-        const text = await file.text();
-        return JSON.parse(text);
-    } 
+    }
     // Case 3: Local file path (Node.js)
     else if (typeof window === 'undefined' && typeof handleOrUrl === 'string') {
+        try {
+            fs.accessSync(handleOrUrl, fs.constants.F_OK);
+        } catch (error) {
+            console.error(`File not found: ${handleOrUrl}`);
+            return null;
+        }
         const text = fs.readFileSync(handleOrUrl, 'utf8');
                     // Create a timeout Promise that resolves after a short delay
-        return JSON.parse(text);
+        const js_obj =  JSON.parse(text);
+        return js_obj
     } 
     // Fallback: Throw an error if no valid case is matched
     else {
@@ -200,14 +211,15 @@ async function mergeAndSortFixtures(inputFiles, output) {
     console.log(`Processing file: ${filename}`);
 
     const data = await fetchJSON(filePath);
-    
-    // Group entries by model
-    for (const entry of data) {
-      const model = entry.model;
-      if (!fixturesByModel[model]) {
-        fixturesByModel[model] = [];
-      }
-      fixturesByModel[model].push(entry);
+    if (data){
+        // Group entries by model
+        for (const entry of data) {
+        const model = entry.model;
+        if (!fixturesByModel[model]) {
+            fixturesByModel[model] = [];
+        }
+        fixturesByModel[model].push(entry);
+        }
     }
   }
   
@@ -274,36 +286,36 @@ function mergeRoleDictionaries(mergedMenusDict, resultMenusDict) {
 }
 
 function mergeMenuDictionaries(mergedMenusDict, resultMenusDict) {
-    // Helper function to merge submenus
-    function mergeSubmenus(existingSubmenus, newSubmenus, mainMenuId) {
-        const submenus = existingSubmenus ? [...existingSubmenus] : [];
-        if (!newSubmenus) return submenus;
+    // Helper function to merge entries
+    function mergeentries(existingentries, newentries, mainMenuId) {
+        const entries = existingentries ? [...existingentries] : [];
+        if (!newentries) return entries;
 
-        // Remove submenus from other main menus to ensure uniqueness
+        // Remove entries from other main menus to ensure uniqueness
         function removeSubmenuFromOtherMenus(submenuId, targetMainMenuId) {
             for (const menuId in mergedMenusDict) {
-                if (menuId !== targetMainMenuId && mergedMenusDict[menuId].submenus) {
-                    mergedMenusDict[menuId].submenus = mergedMenusDict[menuId].submenus.filter(
+                if (menuId !== targetMainMenuId && mergedMenusDict[menuId].entries) {
+                    mergedMenusDict[menuId].entries = mergedMenusDict[menuId].entries.filter(
                         submenu => submenu.id !== submenuId
                     );
                 }
             }
         }
 
-        // Merge or add new submenus
-        newSubmenus.forEach(newSubmenu => {
+        // Merge or add new entries
+        newentries.forEach(newSubmenu => {
             removeSubmenuFromOtherMenus(newSubmenu.id, mainMenuId);
-            const existingIndex = submenus.findIndex(submenu => submenu.id === newSubmenu.id);
+            const existingIndex = entries.findIndex(submenu => submenu.id === newSubmenu.id);
             if (existingIndex !== -1) {
                 // Update existing submenu
-                submenus[existingIndex] = { ...newSubmenu };
+                entries[existingIndex] = { ...newSubmenu };
             } else {
                 // Add new submenu
-                submenus.push({ ...newSubmenu });
+                entries.push({ ...newSubmenu });
             }
         });
 
-        return submenus;
+        return entries;
     }
 
     // Iterate through resultMenusDict to merge into mergedMenusDict
@@ -311,14 +323,14 @@ function mergeMenuDictionaries(mergedMenusDict, resultMenusDict) {
         const resultMenu = resultMenusDict[menuId];
         const existingMenu = mergedMenusDict[menuId] || {};
 
-        // Merge main menu fields, preserving existing submenus if not provided in result
+        // Merge main menu fields, preserving existing entries if not provided in result
         mergedMenusDict[menuId] = {
             position: resultMenu.position !== undefined ? resultMenu.position : existingMenu.position,
             id: menuId,
             name: resultMenu.name !== undefined ? resultMenu.name : existingMenu.name,
             icon: resultMenu.icon !== undefined ? resultMenu.icon : existingMenu.icon,
             description: resultMenu.description !== undefined ? resultMenu.description : existingMenu.description,
-            submenus: mergeSubmenus(existingMenu.submenus, resultMenu.submenus, menuId)
+            entries: mergeentries(existingMenu.entries, resultMenu.entries, menuId)
         };
     }
 
@@ -329,7 +341,7 @@ function  cleanMenuDictionaries(menusDict) {
 
     // Iterate through resultMenusDict to merge into mergedMenusDict
     for (const menuId in menusDict) {
-        if(menusDict[menuId].submenus.length === 0 || menusDict[menuId].name === undefined){
+        if(menusDict[menuId].entries.length === 0 || menusDict[menuId].name === undefined){
             delete menusDict[menuId];
         }
     }
@@ -382,6 +394,8 @@ async function processSolutions(
     let merged = await mergeSolutions(solutionFile, directoryPath, permissionMap);
     let result = {};
 
+    // Commented out buggy for loop that tries to merge modules as solutions
+    /*
     for (let key in merged.moduleRefDict || {}) {
         const depPath = getAbsolutePath(merged.moduleRefDict[key], solutionFilePath);
         result = await mergeSolutions(
@@ -411,8 +425,22 @@ async function processSolutions(
         }
         
     }
+    */
 
     merged.menusDict = cleanMenuDictionaries(merged.menusDict)
+
+    // Generate module-level permissions map
+    let modulePermissionsMap = {};
+    const includedModules = Object.keys(merged.moduleRefDict);
+    for (const permKey in permissionMap) {
+        const module = permKey.split('.')[0];
+        if (includedModules.includes(module)) {
+            if (!modulePermissionsMap[module]) {
+                modulePermissionsMap[module] = {};
+            }
+            modulePermissionsMap[module][permKey] = permissionMap[permKey];
+        }
+    }
 
     const assemblyBranch = merged.bePackagesDefDict['assembly']?.branch || 'develop';
 
@@ -436,7 +464,8 @@ async function processSolutions(
     }
 
     output = {}
-    // TODO manage the language in a better way 
+    output['module_permissions_map.json'] = modulePermissionsMap;
+    // TODO manage the language in a better way
     if(NPMModules.size>0){
         output['fe-openimis.json'] ={
             "modules": [...NPMModules], 
@@ -465,7 +494,7 @@ async function processSolutions(
     }
     // merging all fixture
 
-    output = mergeAndSortFixtures(merged.initData, output);
+    output = await mergeAndSortFixtures(merged.initData, output);
 
     // sorting fixture by model
 
@@ -506,9 +535,9 @@ async function mergeSolutions(
         solution = solutionFile;
         solutionFilePath = typeof directoryPath === 'string'?directoryPath:''
     }
-    if (solution.toString() == '[object Promise]') {
+    if (solution.toString() == '[object Promise]' || !solution) {
         console.warn(`Failed to load solution file: ${solutionFile}`);
-        return { modules, menuDict, roleDict };
+        return { rolesDict, menusDict, moduleRefDict, bePackagesList, bePackagesDefDict, fePackagesList, fePackagesDefDict, locales, servicesList, servicesDefDict, initData };
     }
 
     // Process solutions
@@ -634,11 +663,14 @@ function mergeRolesData(roles, permissionMap, roleDict) {
         const roleCode = role.code;
         const permissions = role.permissions || [];
         const mappedPermissions = permissions
-            .filter(permission => permission in permissionMap)
-            .map(permission => ({
-                name: permission,
-                code: permissionMap[permission]
-            }));
+        .filter(permission => {
+            const code = permissionMap[permission];
+            return code; // only keep permissions that have a truthy code
+        })
+        .map(permission => ({
+            name: permission,
+            code: permissionMap[permission]
+        }));
 
         if (mappedPermissions.length === 0) {
             continue;
@@ -670,8 +702,8 @@ function mergeMenusData(menus, menuDict) {
     // Helper function to find and remove submenu from all main menus
     function removeSubmenuFromOtherMenus(submenuId, targetMainMenuId) {
         for (const mainMenuId in menuDict) {
-            if (mainMenuId !== targetMainMenuId && menuDict[mainMenuId].submenus) {
-                menuDict[mainMenuId].submenus = menuDict[mainMenuId].submenus.filter(
+            if (mainMenuId !== targetMainMenuId && menuDict[mainMenuId].entries) {
+                menuDict[mainMenuId].entries = menuDict[mainMenuId].entries.filter(
                     submenu => submenu.id !== submenuId
                 );
             }
@@ -687,14 +719,17 @@ function mergeMenusData(menus, menuDict) {
                 id: menu.id,
                 name: menu.name,
                 icon: menu.icon,
-                description: menu.description
+                route:  menu.route,
+                text: menu.text,
+                description: menu.description,
+                withDivider: menu.withDivider
             };
 
             // Create minimal main menu if it doesn't exist
             if (!menuDict[mainMenuId]) {
                 menuDict[mainMenuId] = {
                     id: mainMenuId,
-                    submenus: []
+                    entries: []
                 };
             }
 
@@ -702,34 +737,35 @@ function mergeMenusData(menus, menuDict) {
             removeSubmenuFromOtherMenus(menu.id, mainMenuId);
 
             // Add submenu to the target main menu
-            if (!menuDict[mainMenuId].submenus) {
-                menuDict[mainMenuId].submenus = [];
+            if (!menuDict[mainMenuId].entries) {
+                menuDict[mainMenuId].entries = [];
             }
             // Check if submenu already exists
-            const existingSubmenuIndex = menuDict[mainMenuId].submenus.findIndex(
+            const existingSubmenuIndex = menuDict[mainMenuId].entries.findIndex(
                 sm => sm.id === menu.id
             );
             if (existingSubmenuIndex !== -1) {
                 // Update existing submenu
-                menuDict[mainMenuId].submenus[existingSubmenuIndex] = submenu;
+                menuDict[mainMenuId].entries[existingSubmenuIndex] = submenu;
             } else {
                 // Add new submenu
-                menuDict[mainMenuId].submenus.push(submenu);
+                menuDict[mainMenuId].entries.push(submenu);
             }
         } 
         // Handle main menu payload
         else {
             const menuId = menu.id;
-            // Preserve existing submenus if new payload doesn't include them
-            const existingSubmenus = menuDict[menuId]?.submenus || [];
+            // Preserve existing entries if new payload doesn't include them
+            const existingentries = menuDict[menuId]?.entries || [];
             
             menuDict[menuId] = {
                 position: menu.position,
                 id: menu.id,
                 name: menu.name,
+                text: menu.text,
                 icon: menu.icon,
                 description: menu.description,
-                submenus: menu.submenus || existingSubmenus
+                entries: menu.entries || existingentries
             };
         }
     }

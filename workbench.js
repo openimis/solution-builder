@@ -142,7 +142,7 @@ async function copyDistDkrAssetsFromCompose(composeContent, branch = 'develop') 
     const outputFiles = {};
 
     // Ensure we are getting the paths from composeConfig
-    if (composeContent.include && Array.isArray(composeContent.include)) {
+    if (composeContent && composeContent.include && Array.isArray(composeContent.include)) {
         for (const item of composeContent.include) {
             if (item.path) {
                 // Resolve path within dist-dkr repo
@@ -238,31 +238,31 @@ async function main() {
         const folderArg = args.find(arg => arg.startsWith('--folder='));
         const solutionName = folderArg ? folderArg.split('=')[1] : 'default-solution';
         const solutions = {
-          // 'coreMIS': './solution/solutions/coreMIS.json',
+           'coreMIS': './solution/solutions/coreMIS.json',
           // 'SHI': './solution/solutions/HF.json',
           // 'claimai': './solution/solutions/HF.json',
-          'full' : './solution/solutions/full.json',
+          //'full' : './solution/solutions/full.json',
           // 'SR': './solution/solutions/SR.json',
           // 'IBR': './solution/solutions/IBR.json'
         }
         const permission = fs.readFileSync('./solution/permissions_map.json', 'utf8');
         const permissionMap = JSON.parse(permission);
-        let output = []
+        let outputs = {}
         for (const [name, solution_path] of Object.entries(solutions)){
           console.log(`generating ${name}`)
-          const { output: solutionOutput, modules, assemblyBranch } = await processSolutions(
+          const { output, modules, assemblyBranch } = await processSolutions(
               solution_path,
               process.cwd(),
               permissionMap,
           );
-          output[name] = solutionOutput;
+          outputs[name] = output;
           // Get dist-dkr files from compose.yml and merge them into output
-          const composeFiles = await copyDistDkrAssetsFromCompose(output[name]['compose.yml'], assemblyBranch);
-          Object.assign(output[name], composeFiles);
+          const composeFiles = await copyDistDkrAssetsFromCompose(outputs[name]['compose.yml'], assemblyBranch);
+          Object.assign(outputs[name], composeFiles);
           const zipPath = path.join(__dirname, 'build', name +'.zip');
-          await createZip(output[name], zipPath);
+          await createZip(outputs[name], zipPath);
           baseDir = 'build/'+name
-          await createSolutionDirectory(baseDir, output[name])
+          await createSolutionDirectory(baseDir, outputs[name])
 
           // Generate aggregated Confluence markup only if --publish or --docs is set
           if (shouldPublish || shouldDocs) {
