@@ -1,38 +1,35 @@
 {
   "menus": [
     {
-      "mainMenu": "PaymentsMainMenu",
-        "position":51,
-        "id": "legalAndFinance.invoices",
-        "icon":"ReceiptIcon"
-   }
-  ],
-  "fePackages": ["InvoiceModule"],
-  "bePackages": ["invoice"],
-   "roles": [
-    {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "invoice.read_invoice",
-        "invoice.create_invoice",
-        "invoice.update_invoice",
-        "invoice.delete_invoice",
-        "invoice.amend_invoice",
-        "invoice.read_invoice_payment",
-        "invoice.create_invoice_payment",
-        "invoice.update_invoice_payment",
-        "invoice.delete_invoice_payment",
-        "invoice.refund_invoice_payment",
-        "invoice.read_invoice_event",
-        "invoice.create_invoice_event",
-        "invoice.update_invoice_event",
-        "invoice.delete_invoice_event",
-        "invoice.create_invoice_event_message",
-        "invoice.delete_my_message_event",
-        "invoice.delete_all_message_event"
-      ]
+      "mainMenu": "Payments.MainMenu",
+      "position": 51,
+      "root": "invoices",
+      "icon": "Receipt"
     }
-   ]
-
+  ],
+  "fePackages": [
+    "InvoiceModule"
+  ],
+  "bePackages": [
+    "invoice"
+  ],
+  "rights": [
+    "invoice.invoice_amend",
+    "invoice.invoice_create",
+    "invoice.invoice_delete",
+    "invoice.invoice_event_create",
+    "invoice.invoice_event_create_message",
+    "invoice.invoice_event_delete",
+    "invoice.invoice_event_delete_all_message",
+    "invoice.invoice_event_delete_my_message",
+    "invoice.invoice_event_search",
+    "invoice.invoice_event_update",
+    "invoice.invoice_payment_create",
+    "invoice.invoice_payment_delete",
+    "invoice.invoice_payment_refund",
+    "invoice.invoice_payment_search",
+    "invoice.invoice_payment_update",
+    "invoice.invoice_search",
+    "invoice.invoice_update"
+  ]
 }

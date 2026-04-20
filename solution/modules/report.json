@@ -1,17 +1,20 @@
 {
   "menus": [
-      {
-         "mainMenu": "ReportsMenu",
-         "position":2,
-         "id": "tools.reports",
-         "icon" : "TableChartIcon"
-      }
-
+    {
+      "mainMenu": "ReportsMenu",
+      "position": 2,
+      "id": "tools.reports",
+      "icon": "TableChart"
+    }
   ],
   "fePackages": [
-   "ToolsModule"
+    "ToolsModule"
   ],
   "bePackages": [
-   "report"
+    "report"
+  ],
+  "rights": [
+    "opensearch_reports.opensearch_dashboard_search",
+    "opensearch_reports.opensearch_dashboard_update"
   ]
 }

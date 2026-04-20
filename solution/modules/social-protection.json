@@ -1,11 +1,11 @@
 {
   "menus": [
-      {
-        "mainMenu": "EnrolmentMainMenu",
-        "position":2,
-        "id":"socialProtection.benefitPlans",
-        "icon": "SpaIcon"
-      }
+    {
+      "mainMenu": "Enrolment.MainMenu",
+      "position": 2,
+      "id": "socialProtection.benefitPlans",
+      "icon": "Spa"
+    }
   ],
   "fePackages": [
     "SocialProtectionModule"
@@ -14,45 +14,25 @@
     "social_protection",
     "contribution_plan",
     "calcrule_validations"
-  ], 
-  "roles": [
-    {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "social_protection.read_benefit_plan",
-        "social_protection.create_benefit_plan",
-        "social_protection.update_benefit_plan",
-        "social_protection.delete_benefit_plan",
-        "social_protection.close_benefit_plan",
-        "social_protection.read_beneficiary",
-        "social_protection.create_beneficiary",
-        "social_protection.update_beneficiary",
-        "social_protection.delete_beneficiary",
-        "social_protection.read_schema",
-        "social_protection.create_schema",
-        "social_protection.update_schema",
-        "social_protection.delete_schema"
-      ]
-    },
-    {
-      "roleName": "Social Protection Manager",
-      "code": "social_protection_manager",
-      "permissions": [
-        "social_protection.read_benefit_plan",
-        "social_protection.create_benefit_plan",
-        "social_protection.update_benefit_plan",
-        "social_protection.delete_benefit_plan",
-        "social_protection.close_benefit_plan",
-        "social_protection.read_beneficiary",
-        "social_protection.create_beneficiary",
-        "social_protection.update_beneficiary",
-        "social_protection.delete_beneficiary",
-        "social_protection.read_schema",
-        "social_protection.create_schema",
-        "social_protection.update_schema",
-        "social_protection.delete_schema"
-      ]
-    }
+  ],
+  "rights": [
+    "social_protection.activity_search",
+    "social_protection.beneficiary_create",
+    "social_protection.beneficiary_delete",
+    "social_protection.beneficiary_search",
+    "social_protection.beneficiary_update",
+    "social_protection.benefit_plan_close",
+    "social_protection.benefit_plan_create",
+    "social_protection.benefit_plan_delete",
+    "social_protection.benefit_plan_search",
+    "social_protection.benefit_plan_update",
+    "social_protection.project_create",
+    "social_protection.project_delete",
+    "social_protection.project_search",
+    "social_protection.project_update",
+    "social_protection.schema_create",
+    "social_protection.schema_delete",
+    "social_protection.schema_search",
+    "social_protection.schema_update"
   ]
 }

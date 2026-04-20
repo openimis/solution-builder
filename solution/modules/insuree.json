@@ -1,52 +1,30 @@
 {
   "menus": [
-      {
-      "mainMenu": "ClientRegistryMainMenu",
-        "position":12,
-        "id": "insuree.familiesOrGroups",
-        "icon":"GroupIcon"
+    {
+      "mainMenu": "ClientRegistry.MainMenu",
+      "position": 12,
+      "id": "insuree.familiesOrGroups",
+      "icon": "Group"
     },
     {
-      "mainMenu": "ClientRegistryMainMenu",
-        "position":11,
-        "id":"insuree.addFamilyOrGroup",
-        "icon":"GroupAddIcon"
+      "mainMenu": "ClientRegistry.MainMenu",
+      "position": 11,
+      "id": "insuree.addFamilyOrGroup",
+      "icon": "GroupAdd"
     },
     {
-      "mainMenu": "ClientRegistryMainMenu",
-        "position":13,
-        "id":"insuree.insurees",
-          "icon":"PersonIcon"
+      "mainMenu": "ClientRegistry.MainMenu",
+      "position": 13,
+      "id": "insuree.insurees",
+      "icon": "Person"
     }
-
   ],
   "fePackages": [
-"InsureeModule"
+    "InsureeModule"
   ],
   "bePackages": [
-"insuree"
+    "insuree"
   ],
-   "roles": [
-    {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "insuree.read_insurees",
-        "insuree.read_insuree",
-        "insuree.read_insuree_photo",
-        "insuree.insuree_officers",
-        "insuree.read_insuree_family_members",
-        "family.read_families",
-        "insuree.insuree_policy",
-        "family.create_families",
-        "family.update_families",
-        "family.delete_families",
-        "insuree.create_insurees",
-        "insuree.update_insurees",
-        "insuree.delete_insurees"
-      ]
-    }
-   ],
   "initData": [
     "../fixtures/insuree/gender.json",
     "../fixtures/insuree/education.json",
@@ -56,5 +34,19 @@
     "../fixtures/insuree/family-type.json",
     "../fixtures/insuree/relations.json",
     "../fixtures/insuree/confirmation-type.json"
+  ],
+  "rights": [
+    "insuree.create_families",
+    "insuree.create_insurees",
+    "insuree.delete_families",
+    "insuree.delete_insurees",
+    "insuree.families",
+    "insuree.insuree",
+    "insuree.insuree_inquire",
+    "insuree.insuree_photo",
+    "insuree.insuree_policy",
+    "insuree.insurees",
+    "insuree.update_families",
+    "insuree.update_insurees"
   ]
 }

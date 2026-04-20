@@ -1,0 +1,13 @@
+{
+
+  "fePackages": [
+    "DeduplicationModule"
+  ],
+  "bePackages": [
+    "deduplication"
+  ],
+  "rights": [
+    "deduplication.create_deduplication_payment_review",
+    "deduplication.create_deduplication_review"
+  ]
+}

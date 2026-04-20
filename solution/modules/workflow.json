@@ -1,7 +1,6 @@
 {
-    "fePackages": [
-          ],
-    "bePackages": [
-        "workflow"
-          ]
+  "fePackages": [],
+  "bePackages": [
+    "workflow"
+  ]
 }

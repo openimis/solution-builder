@@ -1,46 +1,27 @@
 {
   "menus": [
-
-      {
-        "mainMenu": "ProfileMainMenu",
-          "position":4,
-          "id": "profile.myProfile",
-          "icon": "AccountCircleIcon"
-      },
-      {
-        "mainMenu": "ProfileMainMenu",
-          "position":5,
-          "id":"profile.changePassword",
-          "icon": "PasswordIcon"
-      }
+    {
+      "name": "AdminMainMenu",
+      "id": "admin.MainMenu",
+      "text": "admin.mainMenu",
+      "icon": "LocationCity"
+    }
   ],
   "fePackages": [
     "CoreModule",
-    "AdminModule",
-    "ProfileModule",
     "HomeModule"
   ],
   "bePackages": [
     "core"
   ],
-  "roles": [
-    {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "core.read_enrolment_officers",
-        "core.create_enrolment_officers",
-        "core.update_enrolment_officers",
-        "core.delete_enrolment_officers",
-        "core.read_claim_administrator",
-        "core.create_claim_administrator",
-        "core.update_claim_administrator",
-        "core.delete_claim_administrator"
-      ]
-    }
-  ],
   "initData": [
     "../fixtures/core/language.json"
   ],
-  "services":["base", "cache"]
+  "services": [
+    "base",
+    "cache"
+  ],
+  "rights":[
+     "core.enable_viewing_masked_data"
+  ]
 }

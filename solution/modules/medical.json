@@ -1,32 +1,53 @@
 {
-  "menus": [    
+  "menus": [
     {
-        "mainMenu": "SchemeAdministrationMainMenu",
-        "position":9,
-        "id": "admin.menu.medicalServicesPrices",
-        "icon": "MedicalServicesIcon"
+      "mainMenu": "SchemeAdministration.MainMenu",
+      "position": 9,
+      "route": "medical/medicalServices"
     },
     {
-        "mainMenu": "SchemeAdministrationMainMenu",
-        "position":10,
-        "id": "admin.menu.medicalItemsPrices",
-        "icon": "VaccinesIcon"
+      "mainMenu": "SchemeAdministration.MainMenu",
+      "position": 10,
+      "route": "medical/medicalItems"
     },
     {
-        "mainMenu": "SchemeAdministrationMainMenu",
-        "position":11,
-        "id": "admin.menu.medicalServices",
-        "icon": "MedicalServicesIcon"
+      "mainMenu": "SchemeAdministration.MainMenu",
+      "position": 11,
+      "route": "medical/pricelists/services"
     },
     {
-        "mainMenu": "SchemeAdministrationMainMenu",
-        "position":12,
-        "id": "admin.menu.medicalItems",
-        "icon": "VaccinesIcon"
+      "mainMenu": "SchemeAdministration.MainMenu",
+      "position": 12,
+      "route": "medical/pricelists/items"
     }
-    
-    ],
-  "fePackages": ["MedicalModule", "MedicalPriceListModule", "AdminModule"],
-  "bePackages": ["medical", "medical_pricelist"],
-  "roles": []
+  ],
+  "fePackages": [
+    "MedicalModule",
+    "MedicalPriceListModule",
+    "AdminModule"
+  ],
+  "bePackages": [
+    "medical",
+    "medical_pricelist"
+  ],
+  "rights": [
+    "medical.medical_items",
+    "medical.medical_items_add",
+    "medical.medical_items_delete",
+    "medical.medical_items_update",
+    "medical.medical_services",
+    "medical.medical_services_add",
+    "medical.medical_services_delete",
+    "medical.medical_services_update",
+    "medical_pricelist.pricelists_medical_items",
+    "medical_pricelist.pricelists_medical_items_add",
+    "medical_pricelist.pricelists_medical_items_delete",
+    "medical_pricelist.pricelists_medical_items_duplicate",
+    "medical_pricelist.pricelists_medical_items_update",
+    "medical_pricelist.pricelists_medical_services",
+    "medical_pricelist.pricelists_medical_services_add",
+    "medical_pricelist.pricelists_medical_services_delete",
+    "medical_pricelist.pricelists_medical_services_duplicate",
+    "medical_pricelist.pricelists_medical_services_update"
+  ]
 }

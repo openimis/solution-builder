@@ -1,37 +1,36 @@
 {
   "menus": [
     {
-      "mainMenu": "PaymentsMainMenu",
-        "position":51,
-        "id": "legalAndFinance.bills",
-        "icon":"CorporateFareIcon"
-   }
-  ],
-  "fePackages": ["InvoiceModule"],
-  "bePackages": ["invoice"],
-   "roles": [
-    {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "bill.read_bill",
-        "bill.create_bill",
-        "bill.update_bill",
-        "bill.delete_bill",
-        "bill.amend_bill",
-        "bill.read_bill_payment",
-        "bill.create_bill_payment",
-        "bill.update_bill_payment",
-        "bill.delete_bill_payment",
-        "bill.refund_bill_payment",
-        "bill.read_bill_event",
-        "bill.create_bill_event",
-        "bill.update_bill_event",
-        "bill.delete_bill_event",
-        "bill.create_bill_event_message",
-        "bill.delete_my_event_message",
-        "bill.delete_all_event_message"
-      ]
+      "mainMenu": "Payments.MainMenu",
+      "position": 52,
+      "root": "bills",
+      "icon": "CorporateFare",
+      "withDivider": true
     }
-   ]
+  ],
+  "fePackages": [
+    "InvoiceModule"
+  ],
+  "bePackages": [
+    "invoice"
+  ],
+  "rights": [
+    "invoice.bill_amend",
+    "invoice.bill_create",
+    "invoice.bill_delete",
+    "invoice.bill_event_create",
+    "invoice.bill_event_create_message",
+    "invoice.bill_event_delete",
+    "invoice.bill_event_delete_all_message",
+    "invoice.bill_event_delete_my_message",
+    "invoice.bill_event_search",
+    "invoice.bill_event_update",
+    "invoice.bill_payment_create",
+    "invoice.bill_payment_delete",
+    "invoice.bill_payment_refund",
+    "invoice.bill_payment_search",
+    "invoice.bill_payment_update",
+    "invoice.bill_search",
+    "invoice.bill_update"
+  ]
 }

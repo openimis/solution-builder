@@ -1,0 +1,46 @@
+{
+  "menus": [
+    {
+      "name": "ToolsMenu",
+      "id": "tools.MainMenu",
+      "text": "tools.mainMenu",
+      "icon": "mobiledata_arrows"
+    },
+    {
+      "mainMenu": "tools.MainMenu",
+      "route": "tools/registers"
+    },
+    {
+      "mainMenu": "tools.MainMenu",
+      "route": "tools/extracts"
+    },
+    {
+      "mainMenu": "tools.MainMenu",
+      "route": "tools/reports"
+    }
+  ],
+  "fePackages": [
+    "ToolsModule"
+  ],
+  "bePackages": [
+    "core",
+    "tools",
+    "controls"
+  ],
+  "services": [
+    "base"
+  ],
+  "rights": [
+    "tools.extracts_master_data",
+    "tools.extracts_officer_feedbacks",
+    "tools.extracts_officer_renewals",
+    "tools.extracts_phone_extract",
+    "tools.extracts_upload_claims",
+    "tools.registers",
+    "tools.registers_diagnoses",
+    "tools.registers_health_facilities",
+    "tools.registers_items",
+    "tools.registers_locations",
+    "tools.registers_services"
+  ]
+}

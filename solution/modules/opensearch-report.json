@@ -1,40 +1,37 @@
 {
   "menus": [
-
-
     {
-        "mainMenu": "ReportsMenu",
-        "position":1,
-        "id": "openSearch.individualReports"
+      "mainMenu": "ReportsMenu",
+      "position": 1,
+      "route": "individualReports"
     },
     {
-        "mainMenu": "ReportsMenu",
-        "position":2,
-        "id": "openSearch.groupReports"
+      "mainMenu": "ReportsMenu",
+      "position": 2,
+      "route": "groupReports"
     },
     {
-        "mainMenu": "ReportsMenu",
-        "position":3,
-        "id": "openSearch.beneficiaryReports"
+      "mainMenu": "ReportsMenu",
+      "position": 3,
+      "route": "beneficiaryReports"
     },
     {
-        "mainMenu": "ReportsMenu",
-        "position":5,
-        "id": "openSearch.grievanceReports"
+      "mainMenu": "ReportsMenu",
+      "position": 5,
+      "route": "grievanceReports"
     },
-      {
-        "mainMenu": "ReportsMenu",
-        "position":4,
-        "id": "openSearch.dataUpdatesReports"
+    {
+      "mainMenu": "ReportsMenu",
+      "position": 4,
+      "route": "dataUpdatesReports"
     },
-      {
-        "mainMenu": "ReportsMenu",
-        "position":6,
-        "id": "openSearch.openSearchConfig"
+    {
+      "mainMenu": "ReportsMenu",
+      "position": 6,
+      "route": "openSearchConfig"
     }
- 
   ],
-  "services":[
+  "services": [
     "openSearch"
   ],
   "fePackages": [
@@ -43,30 +40,34 @@
   "bePackages": [
     "opensearch_reports"
   ],
-  "roles": [
-    {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "opensearch_reports.opensearch_reports",
-        "opensearch_reports.update_opensearch_report"
-      ]
-    },
-    {
-      "roleName": "Social Protection Manager",
-      "code": "social_protection_manager",
-      "permissions": [
-        "opensearch_reports.opensearch_reports",
-        "opensearch_reports.update_opensearch_report"
-      ]
-    },
-    {
-      "roleName": "Reporting Manager",
-      "code": "reporting_manager",
-      "permissions": [
-        "opensearch_reports.opensearch_reports",
-        "opensearch_reports.update_opensearch_report"
-      ]
-    }
+  "rights": [
+    "report.report",
+    "report.report_add",
+    "report.report_delete",
+    "report.report_edit",
+    "report.reports_capitation_payment",
+    "report.reports_claim_history_report",
+    "report.reports_claim_overview_report",
+    "report.reports_contribution_collection",
+    "report.reports_contribution_distribution",
+    "report.reports_contribution_payment",
+    "report.reports_control_number_assignment",
+    "report.reports_derived_operational_indicators",
+    "report.reports_enrolment_performance_indicators",
+    "report.reports_families_insurees_overview",
+    "report.reports_insuree_without_photos",
+    "report.reports_matching_funds",
+    "report.reports_overview_of_commissions",
+    "report.reports_payment_category_overview",
+    "report.reports_pending_insurees",
+    "report.reports_percentage_referrals",
+    "report.reports_primary_operational_indicator_policies",
+    "report.reports_primary_operational_indicators_claims",
+    "report.reports_product_sales",
+    "report.reports_rejected_photo",
+    "report.reports_renewals",
+    "report.reports_status_of_register",
+    "report.reports_user_activity"
+    
   ]
 }

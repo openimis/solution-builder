@@ -1,5 +1,7 @@
 {
   "menus": [],
-  "bePackages": ["dhis2_etl"],
+  "bePackages": [
+    "dhis2_etl"
+  ],
   "roles": []
 }

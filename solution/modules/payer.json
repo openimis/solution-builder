@@ -1,27 +1,25 @@
 {
   "menus": [
     {
-      "mainMenu": "AdministrationMainMenu",
-      "position": 4,
-      "id": "admin.payers",
-      "icon": "MoneyIcon"
+      "mainMenu": "Payments.MainMenu",
+      "position": 14,
+      "route": "payer/payers",
+      "icon": "Money"
     }
   ],
-  "fePackages": ["PayerModule"],
-  "bePackages": ["payer"],
-  "roles": [
-    {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "payer.payers",
-        "payer.create_payers",
-        "payer.update_payers",
-        "payer.delete_payers"
-      ]
-    }
-  ],  
-  "initData":[
+  "fePackages": [
+    "PayerModule"
+  ],
+  "bePackages": [
+    "payer"
+  ],
+  "initData": [
     "../fixtures/payer/payer-type.json"
+  ],
+  "rights": [
+    "payer.payer_add",
+    "payer.payer_delete",
+    "payer.payer_update",
+    "payer.payers"
   ]
 }

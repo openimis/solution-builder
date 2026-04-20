@@ -1,30 +1,17 @@
 {
-  "menus": [    {
-      "mainMenu": "PaymentsMainMenu",
-      "position":3,
-      "id":"legalAndFinance.paymentPlans",
-      "icon":"PriceChangeIcon"
-
-
-  }],
-  "roles": [
+  "menus": [
     {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "payment_plan.read_payment_plan",
-        "payment_plan.create_payment_plan",
-        "payment_plan.update_payment_plan",
-        "payment_plan.delete_payment_plan",
-        "payment_plan.replace_payment_plan"
-      ]
+      "mainMenu": "Payments.MainMenu",
+      "position": 3,
+      "id": "legalAndFinance.paymentPlans",
+      "icon": "PriceChange"
     }
-
   ],
   "bePackages": [
-"contribution_plan"
+    "contribution_plan"
   ],
   "fePackages": [
     "ContributionPlanModule"
-      ]
+  ],
+  "rights": []
 }

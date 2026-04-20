@@ -1,4 +1,6 @@
 {
-  "fePackages": ["CoreMISLanguageModule"],
+  "fePackages": [
+    "CoreMISLanguageModule"
+  ],
   "bePackages": []
 }

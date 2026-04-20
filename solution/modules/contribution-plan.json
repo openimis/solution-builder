@@ -1,41 +1,38 @@
 {
-  "menus": [      
-
+  "menus": [
     {
-      "mainMenu": "SchemeAdministrationMainMenu",
-      "position":1,
-      "id":"admin.contributionPlans"
+      "mainMenu": "SchemeAdministration.MainMenu",
+      "position": 1,
+      "id": "admin.contributionPlans"
     },
     {
-      "mainMenu": "SchemeAdministrationMainMenu",
-      "position":2,
-      "id":"admin.contributionPlanBundles"
-   }
-
-],
-  "roles": [
-    {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "contribution_plan.query_contribution_plan",
-        "contribution_plan.create_contribution_plan",
-        "contribution_plan.update_contribution_plan",
-        "contribution_plan.delete_contribution_plan",
-        "contribution_plan.replace_contribution_plan",
-        "contribution_plan.query_contribution_plan_bundle",
-        "contribution_plan.create_contribution_plan_bundle",
-        "contribution_plan.update_contribution_plan_bundle",
-        "contribution_plan.delete_contribution_plan_bundle",
-        "contribution_plan.replace_contribution_plan_bundle"
-      ]
+      "mainMenu": "SchemeAdministration.MainMenu",
+      "position": 2,
+      "id": "admin.contributionPlanBundles",
+      "withDivider": true
     }
-
   ],
   "bePackages": [
-"contribution_plan"
+    "contribution_plan"
   ],
   "fePackages": [
     "ContributionPlanModule"
-      ]
+  ],
+  "rights": [
+    "contribution_plan.contributionplan",
+    "contribution_plan.contributionplanbundle",
+    "contribution_plan.create_contributionplan",
+    "contribution_plan.create_contributionplanbundle",
+    "contribution_plan.create_paymentplan",
+    "contribution_plan.delete_contributionplan",
+    "contribution_plan.delete_contributionplanbundle",
+    "contribution_plan.delete_paymentplan",
+    "contribution_plan.paymentplan",
+    "contribution_plan.replace_contributionplan",
+    "contribution_plan.replace_contributionplanbundle",
+    "contribution_plan.replace_paymentplan",
+    "contribution_plan.update_contributionplan",
+    "contribution_plan.update_contributionplanbundle",
+    "contribution_plan.update_paymentplan"
+  ]
 }

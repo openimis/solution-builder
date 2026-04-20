@@ -1,50 +1,37 @@
 {
   "menus": [
     {
-        "mainMenu": "PaymentsMainMenu",
-        "position":14,
-        "id": "legalAndFinance.payrollsReconciled"
+      "mainMenu": "Payments.MainMenu",
+      "position": 14,
+      "id": "legalAndFinance.payrollsReconciled"
     },
     {
-        "mainMenu": "PaymentsMainMenu",
-        "position":13,
-        "id": "legalAndFinance.payrollsApproved"
+      "mainMenu": "Payments.MainMenu",
+      "position": 13,
+      "id": "legalAndFinance.payrollsApproved"
     },
     {
-        "mainMenu": "PaymentsMainMenu",
-        "position":12,
-        "id": "legalAndFinance.payrollsPending"
+      "mainMenu": "Payments.MainMenu",
+      "position": 12,
+      "id": "legalAndFinance.payrollsPending"
     },
     {
-        "mainMenu": "PaymentsMainMenu",
-        "position":11,
-        "id": "legalAndFinance.payrolls"
+      "mainMenu": "Payments.MainMenu",
+      "position": 11,
+      "id": "legalAndFinance.payrolls"
     }
   ],
-  "fePackages": ["PayrollModule"],
-  "bePackages": ["payroll"],
-  "roles": [
-    {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "payroll.read_payroll",
-        "payroll.create_payroll",
-        "payroll.delete_payroll",
-        "payroll.read_reconciliation",
-        "payroll.create_reconciliation"
-      ]
-    },
-    {
-      "roleName": "Social Protection Manager",
-      "code": "social_protection_manager",
-      "permissions": [
-        "payroll.read_payroll",
-        "payroll.create_payroll",
-        "payroll.delete_payroll",
-        "payroll.read_reconciliation",
-        "payroll.create_reconciliation"
-      ]
-    }
+  "fePackages": [
+    "PayrollModule"
+  ],
+  "bePackages": [
+    "payroll"
+  ],
+  "rights": [
+    "payroll.csv_reconciliation_create",
+    "payroll.csv_reconciliation_search",
+    "payroll.payroll_create",
+    "payroll.payroll_delete",
+    "payroll.payroll_search"
   ]
 }

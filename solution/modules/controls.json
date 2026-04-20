@@ -1,9 +1,10 @@
 {
   "menus": [],
-  "bePackages": ["controls"],
+  "bePackages": [
+    "controls"
+  ],
   "roles": [],
-  "initData":[
-  "../fixtures/controls/control.json"
-]
-
+  "initData": [
+    "../fixtures/controls/control.json"
+  ]
 }

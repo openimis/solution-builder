@@ -1,18 +1,27 @@
 {
-    "fePackages": [ "LocationModule"],
-    "bePackages": [ "location"],
-     "roles": [
-      {
-        "roleName": "LOCAL Administrator",
-        "code": "local_admin",
-        "permissions": [
-            "location.read_locations",
-            "location.create_locations",
-            "location.edit_locations",
-            "location.delete_locations",
-            "location.move_location",
-            "location.create_region_locations"
-        ]
-      }
-     ]
-  }
+  "fePackages": [
+    "LocationModule"
+  ],
+  "bePackages": [
+    "location"
+  ],
+  "menus": [
+    {
+      "mainMenu": "Administration.MainMenu",
+      "position": 4,
+      "route": "location/locations"
+    }
+  ],
+  "rights": [
+    "location.create_health_facilities",
+    "location.create_locations",
+    "location.create_region_locations",
+    "location.delete_health_facilities",
+    "location.delete_locations",
+    "location.edit_health_facilities",
+    "location.edit_locations",
+    "location.health_facilities",
+    "location.locations",
+    "location.move_location"
+  ]
+}

@@ -1,6 +1,34 @@
 {
-  "menus": [],
-  "fePackages": ["ClaimModule"],
-  "bePackages": ["claim"],
-  "roles": []
+  "menus": [
+    {
+      "mainMenu": "Beneficit.MainMenu",
+      "position": 1,
+      "route": "claim_batch"
+    }
+  ],
+  "fePackages": [
+    "ClaimModule"
+  ],
+  "bePackages": [
+    "claim"
+  ],
+  "rights": [
+    "claim.bypass_claim_feedback",
+    "claim.bypass_claim_review",
+    "claim.claim_print",
+    "claim.claims",
+    "claim.create_claims",
+    "claim.delete_claims",
+    "claim.deliver_claim_feedback",
+    "claim.deliver_claim_review",
+    "claim.load_claims",
+    "claim.process_claims",
+    "claim.restore_claims",
+    "claim.select_claim_feedback",
+    "claim.select_claim_review",
+    "claim.skip_claim_feedback",
+    "claim.skip_claim_review",
+    "claim.submit_claims",
+    "claim.update_claims"
+  ]
 }

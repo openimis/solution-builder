@@ -1,38 +1,23 @@
 {
   "menus": [
     {
-      "mainMenu": "PaymentsMainMenu",
-      "position":5,
-      "id": "legalAndFinance.paymentCycles",
-      "icon": "TimelapseIcon"
+      "mainMenu": "Payments.MainMenu",
+      "position": 5,
+      "route": "paymentCycles",
+      "icon": "Timelapse"
     }
   ],
   "fePackages": [
-"PaymentCycleModule"
+    "PaymentCycleModule"
   ],
   "bePackages": [
-"payment_cycle"
+    "payment_cycle"
   ],
-  "roles": [
-    {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "payment_cycle.query_payment_cycle",
-        "payment_cycle.create_payment_cycle",
-        "payment_cycle.update_payment_cycle",
-        "payment_cycle.delete_payment_cycle"
-      ]
-    },
-    {
-      "roleName": "Social Protection Manager",
-      "code": "social_protection_manager",
-      "permissions": [
-        "payment_cycle.query_payment_cycle",
-        "payment_cycle.create_payment_cycle",
-        "payment_cycle.update_payment_cycle",
-        "payment_cycle.delete_payment_cycle"
-      ]
-    }
+  "rights": [
+    "payment_cycle.create_payment_cycle",
+    "payment_cycle.delete_payment_cycle",
+    "payment_cycle.payment_cycle",
+    "payment_cycle.update_payment_cycle"
+
   ]
 }

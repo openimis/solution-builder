@@ -1,25 +1,23 @@
 {
   "menus": [
     {
-      "mainMenu": "SchemeAdministrationMainMenu",
+      "mainMenu": "SchemeAdministration.MainMenu",
       "position": 2,
       "id": "admin.products",
-      "icon": "SpaIcon"
+      "icon": "Spa"
     }
   ],
-  "fePackages": ["ProductModule"],
-  "bePackages": ["product"],
-  "roles": [
-    {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "product.product",
-        "product.create_product",
-        "product.update_product",
-        "product.delete_product",
-        "product.duplicate_product"
-      ]
-    }
+  "fePackages": [
+    "ProductModule"
+  ],
+  "bePackages": [
+    "product"
+  ],
+  "rights": [
+    "product.products",
+    "product.products_add",
+    "product.products_delete",
+    "product.products_duplicate",
+    "product.products_edit"
   ]
 }

@@ -1,63 +1,29 @@
 {
   "menus": [
-
-         {
-              "mainMenu": "GrievanceMainMenu",
-               "position":1,
-               "id":"grievance.add"
-            },
-            {
-              "mainMenu": "GrievanceMainMenu",
-               "position":2,
-               "id":"grievance.grievances"
-            }
-
+    {
+      "mainMenu": "Grievance.MainMenu",
+      "position": 1,
+      "route": "ticket/newTicket"
+    },
+    {
+      "mainMenu": "Grievance.MainMenu",
+      "position": 2,
+      "route": "ticket/tickets"
+    }
   ],
   "fePackages": [
-"GrievanceSocialProtectionModule"
+    "GrievanceSocialProtectionModule"
   ],
   "bePackages": [
-"grievance_social_protection"
+    "grievance_social_protection"
   ],
-  "roles": [
-    {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "grievance.read_grievance",
-        "grievance.create_grievance",
-        "grievance.update_grievance" ,
-        "grievance.delete_grievance",
-        "grievance.read_comment",
-        "grievance.create_comment",
-        "grievance.resolve_grievance"
-      ]
-    },
-    {
-      "roleName": "Social Protection Manager",
-      "code": "social_protection_manager",
-      "permissions": [
-        "grievance.read_grievance",
-        "grievance.create_grievance",
-        "grievance.update_grievance" ,
-        "grievance.delete_grievance",
-        "grievance.read_comment",
-        "grievance.create_comment",
-        "grievance.resolve_grievance"
-      ]
-    },
-    {
-      "roleName": "Grievance Manager",
-      "code": "grievance_manager",
-      "permissions": [
-        "grievance.read_grievance",
-        "grievance.create_grievance",
-        "grievance.update_grievance" ,
-        "grievance.delete_grievance",
-        "grievance.read_comment",
-        "grievance.create_comment",
-        "grievance.resolve_grievance"
-      ]
-    }
+  "rights": [
+    "grievance_social_protection.comments",
+    "grievance_social_protection.create_comment",
+    "grievance_social_protection.create_tickets",
+    "grievance_social_protection.delete_tickets",
+    "grievance_social_protection.resolve_grievance",
+    "grievance_social_protection.tickets",
+    "grievance_social_protection.update_tickets"
   ]
 }

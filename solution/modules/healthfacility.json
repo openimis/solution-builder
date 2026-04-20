@@ -1,29 +1,26 @@
 {
-  "fePackages": ["LocationModule", "AdminModule"],
-  "bePackages": [ "location"],
-     "roles": [
-      {
-        "roleName": "LOCAL Administrator",
-        "code": "local_admin",
-        "permissions": [
-          "location.read_health_facilities",
-          "location.create_health_facilities",
-          "location.edit_health_facilities",
-          "location.delete_health_facilities"
-        ]
-      }
-     ],  
-    "menus": [
-        {
-          "mainMenu": "AdministrationMainMenu",
-          "position":3,
-          "id": "admin.healthFacilities"
-        }
-    
-  
-    ],
-  "initData":[
+  "fePackages": [
+    "LocationModule",
+    "AdminModule"
+  ],
+  "bePackages": [
+    "location"
+  ],
+  "menus": [
+    {
+      "mainMenu": "Administration.MainMenu",
+      "position": 3,
+      "route": "location/healthFacilities"
+    }
+  ],
+  "initData": [
     "../fixtures/heathfacility/legalform.json",
     "../fixtures/heathfacility/sublevel.json"
+  ],
+  "rights": [
+        "core.update_claim_administrator",
+        "core.delete_claim_administrator",
+        "core.claim_administrator",
+        "core.create_claim_administrator"
   ]
-  }
+}

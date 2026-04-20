@@ -1,14 +1,22 @@
 {
   "menus": [
-      {
-        "mainMenu": "PaymentsMainMenu",
-          "position":10,
-          "id":"payment.menu.payments",
-          "icon":"PersonIcon"
-      }
-
+    {
+      "mainMenu": "Payments.MainMenu",
+      "position": 10,
+      "id": "payment.menu.payments",
+      "icon": "Person"
+    }
   ],
-  "fePackages": ["PaymentModule"],
-  "bePackages": ["payment"],
-  "roles": []
+  "fePackages": [
+    "PaymentModule"
+  ],
+  "bePackages": [
+    "payment"
+  ],
+  "rights": [
+    "payment.create_payments",
+    "payment.delete_payments",
+    "payment.payments",
+    "payment.update_payments"
+  ]
 }

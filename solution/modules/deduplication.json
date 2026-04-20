@@ -1,27 +1,10 @@
 {
   "menus": [],
   "fePackages": [
-"DeduplicationModule"
+    "DeduplicationModule"
   ],
   "bePackages": [
-"deduplication"
+    "deduplication"
   ],
-  "roles": [
-    {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "deduplication.deduplication_review",
-        "deduplication.deduplication_payment_review"
-      ]
-    },
-    {
-      "roleName": "Social Protection Manager",
-      "code": "social_protection_manager",
-      "permissions": [
-        "deduplication.deduplication_review",
-        "deduplication.deduplication_payment_review"
-      ]
-    }
-  ]
+  "rights": []
 }

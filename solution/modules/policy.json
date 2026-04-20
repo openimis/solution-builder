@@ -1,39 +1,36 @@
 {
   "menus": [
     {
-      "mainMenu": "EnrolmentMainMenu",
-      "position":3,
-      "id":"insuree.policies"
-
+      "mainMenu": "Enrolment.MainMenu",
+      "position": 3,
+      "id": "insuree.policies"
     }
   ],
   "fePackages": [
-  "PolicyModule", "ContributionModule"
+    "PolicyModule",
+    "ContributionModule"
   ],
   "bePackages": [
-"policy", "contribution"
+    "policy",
+    "contribution"
   ],
-   "roles": [
-    {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "policy.policy.read_policies",
-        "policy.read_policy_officers",
-        "policy.read_policies_by_insuree",
-        "policy.read_policies_by_family",
-        "policy.read_eligibilities",
-        "policy.create_policies",
-        "policy.renew_policies",
-        "policy.edit_policies",
-        "policy.suspend_policies",
-        "policy.delete_policies",
-        "contribution.read_premiums",
-        "contribution.create_premiums",
-        "contribution.update_premiums",
-        "contribution.delete_premiums"
-
-      ]
-    }
-   ]
+  "rights": [
+    "core.enrolment_officers",
+    "core.delete_enrolment_officers",
+    "core.create_enrolment_officers",
+    "core.update_enrolment_officers",
+    "contribution.create_premiums",
+    "contribution.delete_premiums",
+    "contribution.premiums",
+    "contribution.update_premiums",
+    "policy.create_policies",
+    "policy.delete_policies",
+    "policy.edit_policies",
+    "policy.eligibilities",
+    "policy.policies",
+    "policy.policies_by_family",
+    "policy.policies_by_insuree",
+    "policy.renew_policies",
+    "policy.suspend_policies"
+  ]
 }

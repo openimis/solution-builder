@@ -1,0 +1,36 @@
+{
+  "menus": [
+    {
+      "name": "ProfileMainMenu",
+      "id": "profile.MainMenu",
+      "icon": "AccountCircle",
+      "text": "profile.mainMenu"
+    },
+    {
+      "mainMenu": "Profile.MainMenu",
+      "position": 4,
+      "id": "profile.myProfile",
+      "icon": "AccountCircle"
+    },
+    {
+      "mainMenu": "Profile.MainMenu",
+      "position": 5,
+      "route": "profile/changePassword",
+      "icon": "Password"
+    }
+  ],
+  "fePackages": [
+    "ProfileModule"
+  ],
+  "bePackages": [
+    "core"
+  ],
+  "initData": [
+    "../fixtures/core/language.json"
+  ],
+  "services": [
+    "base",
+    "cache"
+  ],
+  "rights": []
+}

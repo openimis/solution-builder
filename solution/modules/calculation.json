@@ -1,27 +1,13 @@
 {
   "menus": [],
-  "roles": [
-    {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "calculation.read_calculation_rule",
-        "calculation.update_calculation_rule"
-      ]
-    },
-    {
-      "roleName": "Social Protection Manager",
-      "code": "social_protection_manager",
-      "permissions": [
-        "calculation.read_calculation_rule",
-        "calculation.update_calculation_rule"
-      ]
-    }
-  ],
   "fePackages": [
     "CalculationModule"
   ],
   "bePackages": [
     "calculation"
+  ],
+  "rights": [
+      "calculation.calculation_rule",
+      "calculation.update_calculation_rule"
   ]
 }

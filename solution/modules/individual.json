@@ -1,19 +1,16 @@
 {
   "menus": [
-      {
-        "mainMenu": "ClientRegistryMainMenu",
-          "position":4,
-          "id":"individual.groups",
-          "icon":"GroupIcon"
-      },
-      {
-        "mainMenu": "ClientRegistryMainMenu",
-          "position":3,
-          "id":"individual.individuals",
-          "icon":"PersonIcon"
-      }
-         
-      
+    {
+      "mainMenu": "ClientRegistry.MainMenu",
+      "position": 14,
+      "route": "groups",
+      "withDivider": true
+    },
+    {
+      "mainMenu": "ClientRegistry.MainMenu",
+      "position": 13,
+      "route": "individuals"
+    }
   ],
   "fePackages": [
     "IndividualModule"
@@ -21,36 +18,15 @@
   "bePackages": [
     "individual"
   ],
-  "roles": [
-    {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "individual.read_individual",
-        "individual.create_individual",
-        "individual.update_individual",
-        "individual.delete_individual",
-        "individual.individual_undo",
-        "individual.read_group",
-        "individual.create_group",
-        "individual.update_group",
-        "individual.delete_group"
-      ]
-    },
-    {
-      "roleName": "Social Protection Manager",
-      "code": "social_protection_manager",
-      "permissions": [
-        "individual.read_individual",
-        "individual.create_individual",
-        "individual.update_individual",
-        "individual.delete_individual",
-        "individual.individual_undo",
-        "individual.read_group",
-        "individual.create_group",
-        "individual.update_group",
-        "individual.delete_group"
-      ]
-    }
+  "rights": [
+    "individual.group_create",
+    "individual.group_delete",
+    "individual.group_search",
+    "individual.group_update",
+    "individual.individual_create",
+    "individual.individual_delete",
+    "individual.individual_search",
+    "individual.individual_undo_delete",
+    "individual.individual_update"
   ]
 }

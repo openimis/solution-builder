@@ -1,6 +1,32 @@
 {
-  "menus": [],
-  "fePackages": ["ClaimBatchModule"],
-  "bePackages": ["claim_batch"],
-  "roles": []
+  "menus": [
+    {
+      "mainMenu": "Benefit.MainMenu",
+      "position": 1,
+      "route": "claim/healthFacilities"
+    },
+    {
+      "mainMenu": "Benefit.MainMenu",
+      "position": 2,
+      "route": "claim/reviews"
+    },
+    {
+      "mainMenu": "Benefit.MainMenu",
+      "position": 3,
+      "route": "claim/feedback",
+      "withDivider": true
+    }
+  ],
+  "fePackages": [
+    "ClaimBatchModule"
+  ],
+  "bePackages": [
+    "claim_batch"
+  ],
+  "rights": [
+    "claim_batch.account_preview",
+    "claim_batch.batch_runs",
+    "claim_batch.process_batch",
+    "claim_batch.reports_capitation_payment"
+  ]
 }

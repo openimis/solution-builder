@@ -1,41 +1,42 @@
 {
   "menus": [
     {
-         "position":6,
-         "id": "UserManagementMainMenu",
-         "name":"User Management",
-         "icon":"admin-icon",
-         "description":"Administration Panel",
-         "submenus":[
-            {
-               "position":2,
-               "id":"admin.roleManagement"
-            },
-            {
-               "position":1,
-               "id":"admin.users"
-            }
-         ]
-      }
-  ],
-  "fePackages": ["CoreModule","AdminModule"],
-  "bePackages": ["core"],
-  "roles": [
-    {
-      "roleName": "LOCAL Administrator",
-      "code": "local_admin",
-      "permissions": [
-        "core.read_users",
-        "core.create_users",
-        "core.update_users",
-        "core.delete_users",
-        "core.read_roles",
-        "core.create_roles",
-        "core.update_roles",
-        "core.replace_roles",
-        "core.duplicate_roles",
-        "core.delete_roles"
+      "position": 6,
+      "id": "UserManagement.MainMenu",
+      "name": "User Management",
+      "icon": "admin-icon",
+      "description": "Administration Panel",
+      "submenus": [
+        {
+          "position": 2,
+          "id": "admin/users"
+        },
+        {
+          "position": 1,
+          "id": "roles",
+          "withDivider": true
+        }
       ]
     }
+  ],
+  "fePackages": [
+    "CoreModule",
+    "AdminModule"
+  ],
+  "bePackages": [
+    "core"
+  ],
+  "rights": [
+        "core.replace_roles",
+        "core.roles",
+        "core.update_roles",
+        "core.update_users",
+        "core.users",
+        "core.users_profile",
+        "core.create_roles",
+        "core.create_users",
+        "core.delete_roles",
+        "core.delete_users",
+        "core.duplicate_roles"
   ]
 }

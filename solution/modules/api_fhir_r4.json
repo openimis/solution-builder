@@ -1,6 +1,13 @@
 {
   "menus": [],
   "fePackages": [],
-  "bePackages": ["api_fhir_r4"],
-  "roles": []
+  "bePackages": [
+    "api_fhir_r4"
+  ],
+  "roles": [
+        "api_fhir_r4.R4_fhir_subscription_config.fhir_sub_create",
+        "api_fhir_r4.R4_fhir_subscription_config.fhir_sub_delete",
+        "api_fhir_r4.R4_fhir_subscription_config.fhir_sub_search",
+        "api_fhir_r4.R4_fhir_subscription_config.fhir_sub_update"
+  ]
 }
