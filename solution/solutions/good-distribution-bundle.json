@@ -2,8 +2,14 @@
   "modules": {
     "invoice-supplier":"../modules/invoice-supplier.json",
     "payment-plan":"../modules/payment-plan.json",
+    "payment":"../modules/payment.json",
     "payroll":"../modules/payroll.json",
     "payment-cycle":"../modules/payment-cycle.json",
-    "payment-point":"../modules/payment-point.json"
-  }
+    "payment-point":"../modules/payment-point.json",
+    "task-management": "../modules/task-management.json",
+    "opensearch-reports":"../modules/opensearch-reports.json"
+  },
+  "solutions":[
+        "../services/openSearch.json"
+  ]
 }

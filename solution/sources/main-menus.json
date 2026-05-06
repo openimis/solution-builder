@@ -2,82 +2,89 @@
     "menus":[
         {
             "position":1,
-            "id": "ClientRegistryMainMenu",
+            "id": "ClientRegistry.MainMenu",
             "name":"Client Registry",
-            "icon":"GroupsIcon",
-            "description":"Client Registry menu"
+            "icon":"Groups",
+            "text":"Client Registry"
         },
         {
             "position":2,
-            "id": "EnrolmentMainMenu",
+            "id": "Enrolment.MainMenu",
             "name":"Enrolment",
-            "icon":"ShieldIcon",
-            "description":"Enrolment menu"
+            "icon":"Shield",
+            "text":"Enrolment menu"
         }, 
          {
             "position":3,
-            "id": "BenefitMainMenu",
+            "id": "Benefit.MainMenu",
             "name":"Benfits and claims",
-            "icon":"PaymentsIcon",
-            "description":"Benefit and clim  menu"
+            "icon":"Payments",
+            "text":"Benefits"
         },   
         {
             "position":3,
-            "id": "PaymentsMainMenu",
+            "id": "Payments.MainMenu",
             "name":"Payments",
-            "icon":"PaymentsIcon",
-            "description":"Payment Management menu"
+            "icon":"Payments",
+            "text":"Payments"
         },   
         {
             "position":4,
-            "id": "TasksMainMenu",
+            "id": "Tasks.MainMenu",
             "name":"Tasks",
-            "icon":"AssignmentIcon",
-            "description":"Task menu"
+            "icon":"Assignment",
+            "text":"Task menu"
         },
         {
             "position":5,
-            "id": "GrievanceMainMenu",
+            "id": "Grievance.MainMenu",
             "name":"Grievance",
-            "icon":"FeedbackIcon",
-            "description":"Grievances"
+            "icon":"Feedback",
+            "text":"Grievances"
         },
         {
             "position":6,
-            "id": "ReportsMenu",
+            "id": "Reports.MainMenu",
             "name":"Reports",
-            "icon":"DashboardIcon",
-            "description":"Dashboard and reports"
+            "icon":"Dashboard",
+            "text":"Dashboard and reports"
         },
         {
             "position":7,
-            "id": "SchemeAdministrationMainMenu",
+            "id": "SchemeAdministration.MainMenu",
             "name":"SchemeAdministration",
-            "icon":"Diversity2Icon",
-            "description":"Tschem administration ask menu"
+            "icon":"Diversity_2",
+            "text":"Protection"
         },
         
         {
             "position":8,
-            "id": "UserManagementMainMenu",
+            "id": "UserManagement.MainMenu",
             "name":"User Management",
-            "icon":"AdminPanelSettingsIcon",
-            "description":"User management menu"
+            "icon":"AdminPanelSettings",
+            "description":"User management menu",
+            "text": "User Management"
         },     
         {
             "position":9,
-            "id": "AdministrationMainMenu",
-            "name":"Administration",
-            "icon":"TuneIcon",
-            "description":"Administration menu"
+            "name": "AdminMainMenu",
+            "id": "Administration.MainMenu",
+            "text": "admin.mainMenu",
+            "icon": "LocationCity"
         },
         {
             "position":10,
-            "id": "ProfileMainMenu",
-            "name":"Profile",
-            "icon": "AccountCircleIcon",
-            "description":"Profile menu"
-        
+            "name": "Profile.mainMenu",
+            "id": "Profile.MainMenu",
+            "icon": "AccountCircle",
+            "text": "profile.mainMenu"
+        },
+        {
+            "position":11,
+            "name": "ToolsMenu",
+            "id": "Tools.MainMenu",
+            "text": "tools.MainMenu",
+            "icon": "mobiledata_arrows"
         }
     ]
 }

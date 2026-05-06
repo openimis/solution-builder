@@ -3,7 +3,12 @@
     {
       "mainMenu": "Enrolment.MainMenu",
       "position": 3,
-      "id": "insuree.policies"
+      "route": "policy/policies"
+    },
+    {
+      "mainMenu": "Enrolment.MainMenu",
+      "position": 4,
+      "route": "contribution/contributions"
     }
   ],
   "fePackages": [

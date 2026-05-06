@@ -1,9 +1,9 @@
 {
   "menus": [
     {
-      "mainMenu": "Enrolment.MainMenu",
+      "mainMenu": "SchemeAdministration.MainMenu",
       "position": 2,
-      "id": "socialProtection.benefitPlans",
+      "route": "benefitPlans",
       "icon": "Spa"
     }
   ],

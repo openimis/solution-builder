@@ -3,7 +3,7 @@
     {
       "mainMenu": "Payments.MainMenu",
       "position": 10,
-      "id": "payment.menu.payments",
+      "route": "payment/payments",
       "icon": "Person"
     }
   ],
@@ -11,7 +11,8 @@
     "PaymentModule"
   ],
   "bePackages": [
-    "payment"
+    "payment",
+    "contribution"
   ],
   "rights": [
     "payment.create_payments",

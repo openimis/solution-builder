@@ -3,7 +3,7 @@
     {
       "mainMenu": "SchemeAdministration.MainMenu",
       "position": 2,
-      "id": "admin.products",
+      "route": "admin/products",
       "icon": "Spa"
     }
   ],

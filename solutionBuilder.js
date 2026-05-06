@@ -88,10 +88,9 @@ async function fetchJSON(handleOrUrl,DIRECTORY=null, rootPath = '') {
 
 
 
-
-function getBePackageConf(name, definition, branch){
+function getBePackageConf(name, definition, branch, force_assembly_branch=false){
     if (typeof definition === 'undefined'){
-        console.log(name + " be has no definition")
+        console.error(name + " be has no definition")
         return {}
     }
     
@@ -103,7 +102,7 @@ function getBePackageConf(name, definition, branch){
     if (branch == 'released'){
         pip =  definition.package + "~=" + definition.version;
     }else{
-        pip = "git+" + definition.git + ".git@" + branch + "#egg="+ definition.package;
+        pip = "git+" + definition.git + ".git@" + (force_assembly_branch ? branch : definition.branch || branch) + "#egg="+ definition.package;
     }
 
     return {
@@ -157,16 +156,17 @@ function getServiceConf(name, definition, services = {}){
 }
 
 
-function getFePackageConf(name, definition, branch){
+function getFePackageConf(name, definition, branch, force_assembly_branch=false){
     if (typeof definition === 'undefined'){
         console.log(name + " fe has no definition")
         return {}
     }
     let npm = ''
+
     if (branch == 'released'){
         npm = definition.package + "@>=" + definition.version;
     }else{
-        npm = definition.package + "@" +  definition.git + "#" + branch
+        npm = definition.package + "@" +  definition.git + "#" + (force_assembly_branch ? branch : definition.branch || branch)
     }
 
 
@@ -180,7 +180,7 @@ function getFePackageConf(name, definition, branch){
 
 function makeCoreModuleConfiguration(menusDict) {
     const config = {
-        menus: Object.values(menusDict).sort((a, b) => (a.position || 0) - (b.position || 0))
+        menus: menusDict.sort((a, b) => (a.position || 0) - (b.position || 0))
     };
 
     return [
@@ -285,58 +285,6 @@ function mergeRoleDictionaries(mergedMenusDict, resultMenusDict) {
     return resultMenusDict;
 }
 
-function mergeMenuDictionaries(mergedMenusDict, resultMenusDict) {
-    // Helper function to merge entries
-    function mergeentries(existingentries, newentries, mainMenuId) {
-        const entries = existingentries ? [...existingentries] : [];
-        if (!newentries) return entries;
-
-        // Remove entries from other main menus to ensure uniqueness
-        function removeSubmenuFromOtherMenus(submenuId, targetMainMenuId) {
-            for (const menuId in mergedMenusDict) {
-                if (menuId !== targetMainMenuId && mergedMenusDict[menuId].entries) {
-                    mergedMenusDict[menuId].entries = mergedMenusDict[menuId].entries.filter(
-                        submenu => submenu.id !== submenuId
-                    );
-                }
-            }
-        }
-
-        // Merge or add new entries
-        newentries.forEach(newSubmenu => {
-            removeSubmenuFromOtherMenus(newSubmenu.id, mainMenuId);
-            const existingIndex = entries.findIndex(submenu => submenu.id === newSubmenu.id);
-            if (existingIndex !== -1) {
-                // Update existing submenu
-                entries[existingIndex] = { ...newSubmenu };
-            } else {
-                // Add new submenu
-                entries.push({ ...newSubmenu });
-            }
-        });
-
-        return entries;
-    }
-
-    // Iterate through resultMenusDict to merge into mergedMenusDict
-    for (const menuId in resultMenusDict) {
-        const resultMenu = resultMenusDict[menuId];
-        const existingMenu = mergedMenusDict[menuId] || {};
-
-        // Merge main menu fields, preserving existing entries if not provided in result
-        mergedMenusDict[menuId] = {
-            position: resultMenu.position !== undefined ? resultMenu.position : existingMenu.position,
-            id: menuId,
-            name: resultMenu.name !== undefined ? resultMenu.name : existingMenu.name,
-            icon: resultMenu.icon !== undefined ? resultMenu.icon : existingMenu.icon,
-            description: resultMenu.description !== undefined ? resultMenu.description : existingMenu.description,
-            entries: mergeentries(existingMenu.entries, resultMenu.entries, menuId)
-        };
-    }
-
-    return mergedMenusDict;
-}
-
 function  cleanMenuDictionaries(menusDict) {
 
     // Iterate through resultMenusDict to merge into mergedMenusDict
@@ -365,11 +313,12 @@ function transformComposeContent(composeContent) {
   return object;
 }
 
-async function processSolutions(    
-    solutionFile, 
+async function processSolutions(
+    solutionFile,
     directoryPath,
-    permissionMap,
-    branch = 'develop'
+    permission_map_path='solution/permissions_map.json',
+    branch = 'develop',
+    force_assembly_branch=false
 )
 {
     const solutionFilePath = getAbsolutePath(typeof solutionFile === 'string' ? solutionFile : '', '', false);
@@ -391,76 +340,63 @@ async function processSolutions(
         themePath = path.resolve(path.dirname(solutionFilePath), solutionJson.moduleConfiguration.theme);
     }
 
-    let merged = await mergeSolutions(solutionFile, directoryPath, permissionMap);
-    let result = {};
+    let merged = await mergeSolutions(solutionFile, directoryPath);
 
-    // Commented out buggy for loop that tries to merge modules as solutions
-    /*
-    for (let key in merged.moduleRefDict || {}) {
-        const depPath = getAbsolutePath(merged.moduleRefDict[key], solutionFilePath);
-        result = await mergeSolutions(
-            depPath,
-            directoryPath,
-            permissionMap,
-        );
-        // Merge roles
-        merged.rolesDict = mergeRoleDictionaries(merged.rolesDict, result.rolesDict)
-        merged.menusDict = mergeMenuDictionaries(merged.menusDict, result.menusDict);
-        Object.assign(merged.moduleRefDict, result.moduleRefDict);
-        Array.prototype.push.apply(merged.bePackagesList,result.bePackagesList);
-        Object.assign(merged.bePackagesDefDict, result.bePackagesDefDict);
-        Array.prototype.push.apply(merged.fePackagesList,result.fePackagesList);
-        Array.prototype.push.apply(merged.locales,result.locales);
-
-
-        Object.assign(merged.fePackagesDefDict, result.fePackagesDefDict);
+    const modulePermissionsMap = {};
+    for (const [moduleName, modulePath] of Object.entries(merged.moduleRefDict)) {
+        const result = await fetchJSON(modulePath, directoryPath);
+        if (result && result.rights) {
+            modulePermissionsMap[moduleName] = result.rights.sort();
+        }
+        //merged.rolesDict = mergeRoleDictionaries(merged.rolesDict, result.rolesDict)
+        merged.menusDict = mergeMenusData(result.menus || [],merged.menusDict);
+        //Object.assign(merged.moduleRefDict, result.moduleRefDict);
+        merged.fePackagesList = [...(result.fePackages || []), ...merged.fePackagesList]
+        for (let key in result.fePackageDefinitions || {}) {
+            merged.fePackagesDefDict[key] = result.fePackageDefinitions[key];
+        }
+        merged.bePackagesList = [...(result.bePackages || []), ...merged.bePackagesList]
+        for (let key in result.bePackageDefinitions || {}) {
+            merged.bePackagesDefDict[key] = result.bePackageDefinitions[key];
+        }
         Array.prototype.push.apply(merged.servicesList,result.servicesList);
         for (let idx  in result.servicesDefDict){
             service = merged.servicesList[idx]
             merged.servicesDefDict =  getServiceConf(service, result.servicesDefDict[service], services)
         }
         Array.prototype.push.apply(merged.initData,result.initData);
-        for(let data of result.initData){
+    
+        for(let data of (result.initData || [])){
             merged.initData.add(getAbsolutePath(data, solutionFilePath));
         }
+    }
+
+
+    // Commented out buggy for loop that tries to merge modules as solutions
+    /*
+    for (let key in merged.moduleRefDict || {}) {
+
         
     }
     */
+    
+    merged.menusDict =  Object.values(cleanMenuDictionaries(merged.menusDict))
 
-    merged.menusDict = cleanMenuDictionaries(merged.menusDict)
-
-    // Generate module-level permissions map
-    let modulePermissionsMap = {};
-    const includedModules = Object.keys(merged.moduleRefDict);
-    for (const permKey in permissionMap) {
-        const module = permKey.split('.')[0];
-        if (includedModules.includes(module)) {
-            if (!modulePermissionsMap[module]) {
-                modulePermissionsMap[module] = {};
-            }
-            modulePermissionsMap[module][permKey] = permissionMap[permKey];
-        }
-    }
-
-    const assemblyBranch = merged.bePackagesDefDict['assembly']?.branch || 'develop';
+    // Build module rights map
+    const assemblyBranch = branch || merged.bePackagesDefDict['assembly']?.branch;
 
     let PIPModules = new Set()
     merged.bePackagesList = merged.bePackagesList.filter((item, index) => merged.bePackagesList.indexOf(item) === index)
     for (let idx in merged.bePackagesList){
         bePackage = merged.bePackagesList[idx]
-        PIPModules.add(getBePackageConf(bePackage, merged.bePackagesDefDict[bePackage], assemblyBranch))
+        PIPModules.add(getBePackageConf(bePackage, merged.bePackagesDefDict[bePackage], assemblyBranch, force_assembly_branch))
     }
     let NPMModules = new Set()
     merged.fePackagesList = merged.fePackagesList.filter((item, index) => merged.fePackagesList.indexOf(item) === index)
 
     for (let idx  in merged.fePackagesList){
         fePackage = merged.fePackagesList[idx]
-        NPMModules.add(getFePackageConf(fePackage, merged.fePackagesDefDict[fePackage], assemblyBranch))
-    }
-    let services = {}
-    for (let idx  in merged.servicesList){
-        service = merged.servicesList[idx]
-        services =  getServiceConf(service, merged.servicesDefDict[service], services)
+        NPMModules.add(getFePackageConf(fePackage, merged.fePackagesDefDict[fePackage], assemblyBranch, force_assembly_branch))
     }
 
     output = {}
@@ -472,8 +408,8 @@ async function processSolutions(
             "locales": [...merged.locales]
         };
     }
-    if(services){
-        output['compose.yml'] = transformComposeContent(services);
+    if(merged.servicesDefDict){
+        output['compose.yml'] = transformComposeContent(merged.servicesDefDict);
     }
 
     if(PIPModules.size>0){
@@ -488,30 +424,41 @@ async function processSolutions(
     }
     if (Object.keys(merged.rolesDict).length > 0) {
    
-        const transformed = transformRolesToFixture(merged.rolesDict);
+        const transformed = await transformRolesToFixture(merged.rolesDict, modulePermissionsMap, directoryPath, permission_map_path);
         output['fixtures/roles.json'] = transformed.roles;
         output['fixtures/roles-right.json'] = transformed.rolesRight;
     }
     // merging all fixture
-
     output = await mergeAndSortFixtures(merged.initData, output);
 
-    // sorting fixture by model
-
-    // adding fixture file to output
-        
+    const consolidated = {
+        modules: merged.moduleRefDict,
+        roles: merged.rolesDict,
+        coreFeConfig: merged.menusDict,
+        bePackages: {
+            list: [...merged.bePackagesList],
+            definitions: merged.bePackagesDefDict
+        },
+        fePackages: {
+            list: [...merged.fePackagesList],
+            definitions: merged.fePackagesDefDict
+        },
+        locales: [...merged.locales],
+        services: {
+            list: [...merged.servicesList],
+            definitions: merged.servicesDefDict
+        },
+        initData: [...merged.initData],
+    };
+    output['consolidated-solution.json'] = consolidated;
     
-    if(Object.keys(services).length>0){
-        output['compose.yml'] = services;
-    }
 
-    return { output, modules: Object.keys(merged.moduleRefDict), assemblyBranch }
+    return { output, modules: Object.keys(merged.moduleRefDict) }
 }
 
 async function mergeSolutions(
     solutionFile,
     directoryPath,
-    permissionMap,
     rolesDict = {},
     menusDict = {},
     moduleRefDict = {},
@@ -519,7 +466,7 @@ async function mergeSolutions(
     fePackagesList = new Set(), fePackagesDefDict = {},
     locales = new Set(),
     servicesList = new Set(), servicesDefDict = {},
-    initData = new Set()) 
+    initData = new Set())
 {
     let solutionFilePath = ''
     let solution = null
@@ -547,7 +494,6 @@ async function mergeSolutions(
         const result = await mergeSolutions(
             depPath,
             directoryPath,
-            permissionMap,
             rolesDict,
             menusDict,
             moduleRefDict,
@@ -596,16 +542,17 @@ async function mergeSolutions(
     // Convert dictionary values back to an array
     locales = Object.values(localesDict);
 
-    servicesList = [...(solution.services || []), ...servicesList]
-    for (let key in solution.serviceDefinitions || {}) {
-        servicesDefDict[key] = solution.serviceDefinitions[key];
+
+    for (let idx  in solution.serviceDefinitions){
+        servicesDefDict =  getServiceConf(idx, solution.serviceDefinitions[idx], servicesDefDict)
     }
+
     for(let idx in solution.initData){
         initData.add(getAbsolutePath(solution.initData[idx], solutionFilePath));
     }
 
     // Merge roles
-    rolesDict = mergeRolesData(solution.roles || [], permissionMap, rolesDict);
+    rolesDict = mergeRolesData(solution.roles || [], rolesDict);
     // Merge menus
     menusDict = mergeMenusData(solution.menus || [], menusDict);
 
@@ -658,40 +605,27 @@ function getAbsolutePath(relativePath, basePath, withFile=true) {
     
 }
 
-function mergeRolesData(roles, permissionMap, roleDict) {
+function mergeRolesData(roles, roleDict) {
     for (const role of roles) {
         const roleCode = role.code;
         const permissions = role.permissions || [];
-        const mappedPermissions = permissions
-        .filter(permission => {
-            const code = permissionMap[permission];
-            return code; // only keep permissions that have a truthy code
-        })
-        .map(permission => ({
-            name: permission,
-            code: permissionMap[permission]
-        }));
-
-        if (mappedPermissions.length === 0) {
-            continue;
-        }
 
         if (roleCode in roleDict) {
-            // Merge permissions, avoiding duplicates based on code
-            const existingPermissionCodes = new Set(
-                roleDict[roleCode].permissions.map(p => p.code)
+            // Merge permissions, avoiding duplicates based on name
+            const existingPermissionNames = new Set(
+                roleDict[roleCode].permissions.map(p => p.name)
             );
-            for (const perm of mappedPermissions) {
-                if (!existingPermissionCodes.has(perm.code)) {
-                    roleDict[roleCode].permissions.push(perm);
-                    existingPermissionCodes.add(perm.code);
+            for (const perm of permissions) {
+                if (!existingPermissionNames.has(perm)) {
+                    roleDict[roleCode].permissions.push( perm );
+                    existingPermissionNames.add(perm);
                 }
             }
         } else {
             roleDict[roleCode] = {
-                roleName: role.roleName,
+                roleName: role.name,
                 code: roleCode,
-                permissions: mappedPermissions
+                permissions: permissions
             };
         }
     }
@@ -699,16 +633,7 @@ function mergeRolesData(roles, permissionMap, roleDict) {
 }
 
 function mergeMenusData(menus, menuDict) {
-    // Helper function to find and remove submenu from all main menus
-    function removeSubmenuFromOtherMenus(submenuId, targetMainMenuId) {
-        for (const mainMenuId in menuDict) {
-            if (mainMenuId !== targetMainMenuId && menuDict[mainMenuId].entries) {
-                menuDict[mainMenuId].entries = menuDict[mainMenuId].entries.filter(
-                    submenu => submenu.id !== submenuId
-                );
-            }
-        }
-    }
+
 
     for (const menu of menus) {
         // Handle submenu payload (has mainMenu field)
@@ -732,17 +657,13 @@ function mergeMenusData(menus, menuDict) {
                     entries: []
                 };
             }
-
-            // Remove this submenu from other main menus
-            removeSubmenuFromOtherMenus(menu.id, mainMenuId);
-
             // Add submenu to the target main menu
             if (!menuDict[mainMenuId].entries) {
                 menuDict[mainMenuId].entries = [];
             }
             // Check if submenu already exists
             const existingSubmenuIndex = menuDict[mainMenuId].entries.findIndex(
-                sm => sm.id === menu.id
+                sm => (sm.id !== undefined && menu.id !== undefined && sm.id === menu.id) || (sm.route !== undefined && menu.route !== undefined && sm.route === menu.route) 
             );
             if (existingSubmenuIndex !== -1) {
                 // Update existing submenu
@@ -849,10 +770,23 @@ function generateDeterministicUUID(inputString) {
 }
 
 
-function transformRolesToFixture(rolesDict) {
+async function transformRolesToFixture(rolesDict, modulePermissionsMap, directoryPath, permission_map_path) {
+    const centralMapPath = getAbsolutePath(permission_map_path, directoryPath);
+    const centralMap = await fetchJSON(centralMapPath, directoryPath);
+    if (!centralMap) {
+        console.warn('Central permissions_map.json not found; skipping role fixtures.');
+        return { roles: [], rolesRight: [] };
+    }
+
+    const expectedPerms = new Set();
+    for (const [moduleName, rights] of Object.entries(modulePermissionsMap)) {
+        rights.forEach(right => expectedPerms.add(right));
+    }
+
     const roleFixtures = [];
     const roleRightFixtures = [];
     const validityFrom = "2025-01-01T00:00:00Z";
+    const unmapped = new Set();
 
     for (const key in rolesDict) {
         const role = rolesDict[key];
@@ -873,19 +807,34 @@ function transformRolesToFixture(rolesDict) {
             }
         });
 
-        for (const perm of role.permissions) {
-            roleRightFixtures.push({
-                model: "core.roleright",
-                fields: {
-                    validity_from: validityFrom,
-                    validity_to: null,
-                    legacy_id: null,
-                    right_id: perm.code,
-                    audit_user_id: null,
-                    role: [role.roleName]
-                }
-            });
+        for (const permission of role.permissions) {
+            if (!expectedPerms.has(permission)) {
+                console.warn(`Warning: Role "${role.roleName}" references permission "${permission}" not defined in any included module's rights. Skipping this right in fixtures.`);
+                unmapped.add(permission);
+                continue;
+            }
+            const code = centralMap[permission];
+            if (code) {
+                roleRightFixtures.push({
+                    model: "core.roleright",
+                    fields: {
+                        validity_from: validityFrom,
+                        validity_to: null,
+                        legacy_id: null,
+                        right_id: code,
+                        audit_user_id: null,
+                        role: [role.roleName]
+                    }
+                });
+            } else {
+                console.warn(`Warning: Permission "${permission}" has no code in central permissions_map.json. Skipping.`);
+                unmapped.add(permission);
+            }
         }
+    }
+
+    if (unmapped.size > 0) {
+        console.warn(`Total unique unmapped permissions: ${unmapped.size}. List: ${Array.from(unmapped).join(', ')}`);
     }
 
     return {

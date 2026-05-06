@@ -3,7 +3,7 @@
     {
       "mainMenu": "Payments.MainMenu",
       "position": 3,
-      "id": "legalAndFinance.paymentPlans",
+      "route": "paymentPlans",
       "icon": "PriceChange"
     }
   ],
@@ -13,5 +13,12 @@
   "fePackages": [
     "ContributionPlanModule"
   ],
-  "rights": []
+  "rights": [
+
+    "contribution_plan.create_paymentplan",
+    "contribution_plan.delete_paymentplan",
+    "contribution_plan.paymentplan",
+    "contribution_plan.replace_paymentplan",
+    "contribution_plan.update_paymentplan"
+  ]
 }

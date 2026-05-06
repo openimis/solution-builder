@@ -3,16 +3,25 @@
     {
       "mainMenu": "Payments.MainMenu",
       "position": 52,
-      "root": "bills",
+      "route": "bills",
       "icon": "CorporateFare",
       "withDivider": true
+    },
+    {
+      "mainMenu": "Payments.MainMenu",
+      "position": 55,
+      "route": "payment/paymentsInvoice",
+      "icon": "Receipt"
     }
   ],
   "fePackages": [
-    "InvoiceModule"
+    "InvoiceModule",
+    "PaymentModule"
   ],
   "bePackages": [
-    "invoice"
+    "invoice",
+    "payment",
+    "contribution"
   ],
   "rights": [
     "invoice.bill_amend",

@@ -1,0 +1,47 @@
+{
+  "menus": [
+    {
+      "mainMenu": "Reports.MainMenu",
+      "position": 1,
+      "route": "individualReports"
+    },
+    {
+      "mainMenu": "Reports.MainMenu",
+      "position": 2,
+      "route": "groupReports"
+    },
+    {
+      "mainMenu": "Reports.MainMenu",
+      "position": 3,
+      "route": "beneficiaryReports"
+    },
+    {
+      "mainMenu": "Reports.MainMenu",
+      "position": 5,
+      "route": "grievanceReports"
+    },
+    {
+      "mainMenu": "Reports.MainMenu",
+      "position": 4,
+      "route": "dataUpdatesReports"
+    },
+    {
+      "mainMenu": "Reports.MainMenu",
+      "position": 6,
+      "route": "dashboardConfiguration"
+    }
+  ],
+  "services": [
+    "openSearch"
+  ],
+  "fePackages": [
+    "OpenSearchReportsModule"
+  ],
+  "bePackages": [
+    "opensearch_reports"
+  ],
+  "rights": [
+    "opensearch_reports.opensearch_dashboard_search",
+    "opensearch_reports.opensearch_dashboard_update" 
+  ]
+}

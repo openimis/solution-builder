@@ -214,7 +214,7 @@ initData: {}
 ```json
 {
   "modules": [
-    "opensearch-report.json"
+    "opensearch-reports.json"
   ]
 }
 ```

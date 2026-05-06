@@ -1,21 +1,15 @@
 {
   "menus": [
     {
-      "name": "ToolsMenu",
-      "id": "tools.MainMenu",
-      "text": "tools.mainMenu",
-      "icon": "mobiledata_arrows"
-    },
-    {
-      "mainMenu": "tools.MainMenu",
+      "mainMenu": "Tools.MainMenu",
       "route": "tools/registers"
     },
     {
-      "mainMenu": "tools.MainMenu",
+      "mainMenu": "Tools.MainMenu",
       "route": "tools/extracts"
     },
     {
-      "mainMenu": "tools.MainMenu",
+      "mainMenu": "Tools.MainMenu",
       "route": "tools/reports"
     }
   ],

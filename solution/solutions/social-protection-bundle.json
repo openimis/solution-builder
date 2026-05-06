@@ -3,9 +3,13 @@
     "individual":"../modules/individual.json",
     "api-import": "../modules/api-import.json",
     "social-protection": "../modules/social-protection.json",
-    "deduplication": "../modules/deduplication.json",
+    "task-deduplication": "../modules/task-deduplication.json",
     "calculation-social-protection":"../modules/calculation-social-protection.json",
     "workflow":"../modules/workflow.json",
-    "sp-lang":"../modules/sp-lang.json"
-  }
+    "sp-lang":"../modules/sp-lang.json",
+    "opensearch-reports":"../modules/opensearch-reports.json"
+  },
+ "solutions":[
+        "../services/openSearch.json"
+  ]
 }

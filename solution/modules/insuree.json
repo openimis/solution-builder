@@ -3,19 +3,19 @@
     {
       "mainMenu": "ClientRegistry.MainMenu",
       "position": 12,
-      "id": "insuree.familiesOrGroups",
+      "route": "insuree/families",
       "icon": "Group"
     },
     {
       "mainMenu": "ClientRegistry.MainMenu",
       "position": 11,
-      "id": "insuree.addFamilyOrGroup",
+      "route": "insuree/family",
       "icon": "GroupAdd"
     },
     {
       "mainMenu": "ClientRegistry.MainMenu",
       "position": 13,
-      "id": "insuree.insurees",
+      "route": "insuree/insurees",
       "icon": "Person"
     }
   ],

@@ -1,0 +1,45 @@
+{"roles": [{
+  "code": "accountant",
+  "name": "Accountant",
+  "permissions": [
+
+    "calculation.calculation_rule",
+    "calculation.update_calculation_rule",
+
+    "invoice.bill_amend",
+    "invoice.bill_create",
+    "invoice.bill_delete",
+    "invoice.bill_event_create",
+    "invoice.bill_event_create_message",
+    "invoice.bill_event_delete",
+    "invoice.bill_event_delete_all_message",
+    "invoice.bill_event_delete_my_message",
+    "invoice.bill_event_search",
+    "invoice.bill_event_update",
+    "invoice.bill_payment_create",
+    "invoice.bill_payment_delete",
+    "invoice.bill_payment_refund",
+    "invoice.bill_payment_search",
+    "invoice.bill_payment_update",
+    "invoice.bill_search",
+    "invoice.bill_update",
+    "location.locations",
+
+    "payment.create_payments",
+    "payment.delete_payments",
+    "payment.payments",
+    "payment.update_payments",
+
+    "payment_cycle.create_payment_cycle",
+    "payment_cycle.delete_payment_cycle",
+    "payment_cycle.payment_cycle",
+    "payment_cycle.update_payment_cycle",
+    "contribution_plan.paymentplan",
+    "payroll.payment_point_search",
+    "payroll.csv_reconciliation_search",
+    "payroll.payroll_search",
+    "core.roles",
+    "core.users",
+    "core.users_profile"
+  ]
+}]}

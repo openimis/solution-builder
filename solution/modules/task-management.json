@@ -3,19 +3,19 @@
     {
       "mainMenu": "Tasks.MainMenu",
       "position": 2,
-      "id": "task.tasks",
+      "route": "tasks",
       "icon": "AssignmentTurnedIn"
     },
     {
       "mainMenu": "Tasks.MainMenu",
       "position": 1,
-      "id": "task.allTasks",
+      "route": "allTasks",
       "icon": "Assignment"
     },
     {
       "mainMenu": "UserManagement.MainMenu",
       "position": 11,
-      "id": "admin.taskExecutionerGroups",
+      "route": "tasks/groups",
       "icon": "AssignmentInd"
     }
   ],

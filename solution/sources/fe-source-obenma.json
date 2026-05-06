@@ -1,0 +1,241 @@
+{
+  "fePackageDefinitions": {
+    "CoreModule": {
+      "package": "@openimis/fe-core",
+      "git": "https://github.com/obenma/openimis-fe-core_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.9.0"
+    },
+
+    "IndividualModule": {
+      "package": "@openimis/fe-individual",
+      "git": "https://github.com/obenma/openimis-fe-individual_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.2.0"
+    },
+
+    "SocialProtectionModule": {
+      "package": "@openimis/fe-social_protection",
+      "git": "https://github.com/obenma/openimis-fe-social_protection_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.3.0"
+    },
+
+    "OpenSearchReportsModule": {
+      "package": "@openimis/fe-opensearch_reports",
+      "git": "https://github.com/obenma/openimis-fe-opensearch_reports_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.3.0"
+    },
+
+    "HomeModule": {
+      "package": "@openimis/fe-home",
+      "git": "https://github.com/obenma/openimis-fe-home_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.6.0"
+    },
+
+    "LocationModule": {
+      "package": "@openimis/fe-location",
+      "git": "https://github.com/obenma/openimis-fe-location_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.6.0"
+    },
+
+    "InsureeModule": {
+      "package": "@openimis/fe-insuree",
+      "git": "https://github.com/obenma/openimis-fe-insuree_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.9.0"
+    },
+
+    "MedicalModule": {
+      "package": "@openimis/fe-medical",
+      "git": "https://github.com/obenma/openimis-fe-medical_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.7.0"
+    },
+
+    "MedicalPriceListModule": {
+      "package": "@openimis/fe-medical_pricelist",
+      "git": "https://github.com/obenma/openimis-fe-medical_pricelist_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.6.0"
+    },
+
+    "ProductModule": {
+      "package": "@openimis/fe-product",
+      "git": "https://github.com/obenma/openimis-fe-product_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.8.0"
+    },
+
+    "PolicyModule": {
+      "package": "@openimis/fe-policy",
+      "git": "https://github.com/obenma/openimis-fe-policy_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.8.0"
+    },
+
+    "PayerModule": {
+      "package": "@openimis/fe-payer",
+      "git": "https://github.com/obenma/openimis-fe-payer_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.5.0"
+    },
+
+    "ContributionModule": {
+      "package": "@openimis/fe-contribution",
+      "git": "https://github.com/obenma/openimis-fe-contribution_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.7.0"
+    },
+
+    "PaymentModule": {
+      "package": "@openimis/fe-payment",
+      "git": "https://github.com/obenma/openimis-fe-payment_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.5.0"
+    },
+
+    "ClaimModule": {
+      "package": "@openimis/fe-claim",
+      "git": "https://github.com/obenma/openimis-fe-claim_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.8.0"
+    },
+
+    "ClaimBatchModule": {
+      "package": "@openimis/fe-claim_batch",
+      "git": "https://github.com/obenma/openimis-fe-claim_batch_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.5.0"
+    },
+
+    "AdminModule": {
+      "package": "@openimis/fe-admin",
+      "git": "https://github.com/obenma/openimis-fe-admin_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.9.0"
+    },
+
+    "ToolsModule": {
+      "package": "@openimis/fe-tools",
+      "git": "https://github.com/obenma/openimis-fe-tools_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.7.0"
+    },
+
+    "ProfileModule": {
+      "package": "@openimis/fe-profile",
+      "git": "https://github.com/obenma/openimis-fe-profile_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.7.0"
+    },
+
+    "CalculationModule": {
+      "package": "@openimis/fe-calculation",
+      "git": "https://github.com/obenma/openimis-fe-calculation_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.6.0"
+    },
+
+    "PolicyHolderModule": {
+      "package": "@openimis/fe-policyholder",
+      "git": "https://github.com/obenma/openimis-fe-policyholder_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.7.0"
+    },
+
+    "ContributionPlanModule": {
+      "package": "@openimis/fe-contribution_plan",
+      "git": "https://github.com/obenma/openimis-fe-contribution_plan_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.9.0"
+    },
+
+    "PaymentCycleModule": {
+      "package": "@openimis/fe-payment_cycle",
+      "git": "https://github.com/obenma/openimis-fe-payment_cycle_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.2.0"
+    },
+
+    "ContractModule": {
+      "package": "@openimis/fe-contract",
+      "git": "https://github.com/obenma/openimis-fe-contract_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.6.0"
+    },
+
+    "TasksManagementModule": {
+      "package": "@openimis/fe-tasks_management",
+      "git": "https://github.com/obenma/openimis-fe-tasks_management_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.3.0"
+    },
+
+    "InvoiceModule": {
+      "package": "@openimis/fe-invoice",
+      "git": "https://github.com/obenma/openimis-fe-invoice_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.8.0"
+    },
+
+    "GrievanceSocialProtectionModule": {
+      "package": "@openimis/fe-grievance_social_protection",
+      "git": "https://github.com/obenma/openimis-fe-grievance_social_protection_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.1.0"
+    },
+
+    "LanguageFrModule": {
+      "package": "@openimis/fe-language_fr",
+      "git": "https://github.com/obenma/openimis-fe-language_fr_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.8.0"
+    },
+
+    "ClaimSamplingModule": {
+      "package": "@openimis/fe-claim_sampling",
+      "git": "https://github.com/obenma/openimis-fe-claim_sampling_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.1.0"
+    },
+
+    "DeduplicationModule": {
+      "package": "@openimis/fe-deduplication",
+      "git": "https://github.com/obenma/openimis-fe-deduplication_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.0.1"
+    },
+
+    "PayrollModule": {
+      "package": "@openimis/fe-payroll",
+      "git": "https://github.com/obenma/openimis-fe-payroll_js",
+      "branch": "feature/vite-migration",
+      "version": "v1.3.0"
+    },
+    "ClaimAIQualityModule": {
+      "package": "@openimis/fe-claim_ai_quality",
+      "git": "https://github.com/obenma/openimis-fe-claim_ai_quality_js.git",
+      "branch": "feature/vite-migration",
+      "version": "v2.0.0"
+
+    },
+    "CoreMISLanguageModule": {
+      "package": "@openimis/fe-coremis_language_pack",
+      "git": "https://github.com/obenma/openimis-fe-coremis_language_pack_js.git",
+      "branch": "feature/vite-migration",
+      "version": "v1.2.0"
+
+    },
+    "assembly": {
+      "package": "openimis-fe",
+      "git": "https://github.com/openimis/openimis-fe_js",
+      "branch": "feature/vite-migration",
+      "version": "26.04"
+
+    }
+  }
+}

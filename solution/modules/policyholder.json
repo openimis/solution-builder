@@ -1,10 +1,17 @@
 {
   "menus": [
     {
-      "mainMenu": "ClientRegistry.MainMenu",
-      "position": 6,
-      "id": "insuree.policyholder",
+      "mainMenu": "SchemeAdministration.MainMenu",
+      "position": 33,
+      "route": "policyHolders",
       "icon": "Business"
+    },
+    {
+      "mainMenu": "SchemeAdministration.MainMenu",
+      "position": 34,
+      "route": "policyHolders",
+      "icon": "Business",
+      "withDivider": true
     }
   ],
   "fePackages": [

@@ -3,22 +3,23 @@
     {
       "mainMenu": "Payments.MainMenu",
       "position": 14,
-      "id": "legalAndFinance.payrollsReconciled"
+      "route": "payrollsReconciled",
+      "withDivider": true
     },
     {
       "mainMenu": "Payments.MainMenu",
       "position": 13,
-      "id": "legalAndFinance.payrollsApproved"
+      "route": "payrollsApproved"
     },
     {
       "mainMenu": "Payments.MainMenu",
       "position": 12,
-      "id": "legalAndFinance.payrollsPending"
+      "route": "payrollsPending"
     },
     {
       "mainMenu": "Payments.MainMenu",
       "position": 11,
-      "id": "legalAndFinance.payrolls"
+      "route": "payrolls"
     }
   ],
   "fePackages": [

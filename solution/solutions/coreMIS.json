@@ -1,21 +1,23 @@
 {
   "modules": {
     "grievance": "../modules/grievance.json",
-    "opensearch-report": "../modules/opensearch-report.json"
+    "opensearch-reports": "../modules/opensearch-reports.json"
   },
   "solutions": [
     "./social-protection-bundle.json",
     "./good-distribution-bundle.json",
     "./core-bundle.json",
     "../sources/main-menus.json",
-    "../localesModules/fr.json"
+    "../localesModules/fr.json",
+    "../roles/coreMIS/local_admin-role.json",
+    "../roles/coreMIS/accountant-role.json",
+    "../roles/coreMIS/social_protection_manager-role.json",
+    "../roles/coreMIS/social_protection_officer-role.json"
   ],
   "services":["db"],
   "moduleConfiguration": {
     "logo": "./sources/logo/coremis.png"
   },
   "initData":[
-    "../fixtures/core/roles-coreMIS.json",
-    "../fixtures/core/rights-case-worker-social-officer.json"
   ]
 }

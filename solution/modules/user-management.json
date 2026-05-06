@@ -1,23 +1,18 @@
 {
   "menus": [
-    {
-      "position": 6,
-      "id": "UserManagement.MainMenu",
-      "name": "User Management",
-      "icon": "admin-icon",
-      "description": "Administration Panel",
-      "submenus": [
-        {
-          "position": 2,
-          "id": "admin/users"
-        },
-        {
-          "position": 1,
-          "id": "roles",
-          "withDivider": true
-        }
-      ]
-    }
+
+      {
+        "mainMenu": "UserManagement.MainMenu",
+        "position": 2,
+        "route": "admin/users"
+      },
+      {
+        "mainMenu": "UserManagement.MainMenu",
+        "position": 1,
+        "route": "roles",
+        "withDivider": true
+      }
+  
   ],
   "fePackages": [
     "CoreModule",

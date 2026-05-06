@@ -1,11 +1,5 @@
 {
   "menus": [
-    {
-      "name": "AdminMainMenu",
-      "id": "admin.MainMenu",
-      "text": "admin.mainMenu",
-      "icon": "LocationCity"
-    }
   ],
   "fePackages": [
     "CoreModule",

@@ -3,7 +3,7 @@
     {
       "mainMenu": "Payments.MainMenu",
       "position": 20,
-      "id": "legalAndFinance.paymentPoint",
+      "route": "paymentPoints",
       "icon": "Store"
     }
   ],

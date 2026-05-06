@@ -1,15 +1,9 @@
 {
   "menus": [
     {
-      "name": "ProfileMainMenu",
-      "id": "profile.MainMenu",
-      "icon": "AccountCircle",
-      "text": "profile.mainMenu"
-    },
-    {
       "mainMenu": "Profile.MainMenu",
       "position": 4,
-      "id": "profile.myProfile",
+      "route": "profile/myProfile",
       "icon": "AccountCircle"
     },
     {

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role Permissions Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input[type="text"] { width: 100%; padding: 8px; box-sizing: border-box; }
+        .module { margin-bottom: 20px; }
+        .module summary { font-weight: bold; cursor: pointer; }
+        .permissions { margin-left: 20px; }
+        .permission { margin-bottom: 5px; }
+        button { padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Role Permissions Form</h1>
+    <div class="form-group">
+        <label for="permissionsFile">Upload Permissions Map JSON:</label>
+        <input type="file" id="permissionsFile" accept=".json" required>
+    </div>
+    <form id="roleForm" style="display: none;">
+        <div class="form-group">
+            <label for="roleCode">Role Code:</label>
+            <input type="text" id="roleCode" required>
+        </div>
+        <div class="form-group">
+            <label for="roleName">Role Name:</label>
+            <input type="text" id="roleName" required>
+        </div>
+        <div id="permissionsContainer">
+            <!-- Permissions will be loaded here -->
+        </div>
+        <button type="button" id="saveButton">Save Role</button>
+    </form>
+
+    <script>
+        const permissionsFileInput = document.getElementById('permissionsFile');
+        const roleForm = document.getElementById('roleForm');
+        const permissionsContainer = document.getElementById('permissionsContainer');
+        const saveButton = document.getElementById('saveButton');
+        const roleCodeInput = document.getElementById('roleCode');
+        const roleNameInput = document.getElementById('roleName');
+
+        permissionsFileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const permissionsMap = JSON.parse(e.target.result);
+                        if (typeof permissionsMap !== 'object' || permissionsMap === null) {
+                            throw new Error('Invalid structure: must be an object.');
+                        }
+                        for (const module in permissionsMap) {
+                             if (!Array.isArray(permissionsMap[module])) {
+                                 throw new Error(`Invalid module "${module}": must be an array.`);
+                             }
+                             for (const perm of permissionsMap[module]) {
+                                 if (typeof perm !== 'string') {
+                                     throw new Error(`Invalid permission in module "${module}": must be a string.`);
+                                 }
+                             }
+                         }
+                        renderPermissions(permissionsMap);
+                        roleForm.style.display = 'block';
+                    } catch (error) {
+                        alert('Invalid JSON file. Please upload a valid module_permissions_map.json with nested structure.');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        function updateModuleState(details) {
+            const moduleCb = details.querySelector('input[type="checkbox"]');
+            const permCbs = details.querySelectorAll('.permissions input[type="checkbox"]');
+            const checkedCount = Array.from(permCbs).filter(cb => cb.checked).length;
+            if (checkedCount === 0) {
+                moduleCb.checked = false;
+                moduleCb.indeterminate = false;
+            } else if (checkedCount === permCbs.length) {
+                moduleCb.checked = true;
+                moduleCb.indeterminate = false;
+            } else {
+                moduleCb.checked = false;
+                moduleCb.indeterminate = true;
+            }
+        }
+
+        function renderPermissions(permissionsMap) {
+            // Clear previous content
+            permissionsContainer.innerHTML = '';
+
+            // Render grouped permissions using top-level keys as modules
+            Object.keys(permissionsMap).sort().forEach(module => {
+                const details = document.createElement('details');
+                details.className = 'module';
+
+                const summary = document.createElement('summary');
+                const moduleCheckbox = document.createElement('input');
+                moduleCheckbox.type = 'checkbox';
+                moduleCheckbox.id = `moduleCheckbox-${module.replace(/[^a-zA-Z0-9]/g, '_')}`;
+                summary.dataset.module = module;
+                summary.appendChild(moduleCheckbox);
+                summary.appendChild(document.createTextNode(' ' + module));
+                details.appendChild(summary);
+
+                const permissionsDiv = document.createElement('div');
+                permissionsDiv.className = 'permissions';
+
+                permissionsMap[module].forEach(perm => {
+                    const label = document.createElement('label');
+                    label.className = 'permission';
+
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.value = perm;
+
+                    const displayText = perm;
+                    label.appendChild(checkbox);
+                    label.appendChild(document.createTextNode(' ' + displayText));
+
+                    permissionsDiv.appendChild(label);
+                });
+
+                details.appendChild(permissionsDiv);
+                permissionsContainer.appendChild(details);
+            });
+        }
+
+        // Attach permission checkbox change listener for indeterminate state
+        permissionsContainer.addEventListener('change', (e) => {
+            if (e.target.type === 'checkbox' && e.target.closest('.permissions')) {
+                const details = e.target.closest('details');
+                updateModuleState(details);
+            }else if (e.target.type === 'checkbox' && e.target.id.startsWith("moduleCheckbox-")){
+                const details = e.target.closest('details');
+                const permCheckboxes = details.querySelectorAll('.permissions input[type="checkbox"]');
+                permCheckboxes.forEach(permCb => {
+                    permCb.checked = e.target.checked;
+                });
+                // Update the module state after toggling
+                updateModuleState(details);
+            }
+        });
+
+        saveButton.addEventListener('click', () => {
+            const roleCode = roleCodeInput.value.trim();
+            const roleName = roleNameInput.value.trim();
+
+            if (!roleCode || !roleName) {
+                alert('Please enter both role code and name.');
+                return;
+            }
+
+            const permissions = [];
+            const checkboxes = document.querySelectorAll('.permissions input[type="checkbox"]:checked');
+            checkboxes.forEach(cb => {
+                permissions.push(cb.value);
+            });
+
+            const roleData = {
+                code: roleCode,
+                name: roleName,
+                permissions: permissions
+            };
+
+            const roles = {roles: [roleData]}
+
+            // Download as JSON
+            const blob = new Blob([JSON.stringify(roles, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${roleCode}-role.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+    </script>
+</body>
+</html>

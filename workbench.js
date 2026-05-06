@@ -245,19 +245,20 @@ async function main() {
           // 'SR': './solution/solutions/SR.json',
           // 'IBR': './solution/solutions/IBR.json'
         }
-        const permission = fs.readFileSync('./solution/permissions_map.json', 'utf8');
-        const permissionMap = JSON.parse(permission);
+
         let outputs = {}
         for (const [name, solution_path] of Object.entries(solutions)){
           console.log(`generating ${name}`)
-          const { output, modules, assemblyBranch } = await processSolutions(
+          const { output, modules } = await processSolutions(
               solution_path,
               process.cwd(),
-              permissionMap,
+              './solution/permissions_map.json',
+              branch=null,
+              force_assembly_branch=false
           );
           outputs[name] = output;
           // Get dist-dkr files from compose.yml and merge them into output
-          const composeFiles = await copyDistDkrAssetsFromCompose(outputs[name]['compose.yml'], assemblyBranch);
+          const composeFiles = await copyDistDkrAssetsFromCompose(outputs[name]['compose.yml'], "develop");
           Object.assign(outputs[name], composeFiles);
           const zipPath = path.join(__dirname, 'build', name +'.zip');
           await createZip(outputs[name], zipPath);

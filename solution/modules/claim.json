@@ -1,9 +1,20 @@
 {
   "menus": [
     {
-      "mainMenu": "Beneficit.MainMenu",
+      "mainMenu": "Benefit.MainMenu",
       "position": 1,
-      "route": "claim_batch"
+      "route": "claim/healthFacilities"
+    },
+    {
+      "mainMenu": "Benefit.MainMenu",
+      "position": 2,
+      "route": "claim/reviews"
+    },
+    {
+      "mainMenu": "Benefit.MainMenu",
+      "position": 3,
+      "route": "claim/feedback",
+      "withDivider": true
     }
   ],
   "fePackages": [

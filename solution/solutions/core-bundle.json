@@ -1,17 +1,17 @@
 {
   "modules": {
-    "location": "../modules/location.json",
+    "location": "../modules/administrative-location.json",
     "task-management": "../modules/task-management.json",
     "calculation": "../modules/calculation.json",
     "core": "../modules/core.json",
-    "user-management": "../modules/user-management.json"
+    "user-management": "../modules/user-management.json",
+    "profiles": "../modules/profiles.json"
   },
   "solutions": [
-    "../sources/be-sources.json",
-    "../sources/fe-source.json",
+    "../sources/be-sources-obenma.json",
+    "../sources/fe-source-obenma.json",
     "../services/base.json",
-    "../services/cache.json",
-    "../services/openSearch.json"
+    "../services/cache.json"
   ],
   "moduleConfiguration": {
     "logo": "./sources/logo/openIMIS.png"

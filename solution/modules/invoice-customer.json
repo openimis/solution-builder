@@ -3,15 +3,24 @@
     {
       "mainMenu": "Payments.MainMenu",
       "position": 51,
-      "root": "invoices",
+      "route": "invoices",
+      "icon": "Receipt"
+    },
+    {
+      "mainMenu": "Payments.MainMenu",
+      "position": 55,
+      "route": "payment/paymentsInvoice",
       "icon": "Receipt"
     }
   ],
   "fePackages": [
-    "InvoiceModule"
+    "InvoiceModule",
+    "PaymentModule"
   ],
   "bePackages": [
-    "invoice"
+    "invoice",
+    "payment",
+    "contribution"
   ],
   "rights": [
     "invoice.invoice_amend",

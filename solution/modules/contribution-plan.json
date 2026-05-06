@@ -3,12 +3,12 @@
     {
       "mainMenu": "SchemeAdministration.MainMenu",
       "position": 1,
-      "id": "admin.contributionPlans"
+      "route": "contributionPlans"
     },
     {
       "mainMenu": "SchemeAdministration.MainMenu",
       "position": 2,
-      "id": "admin.contributionPlanBundles",
+      "route": "contributionPlanBundles",
       "withDivider": true
     }
   ],
@@ -23,16 +23,11 @@
     "contribution_plan.contributionplanbundle",
     "contribution_plan.create_contributionplan",
     "contribution_plan.create_contributionplanbundle",
-    "contribution_plan.create_paymentplan",
     "contribution_plan.delete_contributionplan",
     "contribution_plan.delete_contributionplanbundle",
-    "contribution_plan.delete_paymentplan",
-    "contribution_plan.paymentplan",
     "contribution_plan.replace_contributionplan",
     "contribution_plan.replace_contributionplanbundle",
-    "contribution_plan.replace_paymentplan",
     "contribution_plan.update_contributionplan",
-    "contribution_plan.update_contributionplanbundle",
-    "contribution_plan.update_paymentplan"
+    "contribution_plan.update_contributionplanbundle"
   ]
 }

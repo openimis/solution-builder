@@ -1,7 +1,7 @@
 {
   "modules": {
     "grievance": "../modules/grievance.json",
-    "opensearch-report": "../modules/opensearch-report.json",
+    "opensearch-reports": "../modules/opensearch-reports.json",
     "individual":"../modules/individual.json",
     "api-import": "../modules/api-import.json",
     "deduplication": "../modules/deduplication.json",
