@@ -18,10 +18,8 @@
     "PaymentModule"
   ],
   "bePackages": [
-    "invoice",
-    "payment",
-    "contribution"
-  ],
+    "invoice"
+],
   "rights": [
     "invoice.invoice_amend",
     "invoice.invoice_create",

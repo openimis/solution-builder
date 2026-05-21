@@ -10,7 +10,6 @@
   "bePackages": [
     "contract",
     "invoice",
-    "contribution",
     "contribution_plan"
   ],
   "fePackages": [

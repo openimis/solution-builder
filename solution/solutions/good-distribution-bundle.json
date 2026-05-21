@@ -2,7 +2,6 @@
   "modules": {
     "invoice-supplier":"../modules/invoice-supplier.json",
     "payment-plan":"../modules/payment-plan.json",
-    "payment":"../modules/payment.json",
     "payroll":"../modules/payroll.json",
     "payment-cycle":"../modules/payment-cycle.json",
     "payment-point":"../modules/payment-point.json",

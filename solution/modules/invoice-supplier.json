@@ -19,9 +19,7 @@
     "PaymentModule"
   ],
   "bePackages": [
-    "invoice",
-    "payment",
-    "contribution"
+    "invoice"
   ],
   "rights": [
     "invoice.bill_amend",

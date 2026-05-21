@@ -8,8 +8,8 @@
     "profiles": "../modules/profiles.json"
   },
   "solutions": [
-    "../sources/be-sources-obenma.json",
-    "../sources/fe-source-obenma.json",
+    "../sources/be-sources.json",
+    "../sources/fe-source-vite.json",
     "../services/base.json",
     "../services/cache.json"
   ],
