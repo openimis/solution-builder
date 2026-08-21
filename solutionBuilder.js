@@ -88,21 +88,22 @@ async function fetchJSON(handleOrUrl,DIRECTORY=null, rootPath = '') {
 
 
 
-function getBePackageConf(name, definition, branch, force_assembly_branch=false){
+function getBePackageConf(name, definition, branch, forceBranch=false, packageMode=false){
     if (typeof definition === 'undefined'){
         console.error(name + " be has no definition")
         return {}
     }
-    
-  let pip = "";
-  // overide the branch if a branch is specified in the source
-  if (definition.hasOwnProperty("branch")) {
-    branch = definition.branch;
-  }
-    if (branch == 'released'){
-        pip =  definition.package + "~=" + definition.version;
-    }else{
-        pip = "git+" + definition.git + ".git@" + (force_assembly_branch ? branch : definition.branch || branch) + "#egg="+ definition.package;
+
+    let pip = "";
+    if (packageMode) {
+        if (!definition.package || !definition.version) {
+            console.error(name + " be package mode needs package and version")
+            return {}
+        }
+        pip = definition.package + "~=" + definition.version;
+    } else {
+        const gitBranch = forceBranch ? branch : (definition.branch || branch);
+        pip = "git+" + definition.git + ".git@" + gitBranch + "#egg=" + definition.package;
     }
 
     return {
@@ -156,20 +157,23 @@ function getServiceConf(name, definition, services = {}){
 }
 
 
-function getFePackageConf(name, definition, branch, force_assembly_branch=false){
+function getFePackageConf(name, definition, branch, forceBranch=false, packageMode=false){
     if (typeof definition === 'undefined'){
         console.log(name + " fe has no definition")
         return {}
     }
     let npm = ''
 
-    if (branch == 'released'){
+    if (packageMode) {
+        if (!definition.package || !definition.version) {
+            console.error(name + " fe package mode needs package and version")
+            return {}
+        }
         npm = definition.package + "@>=" + definition.version;
-    }else{
-        npm = definition.package + "@" +  definition.git + "#" + (force_assembly_branch ? branch : definition.branch || branch)
+    } else {
+        const gitBranch = forceBranch ? branch : (definition.branch || branch);
+        npm = definition.package + "@" + definition.git + "#" + gitBranch;
     }
-
-
 
     return {
         "name": name,
@@ -313,12 +317,22 @@ function transformComposeContent(composeContent) {
   return object;
 }
 
+const CONFLUENCE_MODULE_PREFIX = 'module-';
+
+function toConfluenceModuleLabel(label, prefix = CONFLUENCE_MODULE_PREFIX) {
+    if (label === undefined || label === null) return null;
+    const value = String(label).trim();
+    if (!value) return null;
+    return value.toLowerCase().startsWith(prefix.toLowerCase()) ? value : prefix + value;
+}
+
 async function processSolutions(
     solutionFile,
     directoryPath,
     permission_map_path='solution/permissions_map.json',
     branch = 'develop',
-    force_assembly_branch=false
+    forceBranch=false,
+    packageMode=false
 )
 {
     const solutionFilePath = getAbsolutePath(typeof solutionFile === 'string' ? solutionFile : '', '', false);
@@ -343,8 +357,16 @@ async function processSolutions(
     let merged = await mergeSolutions(solutionFile, directoryPath);
 
     const modulePermissionsMap = {};
+    const confluenceLabels = [];
     for (const [moduleName, modulePath] of Object.entries(merged.moduleRefDict)) {
         const result = await fetchJSON(modulePath, directoryPath);
+        const moduleLabel = result?.confluenceLabel || result?.label || moduleName;
+        if (Array.isArray(moduleLabel)) {
+            confluenceLabels.push(...moduleLabel.map(toConfluenceModuleLabel).filter(Boolean));
+        } else {
+            const normalized = toConfluenceModuleLabel(moduleLabel);
+            if (normalized) confluenceLabels.push(normalized);
+        }
         if (result && result.rights) {
             modulePermissionsMap[moduleName] = result.rights.sort();
         }
@@ -383,20 +405,30 @@ async function processSolutions(
     merged.menusDict =  Object.values(cleanMenuDictionaries(merged.menusDict))
 
     // Build module rights map
+    // Compat: older callers used the fake git branch name 'released' for package mode.
+    if (branch === 'released') {
+        console.warn("branch 'released' is deprecated; pass packageMode=true instead");
+        packageMode = true;
+        branch = null;
+    }
     const assemblyBranch = branch || merged.bePackagesDefDict['assembly']?.branch;
 
     let PIPModules = new Set()
     merged.bePackagesList = merged.bePackagesList.filter((item, index) => merged.bePackagesList.indexOf(item) === index)
     for (let idx in merged.bePackagesList){
         bePackage = merged.bePackagesList[idx]
-        PIPModules.add(getBePackageConf(bePackage, merged.bePackagesDefDict[bePackage], assemblyBranch, force_assembly_branch))
+        PIPModules.add(getBePackageConf(
+            bePackage, merged.bePackagesDefDict[bePackage], assemblyBranch, forceBranch, packageMode
+        ))
     }
     let NPMModules = new Set()
     merged.fePackagesList = merged.fePackagesList.filter((item, index) => merged.fePackagesList.indexOf(item) === index)
 
     for (let idx  in merged.fePackagesList){
         fePackage = merged.fePackagesList[idx]
-        NPMModules.add(getFePackageConf(fePackage, merged.fePackagesDefDict[fePackage], assemblyBranch, force_assembly_branch))
+        NPMModules.add(getFePackageConf(
+            fePackage, merged.fePackagesDefDict[fePackage], assemblyBranch, forceBranch, packageMode
+        ))
     }
 
     output = {}
@@ -431,8 +463,10 @@ async function processSolutions(
     // merging all fixture
     output = await mergeAndSortFixtures(merged.initData, output);
 
+    const confluenceLabel = [...new Set(confluenceLabels)].sort();
     const consolidated = {
         modules: merged.moduleRefDict,
+        confluenceLabel,
         roles: merged.rolesDict,
         coreFeConfig: merged.menusDict,
         bePackages: {
@@ -453,7 +487,7 @@ async function processSolutions(
     output['consolidated-solution.json'] = consolidated;
     
 
-    return { output, modules: Object.keys(merged.moduleRefDict) }
+    return { output, modules: Object.keys(merged.moduleRefDict), confluenceLabel }
 }
 
 async function mergeSolutions(

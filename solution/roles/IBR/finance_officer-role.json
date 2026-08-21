@@ -1,0 +1,12 @@
+{"roles": [{
+  "code": "finance_officer",
+  "name": "Finance Officer",
+  "permissions": [
+    "payroll.payroll_search",
+    "payroll.csv_reconciliation_search",
+    "payment.payments",
+    "invoice.bill_search",
+    "opensearch_reports.opensearch_dashboard_search",
+    "tasks_management.task_search"
+  ]
+}]}

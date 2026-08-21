@@ -1,0 +1,23 @@
+{"roles": [{
+  "code": "case_worker",
+  "name": "Case Worker / Social Officer",
+  "permissions": [
+    "individual.group_create",
+    "individual.group_search",
+    "individual.group_update",
+    "individual.individual_create",
+    "individual.individual_search",
+    "individual.individual_update",
+    "social_protection.beneficiary_create",
+    "social_protection.beneficiary_search",
+    "social_protection.beneficiary_update",
+    "grievance_social_protection.create_tickets",
+    "grievance_social_protection.tickets",
+    "grievance_social_protection.update_tickets",
+    "grievance_social_protection.resolve_grievance",
+    "tasks_management.task_create",
+    "tasks_management.task_search",
+    "opensearch_reports.opensearch_dashboard_search",
+    "deduplication.create_deduplication_review"
+  ]
+}]}

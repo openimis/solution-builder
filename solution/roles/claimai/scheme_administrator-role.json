@@ -1,0 +1,19 @@
+{"roles": [{
+  "code": "scheme_administrator",
+  "name": "Scheme Administrator",
+  "permissions": [
+    "product.products",
+    "product.products_add",
+    "product.products_edit",
+    "medical.medical_services_add",
+    "medical.medical_items_add",
+    "medical_pricelist.pricelists_medical_services_add",
+    "contribution_plan.create_contributionplan",
+    "contribution_plan.update_contributionplan",
+    "policyholder.policyholder",
+    "healthfacility.healthFacilities",
+    "location.locations",
+    "core.roles",
+    "core.users"
+  ]
+}]}

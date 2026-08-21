@@ -10,6 +10,16 @@
     "./core-bundle.json",
     "./formal-sector-bundle.json",
     "./claim-ai-bundle.json",
-    "../sources/main-menus.json"
+    "../sources/main-menus.json",
+    "../roles/claimai/local_admin-role.json",
+    "../roles/claimai/enrolment_officer-role.json",
+    "../roles/claimai/accountant-role.json",
+    "../roles/claimai/claim_ai_reviewer-role.json",
+    "../roles/claimai/scheme_administrator-role.json",
+    "../roles/claimai/data_analyst-role.json"
   ],
-  "services": ["db"]}
+  "services": ["db"],
+  "initData": [
+    "../fixtures/core/roles-claimai.json",
+    "../fixtures/core/rights-claimai.json"
+  ]}

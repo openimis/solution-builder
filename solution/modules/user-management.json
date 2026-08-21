@@ -15,8 +15,7 @@
   
   ],
   "fePackages": [
-    "CoreModule",
-    "AdminModule"
+    "CoreModule"
   ],
   "bePackages": [
     "core"

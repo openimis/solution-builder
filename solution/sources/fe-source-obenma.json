@@ -112,13 +112,6 @@
       "version": "v1.5.0"
     },
 
-    "AdminModule": {
-      "package": "@openimis/fe-admin",
-      "git": "https://github.com/obenma/openimis-fe-admin_js",
-      "branch": "feature/vite-migration",
-      "version": "v1.9.0"
-    },
-
     "ToolsModule": {
       "package": "@openimis/fe-tools",
       "git": "https://github.com/obenma/openimis-fe-tools_js",
@@ -221,13 +214,6 @@
       "git": "https://github.com/obenma/openimis-fe-claim_ai_quality_js.git",
       "branch": "feature/vite-migration",
       "version": "v2.0.0"
-
-    },
-    "CoreMISLanguageModule": {
-      "package": "@openimis/fe-coremis_language_pack",
-      "git": "https://github.com/obenma/openimis-fe-coremis_language_pack_js.git",
-      "branch": "feature/vite-migration",
-      "version": "v1.2.0"
 
     },
     "assembly": {

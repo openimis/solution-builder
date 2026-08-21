@@ -1,0 +1,3876 @@
+[
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "153001",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "153003",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156109",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156102",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156104",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156302",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156306",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156304",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156308",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156307",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156301",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156303",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156202",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156204",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156206",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156201",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156203",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156101",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156103",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121901",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "101402",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "101404",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "101401",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "101403",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200002",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200004",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200001",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200003",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "157101",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "201001",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "206001",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "202001",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122001",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121701",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122000",
+      "audit_user_id": null,
+      "role": [
+        "Accountant"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "Data Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "Data Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "Data Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "Data Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127000",
+      "audit_user_id": null,
+      "role": [
+        "Data Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "199001",
+      "audit_user_id": null,
+      "role": [
+        "Data Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "202001",
+      "audit_user_id": null,
+      "role": [
+        "Data Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "101401",
+      "audit_user_id": null,
+      "role": [
+        "Data Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156101",
+      "audit_user_id": null,
+      "role": [
+        "Data Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191001",
+      "audit_user_id": null,
+      "role": [
+        "Data Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191005",
+      "audit_user_id": null,
+      "role": [
+        "Data Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122001",
+      "audit_user_id": null,
+      "role": [
+        "Data Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121701",
+      "audit_user_id": null,
+      "role": [
+        "Data Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122000",
+      "audit_user_id": null,
+      "role": [
+        "Data Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "953001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "953002",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "153001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "153003",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "900101",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127004",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127005",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127003",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127006",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127000",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127002",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180002",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180004",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180003",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159002",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159004",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159005",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159003",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156109",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156102",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156104",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156302",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156306",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156304",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156308",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156307",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156301",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156303",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156202",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156204",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156206",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156201",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156203",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156101",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156103",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121902",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121906",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121904",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121903",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121901",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121905",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "199001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "199003",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "101402",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "101404",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "101401",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "101403",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200002",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200004",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200003",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "157102",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "157104",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "157101",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "157106",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "157103",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "201002",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "201004",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "201001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "201003",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "206002",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "206001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "202002",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "202004",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "202001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "208001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170002",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170004",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170003",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160005",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160002",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160004",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160003",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "209002",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "209004",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "209001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "209003",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "171002",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "171004",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "171001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "171003",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "172002",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "172001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191002",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191004",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "190002",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "190004",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "190001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "190003",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191005",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191003",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122002",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121702",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122004",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121704",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122005",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122006",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122001",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122003",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121703",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121701",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122000",
+      "audit_user_id": null,
+      "role": [
+        "Local Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "153001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "153003",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "900101",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127004",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127005",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127006",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127000",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180003",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159005",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159003",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156109",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156102",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156302",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156304",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156308",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156307",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156301",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156303",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156202",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156206",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156201",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156203",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156101",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156103",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121902",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121906",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121903",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121901",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "199001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "199003",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "101402",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "101401",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "101403",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200004",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200003",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "157102",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "157104",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "157101",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "157106",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "157103",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "201002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "201004",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "201001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "201003",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "206002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "206001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "202002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "202004",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "202001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "208001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170004",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170003",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160005",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160004",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160003",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "209002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "209004",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "209001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "209003",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "171002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "171004",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "171001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "171003",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "172002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "172001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "190002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "190004",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "190001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "190003",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191005",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191003",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121701",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122000",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "153001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127004",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127005",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127006",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127000",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180003",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159003",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156109",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156102",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156302",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156304",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156308",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156307",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156301",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156303",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156202",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156201",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156203",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156101",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "156103",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121901",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "199001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "101402",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "101401",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "101403",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "157101",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "201001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "206001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "202001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "208001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170003",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "209001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "171001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "172002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "172001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191002",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "190001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191005",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191003",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122001",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121701",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122000",
+      "audit_user_id": null,
+      "role": [
+        "Social Protection Officer"
+      ]
+    }
+  }
+]

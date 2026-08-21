@@ -1,6 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
-const { createConfig } = require('./confluence-utils');
+const { createConfig, toConfluenceLabelName } = require('./confluence-utils');
 
 const solutionName = process.argv[2];
 if (!solutionName) {
@@ -159,7 +159,11 @@ async function main() {
 
   const allResults = [];
   for (const chunk of chunks) {
-    const labelConditions = chunk.map(l => `"module-${l}"`).join(', ');
+    const labelConditions = chunk
+      .map(l => toConfluenceLabelName(l, CONFIG.modulePrefix))
+      .filter(Boolean)
+      .map(l => `"${l}"`)
+      .join(', ');
     const cql = `type = page and space.key = "${CONFIG.spaceKey}" and ancestor = ${CONFIG.rootPageId} and label in (${labelConditions})`;
     console.log('CQL chunk:', cql);
 

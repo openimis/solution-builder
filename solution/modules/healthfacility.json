@@ -1,7 +1,6 @@
 {
   "fePackages": [
-    "LocationModule",
-    "AdminModule"
+    "LocationModule"
   ],
   "bePackages": [
     "location"

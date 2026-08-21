@@ -12,12 +12,15 @@
     "../roles/coreMIS/local_admin-role.json",
     "../roles/coreMIS/accountant-role.json",
     "../roles/coreMIS/social_protection_manager-role.json",
-    "../roles/coreMIS/social_protection_officer-role.json"
+    "../roles/coreMIS/social_protection_officer-role.json",
+    "../roles/coreMIS/data_analyst-role.json"
   ],
   "services":["db"],
   "moduleConfiguration": {
     "logo": "./sources/logo/coremis.png"
   },
   "initData":[
+    "../fixtures/core/roles-coreMIS.json",
+    "../fixtures/core/rights-coreMIS.json"
   ]
 }

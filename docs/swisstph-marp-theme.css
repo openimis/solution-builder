@@ -1,0 +1,91 @@
+/* @theme swisstph */
+/* Swiss TPH Corporate Theme - Fixed Top-Left Title/Header */
+
+@import 'default';
+
+:root {
+  --primary: #4F94BE;
+  --secondary: #2C5F7A;
+  --accent: #A8C6E0;
+  --text: #333333;
+  --bg: #FFFFFF;
+  --light: #F0F7FC;
+}
+
+section {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background-color: var(--bg);
+  padding: 110px 80px 90px !important;   /* Extra top space for fixed header */
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ==================== FIXED TOP-LEFT HEADER ==================== */
+header {
+  position: absolute !important;
+  top: 38px !important;
+  left: 80px !important;
+  right: 200px; /* leave space for logo */
+  color: var(--primary);
+  font-size: 1.05em;
+  font-weight: 600;
+  z-index: 20;
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 8px;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Title slide adjustment */
+section.title header {
+  border-bottom: none;
+  font-size: 1.1em;
+  color: var(--secondary);
+}
+
+/* Main content headings */
+h1 {
+  color: var(--primary);
+  font-size: 2.8em;
+  font-weight: 700;
+  border-bottom: 5px solid var(--primary);
+  padding-bottom: 0.4em;
+  margin-top: 0.1em;
+}
+
+h2 { color: var(--secondary); font-size: 2.15em; }
+
+/* Logo top-right */
+.logo {
+  position: absolute;
+  top: 35px;
+  right: 80px;
+  height: 58px;
+  z-index: 20;
+}
+
+/* Footer & pagination */
+section::after {
+  content: attr(data-marpit-pagination);
+  position: absolute;
+  bottom: 38px;
+  left: 80px;
+  color: #666;
+  font-size: 0.88em;
+}
+
+footer {
+  position: absolute;
+  bottom: 38px;
+  right: 80px;
+  color: #666;
+  font-size: 0.9em;
+}
+
+/* Other styles */
+a { color: var(--primary); }
+table th { background-color: var(--primary); color: white; }
+blockquote { border-left: 6px solid var(--accent); color: var(--secondary); }

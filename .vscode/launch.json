@@ -3,43 +3,60 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
+    "inputs": [
+        {
+            "id": "release_tag",
+            "type": "promptString",
+            "description": "Git branch/tag to force on every source (e.g. release/26.04)",
+            "default": "release/26.04"
+        }
+    ],
     "configurations": [
-    {
-        "name": "docs",
-        "program": "${workspaceFolder}/script/generate-confluence-aggregator.js",
-        "request": "launch",
-        "type": "node",
-        "runtimeExecutable": "/usr/bin/node"
-    },
-    {
-        "name": "Workbench",
-        "program": "${workspaceFolder}/workbench.js",
-        "request": "launch",
-        "type": "node",
-        "runtimeExecutable": "/usr/bin/node"
-    },
-      {
-        "name": "Workbench publish",
-        "program": "${workspaceFolder}/workbench.js",
-        "args": ["--publish"],
-        "request": "launch",
-        "type": "node",
-        "runtimeExecutable": "/usr/bin/node"
-    },
-      {
-        "name": "Workbench docs",
-        "program": "${workspaceFolder}/workbench.js",
-        "args": ["--docs"],
-        "request": "launch",
-        "type": "node",
-        "runtimeExecutable": "/usr/bin/node"
-    },
-      {
-        "name": "Docs tree",
-        "program": "${workspaceFolder}/script/dump-confluence-tree.js",
-        "request": "launch",
-        "type": "node",
-        "runtimeExecutable": "/usr/bin/node"
-    }
+        {
+            "name": "docs",
+            "program": "${workspaceFolder}/script/generate-confluence-aggregator.js",
+            "request": "launch",
+            "type": "node",
+            "runtimeExecutable": "/usr/bin/node"
+        },
+        {
+            "name": "Workbench packages",
+            "program": "${workspaceFolder}/workbench.js",
+            "args": ["--packages"],
+            "request": "launch",
+            "type": "node",
+            "runtimeExecutable": "/usr/bin/node"
+        },
+        {
+            "name": "Workbench force branch",
+            "program": "${workspaceFolder}/workbench.js",
+            "args": ["--branch=release/${input:release}", "--force-branch"],
+            "request": "launch",
+            "type": "node",
+            "runtimeExecutable": "/usr/bin/node"
+        },
+        {
+            "name": "Workbench publish",
+            "program": "${workspaceFolder}/workbench.js",
+            "args": ["--publish"],
+            "request": "launch",
+            "type": "node",
+            "runtimeExecutable": "/usr/bin/node"
+        },
+        {
+            "name": "Workbench docs",
+            "program": "${workspaceFolder}/workbench.js",
+            "args": ["--docs"],
+            "request": "launch",
+            "type": "node",
+            "runtimeExecutable": "/usr/bin/node"
+        },
+        {
+            "name": "Docs tree",
+            "program": "${workspaceFolder}/script/dump-confluence-tree.js",
+            "request": "launch",
+            "type": "node",
+            "runtimeExecutable": "/usr/bin/node"
+        }
     ]
 }

@@ -1,0 +1,31 @@
+{"roles": [{
+  "code": "case_worker",
+  "name": "Case Worker / Social Officer",
+  "permissions": [
+    "api_etl.api_etl_rule",
+    "api_etl.execute_api_etl_rule",
+    "core.enable_viewing_masked_data",
+    "grievance_social_protection.comments",
+    "grievance_social_protection.create_comment",
+    "grievance_social_protection.create_tickets",
+    "grievance_social_protection.resolve_grievance",
+    "grievance_social_protection.tickets",
+    "grievance_social_protection.update_tickets",
+    "individual.group_create",
+    "individual.group_search",
+    "individual.group_update",
+    "individual.individual_create",
+    "individual.individual_search",
+    "individual.individual_update",
+    "location.locations",
+    "opensearch_reports.opensearch_dashboard_search",
+    "tasks_management.task_create",
+    "tasks_management.task_group_search",
+    "tasks_management.task_search",
+    "tasks_management.task_search_all",
+    "tasks_management.task_update",
+    "core.roles",
+    "core.users",
+    "core.users_profile"
+  ]
+}]}

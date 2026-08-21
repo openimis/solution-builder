@@ -23,8 +23,7 @@
   ],
   "fePackages": [
     "MedicalModule",
-    "MedicalPriceListModule",
-    "AdminModule"
+    "MedicalPriceListModule"
   ],
   "bePackages": [
     "medical",

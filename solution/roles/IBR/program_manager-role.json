@@ -1,0 +1,16 @@
+{"roles": [{
+  "code": "program_manager",
+  "name": "Program Manager",
+  "permissions": [
+    "individual.group_search",
+    "individual.individual_search",
+    "social_protection.benefit_plan_search",
+    "social_protection.beneficiary_search",
+    "grievance_social_protection.tickets",
+    "opensearch_reports.opensearch_dashboard_search",
+    "tasks_management.task_search_all",
+    "payroll.payroll_search",
+    "core.roles",
+    "core.users"
+  ]
+}]}

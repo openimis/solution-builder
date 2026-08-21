@@ -8,7 +8,11 @@
     "./good-distribution-bundle.json",
     "./core-bundle.json",
     "../sources/main-menus.json",
-    "../localesModules/fr.json"
+    "../localesModules/fr.json",
+    "../roles/IBR/program_manager-role.json",
+    "../roles/IBR/case_worker-role.json",
+    "../roles/IBR/data_analyst-role.json",
+    "../roles/IBR/finance_officer-role.json"
   ],
   "services":["db"],
   "moduleConfiguration": {
@@ -16,7 +20,7 @@
     "theme":  "./sources/theme/IBR.json"
   },
   "initData":[
-    "../fixtures/core/roles-coreMIS.json",
-    "../fixtures/core/rights-case-worker-social-officer.json"
+    "../fixtures/core/roles-IBR.json",
+    "../fixtures/core/rights-IBR.json"
   ]
 }

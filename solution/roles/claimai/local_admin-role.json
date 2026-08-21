@@ -1,0 +1,30 @@
+{"roles": [{
+  "code": "local_admin",
+  "name": "Local Administrator",
+  "permissions": [
+    "insuree.create_families",
+    "insuree.insurees",
+    "insuree.families",
+    "policy.policies",
+    "claim.claims",
+    "claim.select_claim_review",
+    "claim.process_claims",
+    "product.products",
+    "medical.medical_services",
+    "healthfacility.healthFacilities",
+    "location.locations",
+    "payer.payers",
+    "payment.payments",
+    "invoice.invoice_search",
+    "contribution_plan.contributionplan",
+    "contract.contract",
+    "policyholder.policyholder",
+    "individual.individual_search",
+    "individual.group_search",
+    "grievance_social_protection.tickets",
+    "core.create_users",
+    "core.create_roles",
+    "core.users",
+    "core.roles"
+  ]
+}]}

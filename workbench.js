@@ -118,13 +118,23 @@ async function ensureDistDkrRepo(branch = 'develop') {
     }
   
     const git = simpleGit(distDkrRepoPath);
+    await git.fetch();
     const currentBranch = (await git.branch()).current;
   
     if (currentBranch !== branch) {
         console.log(`🔀 Checking out branch '${branch}'`);
-        await git.checkout(branch);
+        try {
+            await git.checkout(branch);
+        } catch (error) {
+            if (branch !== 'develop') {
+                console.warn(`⚠️ Could not check out '${branch}' (${error.message}); falling back to develop`);
+                await git.checkout('develop');
+            } else {
+                throw error;
+            }
+        }
     }
-    git.pull();
+    await git.pull();
   
     return distDkrRepoPath;
 }
@@ -235,30 +245,42 @@ async function main() {
         const args = process.argv.slice(2);
         const shouldPublish = args.includes('--publish');
         const shouldDocs = args.includes('--docs');
+        const packageMode = args.includes('--packages');
+        const forceBranch = args.includes('--force-branch');
         const folderArg = args.find(arg => arg.startsWith('--folder='));
+        const branchArg = args.find(arg => arg.startsWith('--branch='));
+        const assemblyBranch = branchArg ? branchArg.split('=')[1] : null;
         const solutionName = folderArg ? folderArg.split('=')[1] : 'default-solution';
+        if (packageMode && forceBranch) {
+            console.error('❌ --packages and --force-branch are mutually exclusive');
+            process.exit(1);
+        }
+        const distDkrBranch = packageMode
+            ? 'release/26.04'
+            : (assemblyBranch || 'develop');
         const solutions = {
-           'coreMIS': './solution/solutions/coreMIS.json',
-          // 'SHI': './solution/solutions/HF.json',
-          // 'claimai': './solution/solutions/HF.json',
+          'coreMIS': './solution/solutions/coreMIS.json',
+          'SHI': './solution/solutions/HF.json',
+         'claimai': './solution/solutions/HF.json',
           //'full' : './solution/solutions/full.json',
-          // 'SR': './solution/solutions/SR.json',
-          // 'IBR': './solution/solutions/IBR.json'
+           'SR': './solution/solutions/SR.json',
+           'IBR': './solution/solutions/IBR.json'
         }
 
         let outputs = {}
         for (const [name, solution_path] of Object.entries(solutions)){
           console.log(`generating ${name}`)
-          const { output, modules } = await processSolutions(
+          const { output, modules, confluenceLabel } = await processSolutions(
               solution_path,
               process.cwd(),
               './solution/permissions_map.json',
-              branch=null,
-              force_assembly_branch=false
+              assemblyBranch,
+              forceBranch,
+              packageMode
           );
           outputs[name] = output;
           // Get dist-dkr files from compose.yml and merge them into output
-          const composeFiles = await copyDistDkrAssetsFromCompose(outputs[name]['compose.yml'], "develop");
+          const composeFiles = await copyDistDkrAssetsFromCompose(outputs[name]['compose.yml'], distDkrBranch);
           Object.assign(outputs[name], composeFiles);
           const zipPath = path.join(__dirname, 'build', name +'.zip');
           await createZip(outputs[name], zipPath);
@@ -269,7 +291,7 @@ async function main() {
           if (shouldPublish || shouldDocs) {
             console.log(`📝 Generating aggregated Confluence markup for ${name} using aggregator config...`);
             try {
-              const additionalLabels = modules.join(',');
+              const additionalLabels = (confluenceLabel && confluenceLabel.length ? confluenceLabel : modules).join(',');
               const { execSync } = require('child_process');
               const publishFlag = (shouldPublish || shouldDocs) ? '--publish' : '';
               execSync(`node script/generate-confluence-aggregator.js ${name} "${additionalLabels}" ${publishFlag}`, { stdio: 'inherit' });

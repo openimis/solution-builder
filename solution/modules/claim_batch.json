@@ -1,7 +1,7 @@
 {
   "menus": [
     {
-      "mainMenu": "Beneficit.MainMenu",
+      "mainMenu": "Benefit.MainMenu",
       "position": 1,
       "route": "claim_batch"
     }

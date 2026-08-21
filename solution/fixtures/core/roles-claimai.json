@@ -1,0 +1,86 @@
+[
+  {
+    "model": "core.role",
+    "fields": {
+      "uuid": "31cde67a-2208-4021-b8b8-8d807a401af4",
+      "name": "Accountant",
+      "alt_language": null,
+      "is_system": 0,
+      "is_blocked": false,
+      "audit_user_id": null,
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null
+    }
+  },
+  {
+    "model": "core.role",
+    "fields": {
+      "uuid": "368717de-a39d-430c-b250-5f1a0a1c8ba2",
+      "name": "Claim AI Reviewer",
+      "alt_language": null,
+      "is_system": 0,
+      "is_blocked": false,
+      "audit_user_id": null,
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null
+    }
+  },
+  {
+    "model": "core.role",
+    "fields": {
+      "uuid": "58902377-26fe-4974-99da-6d344c1a0c9f",
+      "name": "Data Analyst / Fraud Analyst",
+      "alt_language": null,
+      "is_system": 0,
+      "is_blocked": false,
+      "audit_user_id": null,
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null
+    }
+  },
+  {
+    "model": "core.role",
+    "fields": {
+      "uuid": "641ec87e-9aba-4643-be6b-949cef0e86ec",
+      "name": "Enrolment Officer",
+      "alt_language": null,
+      "is_system": 0,
+      "is_blocked": false,
+      "audit_user_id": null,
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null
+    }
+  },
+  {
+    "model": "core.role",
+    "fields": {
+      "uuid": "d0529515-8699-47e2-ab2f-1c7628650316",
+      "name": "Local Administrator",
+      "alt_language": null,
+      "is_system": 0,
+      "is_blocked": false,
+      "audit_user_id": null,
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null
+    }
+  },
+  {
+    "model": "core.role",
+    "fields": {
+      "uuid": "cc1069ea-2657-452b-b592-cdd1effadea8",
+      "name": "Scheme Administrator",
+      "alt_language": null,
+      "is_system": 0,
+      "is_blocked": false,
+      "audit_user_id": null,
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null
+    }
+  }
+]

@@ -1,0 +1,30 @@
+{"roles": [{
+  "code": "enrolment_officer",
+  "name": "Enrolment Officer",
+  "permissions": [
+    "insuree.create_families",
+    "insuree.create_insurees",
+    "insuree.families",
+    "insuree.insuree",
+    "insuree.insuree_inquire",
+    "insuree.insurees",
+    "insuree.update_families",
+    "insuree.update_insurees",
+    "policy.create_policies",
+    "policy.edit_policies",
+    "policy.eligibilities",
+    "policy.policies",
+    "policy.policies_by_family",
+    "policy.policies_by_insuree",
+    "policy.renew_policies",
+    "contribution.create_premiums",
+    "contribution.premiums",
+    "contribution.update_premiums",
+    "contract.contract",
+    "contract.create_contract",
+    "contract.renew_contract",
+    "contract.submit_contract",
+    "location.locations",
+    "core.users_profile"
+  ]
+}]}

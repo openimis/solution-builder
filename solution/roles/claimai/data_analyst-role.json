@@ -1,0 +1,16 @@
+{"roles": [{
+  "code": "data_analyst",
+  "name": "Data Analyst / Fraud Analyst",
+  "permissions": [
+    "claim.claims",
+    "product.products",
+    "medical.medical_services",
+    "invoice.invoice_search",
+    "payment.payments",
+    "individual.individual_search",
+    "grievance_social_protection.tickets",
+    "opensearch_reports.opensearch_dashboard_search",
+    "tasks_management.task_search",
+    "core.users_profile"
+  ]
+}]}

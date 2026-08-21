@@ -1,0 +1,20 @@
+{"roles": [{
+  "code": "claim_ai_reviewer",
+  "name": "Claim AI Reviewer",
+  "permissions": [
+    "claim.claims",
+    "claim.select_claim_review",
+    "claim.deliver_claim_review",
+    "claim.process_claims",
+    "claim.bypass_claim_review",
+    "claim.claim_print",
+    "claim.feedback",
+    "medical.medical_services",
+    "medical.medical_items",
+    "location.healthFacilities",
+    "individual.individual_search",
+    "grievance_social_protection.tickets",
+    "opensearch_reports.opensearch_dashboard_search",
+    "core.users_profile"
+  ]
+}]}

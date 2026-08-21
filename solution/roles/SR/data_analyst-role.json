@@ -1,0 +1,16 @@
+{"roles": [{
+  "code": "data_analyst",
+  "name": "Data Analyst",
+  "permissions": [
+    "grievance_social_protection.tickets",
+    "individual.group_search",
+    "individual.individual_search",
+    "location.locations",
+    "opensearch_reports.opensearch_dashboard_search",
+    "tasks_management.task_search",
+    "tasks_management.task_search_all",
+    "core.roles",
+    "core.users",
+    "core.users_profile"
+  ]
+}]}

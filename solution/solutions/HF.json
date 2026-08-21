@@ -7,7 +7,12 @@
     "./healthfinancing-bundle.json",
     "./core-bundle.json",
     "../sources/main-menus.json",
-    "../localesModules/fr.json"
+    "../localesModules/fr.json",
+    "../roles/SHI/enrolment_officer-role.json",
+    "../roles/SHI/accountant-role.json",
+    "../roles/SHI/medical_officer-role.json",
+    "../roles/SHI/scheme_administrator-role.json",
+    "../roles/SHI/local_admin-role.json"
   ],
   "services":["db"],
   "fePackageSource":{
@@ -16,5 +21,9 @@
   "moduleConfiguration": {
     "logo": "./sources/logo/SHI.svg", 
     "theme":  "./sources/theme/SHI.json"
-  }
+  },
+  "initData": [
+    "../fixtures/core/roles-SHI.json",
+    "../fixtures/core/rights-SHI.json"
+  ]
 }

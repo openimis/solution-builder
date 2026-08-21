@@ -1,0 +1,142 @@
+h1. Aggregated Docs for claimai Solution
+
+{toc}
+
+h3. Grievance (User Manual)
+{excerpt-include:KB:Grievance (User Manual)|excerpt=content|nopanel=true}
+
+h3. Task Management (User Manual)
+{excerpt-include:KB:Task Management (User Manual)|excerpt=content|nopanel=true}
+
+h3. Users And Logins (User Manual)
+{excerpt-include:KB:Users And Logins (User Manual)|excerpt=content|nopanel=true}
+
+h3. Group insurance (User Manual)
+{excerpt-include:KB:Group insurance (User Manual)|excerpt=content|nopanel=true}
+
+h3. Group/family, Insurees and Policies (User Manual)
+{excerpt-include:KB:Group/family, Insurees and Policies (User Manual)|excerpt=content|nopanel=true}
+
+h4. Invoices customer (User Manual)
+{excerpt-include:KB:Invoices customer (User Manual)|excerpt=content|nopanel=true}
+
+h3. Tools (User Manual)
+{excerpt-include:KB:Tools (User Manual)|excerpt=content|nopanel=true}
+
+h4. Email Settings (User Manual)
+{excerpt-include:KB:Email Settings (User Manual)|excerpt=content|nopanel=true}
+
+h3. Claims  (User Manual)
+{excerpt-include:KB:Claims  (User Manual)|excerpt=content|nopanel=true}
+
+h4. Groups (User Manual)
+{excerpt-include:KB:Groups (User Manual)|excerpt=content|nopanel=true}
+
+h4. Individuals (User Manual)
+{excerpt-include:KB:Individuals (User Manual)|excerpt=content|nopanel=true}
+
+h4. Invoices supplier - Bills (User Manual)
+{excerpt-include:KB:Invoices supplier - Bills (User Manual)|excerpt=content|nopanel=true}
+
+h4. Contract (User Manual)
+{excerpt-include:KB:Contract (User Manual)|excerpt=content|nopanel=true}
+
+h4. Policyholder (User Manual)
+{excerpt-include:KB:Policyholder (User Manual)|excerpt=content|nopanel=true}
+
+h4. Policy (User Manual)
+{excerpt-include:KB:Policy (User Manual)|excerpt=content|nopanel=true}
+
+h4. Insuree (User Manual)
+{excerpt-include:KB:Insuree (User Manual)|excerpt=content|nopanel=true}
+
+h4. Reports (User Manual)
+{excerpt-include:KB:Reports (User Manual)|excerpt=content|nopanel=true}
+
+h4. Family/Group (User Manual)
+{excerpt-include:KB:Family/Group (User Manual)|excerpt=content|nopanel=true}
+
+h4. Contribution Plan Bundle (User Manual)
+{excerpt-include:KB:Contribution Plan Bundle (User Manual)|excerpt=content|nopanel=true}
+
+h4. Date Picker (User Manual)
+{excerpt-include:KB:Date Picker (User Manual)|excerpt=content|nopanel=true}
+
+h4. Policy Renewals (User Manual)
+{excerpt-include:KB:Policy Renewals (User Manual)|excerpt=content|nopanel=true}
+
+h4. Insuree Enquiry (User Manual)
+{excerpt-include:KB:Insuree Enquiry (User Manual)|excerpt=content|nopanel=true}
+
+h4. Contribution Plan (User Manual)
+{excerpt-include:KB:Contribution Plan (User Manual)|excerpt=content|nopanel=true}
+
+h4. Upload / Download Selected Registers  (User Manual)
+{excerpt-include:KB:Upload / Download Selected Registers  (User Manual)|excerpt=content|nopanel=true}
+
+h4. Policyholder User (User Manual)
+{excerpt-include:KB:Policyholder User (User Manual)|excerpt=content|nopanel=true}
+
+h4. Locations (User Manual)
+{excerpt-include:KB:Locations (User Manual)|excerpt=content|nopanel=true}
+
+h4. User Roles/Profiles (User Manual)
+{excerpt-include:KB:User Roles/Profiles (User Manual)|excerpt=content|nopanel=true}
+
+h4. Users Administration (User Manual)
+{excerpt-include:KB:Users Administration (User Manual)|excerpt=content|nopanel=true}
+
+h4. Medical Item Price Lists (User Manual)
+{excerpt-include:KB:Medical Item Price Lists (User Manual)|excerpt=content|nopanel=true}
+
+h4. Medical Items (User Manual)
+{excerpt-include:KB:Medical Items (User Manual)|excerpt=content|nopanel=true}
+
+h4. Payers (User Manual)
+{excerpt-include:KB:Payers (User Manual)|excerpt=content|nopanel=true}
+
+h4. Medical Service Price Lists (User Manual)
+{excerpt-include:KB:Medical Service Price Lists (User Manual)|excerpt=content|nopanel=true}
+
+h4. Medical Services (User Manual)
+{excerpt-include:KB:Medical Services (User Manual)|excerpt=content|nopanel=true}
+
+h4. Insurance Products (User Manual)
+{excerpt-include:KB:Insurance Products (User Manual)|excerpt=content|nopanel=true}
+
+h4. Batch Run (User Manual)
+{excerpt-include:KB:Batch Run (User Manual)|excerpt=content|nopanel=true}
+
+h4. Health Facility Claims (User Manual)
+{excerpt-include:KB:Health Facility Claims (User Manual)|excerpt=content|nopanel=true}
+
+h4. Review Claims (User Manual)
+{excerpt-include:KB:Review Claims (User Manual)|excerpt=content|nopanel=true}
+
+h4. Password Change (User Manual)
+{excerpt-include:KB:Password Change (User Manual)|excerpt=content|nopanel=true}
+
+h4. Reset Forgotten Password (User Manual)
+{excerpt-include:KB:Reset Forgotten Password (User Manual)|excerpt=content|nopanel=true}
+
+h4. Login (User Manual)
+{excerpt-include:KB:Login (User Manual)|excerpt=content|nopanel=true}
+
+h5. Adding Group (User Manual)
+{excerpt-include:KB:Adding Group (User Manual)|excerpt=content|nopanel=true}
+
+h5. Deleting Group (User Manual)
+{excerpt-include:KB:Deleting Group (User Manual)|excerpt=content|nopanel=true}
+
+h5. Group Enrolment (User Manual)
+{excerpt-include:KB:Group Enrolment (User Manual)|excerpt=content|nopanel=true}
+
+h5. Individual Download (User Manual)
+{excerpt-include:KB:Individual Download (User Manual)|excerpt=content|nopanel=true}
+
+h5. Individual Enrolment (User Manual)
+{excerpt-include:KB:Individual Enrolment (User Manual)|excerpt=content|nopanel=true}
+
+h5. Individual Upload (User Manual)
+{excerpt-include:KB:Individual Upload (User Manual)|excerpt=content|nopanel=true}
+

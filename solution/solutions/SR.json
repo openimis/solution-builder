@@ -10,8 +10,11 @@
   "solutions": [
     "./core-bundle.json",
     "../sources/main-menus.json",
-    "../localesModules/fr.json"
-   
+    "../localesModules/fr.json",
+    "../roles/SR/registry_admin-role.json",
+    "../roles/SR/case_worker-role.json",
+    "../roles/SR/data_analyst-role.json",
+    "../roles/SR/program_manager-role.json"
   ],
    "bePackages": [
     "contribution_plan"
@@ -22,7 +25,7 @@
     "theme":  "./sources/theme/SR.json"
   },
   "initData":[
-    "../fixtures/core/roles-coreMIS.json",
-    "../fixtures/core/rights-case-worker-social-officer.json"
+    "../fixtures/core/roles-SR.json",
+    "../fixtures/core/rights-SR.json"
   ]
 }

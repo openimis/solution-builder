@@ -1,0 +1,18 @@
+{"roles": [{
+  "code": "accountant",
+  "name": "Accountant",
+  "permissions": [
+    "payment.create_payments",
+    "payment.payments",
+    "payment.update_payments",
+    "payer.payers",
+    "invoice.invoice_search",
+    "invoice.invoice_payment_search",
+    "invoice.bill_search",
+    "contribution.premiums",
+    "policy.policies",
+    "contract.payment",
+    "individual.individual_search",
+    "core.users_profile"
+  ]
+}]}
