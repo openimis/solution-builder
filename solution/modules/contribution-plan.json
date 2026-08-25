@@ -2,12 +2,12 @@
   "menus": [
     {
       "mainMenu": "SchemeAdministration.MainMenu",
-      "position": 1,
+      "position": 4,
       "route": "contributionPlans"
     },
     {
       "mainMenu": "SchemeAdministration.MainMenu",
-      "position": 2,
+      "position": 5,
       "route": "contributionPlanBundles",
       "withDivider": true
     }

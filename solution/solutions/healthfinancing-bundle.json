@@ -3,7 +3,7 @@
     "insuree": "../modules/insuree.json",
     "policy": "../modules/policy.json",
     "claim": "../modules/claim.json",
-    "claim-batch": "../modules/claim_batch.json",
+    "claim-batch": "../modules/claim-batch.json",
     "product": "../modules/product.json",
     "health-facility": "../modules/healthfacility.json",
     "invoice-customer": "../modules/invoice-customer.json",

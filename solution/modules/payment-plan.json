@@ -1,7 +1,7 @@
 {
   "menus": [
     {
-      "mainMenu": "Payments.MainMenu",
+      "mainMenu": "SchemeAdministration.MainMenu",
       "position": 3,
       "route": "paymentPlans",
       "icon": "PriceChange"

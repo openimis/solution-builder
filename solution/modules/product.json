@@ -2,7 +2,7 @@
   "menus": [
     {
       "mainMenu": "SchemeAdministration.MainMenu",
-      "position": 2,
+      "position": 1,
       "route": "admin/products",
       "icon": "Spa"
     }

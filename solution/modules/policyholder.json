@@ -9,7 +9,7 @@
     {
       "mainMenu": "SchemeAdministration.MainMenu",
       "position": 34,
-      "route": "policyHolders",
+      "route": "policyHolderUsers", # TODO check
       "icon": "Business",
       "withDivider": true
     }

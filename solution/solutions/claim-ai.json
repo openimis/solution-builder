@@ -4,7 +4,7 @@
     "individual": "../modules/individual.json",
     "workflow": "../modules/workflow.json",
     "claim_ai": "../modules/claim-ai.json",
-    "api_fhir_r4": "../modules/api_fhir_r4.json"
+    "api-fhir-r4": "../modules/api-fhir-r4.json"
   },
   "solutions": [
     "./core-bundle.json",
