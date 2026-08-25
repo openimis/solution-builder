@@ -9,12 +9,6 @@
       "mainMenu": "Benefit.MainMenu",
       "position": 2,
       "route": "claim/reviews"
-    },
-    {
-      "mainMenu": "Benefit.MainMenu",
-      "position": 3,
-      "route": "claim/feedback",
-      "withDivider": true
     }
   ],
   "fePackages": [
