@@ -2,7 +2,7 @@
   "modules": {
     "individual":"../modules/individual.json",
     "api-import": "../modules/api-import.json",
-    "social-protection": "../modules/social-protection.json",
+    "social-protection": "../modules/social-program.json",
     "task-deduplication": "../modules/task-deduplication.json",
     "calculation-social-protection":"../modules/calculation-social-protection.json",
     "workflow":"../modules/workflow.json",

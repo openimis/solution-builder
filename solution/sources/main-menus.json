@@ -3,88 +3,60 @@
         {
             "position":1,
             "id": "ClientRegistry.MainMenu",
-            "name":"Client Registry",
+            "name":"Clients",
             "icon":"Groups",
-            "text":"Client Registry"
+            "text":"Clients"
         },
         {
-            "position":2,
+            "position":3,
             "id": "Enrolment.MainMenu",
             "name":"Enrolment",
             "icon":"Shield",
             "text":"Enrolment menu"
         }, 
          {
-            "position":3,
+            "position":4,
             "id": "Benefit.MainMenu",
             "name":"Benfits and claims",
             "icon":"Payments",
-            "text":"Benefits"
+            "text":"Clain & Benefits"
         },   
-        {
-            "position":3,
-            "id": "Payments.MainMenu",
-            "name":"Payments",
-            "icon":"Payments",
-            "text":"Payments"
-        },   
-        {
-            "position":4,
-            "id": "Tasks.MainMenu",
-            "name":"Tasks",
-            "icon":"Assignment",
-            "text":"Task menu"
-        },
         {
             "position":5,
-            "id": "Grievance.MainMenu",
-            "name":"Grievance",
-            "icon":"Feedback",
-            "text":"Grievances"
-        },
+            "id": "Accounting.MainMenu",
+            "name":"Accounting",
+            "icon":"Payments",
+            "text":"Accounting"
+        },   
+
         {
             "position":6,
-            "id": "Reports.MainMenu",
-            "name":"Reports",
+            "id": "Analytics.MainMenu",
+            "name":"Analytics",
             "icon":"Dashboard",
-            "text":"Dashboard and reports"
+            "text":"Analytics"
         },
         {
-            "position":7,
-            "id": "SchemeAdministration.MainMenu",
-            "name":"SchemeAdministration",
+            "position":2,
+            "id": "BenefitPlan.MainMenu",
+            "name":"Benefit Plan",
             "icon":"Diversity_2",
-            "text":"Protection"
+            "text":"Benefit plan"
         },
-        
-        {
-            "position":8,
-            "id": "UserManagement.MainMenu",
-            "name":"User Management",
-            "icon":"AdminPanelSettings",
-            "description":"User management menu",
-            "text": "User Management"
-        },     
+   
         {
             "position":9,
-            "name": "AdminMainMenu",
+            "name": "Administration",
             "id": "Administration.MainMenu",
-            "text": "admin.mainMenu",
+            "text": "Administration",
             "icon": "LocationCity"
         },
         {
-            "position":10,
-            "name": "Profile.mainMenu",
-            "id": "Profile.MainMenu",
+            "position":7,
+            "name": "Workspace",
+            "id": "Workspace.MainMenu",
             "icon": "AccountCircle",
-            "text": "profile.mainMenu"
-        },
-        {
-            "position":11,
-            "name": "ToolsMenu",
-            "id": "Tools.MainMenu",
-            "text": "tools.MainMenu",
-            "icon": "mobiledata_arrows"
+            "text": "Workplace"
         }
     ]
 }

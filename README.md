@@ -39,6 +39,7 @@ node workbench.js --packages  # pip/npm registry specs instead of git URLs
 node workbench.js --branch=develop --force-branch   # git, every module on that branch
 node workbench.js --docs      # also generate aggregated Confluence markup under build/<name>/docs/
 node workbench.js --publish   # also copy the build into a local clone of openimis/solutions
+node workbench.js --menu-groups=all   # group submenu entries by source module (default: multi)
 ```
 
 - `--packages` writes `be-openimis.json` / `fe-openimis.json` with registry pins (`openimis-be-core~=v1.9.0`, `@openimis/fe-core@>=v1.9.0`) taken from `solution/sources/*-sources.json`. Compatible-release operators (`~=` / `>=`) are intentional so patch/bugfix versions float. Mutually exclusive with `--force-branch`. Compose fragments come from `openimis-dist_dkr` `release/26.04` (falls back to `develop`).
@@ -46,6 +47,7 @@ node workbench.js --publish   # also copy the build into a local clone of openim
 - `--force-branch` ignores per-package `branch` and points every git URL at `--branch` (or the assembly default). Git-only; do not combine with `--packages`.
 - `--docs` shells out to `script/generate-confluence-aggregator.js` to build aggregated markup for the solution.
 - `--publish` clones `https://github.com/openimis/solutions.git` into `.cache/temp_solutions_repo`, checks out (or reuses) a dated branch `solution/<name>/<yyyy-mm-dd>`, copies `build/<name>/` into a subfolder of that clone, and commits. **The actual `git push` is currently commented out** in `sendToExternalSolutionRepo()` (`workbench.js`), so nothing reaches the remote automatically yet — push the branch from `.cache/temp_solutions_repo` yourself, or re-enable the push line, until that's wired up.
+- `--menu-groups=multi|all|off` groups each main menu's submenu entries by the module that declared them (`solution/modules/<module>.json`), emitting the frontend's "level 1.5" group nodes (`{type: "group", text, position, entries}`) into `fixtures/module-configuration-core.json`. `multi` (default) only groups a menu fed by two or more modules — a single group spanning a whole menu would just add a redundant header; `all` groups every menu that has resolvable entries; `off` keeps the flat entry list. Group title defaults to the module file name title-cased (`social-protection` → `Social Protection`) and can be overridden per module with a `menuGroup` (or `label` / `name`) field in the module JSON, or per menu entry with a `group` field on the menu declaration — which wins over the module and lets entries from several modules share one block (`"group": "Providers"` on both `healthfacility` and `payment-point` yields a single **Providers** group). `group` accepts a string, or `{ "id", "name", "position" }` to pin the group's own id and sort order. Entries whose module cannot be resolved, and groups already written by hand, stay untouched at menu level; a group takes the lowest `position` of its entries — unless it pins its own — so it sorts where those entries used to. Requires a frontend with group support (fe-core `prepareMenuEntries` / `buildMenuItems`).
 - A `--folder=NAME` flag is parsed but not currently used — the batch loop always runs the hardcoded solution names above.
 
 To add a new solution to the batch run, add an entry to the `solutions` map in `workbench.js` and, if it seeds Django fixtures, matching `fixtures/core/roles-*.json` / `rights-*.json` files under `solution/fixtures/core/`.
@@ -60,6 +62,7 @@ fe-openimis.json                       # frontend (npm) package manifest
 compose.yml                            # Docker Compose includes
 module_permissions_map.json            # permissions actually used by included modules
 consolidated-solution.json             # full dump of everything merged, for inspection/debugging
+                                       #   its coreFeConfig section mirrors fixtures/module-configuration-core.json
 fixtures/module-configuration-core.json  # core module-configuration fixture (menus, logo, theme)
 fixtures/roles.json                    # core.role fixture
 fixtures/roles-right.json              # core.roleright fixture

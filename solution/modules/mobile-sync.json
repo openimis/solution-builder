@@ -1,15 +1,15 @@
 {
   "menus": [
     {
-      "mainMenu": "Tools.MainMenu",
+      "mainMenu": "Administration.MainMenu",
       "route": "tools/registers"
     },
     {
-      "mainMenu": "Tools.MainMenu",
+      "mainMenu": "Administration.MainMenu",
       "route": "tools/extracts"
     },
     {
-      "mainMenu": "Tools.MainMenu",
+      "mainMenu": "Report.MainMenu",
       "route": "tools/reports"
     }
   ],

@@ -1,15 +1,14 @@
 {
   "menus": [
     {
-      "mainMenu": "SchemeAdministration.MainMenu",
-      "position": 4,
+      "mainMenu": "BenefitPlan.MainMenu",
+      "position": 14,
       "route": "contributionPlans"
     },
     {
-      "mainMenu": "SchemeAdministration.MainMenu",
-      "position": 5,
-      "route": "contributionPlanBundles",
-      "withDivider": true
+      "mainMenu": "BenefitPlan.MainMenu",
+      "position": 15,
+      "route": "contributionPlanBundles"
     }
   ],
   "bePackages": [

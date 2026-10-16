@@ -1103,5 +1103,18 @@
         "Scheme Administrator"
       ]
     }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "101105",
+      "audit_user_id": null,
+      "role": [
+        "Medical Officer"
+      ]
+    }
   }
 ]

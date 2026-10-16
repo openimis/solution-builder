@@ -12,6 +12,7 @@
     "medical.medical_services",
     "medical.medical_items",
     "location.healthFacilities",
+    "insuree.insuree_inquire",
     "individual.individual_search",
     "grievance_social_protection.tickets",
     "opensearch_reports.opensearch_dashboard_search",

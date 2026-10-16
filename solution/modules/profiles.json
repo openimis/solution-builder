@@ -1,13 +1,13 @@
 {
   "menus": [
     {
-      "mainMenu": "Profile.MainMenu",
+      "mainMenu": "Workspace.MainMenu",
       "position": 4,
       "route": "profile/myProfile",
       "icon": "AccountCircle"
     },
     {
-      "mainMenu": "Profile.MainMenu",
+      "mainMenu": "Workspace.MainMenu",
       "position": 5,
       "route": "profile/changePassword",
       "icon": "Password"

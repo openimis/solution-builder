@@ -3,8 +3,7 @@
     {
       "mainMenu": "ClientRegistry.MainMenu",
       "position": 14,
-      "route": "groups",
-      "withDivider": true
+      "route": "groups"
     },
     {
       "mainMenu": "ClientRegistry.MainMenu",

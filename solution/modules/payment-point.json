@@ -1,7 +1,7 @@
 {
   "menus": [
     {
-      "mainMenu": "Payments.MainMenu",
+      "mainMenu": "Accounting.MainMenu",
       "position": 20,
       "route": "paymentPoints",
       "icon": "Store"

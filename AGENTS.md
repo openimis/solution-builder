@@ -56,6 +56,8 @@ Public exports (`module.exports`):
 | `createZip(data, filename)` | Writes a ZIP (disk in Node, download in browser). |
 | `createSolutionDirectory(baseDir, output)` | Writes the output map as a folder tree. |
 | `getAbsolutePath(relativePath, basePath, withFile)` | Path resolution used throughout the merge. |
+| `readCoreFeConfig(output)` | Parsed fe-core config (`{ menus, logo?, theme? }`) read back out of the generated core module-configuration fixture. |
+| `syncConsolidatedCoreFeConfig(output)` | Re-reads that fixture into `consolidated-solution.json`'s `coreFeConfig`; call after any pass that rewrites the fixture. |
 
 Important internals:
 
@@ -67,6 +69,7 @@ Important internals:
 - `transformRolesToFixture` — map role permission *names* through `solution/permissions_map.json` into `core.role` / `core.roleright` fixtures. Permissions not declared on an included module's `rights` array, or missing from the central map, are skipped with a warning.
 - `mergeAndSortFixtures` — concatenate and sort fixture files listed in `initData`.
 - `injectLogoTheme` — embed logo/theme from `moduleConfiguration` into the core module-configuration fixture.
+- `readCoreFeConfig` / `syncConsolidatedCoreFeConfig` — the fe-core module configuration fixture (`fixtures/module-configuration-core.json`) is the reference copy of the frontend config. `consolidated-solution.json`'s `coreFeConfig` is parsed back out of that fixture rather than kept as a separate object, so it carries the same `menus` plus any injected `logo` / `theme`. Anything that rewrites the fixture afterwards (menu grouping in `workbench.js`) must call `syncConsolidatedCoreFeConfig(output)` to realign the dump.
 - Module Confluence labels — each included module contributes a label (module JSON `confluenceLabel` or `label`, otherwise the module key), always stored with the `module-` prefix so it matches Confluence (`module-claim`, `module-core`, …). These are written to `consolidated-solution.json` as `confluenceLabel` and used by `workbench.js` when generating docs.
 
 `processSolutions` output keys typically include:
@@ -112,6 +115,7 @@ node workbench.js --branch=develop --force-branch   # git, every module on that 
 node workbench.js --docs                   # also generate Confluence markup
 node workbench.js --publish                # also push to openimis/solutions
 node workbench.js --publish --folder=NAME  # --folder is parsed but the loop uses the hardcoded names
+node workbench.js --menu-groups=multi|all|off       # "level 1.5" menu groups (default: multi)
 ```
 
 `--packages` and `--force-branch` are mutually exclusive. With `--packages`, compose fragments are copied from `openimis-dist_dkr` branch `release/26.04` (falls back to `develop`). With `--branch=NAME`, that name is used for dist-dkr as well.
@@ -219,6 +223,8 @@ Typical keys:
 ### Module JSON
 
 A module describes one feature. Typical keys: `menus`, `fePackages`, `bePackages`, `initData`, `services`, `rights`.
+
+Menu entries (`{ mainMenu, position, route, ... }`) may carry a `group`, which overrides the module-derived menu group used by `workbench.js --menu-groups` (documented in README.md). It takes a string (`"group": "Providers"`) or `{ "id", "name", "position" }` to pin the group's id and sort order. Entries resolving to the same group id are wrapped in one group node even when they come from different modules — so tagging `healthfacility` and `payment-point` with `"group": "Providers"` puts both under one **Providers** header (`healthfacility` carries that tag today). Without a `group`, an entry falls back to its module's group: `menuGroup` / `label` / `name` from the module JSON, else the module file name title-cased.
 
 Optional `confluenceLabel` or `label` overrides the Confluence filter label for that module (default: the module key in the solution). Collected labels are written to `consolidated-solution.json` as `confluenceLabel` with the `module-` prefix.
 

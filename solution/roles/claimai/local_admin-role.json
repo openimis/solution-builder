@@ -5,6 +5,7 @@
     "insuree.create_families",
     "insuree.insurees",
     "insuree.families",
+    "insuree.insuree_inquire",
     "policy.policies",
     "claim.claims",
     "claim.select_claim_review",

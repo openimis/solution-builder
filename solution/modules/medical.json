@@ -1,22 +1,22 @@
 {
   "menus": [
     {
-      "mainMenu": "SchemeAdministration.MainMenu",
+      "mainMenu": "BenefitPlan.MainMenu",
       "position": 9,
       "route": "medical/medicalServices"
     },
     {
-      "mainMenu": "SchemeAdministration.MainMenu",
+      "mainMenu": "BenefitPlan.MainMenu",
       "position": 10,
       "route": "medical/medicalItems"
     },
     {
-      "mainMenu": "SchemeAdministration.MainMenu",
+      "mainMenu": "BenefitPlan.MainMenu",
       "position": 11,
       "route": "medical/pricelists/services"
     },
     {
-      "mainMenu": "SchemeAdministration.MainMenu",
+      "mainMenu": "BenefitPlan.MainMenu",
       "position": 12,
       "route": "medical/pricelists/items"
     }

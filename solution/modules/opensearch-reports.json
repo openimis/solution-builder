@@ -1,32 +1,32 @@
 {
   "menus": [
     {
-      "mainMenu": "Reports.MainMenu",
+      "mainMenu": "Analytics.MainMenu",
       "position": 1,
       "route": "individualReports"
     },
     {
-      "mainMenu": "Reports.MainMenu",
+      "mainMenu": "Analytics.MainMenu",
       "position": 2,
       "route": "groupReports"
     },
     {
-      "mainMenu": "Reports.MainMenu",
+      "mainMenu": "Analytics.MainMenu",
       "position": 3,
       "route": "beneficiaryReports"
     },
     {
-      "mainMenu": "Reports.MainMenu",
+      "mainMenu": "Analytics.MainMenu",
       "position": 5,
       "route": "grievanceReports"
     },
     {
-      "mainMenu": "Reports.MainMenu",
+      "mainMenu": "Analytics.MainMenu",
       "position": 4,
       "route": "dataUpdatesReports"
     },
     {
-      "mainMenu": "Reports.MainMenu",
+      "mainMenu": "Analytics.MainMenu",
       "position": 6,
       "route": "dashboardConfiguration"
     }

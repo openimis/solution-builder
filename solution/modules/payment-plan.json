@@ -1,8 +1,8 @@
 {
   "menus": [
     {
-      "mainMenu": "SchemeAdministration.MainMenu",
-      "position": 3,
+      "mainMenu": "BenefitPlan.MainMenu",
+      "position": 5,
       "route": "paymentPlans",
       "icon": "PriceChange"
     }

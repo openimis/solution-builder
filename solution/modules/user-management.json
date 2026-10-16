@@ -2,15 +2,14 @@
   "menus": [
 
       {
-        "mainMenu": "UserManagement.MainMenu",
+        "mainMenu": "Administration.MainMenu",
         "position": 2,
         "route": "admin/users"
       },
       {
-        "mainMenu": "UserManagement.MainMenu",
+        "mainMenu": "Administration.MainMenu",
         "position": 1,
-        "route": "roles",
-        "withDivider": true
+        "route": "roles"
       }
   
   ],

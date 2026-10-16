@@ -1,17 +1,18 @@
 {
   "menus": [
     {
-      "mainMenu": "Payments.MainMenu",
+      "mainMenu": "Accounting.MainMenu",
       "position": 52,
       "route": "bills",
       "icon": "CorporateFare",
-      "withDivider": true
+      "group": "Invoice"
     },
     {
-      "mainMenu": "Payments.MainMenu",
+      "mainMenu": "Accounting.MainMenu",
       "position": 55,
       "route": "payment/paymentsInvoice",
-      "icon": "Receipt"
+      "icon": "Receipt",
+      "group": "Invoice"
     }
   ],
   "fePackages": [

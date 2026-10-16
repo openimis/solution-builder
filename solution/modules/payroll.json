@@ -1,23 +1,22 @@
 {
   "menus": [
     {
-      "mainMenu": "Payments.MainMenu",
+      "mainMenu": "Accounting.MainMenu",
       "position": 14,
-      "route": "payrollsReconciled",
-      "withDivider": true
+      "route": "payrollsReconciled"
     },
     {
-      "mainMenu": "Payments.MainMenu",
+      "mainMenu": "Accounting.MainMenu",
       "position": 13,
       "route": "payrollsApproved"
     },
     {
-      "mainMenu": "Payments.MainMenu",
+      "mainMenu": "Accounting.MainMenu",
       "position": 12,
       "route": "payrollsPending"
     },
     {
-      "mainMenu": "Payments.MainMenu",
+      "mainMenu": "Accounting.MainMenu",
       "position": 11,
       "route": "payrolls"
     }

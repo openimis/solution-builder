@@ -182,6 +182,43 @@ function getFePackageConf(name, definition, branch, forceBranch=false, packageMo
 }
 
 
+// The fe-core module configuration is emitted as a Django fixture whose
+// `config` field is a JSON *string*. That fixture is the reference: menu
+// grouping (workbench.js) and logo/theme injection both rewrite it after it is
+// built, so consolidated-solution.json mirrors it instead of keeping its own
+// copy of the pre-rewrite menus.
+const CORE_CONFIG_FIXTURE = 'fixtures/module-configuration-core.json';
+
+function getCoreFeConfigRecord(output) {
+    const fixture = output && output[CORE_CONFIG_FIXTURE];
+    if (!Array.isArray(fixture)) return null;
+    return fixture.find(record =>
+        record && record.fields && record.fields.module === 'fe-core' && typeof record.fields.config === 'string'
+    ) || null;
+}
+
+// Parsed fe-core config ({ menus, logo?, theme? }) as it stands in the fixture.
+function readCoreFeConfig(output) {
+    const record = getCoreFeConfigRecord(output);
+    if (!record) return null;
+    try {
+        return JSON.parse(record.fields.config);
+    } catch (e) {
+        console.warn("⚠️ Failed to parse fe-core config from the core module configuration fixture:", e.message);
+        return null;
+    }
+}
+
+// Re-reads the fixture into consolidated-solution.json's `coreFeConfig`. Call
+// this after anything rewrites the fixture, so the dump stays aligned with it.
+function syncConsolidatedCoreFeConfig(output) {
+    const consolidated = output && output['consolidated-solution.json'];
+    if (!consolidated) return output;
+    const config = readCoreFeConfig(output);
+    if (config) consolidated.coreFeConfig = config;
+    return output;
+}
+
 function makeCoreModuleConfiguration(menusDict) {
     const config = {
         menus: menusDict.sort((a, b) => (a.position || 0) - (b.position || 0))
@@ -452,7 +489,7 @@ async function processSolutions(
 
         // Inject logo/theme using resolved paths
         await injectLogoTheme(coreModuleConfig[0], logoPath, themePath);
-        output['fixtures/module-configuration-core.json'] = coreModuleConfig;
+        output[CORE_CONFIG_FIXTURE] = coreModuleConfig;
     }
     if (Object.keys(merged.rolesDict).length > 0) {
    
@@ -468,7 +505,7 @@ async function processSolutions(
         modules: merged.moduleRefDict,
         confluenceLabel,
         roles: merged.rolesDict,
-        coreFeConfig: merged.menusDict,
+        coreFeConfig: readCoreFeConfig(output) || { menus: merged.menusDict },
         bePackages: {
             list: [...merged.bePackagesList],
             definitions: merged.bePackagesDefDict
@@ -949,4 +986,4 @@ async function createZip(data, filename) {
 
 
 
-module.exports = { mergeSolutions, getAbsolutePath, createZip, processSolutions, createSolutionDirectory };
+module.exports = { mergeSolutions, getAbsolutePath, createZip, processSolutions, createSolutionDirectory, readCoreFeConfig, syncConsolidatedCoreFeConfig };

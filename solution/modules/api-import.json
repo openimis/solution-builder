@@ -4,7 +4,8 @@
       "mainMenu": "ClientRegistry.MainMenu",
       "position": 1,
       "id": "individual.api_imports",
-      "icon": "Publish"
+      "icon": "Publish",
+      "group": "Individual"
     }
   ],
   "fePackages": [],

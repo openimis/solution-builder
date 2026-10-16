@@ -1,19 +1,19 @@
 {
   "menus": [
     {
-      "mainMenu": "Tasks.MainMenu",
+      "mainMenu": "Workspace.MainMenu",
       "position": 2,
       "route": "tasks",
       "icon": "AssignmentTurnedIn"
     },
     {
-      "mainMenu": "Tasks.MainMenu",
+      "mainMenu": "Workspace.MainMenu",
       "position": 1,
       "route": "allTasks",
       "icon": "Assignment"
     },
     {
-      "mainMenu": "UserManagement.MainMenu",
+      "mainMenu": "Workspace.MainMenu",
       "position": 11,
       "route": "tasks/groups",
       "icon": "AssignmentInd"

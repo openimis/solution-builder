@@ -1,7 +1,8 @@
 {
   "menus": [
     {
-      "mainMenu": "Reports.MainMenu",
+      "mainMenu": "Analytics.MainMenu",
+      "text": "Analytics",
       "position": 2,
       "id": "tools.reports",
       "icon": "TableChart"

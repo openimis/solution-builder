@@ -1,7 +1,7 @@
 {
   "menus": [
     {
-      "mainMenu": "SchemeAdministration.MainMenu",
+      "mainMenu": "BenefitPlan.MainMenu",
       "position": 1,
       "route": "admin/products",
       "icon": "Spa"

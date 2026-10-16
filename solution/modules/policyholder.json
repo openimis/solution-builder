@@ -1,17 +1,16 @@
 {
   "menus": [
     {
-      "mainMenu": "SchemeAdministration.MainMenu",
+      "mainMenu": "Enrolment.MainMenu",
       "position": 33,
       "route": "policyHolders",
       "icon": "Business"
     },
     {
-      "mainMenu": "SchemeAdministration.MainMenu",
+      "mainMenu": "Enrolment.MainMenu",
       "position": 34,
       "route": "policyHolderUsers",
-      "icon": "Business",
-      "withDivider": true
+      "icon": "Business"
     }
   ],
   "fePackages": [

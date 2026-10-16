@@ -7,9 +7,10 @@
   ],
   "menus": [
     {
-      "mainMenu": "Administration.MainMenu",
+      "mainMenu": "BenefitPlan.MainMenu",
       "position": 3,
-      "route": "location/healthFacilities"
+      "route": "location/healthFacilities",
+      "group": "Providers"
     }
   ],
   "initData": [

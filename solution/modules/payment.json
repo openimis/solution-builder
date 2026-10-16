@@ -1,7 +1,7 @@
 {
   "menus": [
     {
-      "mainMenu": "Payments.MainMenu",
+      "mainMenu": "Accounting.MainMenu",
       "position": 10,
       "route": "payment/payments",
       "icon": "Person"
