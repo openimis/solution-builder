@@ -1,0 +1,26 @@
+{"roles": [{
+  "code": "policyholder_user",
+  "name": "Policy Holder User",
+  "permissions": [
+    "policyholder.policyholder_portal",
+    "policyholder.policyholderinsuree_portal",
+    "policyholder.create_policyholderinsuree_portal",
+    "policyholder.update_policyholderinsuree_portal",
+    "policyholder.delete_policyholderinsuree_portal",
+    "policyholder.replace_policyholderinsuree_portal",
+    "policyholder.policyholderuser_portal",
+    "policyholder.create_policyholderuser_portal",
+    "policyholder.update_policyholderuser_portal",
+    "policyholder.delete_policyholderuser_portal",
+    "policyholder.replace_policyholderuser_portal",
+    "policyholder.policyholdercontributionplanbundle_portal",
+    "policyholder.payment_portal",
+    "policyholder.insuree_policy_portal",
+    "contract.contract_policyholder_portal",
+    "contract.create_contract_policyholder_portal",
+    "contract.update_contract_policyholder_portal",
+    "contract.submit_contract_policyholder_portal",
+    "contract.amend_contract_policyholder_portal",
+    "core.users_profile"
+  ]
+}]}

@@ -12,7 +12,8 @@
     "../roles/SHI/accountant-role.json",
     "../roles/SHI/medical_officer-role.json",
     "../roles/SHI/scheme_administrator-role.json",
-    "../roles/SHI/local_admin-role.json"
+    "../roles/SHI/local_admin-role.json",
+    "../roles/SHI/policyholder_user-role.json"
   ],
   "services":["db"],
   "fePackageSource":{
