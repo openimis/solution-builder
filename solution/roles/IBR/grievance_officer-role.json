@@ -1,0 +1,14 @@
+{"roles": [{
+    "code": "grievance_officer",
+    "name": "Grievance Officer",
+    "permissions": [
+      "grievance_social_protection.tickets",
+      "grievance_social_protection.create_tickets",
+      "grievance_social_protection.update_tickets",
+      "grievance_social_protection.comments",
+      "grievance_social_protection.create_comment",
+      "grievance_social_protection.resolve_grievance",
+      "grievance_social_protection.uncategorized_category_tickets",
+      "grievance_social_protection.update_uncategorized_category_tickets"
+    ]
+  }]}

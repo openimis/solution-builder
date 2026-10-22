@@ -12,7 +12,13 @@
     "../roles/IBR/program_manager-role.json",
     "../roles/IBR/case_worker-role.json",
     "../roles/IBR/data_analyst-role.json",
-    "../roles/IBR/finance_officer-role.json"
+    "../roles/IBR/finance_officer-role.json",
+    "../roles/IBR/registry_analyst-role.json",
+    "../roles/IBR/programme_officer-role.json",
+    "../roles/IBR/data_steward-role.json",
+    "../roles/IBR/task_approver-role.json",
+    "../roles/IBR/grievance_officer-role.json",
+    "../roles/IBR/registry_admin-role.json"
   ],
   "services":["db"],
   "moduleConfiguration": {

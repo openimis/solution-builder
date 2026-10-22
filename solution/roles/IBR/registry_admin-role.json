@@ -1,0 +1,21 @@
+{"roles": [{
+    "code": "registry_admin",
+    "name": "Registry Admin",
+    "permissions": [
+      "core.users",
+      "core.create_users",
+      "core.update_users",
+      "core.delete_users",
+      "core.users_profile",
+      "core.roles",
+      "core.create_roles",
+      "core.update_roles",
+      "core.delete_roles",
+      "core.duplicate_roles",
+      "core.replace_roles",
+      "tasks_management.task_group_search",
+      "tasks_management.task_group_create",
+      "tasks_management.task_group_update",
+      "tasks_management.task_group_delete"
+    ]
+  }]}

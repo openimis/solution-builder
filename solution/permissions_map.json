@@ -336,6 +336,7 @@
     "tasks_management.task_group_search": "190001",
     "tasks_management.task_group_update": "190003",
     "tasks_management.task_search": "191001",
+    "tasks_management.task_search_all": "191005",
     "tasks_management.task_update": "191003",
     "tools.extracts_master_data": "131101",
     "tools.extracts_officer_feedbacks": "131106",

@@ -1,0 +1,8 @@
+{"roles": [{
+    "code": "registry_analyst",
+    "name": "Registry Analyst",
+    "permissions": [
+      "social_protection.benefit_plan_search",
+      "opensearch_reports.opensearch_dashboard_search"
+    ]
+  }]}

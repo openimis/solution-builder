@@ -280,6 +280,25 @@ async function mergeAndSortFixtures(inputFiles, output) {
     delete output['fixtures/roles-right.json'];
   }
 
+  // Static role fixtures in initData usually mirror the generated ones; keep one
+  // entry per role (by name, which role rights reference) and per role right
+  // (right_id + role). First one wins so a static role keeps its existing uuid.
+  const dedupeKeys = {
+    'core.role': entry => entry.fields.name,
+    'core.roleright': entry => `${entry.fields.right_id}|${JSON.stringify(entry.fields.role)}`
+  };
+  for (const [model, keyOf] of Object.entries(dedupeKeys)) {
+    if (fixturesByModel[model]) {
+      const seen = new Set();
+      fixturesByModel[model] = fixturesByModel[model].filter(entry => {
+        const key = keyOf(entry);
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+  }
+
   // Sort and save each model's fixtures
   for (const model in fixturesByModel) {
     // Sort entries by pk (primary key) if it exists
