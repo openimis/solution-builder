@@ -1,0 +1,12 @@
+{
+  "roles": [
+    {
+      "code": "ibr_monitoring_analyst",
+      "name": "IBR Monitoring Analyst",
+      "permissions": [
+        "social_protection.benefit_plan_search",
+        "opensearch_reports.opensearch_dashboard_search"
+      ]
+    }
+  ]
+}

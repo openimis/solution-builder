@@ -1,0 +1,11 @@
+{
+  "roles": [
+    {
+      "code": "ibr_enrolment_verifier",
+      "name": "IBR Enrolment Verifier (service account)",
+      "permissions": [
+        "social_protection.beneficiary_search"
+      ]
+    }
+  ]
+}

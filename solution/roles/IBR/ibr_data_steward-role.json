@@ -1,0 +1,19 @@
+{
+  "roles": [
+    {
+      "code": "ibr_data_steward",
+      "name": "IBR Data Steward",
+      "permissions": [
+        "individual.individual_search",
+        "individual.individual_create",
+        "individual.individual_update",
+        "individual.group_search",
+        "individual.group_create",
+        "individual.group_update",
+        "social_protection.beneficiary_search",
+        "tasks_management.task_search",
+        "deduplication.create_deduplication_review"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "roles": [
+    {
+      "code": "ibr_data_importer",
+      "name": "IBR Data Importer",
+      "permissions": [
+        "social_protection.benefit_plan_search",
+        "individual.individual_create",
+        "api_etl.api_etl_rule",
+        "api_etl.execute_api_etl_rule"
+      ]
+    }
+  ]
+}

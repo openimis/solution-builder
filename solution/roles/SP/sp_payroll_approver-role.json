@@ -1,0 +1,13 @@
+{
+  "roles": [
+    {
+      "code": "sp_payroll_approver",
+      "name": "SP Payroll Approver (checker)",
+      "permissions": [
+        "payroll.payroll_search",
+        "tasks_management.task_search",
+        "tasks_management.task_update"
+      ]
+    }
+  ]
+}

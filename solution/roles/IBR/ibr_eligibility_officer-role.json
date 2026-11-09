@@ -1,0 +1,14 @@
+{
+  "roles": [
+    {
+      "code": "ibr_eligibility_officer",
+      "name": "IBR Eligibility Officer",
+      "permissions": [
+        "individual.individual_search",
+        "individual.group_search",
+        "social_protection.beneficiary_search",
+        "social_protection.benefit_plan_search"
+      ]
+    }
+  ]
+}

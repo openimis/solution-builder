@@ -1,0 +1,11 @@
+{
+  "roles": [
+    {
+      "code": "ibr_partner_aggregate_reader",
+      "name": "IBR Partner Aggregate Reader (service account)",
+      "permissions": [
+        "social_protection.benefit_plan_search"
+      ]
+    }
+  ]
+}

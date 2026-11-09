@@ -1,0 +1,15 @@
+{
+  "roles": [
+    {
+      "code": "sp_geography_steward",
+      "name": "SP Geography Steward",
+      "permissions": [
+        "location.locations",
+        "location.create_locations",
+        "location.create_region_locations",
+        "location.edit_locations",
+        "location.move_location"
+      ]
+    }
+  ]
+}

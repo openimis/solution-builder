@@ -1,0 +1,11 @@
+{
+  "roles": [
+    {
+      "code": "ibr_governance_observer",
+      "name": "IBR Governance Observer",
+      "permissions": [
+        "social_protection.benefit_plan_search"
+      ]
+    }
+  ]
+}

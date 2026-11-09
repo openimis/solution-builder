@@ -1,0 +1,12 @@
+{
+  "roles": [
+    {
+      "code": "sp_eligibility_rule_admin",
+      "name": "SP Eligibility Rule Admin",
+      "permissions": [
+        "calculation.calculation_rule",
+        "calculation.update_calculation_rule"
+      ]
+    }
+  ]
+}

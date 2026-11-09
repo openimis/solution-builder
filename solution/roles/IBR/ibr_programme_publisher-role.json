@@ -1,0 +1,13 @@
+{
+  "roles": [
+    {
+      "code": "ibr_programme_publisher",
+      "name": "IBR Programme Publisher (service account)",
+      "permissions": [
+        "social_protection.benefit_plan_search",
+        "api_etl.api_etl_rule",
+        "api_etl.execute_api_etl_rule"
+      ]
+    }
+  ]
+}

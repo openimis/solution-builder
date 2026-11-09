@@ -1,0 +1,18 @@
+{
+  "roles": [
+    {
+      "code": "ibr_data_protection_officer",
+      "name": "IBR Data Protection Officer",
+      "permissions": [
+        "individual.individual_search",
+        "individual.group_search",
+        "grievance_social_protection.tickets",
+        "grievance_social_protection.create_tickets",
+        "grievance_social_protection.update_tickets",
+        "grievance_social_protection.comments",
+        "grievance_social_protection.create_comment",
+        "grievance_social_protection.resolve_grievance"
+      ]
+    }
+  ]
+}

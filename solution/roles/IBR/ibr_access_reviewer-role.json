@@ -1,0 +1,12 @@
+{
+  "roles": [
+    {
+      "code": "ibr_access_reviewer",
+      "name": "IBR Access Reviewer",
+      "permissions": [
+        "core.roles",
+        "core.users"
+      ]
+    }
+  ]
+}

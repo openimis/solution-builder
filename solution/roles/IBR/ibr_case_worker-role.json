@@ -1,0 +1,17 @@
+{
+  "roles": [
+    {
+      "code": "ibr_case_worker",
+      "name": "IBR Case Worker",
+      "permissions": [
+        "individual.individual_search",
+        "individual.group_search",
+        "social_protection.beneficiary_search",
+        "social_protection.benefit_plan_search",
+        "grievance_social_protection.tickets",
+        "grievance_social_protection.comments",
+        "grievance_social_protection.create_comment"
+      ]
+    }
+  ]
+}

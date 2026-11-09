@@ -1,0 +1,13 @@
+{
+  "roles": [
+    {
+      "code": "ibr_support_agent",
+      "name": "IBR Support Agent",
+      "permissions": [
+        "grievance_social_protection.tickets",
+        "grievance_social_protection.comments",
+        "grievance_social_protection.create_comment"
+      ]
+    }
+  ]
+}

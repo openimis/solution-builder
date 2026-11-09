@@ -1168,5 +1168,1968 @@
         "Grievance Officer"
       ]
     }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122001",
+      "audit_user_id": null,
+      "role": [
+        "IBR IAM Role Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122002",
+      "audit_user_id": null,
+      "role": [
+        "IBR IAM Role Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122003",
+      "audit_user_id": null,
+      "role": [
+        "IBR IAM Role Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121701",
+      "audit_user_id": null,
+      "role": [
+        "IBR IAM User Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121702",
+      "audit_user_id": null,
+      "role": [
+        "IBR IAM User Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121703",
+      "audit_user_id": null,
+      "role": [
+        "IBR IAM User Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "122001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Access Reviewer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121701",
+      "audit_user_id": null,
+      "role": [
+        "IBR Access Reviewer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Registration Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159002",
+      "audit_user_id": null,
+      "role": [
+        "IBR Registration Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Registration Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180002",
+      "audit_user_id": null,
+      "role": [
+        "IBR Registration Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Registration Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Steward"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159002",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Steward"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159003",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Steward"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Steward"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180002",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Steward"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180003",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Steward"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Steward"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Steward"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "172001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Steward"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Task Approver (checker)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191003",
+      "audit_user_id": null,
+      "role": [
+        "IBR Task Approver (checker)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Task Approver (checker)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Task Approver (checker)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Task Approver (checker)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Task Approver (checker)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Senior Approver"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191003",
+      "audit_user_id": null,
+      "role": [
+        "IBR Senior Approver"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Senior Approver"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Senior Approver"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Senior Approver"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Senior Approver"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Importer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159002",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Importer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "953001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Importer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "953002",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Importer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Programme Publisher (service account)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "953001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Programme Publisher (service account)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "953002",
+      "audit_user_id": null,
+      "role": [
+        "IBR Programme Publisher (service account)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Enrolment Verifier (service account)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Auditor"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Auditor"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Auditor"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Auditor"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Auditor"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "190001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Auditor"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Programme Administrator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Programme Administrator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Programme Administrator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Programme Administrator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Eligibility Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Eligibility Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Eligibility Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Eligibility Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Case Worker"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Case Worker"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Case Worker"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Case Worker"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127000",
+      "audit_user_id": null,
+      "role": [
+        "IBR Case Worker"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127004",
+      "audit_user_id": null,
+      "role": [
+        "IBR Case Worker"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127005",
+      "audit_user_id": null,
+      "role": [
+        "IBR Case Worker"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Spot Checker"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Spot Checker"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Spot Checker"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Spot Checker"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127005",
+      "audit_user_id": null,
+      "role": [
+        "IBR Spot Checker"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Field Supervisor"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Field Supervisor"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Field Supervisor"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Field Supervisor"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191003",
+      "audit_user_id": null,
+      "role": [
+        "IBR Field Supervisor"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Scheme Configurator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160002",
+      "audit_user_id": null,
+      "role": [
+        "IBR Scheme Configurator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160003",
+      "audit_user_id": null,
+      "role": [
+        "IBR Scheme Configurator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121901",
+      "audit_user_id": null,
+      "role": [
+        "IBR Scheme Configurator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121902",
+      "audit_user_id": null,
+      "role": [
+        "IBR Scheme Configurator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121906",
+      "audit_user_id": null,
+      "role": [
+        "IBR Scheme Configurator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121903",
+      "audit_user_id": null,
+      "role": [
+        "IBR Scheme Configurator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121905",
+      "audit_user_id": null,
+      "role": [
+        "IBR Scheme Configurator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Fraud Investigator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Fraud Investigator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Fraud Investigator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Fraud Investigator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127000",
+      "audit_user_id": null,
+      "role": [
+        "IBR Fraud Investigator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Fraud Investigator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127004",
+      "audit_user_id": null,
+      "role": [
+        "IBR Fraud Investigator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127005",
+      "audit_user_id": null,
+      "role": [
+        "IBR Fraud Investigator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Fraud Investigator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191002",
+      "audit_user_id": null,
+      "role": [
+        "IBR Fraud Investigator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127000",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127002",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127004",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127005",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127006",
+      "audit_user_id": null,
+      "role": [
+        "IBR Data Protection Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127000",
+      "audit_user_id": null,
+      "role": [
+        "IBR Support Agent"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127004",
+      "audit_user_id": null,
+      "role": [
+        "IBR Support Agent"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127005",
+      "audit_user_id": null,
+      "role": [
+        "IBR Support Agent"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Governance Observer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Monitoring Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "199001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Monitoring Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Partner Aggregate Reader (service account)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Break Glass (temporary)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Break Glass (temporary)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Break Glass (temporary)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "IBR Break Glass (temporary)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "SP Programme Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160002",
+      "audit_user_id": null,
+      "role": [
+        "SP Programme Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160003",
+      "audit_user_id": null,
+      "role": [
+        "SP Programme Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "SP Programme Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200001",
+      "audit_user_id": null,
+      "role": [
+        "SP Programme Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200001",
+      "audit_user_id": null,
+      "role": [
+        "SP Payment Cycle Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200002",
+      "audit_user_id": null,
+      "role": [
+        "SP Payment Cycle Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200003",
+      "audit_user_id": null,
+      "role": [
+        "SP Payment Cycle Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "SP Payment Cycle Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "SP Payment Cycle Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "202001",
+      "audit_user_id": null,
+      "role": [
+        "SP Payroll Preparer (maker)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "202002",
+      "audit_user_id": null,
+      "role": [
+        "SP Payroll Preparer (maker)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "201001",
+      "audit_user_id": null,
+      "role": [
+        "SP Payroll Preparer (maker)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200001",
+      "audit_user_id": null,
+      "role": [
+        "SP Payroll Preparer (maker)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "202001",
+      "audit_user_id": null,
+      "role": [
+        "SP Payroll Approver (checker)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191001",
+      "audit_user_id": null,
+      "role": [
+        "SP Payroll Approver (checker)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191003",
+      "audit_user_id": null,
+      "role": [
+        "SP Payroll Approver (checker)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "202001",
+      "audit_user_id": null,
+      "role": [
+        "SP Disbursement Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "201001",
+      "audit_user_id": null,
+      "role": [
+        "SP Payment Point Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "201002",
+      "audit_user_id": null,
+      "role": [
+        "SP Payment Point Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "201003",
+      "audit_user_id": null,
+      "role": [
+        "SP Payment Point Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "201001",
+      "audit_user_id": null,
+      "role": [
+        "SP Payment Point Manager"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "206001",
+      "audit_user_id": null,
+      "role": [
+        "SP Reconciliation Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "206002",
+      "audit_user_id": null,
+      "role": [
+        "SP Reconciliation Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "202001",
+      "audit_user_id": null,
+      "role": [
+        "SP Reconciliation Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "191001",
+      "audit_user_id": null,
+      "role": [
+        "SP Payment Dedup Reviewer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "202001",
+      "audit_user_id": null,
+      "role": [
+        "SP Payment Dedup Reviewer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "172002",
+      "audit_user_id": null,
+      "role": [
+        "SP Payment Dedup Reviewer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "200001",
+      "audit_user_id": null,
+      "role": [
+        "SP Finance Auditor"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "202001",
+      "audit_user_id": null,
+      "role": [
+        "SP Finance Auditor"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "201001",
+      "audit_user_id": null,
+      "role": [
+        "SP Finance Auditor"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "206001",
+      "audit_user_id": null,
+      "role": [
+        "SP Finance Auditor"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "153001",
+      "audit_user_id": null,
+      "role": [
+        "SP Eligibility Rule Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "153003",
+      "audit_user_id": null,
+      "role": [
+        "SP Eligibility Rule Admin"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121901",
+      "audit_user_id": null,
+      "role": [
+        "SP Geography Steward"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121902",
+      "audit_user_id": null,
+      "role": [
+        "SP Geography Steward"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121906",
+      "audit_user_id": null,
+      "role": [
+        "SP Geography Steward"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121903",
+      "audit_user_id": null,
+      "role": [
+        "SP Geography Steward"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121905",
+      "audit_user_id": null,
+      "role": [
+        "SP Geography Steward"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "953001",
+      "audit_user_id": null,
+      "role": [
+        "SP Migration Engineer (temporary)"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "953002",
+      "audit_user_id": null,
+      "role": [
+        "SP Migration Engineer (temporary)"
+      ]
+    }
   }
 ]

@@ -1,0 +1,15 @@
+{
+  "roles": [
+    {
+      "code": "ibr_registration_officer",
+      "name": "IBR Registration Officer",
+      "permissions": [
+        "individual.individual_search",
+        "individual.individual_create",
+        "individual.group_search",
+        "individual.group_create",
+        "social_protection.beneficiary_search"
+      ]
+    }
+  ]
+}

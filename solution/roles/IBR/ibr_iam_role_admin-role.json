@@ -1,0 +1,13 @@
+{
+  "roles": [
+    {
+      "code": "ibr_iam_role_admin",
+      "name": "IBR IAM Role Admin",
+      "permissions": [
+        "core.roles",
+        "core.create_roles",
+        "core.update_roles"
+      ]
+    }
+  ]
+}

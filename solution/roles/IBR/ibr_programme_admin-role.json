@@ -1,0 +1,14 @@
+{
+  "roles": [
+    {
+      "code": "ibr_programme_admin",
+      "name": "IBR Programme Administrator",
+      "permissions": [
+        "social_protection.benefit_plan_search",
+        "social_protection.beneficiary_search",
+        "individual.individual_search",
+        "individual.group_search"
+      ]
+    }
+  ]
+}

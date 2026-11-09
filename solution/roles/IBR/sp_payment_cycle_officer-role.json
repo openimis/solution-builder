@@ -1,0 +1,15 @@
+{
+  "roles": [
+    {
+      "code": "sp_payment_cycle_officer",
+      "name": "SP Payment Cycle Officer",
+      "permissions": [
+        "payment_cycle.payment_cycle",
+        "payment_cycle.create_payment_cycle",
+        "payment_cycle.update_payment_cycle",
+        "social_protection.benefit_plan_search",
+        "social_protection.beneficiary_search"
+      ]
+    }
+  ]
+}

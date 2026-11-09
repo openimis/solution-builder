@@ -1,0 +1,15 @@
+{
+  "roles": [
+    {
+      "code": "ibr_spot_checker",
+      "name": "IBR Spot Checker",
+      "permissions": [
+        "individual.individual_search",
+        "individual.group_search",
+        "social_protection.beneficiary_search",
+        "grievance_social_protection.create_tickets",
+        "grievance_social_protection.create_comment"
+      ]
+    }
+  ]
+}

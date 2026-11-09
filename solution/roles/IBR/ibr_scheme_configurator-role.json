@@ -1,0 +1,18 @@
+{
+  "roles": [
+    {
+      "code": "ibr_scheme_configurator",
+      "name": "IBR Scheme Configurator",
+      "permissions": [
+        "social_protection.benefit_plan_search",
+        "social_protection.benefit_plan_create",
+        "social_protection.benefit_plan_update",
+        "location.locations",
+        "location.create_locations",
+        "location.create_region_locations",
+        "location.edit_locations",
+        "location.move_location"
+      ]
+    }
+  ]
+}

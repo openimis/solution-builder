@@ -1,0 +1,15 @@
+{
+  "roles": [
+    {
+      "code": "ibr_field_supervisor",
+      "name": "IBR Field Supervisor",
+      "permissions": [
+        "individual.individual_search",
+        "individual.group_search",
+        "social_protection.beneficiary_search",
+        "tasks_management.task_search",
+        "tasks_management.task_update"
+      ]
+    }
+  ]
+}
