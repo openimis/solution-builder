@@ -1,6 +1,6 @@
 {"roles": [{
   "code": "enrolment_officer",
-  "name": "Enrolment Officer",
+  "name": "Claim-AI Enrolment Officer",
   "permissions": [
     "insuree.create_families",
     "insuree.create_insurees",

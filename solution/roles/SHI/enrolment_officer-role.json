@@ -1,6 +1,6 @@
 {"roles": [{
   "code": "enrolment_officer",
-  "name": "Enrolment Officer",
+  "name": "SHI Enrolment & Policy Officer",
   "permissions": [
     "insuree.create_families",
     "insuree.create_insurees",

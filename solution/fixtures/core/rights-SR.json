@@ -265,19 +265,6 @@
       "validity_from": "2025-01-01T00:00:00Z",
       "validity_to": null,
       "legacy_id": null,
-      "right_id": "191005",
-      "audit_user_id": null,
-      "role": [
-        "Case Worker / Social Officer"
-      ]
-    }
-  },
-  {
-    "model": "core.roleright",
-    "fields": {
-      "validity_from": "2025-01-01T00:00:00Z",
-      "validity_to": null,
-      "legacy_id": null,
       "right_id": "191003",
       "audit_user_id": null,
       "role": [
@@ -408,19 +395,6 @@
       "validity_from": "2025-01-01T00:00:00Z",
       "validity_to": null,
       "legacy_id": null,
-      "right_id": "191005",
-      "audit_user_id": null,
-      "role": [
-        "Data Analyst"
-      ]
-    }
-  },
-  {
-    "model": "core.roleright",
-    "fields": {
-      "validity_from": "2025-01-01T00:00:00Z",
-      "validity_to": null,
-      "legacy_id": null,
       "right_id": "122001",
       "audit_user_id": null,
       "role": [
@@ -474,19 +448,6 @@
       "validity_to": null,
       "legacy_id": null,
       "right_id": "191001",
-      "audit_user_id": null,
-      "role": [
-        "Finance Officer"
-      ]
-    }
-  },
-  {
-    "model": "core.roleright",
-    "fields": {
-      "validity_from": "2025-01-01T00:00:00Z",
-      "validity_to": null,
-      "legacy_id": null,
-      "right_id": "191005",
       "audit_user_id": null,
       "role": [
         "Finance Officer"
@@ -838,19 +799,6 @@
       "validity_to": null,
       "legacy_id": null,
       "right_id": "191001",
-      "audit_user_id": null,
-      "role": [
-        "Program Manager"
-      ]
-    }
-  },
-  {
-    "model": "core.roleright",
-    "fields": {
-      "validity_from": "2025-01-01T00:00:00Z",
-      "validity_to": null,
-      "legacy_id": null,
-      "right_id": "191005",
       "audit_user_id": null,
       "role": [
         "Program Manager"
@@ -1345,19 +1293,6 @@
       "validity_to": null,
       "legacy_id": null,
       "right_id": "191001",
-      "audit_user_id": null,
-      "role": [
-        "Registry Administrator"
-      ]
-    }
-  },
-  {
-    "model": "core.roleright",
-    "fields": {
-      "validity_from": "2025-01-01T00:00:00Z",
-      "validity_to": null,
-      "legacy_id": null,
-      "right_id": "191005",
       "audit_user_id": null,
       "role": [
         "Registry Administrator"

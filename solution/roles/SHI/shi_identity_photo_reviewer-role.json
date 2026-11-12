@@ -6,9 +6,7 @@
       "permissions": [
         "insuree.insurees",
         "report.report",
-        "report.reports_pending_insurees",
-        "report.reports_rejected_photo",
-        "report.reports_insuree_without_photos"
+        "report.reports_families_insurees_overview"
       ]
     }
   ]

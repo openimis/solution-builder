@@ -224,11 +224,17 @@ function makeCoreModuleConfiguration(menusDict) {
         menus: menusDict.sort((a, b) => (a.position || 0) - (b.position || 0))
     };
 
+    // Fixed id, emitted as the top-level `pk` too: core.ModuleConfiguration has no
+    // natural key, so a loader can only update the existing row in place when the
+    // primary key is stable. A random id per build inserted a second fe-core row on
+    // every load, and get_or_default() then reads an arbitrary one (.first()).
+    const id = generateDeterministicUUID('core.moduleconfiguration:fe-core:fe');
     return [
         {
             model: 'core.moduleconfiguration',
+            pk: id,
             fields: {
-                id: uuidv4(),
+                id,
                 module: 'fe-core',
                 version: '1',
                 config: JSON.stringify(config, null, 2),

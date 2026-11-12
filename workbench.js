@@ -482,9 +482,13 @@ async function main() {
             console.error('❌ --packages and --force-branch are mutually exclusive');
             process.exit(1);
         }
+        // openIMIS release the solution sources are pinned to (solution/sources/*-sources.json).
+        // Compose fragments come from the same dist-dkr release branch unless --branch overrides it;
+        // ensureDistDkrRepo falls back to develop if the branch does not exist.
+        const RELEASE_BRANCH = 'release/26.10';
         const distDkrBranch = packageMode
-            ? 'release/26.04'
-            : (assemblyBranch || 'develop');
+            ? RELEASE_BRANCH
+            : (assemblyBranch || RELEASE_BRANCH);
         const solutions = {
           'coreMIS': './solution/solutions/coreMIS.json',
           'SHI': './solution/solutions/HF.json',

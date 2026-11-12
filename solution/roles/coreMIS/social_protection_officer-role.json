@@ -51,7 +51,6 @@
     "tasks_management.task_create",
     "tasks_management.task_group_search",
     "tasks_management.task_search",
-    "tasks_management.task_search_all",
     "tasks_management.task_update",
     "core.roles",
     "core.users",

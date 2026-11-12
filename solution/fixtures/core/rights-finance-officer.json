@@ -967,19 +967,6 @@
         "validity_from": "2025-06-06T10:12:31.954Z",
         "validity_to": null,
         "legacy_id": null,
-        "right_id": "191005",
-        "audit_user_id": null,
-        "role": [
-          "Finance Officer"
-        ]
-      }
-    },
-    {
-      "model": "core.roleright",
-      "fields": {
-        "validity_from": "2025-06-06T10:12:31.954Z",
-        "validity_to": null,
-        "legacy_id": null,
         "right_id": "190001",
         "audit_user_id": null,
         "role": [

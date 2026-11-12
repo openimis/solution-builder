@@ -8,7 +8,6 @@
     "social_protection.beneficiary_search",
     "grievance_social_protection.tickets",
     "opensearch_reports.opensearch_dashboard_search",
-    "tasks_management.task_search_all",
     "payroll.payroll_search",
     "core.roles",
     "core.users"

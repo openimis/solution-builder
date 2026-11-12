@@ -8,7 +8,6 @@
     "location.locations",
     "opensearch_reports.opensearch_dashboard_search",
     "tasks_management.task_search",
-    "tasks_management.task_search_all",
     "core.roles",
     "core.users",
     "core.users_profile"

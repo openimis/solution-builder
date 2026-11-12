@@ -44,7 +44,6 @@
   },
   "initData": [
     "../fixtures/core/roles-SHI.json",
-    "../fixtures/core/rights-SHI.json",
-    "../fixtures/claim/module-configuration-claim.json"
+    "../fixtures/core/rights-SHI.json"
   ]
 }

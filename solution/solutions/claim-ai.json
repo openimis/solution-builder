@@ -23,6 +23,5 @@
   "services": ["db"],
   "initData": [
     "../fixtures/core/roles-claimai.json",
-    "../fixtures/core/rights-claimai.json",
-    "../fixtures/claim/module-configuration-claim.json"
+    "../fixtures/core/rights-claimai.json"
   ]}

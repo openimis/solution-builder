@@ -1,6 +1,6 @@
 {"roles": [{
   "code": "accountant",
-  "name": "Accountant",
+  "name": "SHI Accountant",
   "permissions": [
     "payment.create_payments",
     "payment.payments",

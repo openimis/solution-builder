@@ -6,8 +6,7 @@
       "permissions": [
         "claim.claims",
         "claim.create_claims",
-        "claim.submit_claims",
-        "claim.update_claims"
+        "claim.submit_claims"
       ]
     }
   ]

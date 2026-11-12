@@ -382,19 +382,6 @@
         "validity_from": "2025-06-06T10:17:21.861Z",
         "validity_to": null,
         "legacy_id": null,
-        "right_id": "191005",
-        "audit_user_id": null,
-        "role": [
-          "Data Analyst"
-        ]
-      }
-    },
-    {
-      "model": "core.roleright",
-      "fields": {
-        "validity_from": "2025-06-06T10:17:21.861Z",
-        "validity_to": null,
-        "legacy_id": null,
         "right_id": "953001",
         "audit_user_id": null,
         "role": [

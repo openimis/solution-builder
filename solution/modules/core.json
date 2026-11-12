@@ -16,6 +16,7 @@
     "cache"
   ],
   "rights":[
-     "core.enable_viewing_masked_data"
+     "core.enable_viewing_masked_data",
+     "core.scheduled_jobs"
   ]
 }

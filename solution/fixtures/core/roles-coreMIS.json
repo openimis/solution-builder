@@ -3,7 +3,7 @@
     "model": "core.role",
     "fields": {
       "uuid": "55063f63-4b40-4b26-b799-1fab4ceeeddf",
-      "name": "Accountant",
+      "name": "CoreMIS Accountant",
       "alt_language": null,
       "is_system": 0,
       "is_blocked": false,

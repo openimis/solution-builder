@@ -9,7 +9,6 @@
     "grievance_social_protection.tickets",
     "opensearch_reports.opensearch_dashboard_search",
     "payroll.payroll_search",
-    "tasks_management.task_search",
-    "tasks_management.task_search_all"
+    "tasks_management.task_search"
   ]
 }]}

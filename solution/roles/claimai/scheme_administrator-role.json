@@ -1,6 +1,6 @@
 {"roles": [{
   "code": "scheme_administrator",
-  "name": "Scheme Administrator",
+  "name": "Claim-AI Scheme Administrator",
   "permissions": [
     "product.products",
     "product.products_add",

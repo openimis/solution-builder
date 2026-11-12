@@ -3,7 +3,7 @@
     "model": "core.role",
     "fields": {
       "uuid": "684d1d43-9fda-4025-ab50-60488d109715",
-      "name": "Accountant",
+      "name": "SHI Accountant",
       "alt_language": null,
       "is_system": 0,
       "is_blocked": false,
@@ -17,7 +17,7 @@
     "model": "core.role",
     "fields": {
       "uuid": "a1760539-bdc7-477d-b19a-2f83b84c2286",
-      "name": "Enrolment Officer",
+      "name": "SHI Enrolment & Policy Officer",
       "alt_language": null,
       "is_system": 0,
       "is_blocked": false,
@@ -45,7 +45,7 @@
     "model": "core.role",
     "fields": {
       "uuid": "b2a4e638-5657-4f83-b7e6-d58f14cf45dc",
-      "name": "Medical Officer",
+      "name": "SHI Medical Officer",
       "alt_language": null,
       "is_system": 0,
       "is_blocked": false,
@@ -59,7 +59,7 @@
     "model": "core.role",
     "fields": {
       "uuid": "53a2a798-2ce0-454a-9cff-e6cb883b5d82",
-      "name": "Scheme Administrator",
+      "name": "SHI Scheme Administrator",
       "alt_language": null,
       "is_system": 0,
       "is_blocked": false,

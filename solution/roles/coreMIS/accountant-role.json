@@ -1,6 +1,6 @@
 {"roles": [{
   "code": "accountant",
-  "name": "Accountant",
+  "name": "CoreMIS Accountant",
   "permissions": [
 
     "calculation.calculation_rule",

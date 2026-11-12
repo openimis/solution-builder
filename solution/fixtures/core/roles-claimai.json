@@ -3,7 +3,7 @@
     "model": "core.role",
     "fields": {
       "uuid": "31cde67a-2208-4021-b8b8-8d807a401af4",
-      "name": "Accountant",
+      "name": "Claim-AI Accountant",
       "alt_language": null,
       "is_system": 0,
       "is_blocked": false,
@@ -45,7 +45,7 @@
     "model": "core.role",
     "fields": {
       "uuid": "641ec87e-9aba-4643-be6b-949cef0e86ec",
-      "name": "Enrolment Officer",
+      "name": "Claim-AI Enrolment Officer",
       "alt_language": null,
       "is_system": 0,
       "is_blocked": false,
@@ -73,7 +73,7 @@
     "model": "core.role",
     "fields": {
       "uuid": "cc1069ea-2657-452b-b592-cdd1effadea8",
-      "name": "Scheme Administrator",
+      "name": "Claim-AI Scheme Administrator",
       "alt_language": null,
       "is_system": 0,
       "is_blocked": false,
