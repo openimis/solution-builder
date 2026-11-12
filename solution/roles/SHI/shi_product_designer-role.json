@@ -1,0 +1,14 @@
+{
+  "roles": [
+    {
+      "code": "shi_product_designer",
+      "name": "SHI Product / Benefit Designer",
+      "permissions": [
+        "product.products",
+        "product.products_add",
+        "product.products_edit",
+        "product.products_duplicate"
+      ]
+    }
+  ]
+}

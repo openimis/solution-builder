@@ -1,0 +1,20 @@
+{
+  "roles": [
+    {
+      "code": "shi_policyholder_manager",
+      "name": "SHI Policyholder Manager (scheme side)",
+      "permissions": [
+        "policyholder.policyholder",
+        "policyholder.create_policyholder",
+        "policyholder.update_policyholder",
+        "policyholder.policyholderinsuree",
+        "policyholder.policyholderuser",
+        "policyholder.policyholdercontributionplanbundle",
+        "policyholder.create_policyholderinsuree",
+        "policyholder.update_policyholderinsuree",
+        "policyholder.create_policyholdercontributionplan",
+        "policyholder.update_policyholdercontributionplan"
+      ]
+    }
+  ]
+}

@@ -82,5 +82,33 @@
       "validity_to": null,
       "legacy_id": null
     }
+  },
+  {
+    "model": "core.role",
+    "fields": {
+      "uuid": "719b9210-2fbe-c3ef-e8e2-2155d05a7ad3",
+      "name": "Claim-AI QA Reviewer",
+      "alt_language": null,
+      "is_system": 0,
+      "is_blocked": false,
+      "audit_user_id": null,
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null
+    }
+  },
+  {
+    "model": "core.role",
+    "fields": {
+      "uuid": "cf166515-3321-2374-1a20-2084709ce579",
+      "name": "Claim-AI Model Steward",
+      "alt_language": null,
+      "is_system": 0,
+      "is_blocked": false,
+      "audit_user_id": null,
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null
+    }
   }
 ]

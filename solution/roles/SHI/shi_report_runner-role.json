@@ -1,0 +1,17 @@
+{
+  "roles": [
+    {
+      "code": "shi_report_runner",
+      "name": "SHI Report Runner",
+      "permissions": [
+        "report.report",
+        "report.reports_primary_operational_indicator_policies",
+        "report.reports_primary_operational_indicators_claims",
+        "report.reports_derived_operational_indicators",
+        "report.reports_contribution_collection",
+        "report.reports_user_activity",
+        "report.reports_claim_overview_report"
+      ]
+    }
+  ]
+}

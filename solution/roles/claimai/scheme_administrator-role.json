@@ -11,7 +11,7 @@
     "contribution_plan.create_contributionplan",
     "contribution_plan.update_contributionplan",
     "policyholder.policyholder",
-    "healthfacility.healthFacilities",
+    "location.health_facilities",
     "location.locations",
     "core.roles",
     "core.users"

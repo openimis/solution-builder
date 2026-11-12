@@ -1,0 +1,15 @@
+{
+  "roles": [
+    {
+      "code": "shi_identity_photo_reviewer",
+      "name": "SHI Identity / Photo Reviewer",
+      "permissions": [
+        "insuree.insurees",
+        "report.report",
+        "report.reports_pending_insurees",
+        "report.reports_rejected_photo",
+        "report.reports_insuree_without_photos"
+      ]
+    }
+  ]
+}

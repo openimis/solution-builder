@@ -1155,5 +1155,96 @@
         "Local Administrator"
       ]
     }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "111001",
+      "audit_user_id": null,
+      "role": [
+        "Claim-AI QA Reviewer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "111008",
+      "audit_user_id": null,
+      "role": [
+        "Claim-AI QA Reviewer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "111001",
+      "audit_user_id": null,
+      "role": [
+        "Claim-AI Model Steward"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "111009",
+      "audit_user_id": null,
+      "role": [
+        "Claim AI Reviewer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121101",
+      "audit_user_id": null,
+      "role": [
+        "Claim AI Reviewer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121101",
+      "audit_user_id": null,
+      "role": [
+        "Local Administrator"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "121101",
+      "audit_user_id": null,
+      "role": [
+        "Scheme Administrator"
+      ]
+    }
   }
 ]

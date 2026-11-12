@@ -1,0 +1,19 @@
+{
+  "roles": [
+    {
+      "code": "shi_provider_network_manager",
+      "name": "SHI Provider Network Manager",
+      "permissions": [
+        "location.health_facilities",
+        "location.create_health_facilities",
+        "location.edit_health_facilities",
+        "core.claim_administrator",
+        "core.create_claim_administrator",
+        "core.update_claim_administrator",
+        "core.enrolment_officers",
+        "core.create_enrolment_officers",
+        "core.update_enrolment_officers"
+      ]
+    }
+  ]
+}

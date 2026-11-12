@@ -1,0 +1,13 @@
+{
+  "roles": [
+    {
+      "code": "sp_beneficiary_status_officer",
+      "name": "SP Beneficiary Status Officer",
+      "permissions": [
+        "individual.individual_search",
+        "social_protection.beneficiary_search",
+        "social_protection.beneficiary_update"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "roles": [
+    {
+      "code": "shi_hf_receptionist",
+      "name": "SHI HF Receptionist",
+      "permissions": [
+        "insuree.insuree_inquire"
+      ]
+    }
+  ]
+}

@@ -21,6 +21,10 @@
         "core.update_claim_administrator",
         "core.delete_claim_administrator",
         "core.claim_administrator",
-        "core.create_claim_administrator"
+        "core.create_claim_administrator",
+        "location.health_facilities",
+        "location.create_health_facilities",
+        "location.edit_health_facilities",
+        "location.delete_health_facilities"
   ]
 }

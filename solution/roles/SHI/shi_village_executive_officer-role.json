@@ -1,0 +1,12 @@
+{
+  "roles": [
+    {
+      "code": "shi_village_executive_officer",
+      "name": "SHI Village Executive Officer",
+      "permissions": [
+        "insuree.insurees",
+        "insuree.insuree_inquire"
+      ]
+    }
+  ]
+}

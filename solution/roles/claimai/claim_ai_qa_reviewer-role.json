@@ -1,0 +1,12 @@
+{
+  "roles": [
+    {
+      "code": "claim_ai_qa_reviewer",
+      "name": "Claim-AI QA Reviewer",
+      "permissions": [
+        "claim.claims",
+        "claim.deliver_claim_review"
+      ]
+    }
+  ]
+}

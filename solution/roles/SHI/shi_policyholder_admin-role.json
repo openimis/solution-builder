@@ -1,0 +1,13 @@
+{
+  "roles": [
+    {
+      "code": "shi_policyholder_admin",
+      "name": "SHI Employer / Policyholder Admin",
+      "permissions": [
+        "policyholder.policyholder_portal",
+        "policyholder.policyholderinsuree_portal",
+        "policyholder.policyholderuser_portal"
+      ]
+    }
+  ]
+}

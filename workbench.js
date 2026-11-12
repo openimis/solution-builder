@@ -488,7 +488,7 @@ async function main() {
         const solutions = {
           'coreMIS': './solution/solutions/coreMIS.json',
           'SHI': './solution/solutions/HF.json',
-         'claimai': './solution/solutions/HF.json',
+         'claimai': './solution/solutions/claim-ai.json',
           'full' : './solution/solutions/full.json',
            'SR': './solution/solutions/SR.json',
            'IBR': './solution/solutions/IBR.json'

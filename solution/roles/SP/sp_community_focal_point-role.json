@@ -1,0 +1,12 @@
+{
+  "roles": [
+    {
+      "code": "sp_community_focal_point",
+      "name": "SP Community Focal Point",
+      "permissions": [
+        "grievance_social_protection.create_tickets",
+        "grievance_social_protection.create_comment"
+      ]
+    }
+  ]
+}

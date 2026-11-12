@@ -1,0 +1,24 @@
+{
+  "roles": [
+    {
+      "code": "shi_catalogue_steward",
+      "name": "SHI Pricelist & Medical Catalogue Steward",
+      "permissions": [
+        "medical_pricelist.pricelists_medical_services",
+        "medical_pricelist.pricelists_medical_services_add",
+        "medical_pricelist.pricelists_medical_services_update",
+        "medical_pricelist.pricelists_medical_services_duplicate",
+        "medical_pricelist.pricelists_medical_items",
+        "medical_pricelist.pricelists_medical_items_add",
+        "medical_pricelist.pricelists_medical_items_update",
+        "medical_pricelist.pricelists_medical_items_duplicate",
+        "medical.medical_services",
+        "medical.medical_services_add",
+        "medical.medical_services_update",
+        "medical.medical_items",
+        "medical.medical_items_add",
+        "medical.medical_items_update"
+      ]
+    }
+  ]
+}

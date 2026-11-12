@@ -1,0 +1,22 @@
+{
+  "roles": [
+    {
+      "code": "shi_clerk",
+      "name": "SHI Clerk",
+      "permissions": [
+        "insuree.families",
+        "insuree.create_families",
+        "insuree.update_families",
+        "insuree.insurees",
+        "insuree.create_insurees",
+        "insuree.update_insurees",
+        "policy.policies",
+        "policy.create_policies",
+        "policy.edit_policies",
+        "contribution.premiums",
+        "contribution.create_premiums",
+        "contribution.update_premiums"
+      ]
+    }
+  ]
+}

@@ -656,5 +656,47 @@
       "validity_to": null,
       "legacy_id": null
     }
+  },
+  {
+    "model": "core.role",
+    "fields": {
+      "uuid": "d2cf8a4e-f2c2-26a8-4dcd-35718afda4b1",
+      "name": "SP Beneficiary Status Officer",
+      "alt_language": null,
+      "is_system": 0,
+      "is_blocked": false,
+      "audit_user_id": null,
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null
+    }
+  },
+  {
+    "model": "core.role",
+    "fields": {
+      "uuid": "c9c27dc0-be9c-0a7a-920d-5ad5fe959943",
+      "name": "SP Targeting Analyst",
+      "alt_language": null,
+      "is_system": 0,
+      "is_blocked": false,
+      "audit_user_id": null,
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null
+    }
+  },
+  {
+    "model": "core.role",
+    "fields": {
+      "uuid": "15082552-51d7-1a3c-ee91-fead3eed5a35",
+      "name": "SP Community Focal Point",
+      "alt_language": null,
+      "is_system": 0,
+      "is_blocked": false,
+      "audit_user_id": null,
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null
+    }
   }
 ]

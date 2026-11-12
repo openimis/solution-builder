@@ -10,7 +10,7 @@
     "product.products",
     "medical.medical_services",
     "medical_pricelist.pricelists_medical_services",
-    "healthfacility.healthFacilities",
+    "location.health_facilities",
     "location.locations",
     "payer.payers",
     "payment.payments",

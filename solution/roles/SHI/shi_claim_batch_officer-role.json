@@ -1,0 +1,14 @@
+{
+  "roles": [
+    {
+      "code": "shi_claim_batch_officer",
+      "name": "SHI Claim Batch / Payment Officer",
+      "permissions": [
+        "claim.claims",
+        "claim_batch.process_batch",
+        "claim_batch.batch_runs",
+        "claim_batch.account_preview"
+      ]
+    }
+  ]
+}

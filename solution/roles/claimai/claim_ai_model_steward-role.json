@@ -1,0 +1,11 @@
+{
+  "roles": [
+    {
+      "code": "claim_ai_model_steward",
+      "name": "Claim-AI Model Steward",
+      "permissions": [
+        "claim.claims"
+      ]
+    }
+  ]
+}

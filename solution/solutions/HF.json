@@ -13,7 +13,26 @@
     "../roles/SHI/medical_officer-role.json",
     "../roles/SHI/scheme_administrator-role.json",
     "../roles/SHI/local_admin-role.json",
-    "../roles/SHI/policyholder_user-role.json"
+    "../roles/SHI/policyholder_user-role.json",
+    "../roles/SHI/shi_hf_receptionist-role.json",
+    "../roles/SHI/shi_hf_claim_admin-role.json",
+    "../roles/SHI/shi_claim_reviewer-role.json",
+    "../roles/SHI/shi_claim_feedback_officer-role.json",
+    "../roles/SHI/shi_claim_processor-role.json",
+    "../roles/SHI/shi_claim_batch_officer-role.json",
+    "../roles/SHI/shi_claims_status_inquiry-role.json",
+    "../roles/SHI/shi_provider_network_manager-role.json",
+    "../roles/SHI/shi_product_designer-role.json",
+    "../roles/SHI/shi_catalogue_steward-role.json",
+    "../roles/SHI/shi_enrolment_officer-role.json",
+    "../roles/SHI/shi_village_executive_officer-role.json",
+    "../roles/SHI/shi_clerk-role.json",
+    "../roles/SHI/shi_policy_renewal_officer-role.json",
+    "../roles/SHI/shi_identity_photo_reviewer-role.json",
+    "../roles/SHI/shi_contribution_accountant-role.json",
+    "../roles/SHI/shi_policyholder_admin-role.json",
+    "../roles/SHI/shi_policyholder_manager-role.json",
+    "../roles/SHI/shi_report_runner-role.json"
   ],
   "services":["db"],
   "fePackageSource":{
@@ -25,6 +44,7 @@
   },
   "initData": [
     "../fixtures/core/roles-SHI.json",
-    "../fixtures/core/rights-SHI.json"
+    "../fixtures/core/rights-SHI.json",
+    "../fixtures/claim/module-configuration-claim.json"
   ]
 }

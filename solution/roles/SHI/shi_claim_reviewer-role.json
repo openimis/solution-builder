@@ -1,0 +1,12 @@
+{
+  "roles": [
+    {
+      "code": "shi_claim_reviewer",
+      "name": "SHI Claim Reviewer (Medical Officer)",
+      "permissions": [
+        "claim.claims",
+        "claim.deliver_claim_review"
+      ]
+    }
+  ]
+}

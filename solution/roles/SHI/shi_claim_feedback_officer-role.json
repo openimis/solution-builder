@@ -1,0 +1,12 @@
+{
+  "roles": [
+    {
+      "code": "shi_claim_feedback_officer",
+      "name": "SHI Claim Feedback Officer",
+      "permissions": [
+        "claim.claims",
+        "claim.deliver_claim_feedback"
+      ]
+    }
+  ]
+}

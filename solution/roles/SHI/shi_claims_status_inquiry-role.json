@@ -1,0 +1,11 @@
+{
+  "roles": [
+    {
+      "code": "shi_claims_status_inquiry",
+      "name": "SHI Claims Status Inquiry Officer",
+      "permissions": [
+        "claim.claims"
+      ]
+    }
+  ]
+}

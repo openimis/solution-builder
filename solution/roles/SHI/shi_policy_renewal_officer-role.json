@@ -1,0 +1,13 @@
+{
+  "roles": [
+    {
+      "code": "shi_policy_renewal_officer",
+      "name": "SHI Policy Renewal Officer",
+      "permissions": [
+        "insuree.insurees",
+        "policy.renew_policies",
+        "policy.policies"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "roles": [
+    {
+      "code": "shi_claim_processor",
+      "name": "SHI Claim Processor",
+      "permissions": [
+        "claim.claims",
+        "claim.process_claims"
+      ]
+    }
+  ]
+}

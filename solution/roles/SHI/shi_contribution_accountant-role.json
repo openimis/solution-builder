@@ -1,0 +1,14 @@
+{
+  "roles": [
+    {
+      "code": "shi_contribution_accountant",
+      "name": "SHI Contribution Accountant",
+      "permissions": [
+        "contribution.premiums",
+        "claim_batch.reports_capitation_payment",
+        "report.report",
+        "report.reports_contribution_collection"
+      ]
+    }
+  ]
+}

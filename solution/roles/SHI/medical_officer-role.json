@@ -8,10 +8,10 @@
     "claim.process_claims",
     "claim.bypass_claim_review",
     "claim.claim_print",
-    "claim.feedback",
+    "claim.deliver_claim_feedback",
     "medical.medical_services",
     "medical.medical_items",
-    "location.healthFacilities",
+    "location.health_facilities",
     "insuree.insuree_inquire",
     "core.users_profile"
   ]

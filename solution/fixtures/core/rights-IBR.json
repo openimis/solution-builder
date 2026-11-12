@@ -3131,5 +3131,135 @@
         "SP Migration Engineer (temporary)"
       ]
     }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "SP Beneficiary Status Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "SP Beneficiary Status Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170003",
+      "audit_user_id": null,
+      "role": [
+        "SP Beneficiary Status Officer"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "159001",
+      "audit_user_id": null,
+      "role": [
+        "SP Targeting Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "180001",
+      "audit_user_id": null,
+      "role": [
+        "SP Targeting Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "170001",
+      "audit_user_id": null,
+      "role": [
+        "SP Targeting Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "160001",
+      "audit_user_id": null,
+      "role": [
+        "SP Targeting Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "153001",
+      "audit_user_id": null,
+      "role": [
+        "SP Targeting Analyst"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127001",
+      "audit_user_id": null,
+      "role": [
+        "SP Community Focal Point"
+      ]
+    }
+  },
+  {
+    "model": "core.roleright",
+    "fields": {
+      "validity_from": "2025-01-01T00:00:00Z",
+      "validity_to": null,
+      "legacy_id": null,
+      "right_id": "127005",
+      "audit_user_id": null,
+      "role": [
+        "SP Community Focal Point"
+      ]
+    }
   }
 ]

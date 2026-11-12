@@ -1,0 +1,15 @@
+{
+  "roles": [
+    {
+      "code": "sp_targeting_analyst",
+      "name": "SP Targeting Analyst",
+      "permissions": [
+        "individual.individual_search",
+        "individual.group_search",
+        "social_protection.beneficiary_search",
+        "social_protection.benefit_plan_search",
+        "calculation.calculation_rule"
+      ]
+    }
+  ]
+}

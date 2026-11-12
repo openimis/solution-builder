@@ -55,7 +55,10 @@
     "../roles/SP/sp_finance_auditor-role.json",
     "../roles/SP/sp_eligibility_rule_admin-role.json",
     "../roles/SP/sp_geography_steward-role.json",
-    "../roles/SP/sp_migration_engineer-role.json"
+    "../roles/SP/sp_migration_engineer-role.json",
+    "../roles/SP/sp_beneficiary_status_officer-role.json",
+    "../roles/SP/sp_targeting_analyst-role.json",
+    "../roles/SP/sp_community_focal_point-role.json"
   ],
   "services":["db"],
   "moduleConfiguration": {
