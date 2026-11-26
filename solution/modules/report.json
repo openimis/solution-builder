@@ -12,7 +12,8 @@
     "ToolsModule"
   ],
   "bePackages": [
-    "report"
+    "report",
+    "tools"
   ],
   "rights": [
     "opensearch_reports.opensearch_dashboard_search",
