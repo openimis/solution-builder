@@ -17,7 +17,8 @@
   ],
   "bePackages": [
     "grievance_social_protection",
-    "individual"
+    "individual",
+    "workflow"
   ],
   "rights": [
     "grievance_social_protection.comments",
