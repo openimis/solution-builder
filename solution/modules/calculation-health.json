@@ -1,0 +1,11 @@
+{
+  "menus": [],
+  "bePackages": [
+    "calcrule_contribution_income_percentage",
+    "calcrule_fees",
+    "calcrule_commission",
+    "calcrule_capitation_payment",
+    "calcrule_third_party_payment"
+  ],
+  "roles": []
+}

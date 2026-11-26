@@ -13,6 +13,7 @@
     "medical": "../modules/medical.json",
     "payer": "../modules/payer.json",
     "payment": "../modules/payment.json",
-    "controls": "../modules/controls.json"
+    "controls": "../modules/controls.json",
+    "calculation-health": "../modules/calculation-health.json"
   }
 }
