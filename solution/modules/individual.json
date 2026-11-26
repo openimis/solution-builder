@@ -12,7 +12,9 @@
     }
   ],
   "fePackages": [
-    "IndividualModule"
+    "IndividualModule",
+    "PolicyHolderModule",
+    "SocialProtectionModule"
   ],
   "bePackages": [
     "individual"

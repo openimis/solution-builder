@@ -8,7 +8,8 @@
     }
   ],
   "fePackages": [
-    "PaymentCycleModule"
+    "PaymentCycleModule",
+    "PolicyHolderModule"
   ],
   "bePackages": [
     "payment_cycle"
