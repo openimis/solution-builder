@@ -579,6 +579,8 @@ async function main() {
             console.log(`UAT for ${name}: ${uat.specs.length} spec(s) to run, ${uat.excluded.length} not in the solution`);
           }
           const zipPath = path.join(__dirname, 'build', name +'.zip');
+          // On a fresh clone build/ does not exist yet when the first zip is written
+          fs.mkdirSync(path.dirname(zipPath), { recursive: true });
           await createZip(outputs[name], zipPath);
           baseDir = 'build/'+name
           await createSolutionDirectory(baseDir, outputs[name])
