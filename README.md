@@ -26,11 +26,12 @@ Installs `jszip`, `js-yaml`, `simple-git`, `unzipper`, `uuid`, `axios`, `glob`, 
 node workbench.js
 ```
 
-`workbench.js` is the batch CLI launcher. It walks a hardcoded map of named solutions (currently `coreMIS`, `SHI`, `claimai`, `SR`, `IBR` — see the `solutions` object near the top of `main()` in `workbench.js`) and, for each one:
+`workbench.js` is the batch CLI launcher. It walks a hardcoded map of named solutions (currently `coreMIS`, `SHI`, `claimai`, `full`, `SR`, `IBR` — see the `solutions` object near the top of `main()` in `workbench.js`) and, for each one:
 
 1. Calls `processSolutions()` (from `solutionBuilder.js`) to merge the solution's modules, bundles, roles, menus, packages, services, and fixtures.
 2. Clones/updates `openimis/openimis-dist_dkr` into `.cache/openimis-dist_dkr` and copies the Docker Compose include files and `.env.example`s referenced by the generated `compose.yml`.
-3. Writes `build/<name>.zip` and the equivalent unpacked folder `build/<name>/`.
+3. Writes `uat.json`: the openIMIS UAT specs this solution can run (see `--uat-specs` below).
+4. Writes `build/<name>.zip` and the equivalent unpacked folder `build/<name>/`.
 
 ### Flags
 
@@ -40,6 +41,7 @@ node workbench.js --branch=develop --force-branch   # git, every module on that 
 node workbench.js --docs      # also generate aggregated Confluence markup under build/<name>/docs/
 node workbench.js --publish   # also copy the build into a local clone of openimis/solutions
 node workbench.js --menu-groups=all   # group submenu entries by source module (default: multi)
+node workbench.js --uat-specs=DIR     # UAT Cypress specs for uat.json (default: ../openimis-dev-tools/uat-test/cypress/e2e)
 ```
 
 - `--packages` writes `be-openimis.json` / `fe-openimis.json` with registry pins (`openimis-be-core~=v1.9.0`, `@openimis/fe-core@>=v1.9.0`) taken from `solution/sources/*-sources.json`. Compatible-release operators (`~=` / `>=`) are intentional so patch/bugfix versions float. Mutually exclusive with `--force-branch`. Compose fragments come from `openimis-dist_dkr` `release/26.04` (falls back to `develop`).
@@ -48,6 +50,7 @@ node workbench.js --menu-groups=all   # group submenu entries by source module (
 - `--docs` shells out to `script/generate-confluence-aggregator.js` to build aggregated markup for the solution.
 - `--publish` clones `https://github.com/openimis/solutions.git` into `.cache/temp_solutions_repo`, checks out (or reuses) a dated branch `solution/<name>/<yyyy-mm-dd>`, copies `build/<name>/` into a subfolder of that clone, and commits. **The actual `git push` is currently commented out** in `sendToExternalSolutionRepo()` (`workbench.js`), so nothing reaches the remote automatically yet — push the branch from `.cache/temp_solutions_repo` yourself, or re-enable the push line, until that's wired up.
 - `--menu-groups=multi|all|off` groups each main menu's submenu entries by the module that declared them (`solution/modules/<module>.json`), emitting the frontend's "level 1.5" group nodes (`{type: "group", text, position, entries}`) into `fixtures/module-configuration-core.json`. `multi` (default) only groups a menu fed by two or more modules — a single group spanning a whole menu would just add a redundant header; `all` groups every menu that has resolvable entries; `off` keeps the flat entry list. Group title defaults to the module file name title-cased (`social-protection` → `Social Protection`) and can be overridden per module with a `menuGroup` (or `label` / `name`) field in the module JSON, or per menu entry with a `group` field on the menu declaration — which wins over the module and lets entries from several modules share one block (`"group": "Providers"` on both `healthfacility` and `payment-point` yields a single **Providers** group). `group` accepts a string, or `{ "id", "name", "position" }` to pin the group's own id and sort order. Entries whose module cannot be resolved, and groups already written by hand, stay untouched at menu level; a group takes the lowest `position` of its entries — unless it pins its own — so it sorts where those entries used to. Requires a frontend with group support (fe-core `prepareMenuEntries` / `buildMenuItems`).
+- `--uat-specs=DIR` (or `--uat-specs DIR`) points at the Cypress specs of the openIMIS UAT suite, `uat-test/cypress/e2e` in [openimis-dev-tools](https://github.com/openimis/openimis-dev-tools). Default: `../openimis-dev-tools/uat-test/cypress/e2e`, next to this repo. Each spec declares the modules it exercises in a header line (`// @modules be: social_protection, individual  fe: SocialProtectionModule, IndividualModule`, see `uat-test/README.md` there). For each solution, the specs whose modules are all in its `be-openimis.json` / `fe-openimis.json` go to `uat.json` `specs`; the others go to `excluded` with the modules they miss. A spec without a header is run by every solution and listed in `undeclared`. When the directory is missing, a warning is printed and no `uat.json` is written. The UAT runner takes the file: `node scripts/run-uat.mjs --solution build/<name>/uat.json`.
 - A `--folder=NAME` flag is parsed but not currently used — the batch loop always runs the hardcoded solution names above.
 
 To add a new solution to the batch run, add an entry to the `solutions` map in `workbench.js` and, if it seeds Django fixtures, matching `fixtures/core/roles-*.json` / `rights-*.json` files under `solution/fixtures/core/`.
@@ -67,7 +70,24 @@ fixtures/module-configuration-core.json  # core module-configuration fixture (me
 fixtures/roles.json                    # core.role fixture
 fixtures/roles-right.json              # core.roleright fixture
 fixtures/<...initData files>           # seed data copied in from the solution's initData list
+uat.json                               # UAT specs to run / excluded (workbench.js only, see --uat-specs)
 ```
+
+`uat.json`:
+
+```json
+{
+  "solution": "coreMIS",
+  "modules": { "be": ["core", "individual", "..."], "fe": ["CoreModule", "..."] },
+  "specs": ["cypress/e2e/auth.cy.js", "..."],
+  "excluded": [{ "spec": "cypress/e2e/insuree.cy.js", "missing": { "be": ["insuree"], "fe": ["InsureeModule"] } }],
+  "source": { "dir": "/path/to/uat-test/cypress/e2e", "commit": "<git sha of that checkout>", "dirty": true }
+}
+```
+
+`source.commit` is null when the specs are not in a git checkout; `dirty` is set when they differ from that commit.
+
+Checks of the UAT selection functions: `npm test`.
 
 ## Other ways to run it
 

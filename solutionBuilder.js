@@ -1011,4 +1011,80 @@ async function createZip(data, filename) {
 
 
 
-module.exports = { mergeSolutions, getAbsolutePath, createZip, processSolutions, createSolutionDirectory, readCoreFeConfig, syncConsolidatedCoreFeConfig };
+// ---------------------------------------------------------------------------
+// UAT selection (uat.json). Each Cypress spec of the openIMIS UAT suite
+// (openimis-dev-tools uat-test/cypress/e2e) declares the modules it exercises
+// in its leading comment block:
+//   // @modules be: social_protection, individual  fe: SocialProtectionModule, IndividualModule
+// Names are the `name` values of be-openimis.json / fe-openimis.json; `-` stands
+// for an empty list, and several @modules lines add up. A solution runs a spec
+// only when it has every module the spec declares. Pure functions: no file or
+// network access, so they run in Node and in the browser.
+// ---------------------------------------------------------------------------
+
+const uniqueSorted = (names) => [...new Set(names)].sort();
+
+// Returns { be: [...], fe: [...] } from the spec's header, or null when the
+// leading comment block has no @modules line.
+function parseUatModulesHeader(text) {
+    const declared = { be: [], fe: [] };
+    let found = false;
+    for (const line of String(text).split(/\r?\n/)) {
+        const trimmed = line.trim();
+        if (!trimmed) continue;
+        if (!trimmed.startsWith('//')) break; // the header is in the leading comments only
+        const header = trimmed.match(/^\/\/\s*@modules\b(.*)$/);
+        if (!header) continue;
+        found = true;
+        for (const part of header[1].matchAll(/\b(be|fe)\s*:\s*(.*?)(?=\s+\b(?:be|fe)\s*:|$)/g)) {
+            const names = part[2].split(',').map((name) => name.trim()).filter((name) => name && name !== '-');
+            declared[part[1]].push(...names);
+        }
+    }
+    return found ? { be: uniqueSorted(declared.be), fe: uniqueSorted(declared.fe) } : null;
+}
+
+// The backend and frontend module names of a generated solution output.
+function solutionModules(output) {
+    const names = (file) => ((output[file] && output[file].modules) || [])
+        .map((module) => module && module.name)
+        .filter(Boolean);
+    return { be: uniqueSorted(names('be-openimis.json')), fe: uniqueSorted(names('fe-openimis.json')) };
+}
+
+// Splits specs into those the solution can run and those it cannot.
+// specHeaders: [{ spec, modules: { be, fe } | null }] (modules from parseUatModulesHeader);
+// modules: { be, fe } of the solution. A spec without a header cannot be judged:
+// it is run, and listed in `undeclared`.
+function selectUatSpecs(specHeaders, modules) {
+    const installed = { be: new Set(modules.be || []), fe: new Set(modules.fe || []) };
+    const result = { specs: [], excluded: [], undeclared: [] };
+    const sorted = [...specHeaders].sort((a, b) => a.spec.localeCompare(b.spec));
+    for (const { spec, modules: needs } of sorted) {
+        if (!needs) {
+            result.specs.push(spec);
+            result.undeclared.push(spec);
+            continue;
+        }
+        const missing = {
+            be: (needs.be || []).filter((name) => !installed.be.has(name)),
+            fe: (needs.fe || []).filter((name) => !installed.fe.has(name)),
+        };
+        if (missing.be.length || missing.fe.length) result.excluded.push({ spec, missing });
+        else result.specs.push(spec);
+    }
+    return result;
+}
+
+// The uat.json of a solution: its modules, the specs to run, the excluded ones
+// with the modules they miss, and where the specs were read (source: { dir, commit }).
+function buildUatJson(solutionName, output, specHeaders, source = {}) {
+    const modules = solutionModules(output);
+    const { specs, excluded, undeclared } = selectUatSpecs(specHeaders, modules);
+    const uat = { solution: solutionName, modules, specs, excluded };
+    if (undeclared.length) uat.undeclared = undeclared;
+    uat.source = source;
+    return uat;
+}
+
+module.exports = { mergeSolutions, getAbsolutePath, createZip, processSolutions, createSolutionDirectory, readCoreFeConfig, syncConsolidatedCoreFeConfig, parseUatModulesHeader, solutionModules, selectUatSpecs, buildUatJson };
