@@ -12,10 +12,13 @@
     }
   ],
   "fePackages": [
-    "GrievanceSocialProtectionModule"
+    "GrievanceSocialProtectionModule",
+    "IndividualModule"
   ],
   "bePackages": [
-    "grievance_social_protection"
+    "grievance_social_protection",
+    "individual",
+    "workflow"
   ],
   "rights": [
     "grievance_social_protection.comments",

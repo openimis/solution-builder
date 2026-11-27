@@ -18,7 +18,8 @@
   ],
   "fePackages": [
     "InvoiceModule",
-    "PaymentModule"
+    "PaymentModule",
+    "PolicyHolderModule"
   ],
   "bePackages": [
     "invoice"

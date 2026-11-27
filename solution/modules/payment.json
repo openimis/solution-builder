@@ -8,7 +8,8 @@
     }
   ],
   "fePackages": [
-    "PaymentModule"
+    "PaymentModule",
+    "PolicyHolderModule"
   ],
   "bePackages": [
     "payment",

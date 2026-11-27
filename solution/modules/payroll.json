@@ -22,7 +22,8 @@
     }
   ],
   "fePackages": [
-    "PayrollModule"
+    "PayrollModule",
+    "PolicyHolderModule"
   ],
   "bePackages": [
     "payroll"
