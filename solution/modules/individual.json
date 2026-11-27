@@ -17,7 +17,8 @@
     "SocialProtectionModule"
   ],
   "bePackages": [
-    "individual"
+    "individual",
+    "social_protection"
   ],
   "rights": [
     "individual.group_create",
