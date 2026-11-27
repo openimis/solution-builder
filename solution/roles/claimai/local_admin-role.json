@@ -26,6 +26,7 @@
     "core.create_users",
     "core.create_roles",
     "core.users",
-    "core.roles"
+    "core.roles",
+    "api_fhir_r4.fhir_sub_search_all"
   ]
 }]}

@@ -4,6 +4,7 @@
     "api_fhir_r4.fhir_sub_create": "158002",
     "api_fhir_r4.fhir_sub_delete": "158004",
     "api_fhir_r4.fhir_sub_search": "158001",
+    "api_fhir_r4.fhir_sub_search_all": "158005",
     "api_fhir_r4.fhir_sub_update": "158003",
     "calculation.calculation_rule": "153001",
     "calculation.update_calculation_rule": "153003",
