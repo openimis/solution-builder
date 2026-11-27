@@ -58,6 +58,10 @@ Public exports (`module.exports`):
 | `getAbsolutePath(relativePath, basePath, withFile)` | Path resolution used throughout the merge. |
 | `readCoreFeConfig(output)` | Parsed fe-core config (`{ menus, logo?, theme? }`) read back out of the generated core module-configuration fixture. |
 | `syncConsolidatedCoreFeConfig(output)` | Re-reads that fixture into `consolidated-solution.json`'s `coreFeConfig`; call after any pass that rewrites the fixture. |
+| `parseUatModulesHeader(text)` | The `{ be, fe }` modules a UAT Cypress spec declares in its `// @modules be: ...  fe: ...` header, or null without one. |
+| `solutionModules(output)` | Backend and frontend module names of a generated output (from `be-openimis.json` / `fe-openimis.json`). |
+| `selectUatSpecs(specHeaders, modules)` | Splits `[{ spec, modules }]` into `specs` the solution can run, `excluded` (with the `missing` modules) and `undeclared` (no header, run anyway). |
+| `buildUatJson(name, output, specHeaders, source)` | The solution's `uat.json` object (`solution`, `modules`, `specs`, `excluded`, `source`). `workbench.js` reads the spec files (`--uat-specs`) and adds the result to the output. |
 
 Important internals:
 
@@ -69,6 +73,7 @@ Important internals:
 - `transformRolesToFixture` — map role permission *names* through `solution/permissions_map.json` into `core.role` / `core.roleright` fixtures. Permissions not declared on an included module's `rights` array, or missing from the central map, are skipped with a warning.
 - `mergeAndSortFixtures` — concatenate and sort fixture files listed in `initData`.
 - `injectLogoTheme` — embed logo/theme from `moduleConfiguration` into the core module-configuration fixture.
+- `parseUatModulesHeader` / `selectUatSpecs` / `buildUatJson` — UAT selection, pure (no I/O) so they run in both runtimes. The specs live in openimis-dev-tools `uat-test/cypress/e2e`; their header format and the rule for which modules a spec lists are in that repo's `uat-test/README.md`. Tests: `npm test` (`test/uat-selection.test.js`, `node:test`).
 - `readCoreFeConfig` / `syncConsolidatedCoreFeConfig` — the fe-core module configuration fixture (`fixtures/module-configuration-core.json`) is the reference copy of the frontend config. `consolidated-solution.json`'s `coreFeConfig` is parsed back out of that fixture rather than kept as a separate object, so it carries the same `menus` plus any injected `logo` / `theme`. Anything that rewrites the fixture afterwards (menu grouping in `workbench.js`) must call `syncConsolidatedCoreFeConfig(output)` to realign the dump.
 - Module Confluence labels — each included module contributes a label (module JSON `confluenceLabel` or `label`, otherwise the module key), always stored with the `module-` prefix so it matches Confluence (`module-claim`, `module-core`, …). These are written to `consolidated-solution.json` as `confluenceLabel` and used by `workbench.js` when generating docs.
 
@@ -259,7 +264,7 @@ Permission strings must exist both in some included module's `rights` and in `so
 | IBR | `solution/solutions/IBR.json` | Insurance-based registry hybrid |
 | SR | `solution/solutions/SR.json` | Social registry |
 | claim-ai | `solution/solutions/claim-ai.json` | Health claims + AI quality |
-| full | `solution/solutions/full.json` | Maximal reference (not currently in the workbench loop) |
+| full | `solution/solutions/full.json` | Maximal reference |
 
 Business-facing write-ups live in `docs/` (`coreMIS.md`, `SHI.md`, …). `docs/solution-builder-explained.md` is the slide source (Marp).
 

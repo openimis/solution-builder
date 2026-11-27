@@ -459,7 +459,46 @@ function groupCoreMenusByModule(output, map, mode, solutionName) {
     return syncConsolidatedCoreFeConfig(output);
 }
 
-const { createZip, processSolutions , createSolutionDirectory, syncConsolidatedCoreFeConfig } = require("./solutionBuilder.js");
+const { createZip, processSolutions , createSolutionDirectory, syncConsolidatedCoreFeConfig, parseUatModulesHeader, buildUatJson } = require("./solutionBuilder.js");
+
+// ---------------------------------------------------------------------------
+// UAT selection: the Cypress specs of the openIMIS UAT suite declare the modules
+// they exercise (`// @modules be: ...  fe: ...`, see parseUatModulesHeader in
+// solutionBuilder.js); each solution gets a uat.json listing the specs it can run.
+// ---------------------------------------------------------------------------
+
+const DEFAULT_UAT_SPECS_DIR = path.resolve(__dirname, '..', 'openimis-dev-tools', 'uat-test', 'cypress', 'e2e');
+
+// Reads the module headers of every *.cy.js under specsDir. Spec paths are given
+// relative to the uat-test root (two levels up: cypress/e2e/<spec>), as the UAT
+// runner expects them. Returns null when the directory does not exist.
+function readUatSpecHeaders(specsDir) {
+    if (!fs.existsSync(specsDir) || !fs.statSync(specsDir).isDirectory()) return null;
+    const root = path.resolve(specsDir, '..', '..');
+    return fs.readdirSync(specsDir)
+        .filter((file) => file.endsWith('.cy.js'))
+        .sort()
+        .map((file) => {
+            const full = path.join(specsDir, file);
+            const spec = path.relative(root, full).split(path.sep).join('/');
+            return { spec, modules: parseUatModulesHeader(fs.readFileSync(full, 'utf8')) };
+        });
+}
+
+// Where the specs come from: the directory and, when it is a git checkout, its
+// commit (and whether the specs differ from it).
+function uatSpecsSource(specsDir) {
+    const { execFileSync } = require('child_process');
+    const source = { dir: specsDir, commit: null };
+    try {
+        const git = (...args) => execFileSync('git', ['-C', specsDir, ...args], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+        source.commit = git('rev-parse', 'HEAD');
+        if (git('status', '--porcelain', '--', '.')) source.dirty = true;
+    } catch (error) {
+        // Not a git checkout (or no git): the commit stays unknown.
+    }
+    return source;
+}
 
 async function main() {
     try {
@@ -472,6 +511,11 @@ async function main() {
         const branchArg = args.find(arg => arg.startsWith('--branch='));
         const menuGroupArg = args.find(arg => arg.startsWith('--menu-groups='));
         const menuGroupMode = menuGroupArg ? menuGroupArg.split('=')[1] : 'multi';
+        // --uat-specs=DIR or --uat-specs DIR: the UAT Cypress specs whose headers select uat.json.
+        const uatSpecsIndex = args.findIndex(arg => arg === '--uat-specs' || arg.startsWith('--uat-specs='));
+        const uatSpecsDir = uatSpecsIndex < 0
+            ? DEFAULT_UAT_SPECS_DIR
+            : path.resolve(args[uatSpecsIndex].includes('=') ? args[uatSpecsIndex].split('=').slice(1).join('=') : args[uatSpecsIndex + 1]);
         if (!MENU_GROUP_MODES.includes(menuGroupMode)) {
             console.error(`--menu-groups must be one of: ${MENU_GROUP_MODES.join(', ')}`);
             process.exit(1);
@@ -501,6 +545,16 @@ async function main() {
         // Generated entry -> source module lookup, shared by every solution
         const menuEntryModuleMap = buildMenuEntryModuleMap();
 
+        const uatSpecHeaders = readUatSpecHeaders(uatSpecsDir);
+        const uatSource = uatSpecHeaders && uatSpecsSource(uatSpecsDir);
+        if (!uatSpecHeaders) {
+            console.warn(`⚠️ No UAT specs at ${uatSpecsDir} (--uat-specs): uat.json is not generated`);
+        } else {
+            const undeclared = uatSpecHeaders.filter((h) => !h.modules).map((h) => h.spec);
+            console.log(`Read ${uatSpecHeaders.length} UAT spec headers from ${uatSpecsDir}${uatSource.commit ? ` (${uatSource.commit.slice(0, 10)}${uatSource.dirty ? ', with local changes' : ''})` : ''}`);
+            if (undeclared.length) console.warn(`⚠️ UAT specs without a @modules header (run by every solution): ${undeclared.join(', ')}`);
+        }
+
         let outputs = {}
         for (const [name, solution_path] of Object.entries(solutions)){
           console.log(`generating ${name}`)
@@ -518,7 +572,15 @@ async function main() {
           Object.assign(outputs[name], composeFiles);
           // Group the fe-core menu entries by the module that declared them
           outputs[name] = groupCoreMenusByModule(outputs[name], menuEntryModuleMap, menuGroupMode, name);
+          // UAT specs this solution can run (written into the folder and the zip)
+          if (uatSpecHeaders) {
+            const uat = buildUatJson(name, outputs[name], uatSpecHeaders, uatSource);
+            outputs[name]['uat.json'] = uat;
+            console.log(`UAT for ${name}: ${uat.specs.length} spec(s) to run, ${uat.excluded.length} not in the solution`);
+          }
           const zipPath = path.join(__dirname, 'build', name +'.zip');
+          // On a fresh clone build/ does not exist yet when the first zip is written
+          fs.mkdirSync(path.dirname(zipPath), { recursive: true });
           await createZip(outputs[name], zipPath);
           baseDir = 'build/'+name
           await createSolutionDirectory(baseDir, outputs[name])
